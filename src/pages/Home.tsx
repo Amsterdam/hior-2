@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { Heading, themeSpacing } from "@amsterdam/asc-ui";
+import { Column, Heading, Row, themeSpacing } from "@amsterdam/asc-ui";
+import { doesNotThrow } from "assert";
 
 const StyledDiv = styled.div`
   margin-top: ${themeSpacing(10)};
@@ -10,17 +11,42 @@ const StyledHeading = styled(Heading)`
   margin-bottom: ${themeSpacing(5)};
 `;
 
+const StyledImg = styled.img`
+  width: 100%;
+  height: fit-content;
+`;
+
 const Home = () => {
   return (
     <>
-      <StyledDiv data-testid="home">
-        <StyledHeading>Home</StyledHeading>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-        laborum.
-      </StyledDiv>
+      <Row>
+        <Column span={2}>
+          <div style={{ marginTop: "50px" }}>
+            <StyledImg src="intro1.jpg" alt="test" />
+            <StyledImg src="intro2.jpg" alt="test" />
+            <StyledImg src="intro3.jpg" alt="test" />
+            <StyledImg src="intro4.jpg" alt="test" />
+            <StyledImg src="intro5.jpg" alt="test" />
+          </div>
+        </Column>
+
+        <Column span={10}>
+          <StyledDiv data-testid="home">
+            <StyledHeading>Startpagina</StyledHeading>
+            In dit digitale handboek vind je de hoofdlijnen van het beleid voor de inrichting van de Amsterdamse
+            openbare ruimte. Dit handboek is samengesteld op basis van verschillende bestaande beleidsstukken. Het
+            handboek is een hulpmiddel om het beleid beter vindbaar en bruikbaar te maken.
+            <br />
+            <br />
+            Het beleid is makkelijk te doorzoeken op thema (bijvoorbeeld &rsquo;fiets&rsquo;, &rsquo;groen&rsquo; of
+            &rsquo;straatmeubilair&rsquo;) of per beleidsproduct (bijvoorbeeld de &rsquo;Visie Openbare Ruimte&rsquo; of
+            de &rsquo;Nota Parkeernormen&rsquo;).
+            <br />
+            <br />
+            Om het beleid te ordenen zijn kenmerken toegevoegd, die hieronder worden toegelicht.
+          </StyledDiv>
+        </Column>
+      </Row>
     </>
   );
 };
