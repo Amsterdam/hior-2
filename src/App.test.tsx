@@ -62,7 +62,7 @@ describe("App", () => {
       </ThemeProvider>,
     );
 
-    expect(screen.queryByTestId("home")).toBeInTheDocument();
+    expect(screen.queryByTestId("faq")).toBeInTheDocument();
   });
 
   it("route to contact is defined", () => {
