@@ -6,7 +6,6 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
-import Map from "./pages/Map";
 
 function App() {
   return (
@@ -22,7 +21,9 @@ function App() {
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/" element={<Navigate replace to="/home" />} />
-            <Route path="/kaart" element={<Map />} />
+            <Route path="/search" element={<Home />} />
+            <Route path="/faq" element={<Home />} />
+            <Route path="/contact" element={<Home />} />
           </Routes>
         </Column>
       </Row>
