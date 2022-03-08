@@ -1,12 +1,5 @@
-# Frontend React Template
+# HIOR 2
 
-This project can be used to create a new frontend react project from scratch for projects within the community of Amsterdam open source projects.
-
-Also this project uses [github actions workflows](https://github.com/Amsterdam/frontend-react-template/actions) for CI deployment.
-
-If you want to use a form utility we suggest you use: [`react-hook-form`](https://www.npmjs.com/package/react-hook-form).
-
-If you want to use keycloak? Be sure to get keycloak implementation from [blackspots](https://github.com/Amsterdam/blackspots-frontend).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
