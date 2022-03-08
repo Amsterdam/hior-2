@@ -11,6 +11,7 @@ const Header = () => {
       homeLink="/"
       fullWidth
       css={{ zIndex: 20 }}
+      title="Handboek Inrichting Openbare Ruimte"
       navigation={
         <>
           <MenuInline>
