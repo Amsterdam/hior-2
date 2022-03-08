@@ -15,8 +15,10 @@ describe("Header", () => {
 
     expect(screen.queryByTestId("header")).toBeInTheDocument();
 
-    expect(screen.queryByText("Home")).toBeInTheDocument();
-    expect(screen.queryByText("Kaart")).toBeInTheDocument();
+    expect(screen.queryByText("Startpagina")).toBeInTheDocument();
+    expect(screen.queryByText("Zoek")).toBeInTheDocument();
+    expect(screen.queryByText("FAQ")).toBeInTheDocument();
+    expect(screen.queryByText("Contact")).toBeInTheDocument();
 
     // home should be active now
     expect(screen.queryByTestId("header-home-button")).toHaveStyleRule('color', "#ec0000");
