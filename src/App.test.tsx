@@ -41,17 +41,39 @@ describe("App", () => {
     expect(screen.queryByTestId("map")).not.toBeInTheDocument();
   });
 
-  it("route to map is defined", () => {
+  it("route to search is defined", () => {
     render(
       <ThemeProvider>
-        <MemoryRouter initialEntries={["/kaart"]}>
+        <MemoryRouter initialEntries={["/search"]}>
           <App />
         </MemoryRouter>
       </ThemeProvider>,
     );
 
-    expect(screen.queryByTestId("map")).toBeInTheDocument();
+    expect(screen.queryByTestId("home")).toBeInTheDocument();
+  });
 
-    expect(screen.queryByTestId("home")).not.toBeInTheDocument();
+  it("route to faq is defined", () => {
+    render(
+      <ThemeProvider>
+        <MemoryRouter initialEntries={["/faq"]}>
+          <App />
+        </MemoryRouter>
+      </ThemeProvider>,
+    );
+
+    expect(screen.queryByTestId("home")).toBeInTheDocument();
+  });
+
+  it("route to contact is defined", () => {
+    render(
+      <ThemeProvider>
+        <MemoryRouter initialEntries={["/contact"]}>
+          <App />
+        </MemoryRouter>
+      </ThemeProvider>,
+    );
+
+    expect(screen.queryByTestId("home")).toBeInTheDocument();
   });
 });
