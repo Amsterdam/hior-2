@@ -18,13 +18,25 @@ const Header = () => {
             <MenuItem>
               {/* @ts-ignore */}
               <MenuButton as={Link} to="/home" active={!!matchPath(location.pathname, "/home")} data-testid="header-home-button">
-                Home
+                Startpagina
               </MenuButton>
             </MenuItem>
             <MenuItem>
               {/* @ts-ignore */}
-              <MenuButton as={Link} to="/kaart" active={!!matchPath(location.pathname, "/kaart")}>
-                Kaart
+              <MenuButton as={Link} to="/search" active={!!matchPath(location.pathname, "/search")}>
+                Zoek
+              </MenuButton>
+            </MenuItem>
+            <MenuItem>
+              {/* @ts-ignore */}
+              <MenuButton as={Link} to="/faq" active={!!matchPath(location.pathname, "/faq")}>
+                FAQ
+              </MenuButton>
+            </MenuItem>
+            <MenuItem>
+              {/* @ts-ignore */}
+              <MenuButton as={Link} to="/contact" active={!!matchPath(location.pathname, "/contact")}>
+                Contact
               </MenuButton>
             </MenuItem>
           </MenuInline>
