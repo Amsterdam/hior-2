@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Column, Heading, Row, themeSpacing } from "@amsterdam/asc-ui";
-import { doesNotThrow } from "assert";
 
 const StyledDiv = styled.div`
   margin-top: ${themeSpacing(10)};
@@ -13,7 +12,9 @@ const StyledHeading = styled(Heading)`
 
 const StyledImg = styled.img`
   width: 100%;
+  height: -moz-fit-content;
   height: fit-content;
+  margin-bottom: 20px;
 `;
 
 const Home = () => {
