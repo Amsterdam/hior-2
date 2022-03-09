@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Column, Heading, Row, themeSpacing } from "@amsterdam/asc-ui";
+import { Accordion, Column, Heading, Paragraph, Row, themeSpacing } from "@amsterdam/asc-ui";
 
 const StyledDiv = styled.div`
   margin-top: ${themeSpacing(10)};
@@ -8,6 +8,10 @@ const StyledDiv = styled.div`
 
 const StyledHeading = styled(Heading)`
   margin-bottom: ${themeSpacing(5)};
+`;
+
+const StyledAccordion = styled(Accordion)`
+  margin-bottom: ${themeSpacing(3)};
 `;
 
 const StyledImg = styled.img`
@@ -20,7 +24,7 @@ const StyledImg = styled.img`
 const Home = () => {
   return (
     <>
-      <Row>
+      <Row data-testid="home">
         <Column span={2}>
           <div style={{ marginTop: "50px" }}>
             <StyledImg src="intro1.jpg" alt="test" />
@@ -32,7 +36,7 @@ const Home = () => {
         </Column>
 
         <Column span={10}>
-          <StyledDiv data-testid="home">
+          <StyledDiv>
             <StyledHeading>Startpagina</StyledHeading>
             In dit digitale handboek vind je de hoofdlijnen van het beleid voor de inrichting van de Amsterdamse
             openbare ruimte. Dit handboek is samengesteld op basis van verschillende bestaande beleidsstukken. Het
@@ -45,6 +49,20 @@ const Home = () => {
             <br />
             <br />
             Om het beleid te ordenen zijn kenmerken toegevoegd, die hieronder worden toegelicht.
+            <br />
+            <br />
+            <StyledAccordion id="a1" title="Niveau">
+              <Paragraph gutterBottom={0}>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad delectus hic incidunt iure labore natus
+                odio pariatur qui sint, voluptas!
+              </Paragraph>
+            </StyledAccordion>
+            <StyledAccordion id="a2" title="Type">
+              <Paragraph gutterBottom={0}>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad delectus hic incidunt iure labore natus
+                odio pariatur qui sint, voluptas!
+              </Paragraph>
+            </StyledAccordion>
           </StyledDiv>
         </Column>
       </Row>
