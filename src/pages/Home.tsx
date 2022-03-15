@@ -11,7 +11,7 @@ const StyledHeading = styled(Heading)`
 `;
 
 const StyledAccordion = styled(Accordion)`
-  margin-bottom: ${themeSpacing(3)};
+  margin-top: ${themeSpacing(3)};
 `;
 
 const StyledImg = styled.img`
