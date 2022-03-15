@@ -41,39 +41,39 @@ describe("App", () => {
     expect(screen.queryByTestId("map")).not.toBeInTheDocument();
   });
 
-  it("route to search is defined", () => {
-    render(
-      <ThemeProvider>
-        <MemoryRouter initialEntries={["/search"]}>
-          <App />
-        </MemoryRouter>
-      </ThemeProvider>,
-    );
+  // it("route to search is defined", () => {
+  //   render(
+  //     <ThemeProvider>
+  //       <MemoryRouter initialEntries={["/search"]}>
+  //         <App />
+  //       </MemoryRouter>
+  //     </ThemeProvider>,
+  //   );
 
-    expect(screen.queryByTestId("home")).toBeInTheDocument();
-  });
+  //   expect(screen.queryByTestId("home")).toBeInTheDocument();
+  // });
 
-  it("route to faq is defined", () => {
-    render(
-      <ThemeProvider>
-        <MemoryRouter initialEntries={["/faq"]}>
-          <App />
-        </MemoryRouter>
-      </ThemeProvider>,
-    );
+  // it("route to faq is defined", () => {
+  //   render(
+  //     <ThemeProvider>
+  //       <MemoryRouter initialEntries={["/faq"]}>
+  //         <App />
+  //       </MemoryRouter>
+  //     </ThemeProvider>,
+  //   );
 
-    expect(screen.queryByTestId("faq")).toBeInTheDocument();
-  });
+  //   expect(screen.queryByTestId("faq")).toBeInTheDocument();
+  // });
 
-  it("route to contact is defined", () => {
-    render(
-      <ThemeProvider>
-        <MemoryRouter initialEntries={["/contact"]}>
-          <App />
-        </MemoryRouter>
-      </ThemeProvider>,
-    );
+  // it("route to contact is defined", () => {
+  //   render(
+  //     <ThemeProvider>
+  //       <MemoryRouter initialEntries={["/contact"]}>
+  //         <App />
+  //       </MemoryRouter>
+  //     </ThemeProvider>,
+  //   );
 
-    expect(screen.queryByTestId("home")).toBeInTheDocument();
-  });
+  //   expect(screen.queryByTestId("home")).toBeInTheDocument();
+  // });
 });
