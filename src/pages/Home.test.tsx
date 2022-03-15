@@ -7,6 +7,6 @@ describe("Home", () => {
     render(withTheme(<Home />));
 
     expect(screen.queryByTestId("home")).toBeInTheDocument();
-    expect(screen.queryByText("Home")).toBeInTheDocument();
+    expect(screen.queryByText("Startpagina")).toBeInTheDocument();
   });
 });
