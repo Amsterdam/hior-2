@@ -11,20 +11,13 @@ import {
   themeSpacing,
 } from "@amsterdam/asc-ui";
 
-const StyledRow = styled(Row)`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-`;
-
 const StyledFooter = styled(ASCFooter)`
   margin-top: ${themeSpacing(18)};
 `;
 
 const Footer = () => {
   return (
-    <StyledRow data-testid="footer">
+    <Row data-testid="footer">
       <Column span={12}>
         <StyledFooter>
           <FooterTop>
@@ -61,7 +54,7 @@ const Footer = () => {
           </FooterBottom>
         </StyledFooter>
       </Column>
-    </StyledRow>
+    </Row>
   );
 };
 
