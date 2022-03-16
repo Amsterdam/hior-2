@@ -99,7 +99,9 @@ const Home = () => {
             </StyledAccordion>
             <StyledAccordion id="a2" title="Type">
               <Paragraph gutterBottom={0}>
-                Hiermee wordt aangegeven hoe het beleid getypeerd wordt.
+                <Paragraph>
+                  Hiermee wordt aangegeven hoe het beleid getypeerd wordt:
+                </Paragraph>
                 <TableContainer>
                   <Table>
                     <TableBody>
