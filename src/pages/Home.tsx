@@ -73,7 +73,7 @@ const Home = () => {
                   <Table>
                     <TableBody>
                       <TableRow>
-                        <StyledTablecell style={{verticalAlign: 'top'}}>Strategisch</StyledTablecell>
+                        <StyledTablecell>Strategisch</StyledTablecell>
                         <StyledTablecell>
                           Dit beleid is strategisch, gericht op het bereiken van een overkoepelend doel. Het geeft
                           richting aan de ontwikkeling van de stad en komt vaak voort uit visies, programma’s en
