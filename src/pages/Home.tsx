@@ -1,5 +1,17 @@
 import styled from "styled-components";
-import { Accordion, Column, Heading, Paragraph, Row, themeSpacing } from "@amsterdam/asc-ui";
+import {
+  Accordion,
+  Column,
+  Heading,
+  Paragraph,
+  Row,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+  themeSpacing,
+} from "@amsterdam/asc-ui";
 
 const StyledDiv = styled.div`
   margin-top: ${themeSpacing(10)};
@@ -53,8 +65,32 @@ const Home = () => {
             <br />
             <StyledAccordion id="a1" title="Niveau">
               <Paragraph gutterBottom={0}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad delectus hic incidunt iure labore natus
-                odio pariatur qui sint, voluptas!
+                <TableContainer>
+                  <Table>
+                    <TableBody>
+                      <TableRow>
+                        <TableCell>Strategisch</TableCell>
+                        <TableCell>
+                          Dit beleid is strategisch, gericht op het bereiken van een overkoepelend doel. Het geeft
+                          richting aan de ontwikkeling van de stad en komt vaak voort uit visies, programma’s en
+                          agenda’s.
+                        </TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>Tactisch</TableCell>
+                        <TableCell>Dit beleid geeft op tactisch niveau aan wat er nodig is voor een goede, functionele en duurzame openbare ruimte. Het is een uitwerking van bovenliggend strategisch beleid.</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>Operationeel</TableCell>
+                        <TableCell>Dit beleid geeft op operationeel niveau aan hoe de openbare ruimte exact moet worden ontworpen, ingericht of aangelegd.</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>Proces</TableCell>
+                        <TableCell>Dit zijn procesafspraken die bijdragen aan een betere samenwerking en uiteindelijk een beter eindresultaat in de openbare ruimte.</TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </TableContainer>
               </Paragraph>
             </StyledAccordion>
             <StyledAccordion id="a2" title="Type">
