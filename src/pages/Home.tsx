@@ -7,11 +7,10 @@ import {
   Row,
   Table,
   TableBody,
-  Tablecell,
+  TableCell,
   TableContainer,
   TableRow,
-  themeSpacing,
-  TableCell,
+  themeSpacing
 } from "@amsterdam/asc-ui";
 
 const StyledDiv = styled.div`
