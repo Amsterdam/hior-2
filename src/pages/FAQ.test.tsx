@@ -7,6 +7,6 @@ describe("FAQ", () => {
     render(withTheme(<FAQ />));
 
     expect(screen.queryByTestId("faq")).toBeInTheDocument();
-    expect(screen.queryByText("FAQ")).toBeInTheDocument();
+    expect(screen.queryByText("Veelgestelde vragen")).toBeInTheDocument();
   });
 });
