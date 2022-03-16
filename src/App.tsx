@@ -29,7 +29,11 @@ function App() {
         </Column>
       </Row>
 
-      <Footer />
+      <Row>
+        <Column span={12}>
+          <Footer />
+        </Column>
+      </Row>
     </>
   );
 }

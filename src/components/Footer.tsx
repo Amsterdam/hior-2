@@ -17,9 +17,7 @@ const StyledFooter = styled(ASCFooter)`
 
 const Footer = () => {
   return (
-    <Row data-testid="footer">
-      <Column span={12}>
-        <StyledFooter>
+        <StyledFooter data-testid="footer">
           <FooterTop>
             <Row>
               <Column span={6}>
@@ -53,8 +51,6 @@ const Footer = () => {
             </Link>
           </FooterBottom>
         </StyledFooter>
-      </Column>
-    </Row>
   );
 };
 
