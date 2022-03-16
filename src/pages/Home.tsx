@@ -7,10 +7,11 @@ import {
   Row,
   Table,
   TableBody,
-  TableCell,
+  Tablecell,
   TableContainer,
   TableRow,
   themeSpacing,
+  TableCell,
 } from "@amsterdam/asc-ui";
 
 const StyledDiv = styled.div`
@@ -31,6 +32,10 @@ const StyledImg = styled.img`
   height: -moz-fit-content;
   height: fit-content;
   margin-bottom: 20px;
+`;
+
+const StyledTablecell = styled(TableCell)`
+  vertical-align: top;
 `;
 
 const Home = () => {
@@ -69,24 +74,24 @@ const Home = () => {
                   <Table>
                     <TableBody>
                       <TableRow>
-                        <TableCell>Strategisch</TableCell>
-                        <TableCell>
+                        <StyledTablecell style={{verticalAlign: 'top'}}>Strategisch</StyledTablecell>
+                        <StyledTablecell>
                           Dit beleid is strategisch, gericht op het bereiken van een overkoepelend doel. Het geeft
                           richting aan de ontwikkeling van de stad en komt vaak voort uit visies, programma’s en
-                          agenda’s.
-                        </TableCell>
+                          agenda&rsquo;s.
+                        </StyledTablecell>
                       </TableRow>
                       <TableRow>
-                        <TableCell>Tactisch</TableCell>
-                        <TableCell>Dit beleid geeft op tactisch niveau aan wat er nodig is voor een goede, functionele en duurzame openbare ruimte. Het is een uitwerking van bovenliggend strategisch beleid.</TableCell>
+                        <StyledTablecell>Tactisch</StyledTablecell>
+                        <StyledTablecell>Dit beleid geeft op tactisch niveau aan wat er nodig is voor een goede, functionele en duurzame openbare ruimte. Het is een uitwerking van bovenliggend strategisch beleid.</StyledTablecell>
                       </TableRow>
                       <TableRow>
-                        <TableCell>Operationeel</TableCell>
-                        <TableCell>Dit beleid geeft op operationeel niveau aan hoe de openbare ruimte exact moet worden ontworpen, ingericht of aangelegd.</TableCell>
+                        <StyledTablecell>Operationeel</StyledTablecell>
+                        <StyledTablecell>Dit beleid geeft op operationeel niveau aan hoe de openbare ruimte exact moet worden ontworpen, ingericht of aangelegd.</StyledTablecell>
                       </TableRow>
                       <TableRow>
-                        <TableCell>Proces</TableCell>
-                        <TableCell>Dit zijn procesafspraken die bijdragen aan een betere samenwerking en uiteindelijk een beter eindresultaat in de openbare ruimte.</TableCell>
+                        <StyledTablecell>Proces</StyledTablecell>
+                        <StyledTablecell>Dit zijn procesafspraken die bijdragen aan een betere samenwerking en uiteindelijk een beter eindresultaat in de openbare ruimte.</StyledTablecell>
                       </TableRow>
                     </TableBody>
                   </Table>
