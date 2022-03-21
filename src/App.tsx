@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
 import FAQ from "./pages/FAQ";
+import List from './pages/List';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/" element={<Navigate replace to="/home" />} />
-            <Route path="/search" element={<Home />} />
+            <Route path="/list" element={<List />} />
             <Route path="/faq" element={<FAQ />} />
           </Routes>
         </Column>

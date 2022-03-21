@@ -23,7 +23,7 @@ const Header = () => {
             </MenuItem>
             <MenuItem>
               {/* @ts-ignore */}
-              <MenuButton as={Link} to="/search" active={!!matchPath(location.pathname, "/search")}>
+              <MenuButton as={Link} to="/list" active={!!matchPath(location.pathname, "/list")}>
                 Zoek
               </MenuButton>
             </MenuItem>
