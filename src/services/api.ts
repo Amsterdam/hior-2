@@ -1,0 +1,1 @@
+export const getByUri = (uri: string) => fetch(uri).then((response) => response.json());
