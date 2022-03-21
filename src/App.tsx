@@ -24,7 +24,6 @@ function App() {
             <Route path="/" element={<Navigate replace to="/home" />} />
             <Route path="/search" element={<Home />} />
             <Route path="/faq" element={<FAQ />} />
-            <Route path="/contact" element={<Home />} />
           </Routes>
         </Column>
       </Row>

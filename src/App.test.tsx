@@ -64,16 +64,4 @@ describe("App", () => {
 
   //   expect(screen.queryByTestId("faq")).toBeInTheDocument();
   // });
-
-  // it("route to contact is defined", () => {
-  //   render(
-  //     <ThemeProvider>
-  //       <MemoryRouter initialEntries={["/contact"]}>
-  //         <App />
-  //       </MemoryRouter>
-  //     </ThemeProvider>,
-  //   );
-
-  //   expect(screen.queryByTestId("home")).toBeInTheDocument();
-  // });
 });
