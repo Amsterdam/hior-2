@@ -35,7 +35,7 @@ const Header = () => {
             </MenuItem>
             <MenuItem>
               {/* @ts-ignore */}
-              <MenuButton as={Link} to="/contact" active={!!matchPath(location.pathname, "/contact")}>
+              <MenuButton as="a" href="mailto:hior@amsterdam.nl">
                 Contact
               </MenuButton>
             </MenuItem>
