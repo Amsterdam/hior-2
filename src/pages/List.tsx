@@ -1,5 +1,8 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import { Accordion, Column, Heading, Paragraph, Row, themeSpacing } from "@amsterdam/asc-ui";
+import useDataFetching from "../hooks/useDataFetching";
+import { API_URL } from "../constants";
 
 const StyledDiv = styled.div`
   margin-top: ${themeSpacing(10)};
@@ -14,11 +17,20 @@ const LargeDiv = styled.div`
   width: 100%;
 `;
 
-// const StyledAccordion = styled(Accordion)`
-//   margin-top: ${themeSpacing(3)};
-// `;
+const StyledAccordion = styled(Accordion)`
+  margin-top: ${themeSpacing(3)};
+`;
 
 const List = () => {
+  const { results, fetchData } = useDataFetching();
+
+  useEffect(() => {
+    fetchData(API_URL);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  console.log("data", results);
+
   return (
     <StyledDiv>
       <Row data-testid="list">
@@ -27,9 +39,9 @@ const List = () => {
             <StyledHeading>Resultaten</StyledHeading>
             <br />
             <br />
-            <Accordion id="a1" title="Niveau">
+            <StyledAccordion id="a1" title="Niveau">
               <Paragraph gutterBottom={0}>yio</Paragraph>
-            </Accordion>
+            </StyledAccordion>
           </LargeDiv>
         </Column>
       </Row>
