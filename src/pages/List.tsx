@@ -1,8 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Accordion, Column, Heading, Paragraph, Row, themeSpacing } from "@amsterdam/asc-ui";
 import useDataFetching from "../hooks/useDataFetching";
-import { API_URL } from "../constants";
+import { HIOR_ITEMS_URL, HIOR_PROPERTIES_URL } from "../constants";
+import { getByUri } from "../services/api";
+
+// import { Apicall } from "../types";
 
 const StyledDiv = styled.div`
   margin-top: ${themeSpacing(10)};
@@ -22,14 +25,45 @@ const StyledAccordion = styled(Accordion)`
 `;
 
 const List = () => {
+  const [attributes, setAttributes] = useState<any[]>([]);
   const { results, fetchData } = useDataFetching();
+  console.log("results", results, attributes);
 
+  const getAttributes = async () => {
+    const attrs = await getByUri(HIOR_PROPERTIES_URL);
+    setAttributes(attrs);
+  };
+
+  // const data = results;
   useEffect(() => {
-    fetchData(API_URL);
+    fetchData(HIOR_ITEMS_URL);
+    getAttributes();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log("data", results);
+  useEffect(() => {
+    if (!results || !attributes) {
+      return;
+    }
+
+    console.log("results loaded");
+    // @ts-ignore
+    const items = results.results.map((i) => {
+      // @ts-ignore
+      const found = attributes.results.filter((a) => i.id === a.item_id);
+      console.log("found", found);
+
+      return {
+        ...i,
+      };
+    });
+    console.log("items", items);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [results, attributes]);
+
+  // const filteredData = data;
 
   return (
     <StyledDiv>
