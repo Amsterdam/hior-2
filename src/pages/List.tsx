@@ -57,22 +57,20 @@ const List = () => {
 
     // enrich items with properties and attributes
     // @ts-ignore
-    const items = results.results.map((i) => {
+    const items = results.results.map((i: any) => {
       // @ts-ignore
-      const foundProps = properties.results.filter((a) => i.id === a.item_id);
+      const foundProps = properties.results.filter((a: any) => i.id === a.item_id);
       const newAttr = {};
-      // @ts-ignore
-      foundProps.map((attr) => {
+      foundProps.map((attr: any) => {
         // @ts-ignore
         newAttr[attr.name.toLowerCase()] = attr.value;
       });
       // @ts-ignore
-      const foundAttr = attributes.results.filter((a) => i.id === a.item_id);
+      const foundAttr = attributes.results.filter((a: any) => i.id === a.item_id);
 
       // @ts-ignore
       const images = [];
-      // @ts-ignore
-      foundAttr.forEach((a) => {
+      foundAttr.forEach((a: any) => {
         if (a.name === "Image") {
           images.push({
             href: `${IMAGE_URL}${a.value}`,
@@ -102,9 +100,19 @@ const List = () => {
             <StyledHeading>Resultaten</StyledHeading>
             <br />
             <br />
-            <StyledAccordion id="a1" title="Niveau">
-              <Paragraph gutterBottom={0}>yio</Paragraph>
-            </StyledAccordion>
+            {allItems.map((item) => (
+              <StyledAccordion id={`a${item.id}`} key={item.id} title={item._display}>
+                <Paragraph>{item.description}</Paragraph>
+                
+                {item.images?.length}
+                
+              {item?.images.map((image: any) => {
+                <img src={image.href} key={image.href} alt="" />
+              })}
+              
+              
+              </StyledAccordion>
+            ))}
           </LargeDiv>
         </Column>
       </Row>
