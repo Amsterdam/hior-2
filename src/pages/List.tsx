@@ -33,12 +33,12 @@ const List = () => {
 
   const getProperties = async () => {
     const props = await getByUri(HIOR_PROPERTIES_URL);
-    setProperties(props);
+    setProperties(props.results);
   };
 
   const getAttributes = async () => {
     const attr = await getByUri(HIOR_ATTRIBUTES_URL);
-    setAttributes(attr);
+    setAttributes(attr.results);
   };
 
   // const data = results;
@@ -58,15 +58,13 @@ const List = () => {
     // enrich items with properties and attributes
     // @ts-ignore
     const items = results.results.map((i: any) => {
-      // @ts-ignore
-      const foundProps = properties.results.filter((a: any) => i.id === a.item_id);
+      const foundProps = properties.filter((a: any) => i.id === a.item_id);
       const newAttr = {};
       foundProps.map((attr: any) => {
         // @ts-ignore
         newAttr[attr.name.toLowerCase()] = attr.value;
       });
-      // @ts-ignore
-      const foundAttr = attributes.results.filter((a: any) => i.id === a.item_id);
+      const foundAttr = attributes.filter((a: any) => i.id === a.item_id);
 
       // @ts-ignore
       const images = [];
