@@ -4,7 +4,6 @@ import { Accordion, Column, Heading, Paragraph, Row, themeSpacing } from "@amste
 import useDataFetching from "../hooks/useDataFetching";
 import { HIOR_ITEMS_URL, HIOR_PROPERTIES_URL, HIOR_ATTRIBUTES_URL } from "../constants";
 import { getByUri } from "../services/api";
-import { setPriority } from "os";
 // import { Apicall } from "../types";
 
 const StyledDiv = styled.div`
@@ -25,11 +24,11 @@ const StyledAccordion = styled(Accordion)`
 `;
 
 const List = () => {
-  const [properties, setProperties] = useState<any[]>([]);
-  const [attributes, setAttributes] = useState<any[]>([]);
+  const [properties, setProperties] = useState<any[] | null>(null);
+  const [attributes, setAttributes] = useState<any[] | null>(null);
   const [allItems, setAllItems] = useState<any[]>([]);
   const { results, fetchData } = useDataFetching();
-  console.log("allItems", allItems);
+  console.log("allItems", allItems);null
 
   const getProperties = async () => {
     const props = await getByUri(HIOR_PROPERTIES_URL);
@@ -51,7 +50,7 @@ const List = () => {
   }, []);
 
   useEffect(() => {
-    if (!results || !properties) {
+    if (!results || !properties || !attributes) {
       return;
     }
 
@@ -65,6 +64,13 @@ const List = () => {
         // @ts-ignore
         newAttr[attr.name.toLowerCase()] = attr.value;
       });
+      // @ts-ignore
+      const foundAttr = attributes.results.filter((a) => i.id === a.item_id);
+      console.log('foundAttr', foundAttr);
+
+      // https://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/Afbeeldingen/bestaande%20stad%20(3).jpg
+      // https://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/Afbeeldingen/OV_gebruik_groen.jpg
+      
 
       return {
         ...i,
@@ -75,7 +81,7 @@ const List = () => {
     setAllItems(items);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [results, properties]);
+  }, [results, properties, attributes]);
 
   return (
     <StyledDiv>
