@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Accordion, Column, Heading, Paragraph, Row, themeSpacing } from "@amsterdam/asc-ui";
 import useDataFetching from "../hooks/useDataFetching";
-import { HIOR_ITEMS_URL, HIOR_PROPERTIES_URL, HIOR_ATTRIBUTES_URL } from "../constants";
+import { IMAGE_URL, HIOR_ITEMS_URL, HIOR_PROPERTIES_URL, HIOR_ATTRIBUTES_URL } from "../constants";
 import { getByUri } from "../services/api";
 // import { Apicall } from "../types";
 
@@ -28,7 +28,8 @@ const List = () => {
   const [attributes, setAttributes] = useState<any[] | null>(null);
   const [allItems, setAllItems] = useState<any[]>([]);
   const { results, fetchData } = useDataFetching();
-  console.log("allItems", allItems);null
+  console.log("allItems", allItems);
+  null;
 
   const getProperties = async () => {
     const props = await getByUri(HIOR_PROPERTIES_URL);
@@ -54,6 +55,7 @@ const List = () => {
       return;
     }
 
+    // enrich items with properties and attributes
     // @ts-ignore
     const items = results.results.map((i) => {
       // @ts-ignore
@@ -66,15 +68,24 @@ const List = () => {
       });
       // @ts-ignore
       const foundAttr = attributes.results.filter((a) => i.id === a.item_id);
-      console.log('foundAttr', foundAttr);
 
-      // https://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/Afbeeldingen/bestaande%20stad%20(3).jpg
-      // https://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/Afbeeldingen/OV_gebruik_groen.jpg
-      
+      // @ts-ignore
+      const images = [];
+      // @ts-ignore
+      foundAttr.forEach((a) => {
+        if (a.name === "Image") {
+          images.push({
+            href: `${IMAGE_URL}${a.value}`,
+            name: a.value,
+          });
+        }
+      });
 
       return {
         ...i,
         ...newAttr,
+        //@ts-ignore
+        images,
       };
     });
 
