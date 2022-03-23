@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Accordion, Column, Heading, Paragraph, Row, themeSpacing } from "@amsterdam/asc-ui";
 import useDataFetching from "../hooks/useDataFetching";
-import { HIOR_ITEMS_URL, HIOR_PROPERTIES_URL } from "../constants";
+import { HIOR_ITEMS_URL, HIOR_PROPERTIES_URL, HIOR_ATTRIBUTES_URL } from "../constants";
 import { getByUri } from "../services/api";
 import { setPriority } from "os";
 // import { Apicall } from "../types";
@@ -26,6 +26,7 @@ const StyledAccordion = styled(Accordion)`
 
 const List = () => {
   const [properties, setProperties] = useState<any[]>([]);
+  const [attributes, setAttributes] = useState<any[]>([]);
   const [allItems, setAllItems] = useState<any[]>([]);
   const { results, fetchData } = useDataFetching();
   console.log("allItems", allItems);
@@ -35,10 +36,16 @@ const List = () => {
     setProperties(props);
   };
 
+  const getAttributes = async () => {
+    const attr = await getByUri(HIOR_ATTRIBUTES_URL);
+    setAttributes(attr);
+  };
+
   // const data = results;
   useEffect(() => {
     fetchData(HIOR_ITEMS_URL);
     getProperties();
+    getAttributes();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -51,10 +58,10 @@ const List = () => {
     // @ts-ignore
     const items = results.results.map((i) => {
       // @ts-ignore
-      const found = properties.results.filter((a) => i.id === a.item_id);
+      const foundProps = properties.results.filter((a) => i.id === a.item_id);
       const newAttr = {};
       // @ts-ignore
-      found.map((attr) => {
+      foundProps.map((attr) => {
         // @ts-ignore
         newAttr[attr.name.toLowerCase()] = attr.value;
       });
