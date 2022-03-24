@@ -23,6 +23,12 @@ const StyledAccordion = styled(Accordion)`
   margin-top: ${themeSpacing(3)};
 `;
 
+const StyledImg = styled.img`
+  width: 250px;
+  margin: ${themeSpacing(0, 4, 4, 0)};
+`;
+
+
 const List = () => {
   const [properties, setProperties] = useState<any[] | null>(null);
   const [attributes, setAttributes] = useState<any[] | null>(null);
@@ -103,7 +109,7 @@ const List = () => {
                 <Paragraph>{item.description}</Paragraph>
 
                 {item?.images?.map((image: any) => (
-                  <img src={image.src} key={image.src} alt={image.alt}></img>
+                  <StyledImg src={image.src} key={image.src} alt={image.alt}></StyledImg>
                 ))}
               </StyledAccordion>
             ))}
