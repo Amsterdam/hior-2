@@ -71,8 +71,8 @@ const List = () => {
       foundAttr.forEach((a: any) => {
         if (a.name === "Image") {
           images.push({
-            href: `${IMAGE_URL}${a.value}`,
-            name: a.value,
+            src: `${IMAGE_URL}${a.value}`,
+            alt: a.value,
           });
         }
       });
@@ -98,17 +98,13 @@ const List = () => {
             <StyledHeading>Resultaten</StyledHeading>
             <br />
             <br />
-            {allItems.map((item) => (
+            {allItems.map((item: any) => (
               <StyledAccordion id={`a${item.id}`} key={item.id} title={item._display}>
                 <Paragraph>{item.description}</Paragraph>
-                
-                {item.images?.length}
-                
-              {item?.images.map((image: any) => {
-                <img src={image.href} key={image.href} alt="" />
-              })}
-              
-              
+
+                {item?.images?.map((image: any) => (
+                  <img src={image.src} key={image.src} alt={image.alt}></img>
+                ))}
               </StyledAccordion>
             ))}
           </LargeDiv>
