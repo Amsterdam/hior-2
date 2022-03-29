@@ -94,11 +94,24 @@ const List = () => {
         }
       });
 
+      // @ts-ignore
+      const documents = [];
+      foundAttr.forEach((a: any) => {
+        if (a.name === "SourceLink") {
+          documents.push({
+            src: `${DOCUMENT_URL}${a.value}.pdf`,
+            name: a.value,
+          });
+        }
+      });
+
       return {
         ...i,
         ...newAttr,
         //@ts-ignore
         images,
+        //@ts-ignore
+        documents,
       };
     });
 
@@ -120,18 +133,14 @@ const List = () => {
                 <Paragraph>{item.description}</Paragraph>
 
                 {item?.images?.map((image: any) => (
-                  <StyledImg src={image.src} key={image.src} alt={image.alt}></StyledImg>
+                  <StyledImg src={image.src} key={`${item.id}-${image.src}`} alt={image.alt}></StyledImg>
                 ))}
 
                 <Table>
                   <TableBody>
                     <TableRow>
                       <TableCell>Bron</TableCell>
-                      <TableCell>
-                        <Link variant="inline" target="_blank" href={`${DOCUMENT_URL}${item.source}.pdf`}>
-                          {item.source}
-                        </Link>
-                      </TableCell>
+                      <TableCell>{item.source}</TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell>Niveau</TableCell>
@@ -148,6 +157,16 @@ const List = () => {
                     <TableRow>
                       <TableCell>Stadsdeel</TableCell>
                       <TableCell>{item.area}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Documenten</TableCell>
+                      <TableCell>
+                        {item.documents.map((document: any) => (
+                          <Link key={`${item.id}-${document.src}`} variant="inline" target="_blank" href={document.src}>
+                            {document.name}
+                          </Link>
+                        ))}
+                      </TableCell>
                     </TableRow>
                   </TableBody>
                 </Table>
