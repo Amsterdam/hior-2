@@ -15,7 +15,8 @@ const UpdatedDate = () => {
   useEffect(() => {
     //@ts-ignore
     const d: Date = new Date(results?.results[0].value.substr(0, 10));
-    if (d) {
+
+    if (results && d) {
       setDate(`${d.getDate()}-${d.getMonth() + 1}-${d.getFullYear()}`);
     } else {
       setDate("geen datum gevonden");

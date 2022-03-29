@@ -23,8 +23,6 @@ describe("App", () => {
     );
 
     expect(screen.queryByTestId("home")).toBeInTheDocument();
-
-    expect(screen.queryByTestId("map")).not.toBeInTheDocument();
   });
 
   it("route to home is defined", () => {
@@ -37,31 +35,29 @@ describe("App", () => {
     );
 
     expect(screen.queryByTestId("home")).toBeInTheDocument();
-
-    expect(screen.queryByTestId("map")).not.toBeInTheDocument();
   });
 
-  // it("route to search is defined", () => {
-  //   render(
-  //     <ThemeProvider>
-  //       <MemoryRouter initialEntries={["/search"]}>
-  //         <App />
-  //       </MemoryRouter>
-  //     </ThemeProvider>,
-  //   );
+  it("route to search is defined", () => {
+    render(
+      <ThemeProvider>
+        <MemoryRouter initialEntries={["/list"]}>
+          <App />
+        </MemoryRouter>
+      </ThemeProvider>,
+    );
 
-  //   expect(screen.queryByTestId("home")).toBeInTheDocument();
-  // });
+    expect(screen.queryByTestId("list")).toBeInTheDocument();
+  });
 
-  // it("route to faq is defined", () => {
-  //   render(
-  //     <ThemeProvider>
-  //       <MemoryRouter initialEntries={["/faq"]}>
-  //         <App />
-  //       </MemoryRouter>
-  //     </ThemeProvider>,
-  //   );
+  it("route to faq is defined", () => {
+    render(
+      <ThemeProvider>
+        <MemoryRouter initialEntries={["/faq"]}>
+          <App />
+        </MemoryRouter>
+      </ThemeProvider>,
+    );
 
-  //   expect(screen.queryByTestId("faq")).toBeInTheDocument();
-  // });
+    expect(screen.queryByTestId("faq")).toBeInTheDocument();
+  });
 });

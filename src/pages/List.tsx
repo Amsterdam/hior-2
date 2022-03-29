@@ -121,8 +121,8 @@ const List = () => {
   }, [results, properties, attributes]);
 
   return (
-    <StyledDiv>
-      <Row data-testid="list">
+    <StyledDiv data-testid="list">
+      <Row>
         <Column span={12}>
           <LargeDiv>
             <StyledHeading>Resultaten</StyledHeading>
