@@ -7,7 +7,5 @@ describe("Footer", () => {
     render(withTheme(<Footer />));
 
     expect(screen.queryByTestId("footer")).toBeInTheDocument();
-
-    expect(screen.queryByText('geen datum gevonden')).toBeInTheDocument()
   });
 });
