@@ -10,7 +10,8 @@ function useDataFetching() {
     setLoading(true);
     try {
       const data = await getByUri(endpoint);
-      setResults(data);
+      
+      setResults(data.data);
     } catch (e) {
       // @ts-ignore
       setErrorMessage(e.message);

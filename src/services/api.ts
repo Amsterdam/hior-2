@@ -1,1 +1,3 @@
-export const getByUri = (uri: string) => fetch(uri).then((response) => response.json());
+import axios from "axios";
+
+export const getByUri = (uri: string) => axios.get(uri)

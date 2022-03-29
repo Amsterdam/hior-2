@@ -50,12 +50,12 @@ const List = () => {
 
   const getProperties = async () => {
     const props = await getByUri(HIOR_PROPERTIES_URL);
-    setProperties(props.results);
+    setProperties(props.data.results);
   };
 
   const getAttributes = async () => {
     const attr = await getByUri(HIOR_ATTRIBUTES_URL);
-    setAttributes(attr.results);
+    setAttributes(attr.data.results);
   };
 
   // const data = results;
