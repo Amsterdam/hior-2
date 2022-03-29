@@ -1,24 +1,24 @@
 import { render, screen } from "@testing-library/react";
+import axios from "axios";
 import { withTheme } from "../test/utils";
-import { getByUri } from "../services/api"
 import UpdatedDate from "./UpdatedDate";
 
-jest.mock('../services/api');
-
+jest.mock('axios');
 
 describe("UpdatedDate", () => {
   afterEach(() => {
     jest.resetAllMocks();
   });
 
+  const mockData = {
+    results: [{
+      value: "2022-03-11 00:00:00"
+    }]
+  };
 
 
   it("renders correctly", () => {
-    getByUri.mockImplementation(() => Promise.resolve({
-      results: [{
-        value: "2022-03-11 00:00:00"
-      }]
-    });
+    axios.get.mockImplementation(() => Promise.resolve(mockData));
 
     render(withTheme(<UpdatedDate />));
 
