@@ -163,7 +163,7 @@ const List = () => {
                       <TableCell>
                         {item.documents.map((document: any) => (
                           <Link key={`${item.id}-${document.src}`} variant="inline" target="_blank" href={document.src}>
-                            {document.name}
+                            {document.name}.pdf
                           </Link>
                         ))}
                       </TableCell>
