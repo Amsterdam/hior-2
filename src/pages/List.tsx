@@ -1,8 +1,20 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Accordion, Column, Heading, Paragraph, Row, themeSpacing } from "@amsterdam/asc-ui";
+import {
+  Accordion,
+  Column,
+  Heading,
+  Link,
+  Paragraph,
+  Row,
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+  themeSpacing,
+} from "@amsterdam/asc-ui";
 import useDataFetching from "../hooks/useDataFetching";
-import { IMAGE_URL, HIOR_ITEMS_URL, HIOR_PROPERTIES_URL, HIOR_ATTRIBUTES_URL } from "../constants";
+import { IMAGE_URL, HIOR_ITEMS_URL, HIOR_PROPERTIES_URL, HIOR_ATTRIBUTES_URL, DOCUMENT_URL } from "../constants";
 import { getByUri } from "../services/api";
 // import { Apicall } from "../types";
 
@@ -27,7 +39,6 @@ const StyledImg = styled.img`
   width: 250px;
   margin: ${themeSpacing(0, 4, 4, 0)};
 `;
-
 
 const List = () => {
   const [properties, setProperties] = useState<any[] | null>(null);
@@ -105,12 +116,41 @@ const List = () => {
             <br />
             <br />
             {allItems.map((item: any) => (
-              <StyledAccordion id={`a${item.id}`} key={item.id} title={item._display}>
+              <StyledAccordion id={`a${item.id}`} key={item.id} title={item.text}>
                 <Paragraph>{item.description}</Paragraph>
 
                 {item?.images?.map((image: any) => (
                   <StyledImg src={image.src} key={image.src} alt={image.alt}></StyledImg>
                 ))}
+
+                <Table>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>Bron</TableCell>
+                      <TableCell>
+                        <Link variant="inline" target="_blank" href={`${DOCUMENT_URL}${item.source}.pdf`}>
+                          {item.source}
+                        </Link>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Niveau</TableCell>
+                      <TableCell>{item.level}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Thema</TableCell>
+                      <TableCell>{item.theme}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Type</TableCell>
+                      <TableCell>{item.type}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Stadsdeel</TableCell>
+                      <TableCell>{item.area}</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
               </StyledAccordion>
             ))}
           </LargeDiv>
