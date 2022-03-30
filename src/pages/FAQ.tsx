@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import { Accordion, Column, Heading, Paragraph, Row, themeSpacing } from "@amsterdam/asc-ui";
 import useDataFetching from "../hooks/useDataFetching";
-
 import { HIOR_FAQ_URL } from "../constants";
 
 const StyledDiv = styled.div`
@@ -16,6 +15,10 @@ const StyledHeading = styled(Heading)`
 
 const StyledAccordion = styled(Accordion)`
   margin-top: ${themeSpacing(3)};
+`;
+
+const StyledParagraph = styled(Paragraph)`
+  white-space: pre-wrap;
 `;
 
 const FAQ = () => {
@@ -36,7 +39,7 @@ const FAQ = () => {
             {/* @ts-ignore */}
             {results && results.results && results.results.map((faq: any) => (
                 <StyledAccordion key={faq.id} id={`a${faq.id}`} title={faq.question}>
-                  <Paragraph gutterBottom={0}>{faq.answer}</Paragraph>
+                  <StyledParagraph gutterBottom={0}>{faq.answer}</StyledParagraph>
                 </StyledAccordion>
               ))}
           </StyledDiv>
