@@ -40,13 +40,16 @@ const StyledImg = styled.img`
   margin: ${themeSpacing(0, 4, 4, 0)};
 `;
 
+const StyledParagraph = styled(Paragraph)`
+  white-space: pre-wrap;
+`;
+
 const List = () => {
   const [properties, setProperties] = useState<any[] | null>(null);
   const [attributes, setAttributes] = useState<any[] | null>(null);
   const [allItems, setAllItems] = useState<any[]>([]);
   const { results, fetchData } = useDataFetching();
   console.log("allItems", allItems);
-  null;
 
   const getProperties = async () => {
     const props = await getByUri(HIOR_PROPERTIES_URL);
@@ -130,7 +133,7 @@ const List = () => {
             <br />
             {allItems.map((item: any) => (
               <StyledAccordion id={`a${item.id}`} key={item.id} title={item.text}>
-                <Paragraph>{item.description}</Paragraph>
+                <StyledParagraph>{item.description}</StyledParagraph>
 
                 {item?.images?.map((image: any) => (
                   <StyledImg src={image.src} key={`${item.id}-${image.src}`} alt={image.alt}></StyledImg>
