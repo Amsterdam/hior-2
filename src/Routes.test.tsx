@@ -1,9 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
-// import { withTheme } from "./test/utils";
 import { ThemeProvider } from "@amsterdam/asc-ui";
 
 import App from "./App";
+
+jest.mock("./components/UpdatedDate", () => () => "UpdatedDate");
 
 describe("App", () => {
   it("redirect from / to home is defined", () => {
@@ -30,7 +31,7 @@ describe("App", () => {
     expect(screen.queryByTestId("home")).toBeInTheDocument();
   });
 
-  it("route to search is defined", () => {
+  it("route to list is defined", () => {
     render(
       <ThemeProvider>
         <MemoryRouter initialEntries={["/list"]}>
