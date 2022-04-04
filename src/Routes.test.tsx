@@ -31,7 +31,7 @@ describe("App", () => {
     expect(screen.queryByTestId("home")).toBeInTheDocument();
   });
 
-  it("route to list is defined", () => {
+  it("route to list is defined", async () => {
     render(
       <ThemeProvider>
         <MemoryRouter initialEntries={["/list"]}>
@@ -40,10 +40,10 @@ describe("App", () => {
       </ThemeProvider>,
     );
 
-    expect(screen.queryByTestId("list")).toBeInTheDocument();
+    expect(await screen.queryByTestId("list")).toBeInTheDocument();
   });
 
-  it("route to faq is defined", () => {
+  it("route to faq is defined", async () => {
     render(
       <ThemeProvider>
         <MemoryRouter initialEntries={["/faq"]}>
@@ -52,6 +52,6 @@ describe("App", () => {
       </ThemeProvider>,
     );
 
-    expect(screen.queryByTestId("faq")).toBeInTheDocument();
+    expect(await screen.queryByTestId("faq")).toBeInTheDocument();
   });
 });
