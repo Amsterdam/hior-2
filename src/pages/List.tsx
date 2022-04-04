@@ -49,6 +49,7 @@ const List = () => {
   const [attributes, setAttributes] = useState<any[] | null>(null);
   const [allItems, setAllItems] = useState<any[]>([]);
   const { results, fetchData } = useDataFetching();
+  // eslint-disable-next-line no-console
   console.log("allItems", allItems);
 
   const getProperties = async () => {
