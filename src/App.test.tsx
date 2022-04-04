@@ -3,7 +3,7 @@ import { withTheme } from "./test/utils";
 
 import App from "./App";
 
-jest.mock("./components/UpdatedDate", () => () => 'UpdatedDate');
+jest.mock("./components/UpdatedDate", () => () => "UpdatedDate");
 
 describe("App", () => {
   it("renders correctly", () => {

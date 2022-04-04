@@ -6,7 +6,6 @@ import { ThemeProvider } from "@amsterdam/asc-ui";
 import App from "./App";
 
 describe("App", () => {
-
   it("redirect from / to home is defined", () => {
     render(
       <ThemeProvider>
