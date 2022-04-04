@@ -37,11 +37,11 @@ const FAQ = () => {
           <StyledDiv>
             <StyledHeading>Veelgestelde vragen</StyledHeading>
             {/* @ts-ignore */}
-            {results && results.results && results.results.map((faq: any) => (
-                <StyledAccordion key={faq.id} id={`a${faq.id}`} title={faq.question}>
-                  <StyledParagraph gutterBottom={0}>{faq.answer}</StyledParagraph>
-                </StyledAccordion>
-              ))}
+            {results?.results?.map((faq: any) => (
+              <StyledAccordion key={faq.id} id={`a${faq.id}`} title={faq.question}>
+                <StyledParagraph gutterBottom={0}>{faq.answer}</StyledParagraph>
+              </StyledAccordion>
+            ))}
           </StyledDiv>
         </Column>
       </Row>
