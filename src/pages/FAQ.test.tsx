@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { act } from "@testing-library/react-hooks";
 import axios from "axios";
 import { withTheme } from "../test/utils";
 import FAQ from "./FAQ";
@@ -32,18 +33,20 @@ describe("FAQ", () => {
 
     const { container } = render(withTheme(<FAQ />));
 
-    expect(await screen.queryByTestId("faq")).toBeInTheDocument();
-    expect(await screen.queryByText("Veelgestelde vragen")).toBeInTheDocument();
+    await act(async () => {
+      expect(await screen.queryByTestId("faq")).toBeInTheDocument();
+      expect(await screen.queryByText("Veelgestelde vragen")).toBeInTheDocument();
 
-    expect(await screen.queryByTestId("faq")).toBeInTheDocument();
+      expect(await screen.queryByTestId("faq")).toBeInTheDocument();
 
-    expect(await container.querySelectorAll("BUTTON").length).toBe(3);
+      expect(await container.querySelectorAll("BUTTON").length).toBe(3);
 
-    expect(await screen.queryByText("vraag 1")).toBeInTheDocument();
-    expect(await screen.queryByText("antwoord 1")).toBeInTheDocument();
-    expect(await screen.queryByText("vraag 2")).toBeInTheDocument();
-    expect(await screen.queryByText("antwoord 2")).toBeInTheDocument();
-    expect(await screen.queryByText("vraag 3")).toBeInTheDocument();
-    expect(await screen.queryByText("antwoord 3")).toBeInTheDocument();
+      expect(await screen.queryByText("vraag 1")).toBeInTheDocument();
+      expect(await screen.queryByText("antwoord 1")).toBeInTheDocument();
+      expect(await screen.queryByText("vraag 2")).toBeInTheDocument();
+      expect(await screen.queryByText("antwoord 2")).toBeInTheDocument();
+      expect(await screen.queryByText("vraag 3")).toBeInTheDocument();
+      expect(await screen.queryByText("antwoord 3")).toBeInTheDocument();
+    });
   });
 });
