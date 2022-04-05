@@ -64,5 +64,11 @@ export const mockAttributes = {
       name: "Image",
       value: "omgevingsvisie (5).jpg",
     },
+    {
+      id: 5,
+      item_id: 2,
+      name: "SourceLink",
+      value: "Omgevingsvisie 2050 (2021)",
+    },
   ],
 };
