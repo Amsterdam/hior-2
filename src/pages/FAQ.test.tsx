@@ -2,11 +2,11 @@ import { render, screen } from "@testing-library/react";
 import { act } from "@testing-library/react-hooks";
 import axios from "axios";
 import { withTheme } from "../test/utils";
-import FAQ from "./FAQ";
+import Faq from "./Faq";
 
 jest.mock("axios");
 
-describe("FAQ", () => {
+describe("Faq", () => {
   const mockData = {
     results: [
       {
@@ -31,7 +31,7 @@ describe("FAQ", () => {
     //@ts-ignore
     axios.get.mockResolvedValueOnce({ data: mockData });
 
-    const { container } = render(withTheme(<FAQ />));
+    const { container } = render(withTheme(<Faq />));
 
     await act(async () => {
       expect(await screen.queryByTestId("faq")).toBeInTheDocument();

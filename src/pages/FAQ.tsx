@@ -21,7 +21,7 @@ const StyledParagraph = styled(Paragraph)`
   white-space: pre-wrap;
 `;
 
-const FAQ = () => {
+const Faq = () => {
   const { results, fetchData } = useDataFetching();
 
   useEffect(() => {
@@ -49,4 +49,4 @@ const FAQ = () => {
   );
 };
 
-export default FAQ;
+export default Faq;
