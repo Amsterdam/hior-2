@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Column } from "@amsterdam/asc-ui";
-// import { Route, Routes, Navigate } from "react-router-dom";
 
+import FilterContextProvider from "./context/FilterContext";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -9,7 +9,7 @@ import Routes from "./Routes";
 
 function App() {
   return (
-    <>
+    <FilterContextProvider>
       <Row>
         <Column span={12}>
           <Header />
@@ -27,7 +27,7 @@ function App() {
           <Footer />
         </Column>
       </Row>
-    </>
+    </FilterContextProvider>
   );
 }
 
