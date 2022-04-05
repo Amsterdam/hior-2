@@ -45,15 +45,15 @@ describe("App", () => {
   //   expect(await screen.queryByTestId("list")).toBeInTheDocument();
   // });
 
-  // it("route to faq is defined", async () => {
-  //   render(
-  //     <ThemeProvider>
-  //       <MemoryRouter initialEntries={["/faq"]}>
-  //         <App />
-  //       </MemoryRouter>
-  //     </ThemeProvider>,
-  //   );
+  it("route to faq is defined", async () => {
+    render(
+      <ThemeProvider>
+        <MemoryRouter initialEntries={["/faq"]}>
+          <App />
+        </MemoryRouter>
+      </ThemeProvider>,
+    );
 
-  //   expect(await screen.queryByTestId("faq")).toBeInTheDocument();
-  // });
+    expect(await screen.queryByTestId("faq")).toBeInTheDocument();
+  });
 });
