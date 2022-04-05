@@ -18,12 +18,6 @@ export const mockItems = {
 export const mockProperties = {
   results: [
     {
-      id: 1,
-      item_id: 2,
-      name: "Theme",
-      value: "1. Open,bare Ruimte Algemeen",
-    },
-    {
       id: 3,
       item_id: 2,
       name: "Area",

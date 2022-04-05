@@ -26,5 +26,16 @@ describe("List", () => {
     });
 
     expect(await container.querySelectorAll("BUTTON").length).toBe(2);
+
+    // expect(await screen.queryByText("Niveau")).toBeInTheDocument();
+    expect(await screen.queryByText("Strategisch Niveau")).toBeInTheDocument();
+    // expect(await screen.queryByText("Thema")).toBeInTheDocument();
+    expect(await screen.queryByText("12. Groen")).toBeInTheDocument();
+    // expect(await screen.queryByText("Type")).toBeInTheDocument();
+    expect(await screen.queryByText("Ambitie")).toBeInTheDocument();
+    // expect(await screen.queryByText("Stadsdeel")).toBeInTheDocument();
+    expect(await screen.queryByText("Heel Amsterdam")).toBeInTheDocument();
+
+    await screen.debug();
   });
 });
