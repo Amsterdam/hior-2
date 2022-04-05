@@ -44,4 +44,25 @@ export const mockProperties = {
   ],
 };
 
-export const mockAttributes = { results: [] };
+export const mockAttributes = {
+  results: [
+    {
+      id: 2,
+      item_id: 2,
+      name: "Image",
+      value: "omgevingsvisie (2).jpg",
+    },
+    {
+      id: 1,
+      item_id: 2,
+      name: "Image",
+      value: "omgevingsvisie (1).jpg",
+    },
+    {
+      id: 3,
+      item_id: 2,
+      name: "Image",
+      value: "omgevingsvisie (5).jpg",
+    },
+  ],
+};

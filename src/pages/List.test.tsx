@@ -25,6 +25,7 @@ describe("List", () => {
       expect(await screen.queryByText("Resultaten")).toBeInTheDocument();
     });
 
+    // there should be 2 items
     expect(await container.querySelectorAll("BUTTON").length).toBe(2);
 
     // expect(await screen.queryByText("Niveau")).toBeInTheDocument();
@@ -35,6 +36,9 @@ describe("List", () => {
     expect(await screen.queryByText("Ambitie")).toBeInTheDocument();
     // expect(await screen.queryByText("Stadsdeel")).toBeInTheDocument();
     expect(await screen.queryByText("Heel Amsterdam")).toBeInTheDocument();
+
+    // there should be 3 images
+    expect(await container.querySelectorAll("IMG").length).toBe(3);
 
     await screen.debug();
   });
