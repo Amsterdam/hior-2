@@ -92,6 +92,7 @@ const List = () => {
       foundAttr.forEach((a: any) => {
         if (a.name === "Image") {
           images.push({
+            id: a.id,
             src: `${IMAGE_URL}${a.value}`,
             alt: a.value,
           });
@@ -103,6 +104,7 @@ const List = () => {
       foundAttr.forEach((a: any) => {
         if (a.name === "SourceLink") {
           documents.push({
+            id: a.id,
             src: `${DOCUMENT_URL}${a.value}.pdf`,
             name: a.value,
           });
@@ -137,7 +139,7 @@ const List = () => {
                 <StyledParagraph>{item.description}</StyledParagraph>
 
                 {item?.images?.map((image: any) => (
-                  <StyledImg src={image.src} key={`${item.id}-${image.src}`} alt={image.alt}></StyledImg>
+                  <StyledImg src={image.src} key={`${item.id}-${image.id}`} alt={image.alt}></StyledImg>
                 ))}
 
                 <Table>
@@ -166,7 +168,7 @@ const List = () => {
                       <TableCell>Documenten</TableCell>
                       <TableCell>
                         {item.documents.map((document: any) => (
-                          <Link key={`${item.id}-${document.src}`} variant="inline" target="_blank" href={document.src}>
+                          <Link key={`${item.id}-${document.id}`} variant="inline" target="_blank" href={document.src}>
                             {document.name}.pdf
                           </Link>
                         ))}
