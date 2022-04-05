@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import {
   Accordion,
@@ -16,7 +16,7 @@ import {
 import useDataFetching from "../hooks/useDataFetching";
 import { IMAGE_URL, HIOR_ITEMS_URL, HIOR_PROPERTIES_URL, HIOR_ATTRIBUTES_URL, DOCUMENT_URL } from "../constants";
 import { getByUri } from "../services/api";
-// import { Apicall } from "../types";
+import { FilterContext } from "../filter/FilterContext";
 
 const StyledDiv = styled.div`
   margin-top: ${themeSpacing(10)};
@@ -51,6 +51,13 @@ const List = () => {
   const { results, fetchData } = useDataFetching();
   // eslint-disable-next-line no-console
   console.log("allItems", allItems);
+
+  const {
+    //@ts-ignore 
+    state: { filter , sort }
+  } = useContext(FilterContext);
+  console.log('context', filter, sort);
+  
 
   const getProperties = async () => {
     const props = await getByUri(HIOR_PROPERTIES_URL);

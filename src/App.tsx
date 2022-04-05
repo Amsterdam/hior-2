@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Column } from "@amsterdam/asc-ui";
 
-import FilterContextProvider from "./context/FilterContext";
+import FilterContextProvider from "./filter/FilterContext";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
