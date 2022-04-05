@@ -39,6 +39,9 @@ describe("List", () => {
 
     // there should be 3 images
     expect(await container.querySelectorAll("IMG").length).toBe(3);
+    
+    // there should be 1 document
+    // expect(await screen.queryByText("Omgevingsvisie 2050 (2021)")).toBeInTheDocument();
 
     await screen.debug();
   });
