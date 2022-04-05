@@ -18,10 +18,13 @@ describe("List", () => {
     // @ts-ignore
     axios.get.mockResolvedValueOnce({ data: mockAttributes });
 
-    render(withTheme(<List />));
+    const { container } = render(withTheme(<List />));
 
     await act(async () => {
       expect(await screen.queryByTestId("list")).toBeInTheDocument();
+      expect(await screen.queryByText("Resultaten")).toBeInTheDocument();
     });
+
+    expect(await container.querySelectorAll("BUTTON").length).toBe(2);
   });
 });
