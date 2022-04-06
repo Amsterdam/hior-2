@@ -53,12 +53,11 @@ const List = () => {
   console.log("allItems", allItems);
 
   const {
-    //@ts-ignore 
-    state: { filter , sort, group }
+    //@ts-ignore
+    state: { filter, sort, group },
   } = useContext(FilterContext);
   // eslint-disable-next-line no-console
-  console.log('context', filter, sort, group);
-  
+  console.log("context", filter, sort, group);
 
   const getProperties = async () => {
     const props = await getByUri(HIOR_PROPERTIES_URL);
@@ -129,7 +128,18 @@ const List = () => {
       };
     });
 
-    setAllItems(items);
+    // sort alphabettically
+    const sorted = items.sort((a: any, b: any) => {
+      if (a.text < b.text) {
+        return -1;
+      }
+      if (a.text > b.text) {
+        return 1;
+      }
+      return 0;
+    });
+
+    setAllItems(sorted);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [results, properties, attributes]);
@@ -143,7 +153,7 @@ const List = () => {
             <br />
             <br />
             {allItems.map((item: any) => (
-              <StyledAccordion id={`a${item.id}`} key={item.id} title={item.text}>
+              <StyledAccordion id={`a${item.id}`} key={item.id} title={`${item.id} ${item.text}`}>
                 <StyledParagraph>{item.description}</StyledParagraph>
 
                 {item?.images?.map((image: any) => (
