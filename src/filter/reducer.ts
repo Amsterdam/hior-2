@@ -1,42 +1,50 @@
-/* eslint-disable no-case-declarations */
+import { Action, Filter } from "../types";
+
 export const SET_FILTER = `SET_FILTER`;
 export const SET_SORT = `SET_SORT`;
+export const SET_GROUP = `SET_GROUP`;
 
 export const initialState = {
   filter: {
     source: "",
     level: "",
-    thene: "",
+    theme: "",
     type: "",
     area: "",
     query: "",
-  },
-  sort: "theme",
+  } as Filter,
+  group: "theme" as "theme" | "source" | "level" | "type",
+  sort: "asc" as string,
 };
 
-const filterReducer = (state = initialState, action: any) => {
-  switch (action.type) {
+const filterReducer = (state = initialState, action: Action | undefined) => {
+  switch (action?.type) {
     case SET_FILTER:
       return {
         ...state,
         filter: {
-          ...state,
           ...action.payload,
         },
       };
-      case SET_SORT:
-        return {
-          ...state,
-          sort: action.payload,
-        };
-      default:
+    case SET_SORT:
+      return {
+        ...state,
+        sort: action.payload,
+      };
+    case SET_GROUP:
+      return {
+        ...state,
+        group: action.payload,
+      };
+    default:
       return state;
   }
 };
 
 export const actions = {
-  setFilter: (payload: any) => ({ type: SET_FILTER, payload }),
-  setSort: (payload: any) => ({ type: SET_SORT, payload }),
+  setFilter: (payload: Filter) => ({ type: SET_FILTER, payload }),
+  setSort: (payload: string) => ({ type: SET_SORT, payload }),
+  setGroup: (payload: string) => ({ type: SET_GROUP, payload }),
 };
 
 export default filterReducer;
