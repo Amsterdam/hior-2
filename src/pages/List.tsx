@@ -2,6 +2,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import {
   Accordion,
+  Button,
   Column,
   Heading,
   Link,
@@ -17,6 +18,7 @@ import useDataFetching from "../hooks/useDataFetching";
 import { IMAGE_URL, HIOR_ITEMS_URL, HIOR_PROPERTIES_URL, HIOR_ATTRIBUTES_URL, DOCUMENT_URL } from "../constants";
 import { getByUri } from "../services/api";
 import { FilterContext } from "../filter/FilterContext";
+import { actions } from "../filter/reducer";
 
 const StyledDiv = styled.div`
   margin-top: ${themeSpacing(10)};
@@ -44,6 +46,10 @@ const StyledParagraph = styled(Paragraph)`
   white-space: pre-wrap;
 `;
 
+const StyledButton = styled(Button)`
+  margin-right: ${themeSpacing(3)};
+`;
+
 const List = () => {
   const [properties, setProperties] = useState<any[] | null>(null);
   const [attributes, setAttributes] = useState<any[] | null>(null);
@@ -53,12 +59,32 @@ const List = () => {
   const [types, setTypes] = useState<any[] | null>(null);
   const [allItems, setAllItems] = useState<any[]>([]);
   const { results, fetchData } = useDataFetching();
+  const allGroups = [
+    {
+      value: "source",
+      label: "Bron",
+    },
+    {
+      value: "level",
+      label: "Niveau",
+    },
+    {
+      value: "theme",
+      label: "Thema",
+    },
+    {
+      value: "type",
+      label: "Type",
+    },
+  ];
   // eslint-disable-next-line no-console
   console.log("allItems", allItems);
 
   const {
     //@ts-ignore
     state: { filter, sort, group },
+    //@ts-ignore
+    dispatch,
   } = useContext(FilterContext);
   // eslint-disable-next-line no-console
   console.log("context", filter, sort, group);
@@ -72,6 +98,12 @@ const List = () => {
     const attr = await getByUri(HIOR_ATTRIBUTES_URL);
     setAttributes(attr.data.results);
   }, []);
+
+  const onClickGroup = (e: any) => {
+    // eslint-disable-next-line no-console
+    console.log("onclick", e.target.value);
+    dispatch(actions.setGroup(e.target.value));
+  };
 
   // const data = results;
   useEffect(() => {
@@ -133,7 +165,7 @@ const List = () => {
         }
       });
 
-      // @ts-ignore 
+      // @ts-ignore
       if (!foundGroups.source.includes(newAttr.source)) foundGroups.source.push(newAttr.source);
       // @ts-ignore
       if (!foundGroups.level.includes(newAttr.level)) foundGroups.level.push(newAttr.level);
@@ -163,13 +195,13 @@ const List = () => {
       return 0;
     });
 
-    console.log('foundGroups', foundGroups);
+    console.log("foundGroups", foundGroups);
     setAllItems(sorted);
 
-    setSources(foundGroups.source)
-    setLevels(foundGroups.level)
-    setThemes(foundGroups.theme)
-    setTypes(foundGroups.type)
+    setSources(foundGroups.source);
+    setLevels(foundGroups.level);
+    setThemes(foundGroups.theme);
+    setTypes(foundGroups.type);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [results, properties, attributes]);
@@ -180,6 +212,17 @@ const List = () => {
         <Column span={12}>
           <LargeDiv>
             <StyledHeading>Resultaten</StyledHeading>
+            <br />
+            <br />
+            {allGroups.map((b: any) => (
+              <>
+                {/* @ts-ignore */}
+                <StyledButton value={b.value} variant="primary" onClick={onClickGroup}>
+                  {b.label}
+                </StyledButton>
+              </>
+            ))}
+
             <br />
             <br />
             {allItems.map((item: any) => (
