@@ -99,9 +99,8 @@ const List = () => {
     setAttributes(attr.data.results);
   }, []);
 
-  const onClickGroup = (e: any) => {
-    // eslint-disable-next-line no-console
-    console.log("onclick", e.target.value);
+  const onClickGroup = (e:  React.MouseEvent<HTMLButtonElement>) => {
+    //@ts-ignore
     dispatch(actions.setGroup(e.target.value));
   };
 
@@ -217,7 +216,7 @@ const List = () => {
             {allGroups.map((b: any) => (
               <>
                 {/* @ts-ignore */}
-                <StyledButton value={b.value} variant="primary" onClick={onClickGroup}>
+                <StyledButton key={b.value} value={b.value} variant="primary" onClick={onClickGroup}>
                   {b.label}
                 </StyledButton>
               </>
