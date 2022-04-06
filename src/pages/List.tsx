@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import {
   Accordion,
@@ -59,15 +59,15 @@ const List = () => {
   // eslint-disable-next-line no-console
   console.log("context", filter, sort, group);
 
-  const getProperties = async () => {
+  const getProperties = useCallback(async () => {
     const props = await getByUri(HIOR_PROPERTIES_URL);
     setProperties(props.data.results);
-  };
+  }, []);
 
-  const getAttributes = async () => {
+  const getAttributes = useCallback(async () => {
     const attr = await getByUri(HIOR_ATTRIBUTES_URL);
     setAttributes(attr.data.results);
-  };
+  }, []);
 
   // const data = results;
   useEffect(() => {
