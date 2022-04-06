@@ -1,5 +1,7 @@
 import { render, screen, act } from "@testing-library/react";
 import axios from "axios";
+import { FilterContext } from "../filter/FilterContext";
+import { initialState } from "../filter/reducer";
 import { withTheme } from "../test/utils";
 import List from "./List";
 import { mockItems, mockProperties, mockAttributes } from "./List.fixtures";
@@ -18,7 +20,17 @@ describe("List", () => {
     // @ts-ignore
     axios.get.mockResolvedValueOnce({ data: mockAttributes });
 
-    const { container } = render(withTheme(<List />));
+    const { container } = render(
+      withTheme(
+        <>
+          {/* @ts-ignore */}
+          <FilterContext.Provider value={{ state: initialState }}>
+            <List />
+            {/* @ts-ignore */}
+          </FilterContext.Provider>
+        </>,
+      ),
+    );
 
     await act(async () => {
       expect(await screen.queryByTestId("list")).toBeInTheDocument();
