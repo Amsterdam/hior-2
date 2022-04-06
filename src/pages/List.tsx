@@ -54,9 +54,10 @@ const List = () => {
 
   const {
     //@ts-ignore 
-    state: { filter , sort }
+    state: { filter , sort, group }
   } = useContext(FilterContext);
-  console.log('context', filter, sort);
+  // eslint-disable-next-line no-console
+  console.log('context', filter, sort, group);
   
 
   const getProperties = async () => {
