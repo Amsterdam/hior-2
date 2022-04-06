@@ -47,6 +47,10 @@ const StyledParagraph = styled(Paragraph)`
 const List = () => {
   const [properties, setProperties] = useState<any[] | null>(null);
   const [attributes, setAttributes] = useState<any[] | null>(null);
+  const [sources, setSources] = useState<any[] | null>(null);
+  const [levels, setLevels] = useState<any[] | null>(null);
+  const [themes, setThemes] = useState<any[] | null>(null);
+  const [types, setTypes] = useState<any[] | null>(null);
   const [allItems, setAllItems] = useState<any[]>([]);
   const { results, fetchData } = useDataFetching();
   // eslint-disable-next-line no-console
@@ -79,10 +83,20 @@ const List = () => {
   }, []);
 
   useEffect(() => {
+    console.log("group", group);
+  }, [group]);
+
+  useEffect(() => {
     if (!results || !properties || !attributes) {
       return;
     }
 
+    const foundGroups = {
+      source: [],
+      level: [],
+      theme: [],
+      type: [],
+    };
     // enrich items with properties and attributes
     // @ts-ignore
     const items = results.results.map((i: any) => {
@@ -118,6 +132,15 @@ const List = () => {
         }
       });
 
+      // @ts-ignore 
+      if (!foundGroups.source.includes(newAttr.source)) foundGroups.source.push(newAttr.source);
+      // @ts-ignore
+      if (!foundGroups.level.includes(newAttr.level)) foundGroups.level.push(newAttr.level);
+      // @ts-ignoren
+      if (!foundGroups.theme.includes(newAttr.theme)) foundGroups.theme.push(newAttr.theme);
+      // @ts-ignore
+      if (!foundGroups.type.includes(newAttr.type)) foundGroups.type.push(newAttr.type);
+
       return {
         ...i,
         ...newAttr,
@@ -139,7 +162,13 @@ const List = () => {
       return 0;
     });
 
+    console.log('foundGroups', foundGroups);
     setAllItems(sorted);
+
+    setSources(foundGroups.source)
+    setLevels(foundGroups.level)
+    setThemes(foundGroups.theme)
+    setTypes(foundGroups.type)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [results, properties, attributes]);
