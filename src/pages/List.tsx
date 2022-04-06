@@ -2,7 +2,6 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import {
   Accordion,
-  Button,
   Column,
   Heading,
   Link,
@@ -17,8 +16,9 @@ import {
 import useDataFetching from "../hooks/useDataFetching";
 import { IMAGE_URL, HIOR_ITEMS_URL, HIOR_PROPERTIES_URL, HIOR_ATTRIBUTES_URL, DOCUMENT_URL } from "../constants";
 import { getByUri } from "../services/api";
+import GroupSelector from "../components/GroupSelector";
 import { FilterContext } from "../filter/FilterContext";
-import { actions } from "../filter/reducer";
+// import { actions } from "../filter/reducer";
 
 const StyledDiv = styled.div`
   margin-top: ${themeSpacing(10)};
@@ -46,9 +46,9 @@ const StyledParagraph = styled(Paragraph)`
   white-space: pre-wrap;
 `;
 
-const StyledButton = styled(Button)`
-  margin-right: ${themeSpacing(3)};
-`;
+// const StyledButton = styled(Button)`
+//   margin-right: ${themeSpacing(3)};
+// `;
 
 const List = () => {
   const [properties, setProperties] = useState<any[] | null>(null);
@@ -59,24 +59,24 @@ const List = () => {
   const [types, setTypes] = useState<any[] | null>(null);
   const [allItems, setAllItems] = useState<any[]>([]);
   const { results, fetchData } = useDataFetching();
-  const allGroups = [
-    {
-      value: "source",
-      label: "Bron",
-    },
-    {
-      value: "level",
-      label: "Niveau",
-    },
-    {
-      value: "theme",
-      label: "Thema",
-    },
-    {
-      value: "type",
-      label: "Type",
-    },
-  ];
+  // const allGroups = [
+  //   {
+  //     value: "source",
+  //     label: "Bron",
+  //   },
+  //   {
+  //     value: "level",
+  //     label: "Niveau",
+  //   },
+  //   {
+  //     value: "theme",
+  //     label: "Thema",
+  //   },
+  //   {
+  //     value: "type",
+  //     label: "Type",
+  //   },
+  // ];
   // eslint-disable-next-line no-console
   console.log("allItems", allItems);
 
@@ -99,10 +99,10 @@ const List = () => {
     setAttributes(attr.data.results);
   }, []);
 
-  const onClickGroup = (e:  React.MouseEvent<HTMLButtonElement>) => {
-    //@ts-ignore
-    dispatch(actions.setGroup(e.target.value));
-  };
+  // const onClickGroup = (e:  React.MouseEvent<HTMLButtonElement>) => {
+  //   //@ts-ignore
+  //   dispatch(actions.setGroup(e.target.value));
+  // };
 
   // const data = results;
   useEffect(() => {
@@ -213,14 +213,9 @@ const List = () => {
             <StyledHeading>Resultaten</StyledHeading>
             <br />
             <br />
-            {allGroups.map((b: any) => (
-              <>
-                {/* @ts-ignore */}
-                <StyledButton key={b.value} value={b.value} variant="primary" onClick={onClickGroup}>
-                  {b.label}
-                </StyledButton>
-              </>
-            ))}
+            
+            <GroupSelector />
+            {group}
 
             <br />
             <br />
