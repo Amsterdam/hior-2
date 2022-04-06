@@ -83,6 +83,7 @@ const List = () => {
   }, []);
 
   useEffect(() => {
+    // eslint-disable-next-line no-console
     console.log("group", group);
   }, [group]);
 
