@@ -1,7 +1,6 @@
 import { Action, Filter } from "../types";
 
 export const SET_FILTER = `SET_FILTER`;
-export const SET_SORT = `SET_SORT`;
 export const SET_GROUP = `SET_GROUP`;
 
 export const initialState = {
@@ -14,7 +13,6 @@ export const initialState = {
     query: "",
   } as Filter,
   group: "theme" as "theme" | "source" | "level" | "type",
-  sort: "asc" as string,
 };
 
 const filterReducer = (state = initialState, action: Action | undefined) => {
@@ -25,11 +23,6 @@ const filterReducer = (state = initialState, action: Action | undefined) => {
         filter: {
           ...action.payload,
         },
-      };
-    case SET_SORT:
-      return {
-        ...state,
-        sort: action.payload,
       };
     case SET_GROUP:
       return {
@@ -43,7 +36,6 @@ const filterReducer = (state = initialState, action: Action | undefined) => {
 
 export const actions = {
   setFilter: (payload: Filter) => ({ type: SET_FILTER, payload }),
-  setSort: (payload: string) => ({ type: SET_SORT, payload }),
   setGroup: (payload: string) => ({ type: SET_GROUP, payload }),
 };
 

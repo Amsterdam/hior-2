@@ -1,5 +1,4 @@
-import { act } from "react-dom/test-utils";
-import filterReducer, { initialState, SET_FILTER, SET_GROUP, SET_SORT } from "./reducer";
+import filterReducer, { initialState, SET_FILTER, SET_GROUP } from "./reducer";
 
 describe("filterReducer", () => {
   it("should return initial state oogn default", () => {
@@ -38,18 +37,6 @@ describe("filterReducer", () => {
       expect(filterReducer(initialState, action2)).toEqual({
         ...initialState,
         filter: action2.payload,
-      });
-    });
-
-    it("setSort", () => {
-      const action = {
-        type: SET_SORT,
-        payload: "desc",
-      };
-
-      expect(filterReducer(initialState, action)).toEqual({
-        ...initialState,
-        sort: action.payload,
       });
     });
 
