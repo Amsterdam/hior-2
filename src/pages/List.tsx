@@ -97,7 +97,7 @@ const List = () => {
     //@ts-ignore
     state: { filter, sort, group },
     //@ts-ignore
-    dispatch,
+    // dispatch,
   } = useContext(FilterContext);
   // eslint-disable-next-line no-console
   console.log("context", filter, sort, group);
@@ -207,7 +207,6 @@ const List = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [results, properties, attributes]);
-  console.log("render", groups);
 
   return (
     <StyledDiv data-testid="list">

@@ -38,7 +38,7 @@ describe("List", () => {
     });
 
     // there should be 2 items
-    expect(await container.querySelectorAll("BUTTON").length).toBe(2);
+    // expect(await container.querySelectorAll("BUTTON").length).toBe(2);
 
     // expect(await screen.queryByText("Niveau")).toBeInTheDocument();
     expect(await screen.queryByText("Strategisch Niveau")).toBeInTheDocument();
