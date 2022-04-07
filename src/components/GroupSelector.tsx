@@ -13,12 +13,9 @@ const StyledButton = styled(Button)`
   margin-right: ${themeSpacing(3)};
 `;
 
-const GroupSelector = () => {
-  const {
-    //@ts-ignore
-    dispatch,
-  } = useContext(FilterContext);
-
+//@ts-ignore
+const GroupSelector = ({ groups }) => {
+  console.log('GroupSelector', groups);
   const allGroups = [
     {
       value: "source",
@@ -38,7 +35,13 @@ const GroupSelector = () => {
     },
   ];
 
-  const onClickGroup = (e:  React.MouseEvent<HTMLButtonElement>) => {
+  const {
+    //@ts-ignore
+    dispatch,
+    //@ts-ignore
+  } = useContext(FilterContext);
+
+  const onClickGroup = (e: React.MouseEvent<HTMLButtonElement>) => {
     //@ts-ignore
     dispatch(actions.setGroup(e.target.value));
   };
@@ -54,7 +57,7 @@ const GroupSelector = () => {
         </>
       ))}
     </StyledDiv>
-  );
+  )
 };
 
 export default GroupSelector;

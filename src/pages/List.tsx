@@ -18,7 +18,6 @@ import { IMAGE_URL, HIOR_ITEMS_URL, HIOR_PROPERTIES_URL, HIOR_ATTRIBUTES_URL, DO
 import { getByUri } from "../services/api";
 import GroupSelector from "../components/GroupSelector";
 import { FilterContext } from "../filter/FilterContext";
-// import { actions } from "../filter/reducer";
 
 const StyledDiv = styled.div`
   margin-top: ${themeSpacing(10)};
@@ -53,12 +52,26 @@ const StyledParagraph = styled(Paragraph)`
 const List = () => {
   const [properties, setProperties] = useState<any[] | null>(null);
   const [attributes, setAttributes] = useState<any[] | null>(null);
-  const [sources, setSources] = useState<any[] | null>(null);
-  const [levels, setLevels] = useState<any[] | null>(null);
-  const [themes, setThemes] = useState<any[] | null>(null);
-  const [types, setTypes] = useState<any[] | null>(null);
+  // const [sources, setSources] = useState<any[] | null>(null);
+  // const [levels, setLevels] = useState<any[] | null>(null);
+  // const [themes, setThemes] = useState<any[] | null>(null);
+  // const [types, setTypes] = useState<any[] | null>(null);
+  const [groups, setGroups] = useState<any>({
+    source: [],
+    level: [],
+    theme: [],
+    type: [],
+  });
   const [allItems, setAllItems] = useState<any[]>([]);
   const { results, fetchData } = useDataFetching();
+
+  // const groups = {
+  //   source: [],
+  //   level: [],
+  //   theme: [],
+  //   type: [],
+  // };
+
   // const allGroups = [
   //   {
   //     value: "source",
@@ -99,12 +112,6 @@ const List = () => {
     setAttributes(attr.data.results);
   }, []);
 
-  // const onClickGroup = (e:  React.MouseEvent<HTMLButtonElement>) => {
-  //   //@ts-ignore
-  //   dispatch(actions.setGroup(e.target.value));
-  // };
-
-  // const data = results;
   useEffect(() => {
     fetchData(HIOR_ITEMS_URL);
     getProperties();
@@ -194,16 +201,13 @@ const List = () => {
       return 0;
     });
 
-    console.log("foundGroups", foundGroups);
     setAllItems(sorted);
 
-    setSources(foundGroups.source);
-    setLevels(foundGroups.level);
-    setThemes(foundGroups.theme);
-    setTypes(foundGroups.type);
+    setGroups(foundGroups);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [results, properties, attributes]);
+  console.log("render", groups);
 
   return (
     <StyledDiv data-testid="list">
@@ -213,8 +217,7 @@ const List = () => {
             <StyledHeading>Resultaten</StyledHeading>
             <br />
             <br />
-            
-            <GroupSelector />
+            <GroupSelector groups={groups} />
             {group}
 
             <br />
