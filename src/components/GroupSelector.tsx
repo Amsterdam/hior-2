@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button, themeSpacing } from "@amsterdam/asc-ui";
+import { Tabs, Tab, themeSpacing } from "@amsterdam/asc-ui";
 import { useContext } from "react";
 import { FilterContext } from "../filter/FilterContext";
 import { actions } from "../filter/reducer";
@@ -9,13 +9,13 @@ const StyledDiv = styled.div`
   width: 100%;
 `;
 
-const StyledButton = styled(Button)`
-  margin-right: ${themeSpacing(3)};
+const StyledTab = styled(Tab)`
+  width: 80%;
+  margin-bottom: ${themeSpacing(3)};
 `;
 
 //@ts-ignore
 const GroupSelector = ({ groups }) => {
-  console.log('GroupSelector', groups);
   const allGroups = [
     {
       value: "source",
@@ -37,27 +37,32 @@ const GroupSelector = ({ groups }) => {
 
   const {
     //@ts-ignore
+    state: { group },
+    //@ts-ignore
     dispatch,
     //@ts-ignore
   } = useContext(FilterContext);
 
   const onClickGroup = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     //@ts-ignore
-    dispatch(actions.setGroup(e.target.value));
+    dispatch(actions.setGroup(e.target.getAttribute("data-value")));
   };
+  console.log("GroupSelector", group);
 
   return (
     <StyledDiv data-testid="group-selector">
-      {allGroups.map((b: any) => (
-        <>
-          {/* @ts-ignore */}
-          <StyledButton key={b.value} value={b.value} variant="primary" onClick={onClickGroup}>
-            {b.label}
-          </StyledButton>
-        </>
-      ))}
+      <Tabs label="" initialTab={group}>
+        {allGroups.map((b: any) => (
+          <StyledTab key={b.value} id={b.value} data-value={b.value} label={b.label} onClick={onClickGroup}>
+            {groups[b.value].map((group: string) => (
+              <span key={group}>{group}, </span>
+            ))}
+          </StyledTab>
+        ))}
+      </Tabs>
     </StyledDiv>
-  )
+  );
 };
 
 export default GroupSelector;
