@@ -13,7 +13,7 @@ const StyledDiv = styled.div`
 
 const Loader = () => {
   return (
-    <StyledDiv>
+    <StyledDiv data-testid="loader">
       <Spinner />
     </StyledDiv>
   );
