@@ -18,6 +18,7 @@ import { IMAGE_URL, HIOR_ITEMS_URL, HIOR_PROPERTIES_URL, HIOR_ATTRIBUTES_URL, DO
 import { getByUri } from "../services/api";
 import GroupSelector from "../components/GroupSelector";
 import { FilterContext } from "../filter/FilterContext";
+import Loader from "../components/Loader";
 
 const StyledDiv = styled.div`
   margin-top: ${themeSpacing(10)};
@@ -45,17 +46,9 @@ const StyledParagraph = styled(Paragraph)`
   white-space: pre-wrap;
 `;
 
-// const StyledButton = styled(Button)`
-//   margin-right: ${themeSpacing(3)};
-// `;
-
 const List = () => {
   const [properties, setProperties] = useState<any[] | null>(null);
   const [attributes, setAttributes] = useState<any[] | null>(null);
-  // const [sources, setSources] = useState<any[] | null>(null);
-  // const [levels, setLevels] = useState<any[] | null>(null);
-  // const [themes, setThemes] = useState<any[] | null>(null);
-  // const [types, setTypes] = useState<any[] | null>(null);
   const [groups, setGroups] = useState<any>({
     source: [],
     level: [],
@@ -63,33 +56,8 @@ const List = () => {
     type: [],
   });
   const [allItems, setAllItems] = useState<any[]>([]);
-  const { results, fetchData } = useDataFetching();
+  const { loading, results, fetchData } = useDataFetching();
 
-  // const groups = {
-  //   source: [],
-  //   level: [],
-  //   theme: [],
-  //   type: [],
-  // };
-
-  // const allGroups = [
-  //   {
-  //     value: "source",
-  //     label: "Bron",
-  //   },
-  //   {
-  //     value: "level",
-  //     label: "Niveau",
-  //   },
-  //   {
-  //     value: "theme",
-  //     label: "Thema",
-  //   },
-  //   {
-  //     value: "type",
-  //     label: "Type",
-  //   },
-  // ];
   // eslint-disable-next-line no-console
   console.log("allItems", allItems);
 
@@ -100,7 +68,7 @@ const List = () => {
     // dispatch,
   } = useContext(FilterContext);
   // eslint-disable-next-line no-console
-  console.log("context", filter, sort, group);
+  // console.log("context", filter, sort, group);
 
   const getProperties = useCallback(async () => {
     const props = await getByUri(HIOR_PROPERTIES_URL);
@@ -120,10 +88,10 @@ const List = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log("group", group);
-  }, [group]);
+  // useEffect(() => {
+  // eslint-disable-next-line no-console
+  // console.log("group", group);
+  // }, [group]);
 
   useEffect(() => {
     if (!results || !properties || !attributes) {
@@ -208,6 +176,8 @@ const List = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [results, properties, attributes]);
 
+  console.log('List', loading, properties?.length, attributes?.length);
+  
   return (
     <StyledDiv data-testid="list">
       <Row>
@@ -217,54 +187,62 @@ const List = () => {
             <br />
             <br />
             <GroupSelector groups={groups} />
-            {group}
 
             <br />
             <br />
-            {allItems.map((item: any) => (
-              <StyledAccordion id={`a${item.id}`} key={item.id} title={`${item.id} ${item.text}`}>
-                <StyledParagraph>{item.description}</StyledParagraph>
+            {(loading || !attributes || !properties) && <Loader />}
+            {!loading &&
+              attributes &&
+              properties &&
+              allItems.map((item: any) => (
+                <StyledAccordion id={`a${item.id}`} key={item.id} title={`${item.id} ${item.text}`}>
+                  <StyledParagraph>{item.description}</StyledParagraph>
 
-                {item?.images?.map((image: any) => (
-                  <StyledImg src={image.src} key={`${item.id}-${image.id}`} alt={image.alt}></StyledImg>
-                ))}
+                  {item?.images?.map((image: any) => (
+                    <StyledImg src={image.src} key={`${item.id}-${image.id}`} alt={image.alt}></StyledImg>
+                  ))}
 
-                <Table>
-                  <TableBody>
-                    <TableRow>
-                      <TableCell>Bron</TableCell>
-                      <TableCell>{item.source}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Niveau</TableCell>
-                      <TableCell>{item.level}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Thema</TableCell>
-                      <TableCell>{item.theme}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Type</TableCell>
-                      <TableCell>{item.type}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Stadsdeel</TableCell>
-                      <TableCell>{item.area}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Documenten</TableCell>
-                      <TableCell>
-                        {item.documents.map((document: any) => (
-                          <Link key={`${item.id}-${document.id}`} variant="inline" target="_blank" href={document.src}>
-                            {document.name}.pdf
-                          </Link>
-                        ))}
-                      </TableCell>
-                    </TableRow>
-                  </TableBody>
-                </Table>
-              </StyledAccordion>
-            ))}
+                  <Table>
+                    <TableBody>
+                      <TableRow>
+                        <TableCell>Bron</TableCell>
+                        <TableCell>{item.source}</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>Niveau</TableCell>
+                        <TableCell>{item.level}</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>Thema</TableCell>
+                        <TableCell>{item.theme}</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>Type</TableCell>
+                        <TableCell>{item.type}</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>Stadsdeel</TableCell>
+                        <TableCell>{item.area}</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>Documenten</TableCell>
+                        <TableCell>
+                          {item.documents.map((document: any) => (
+                            <Link
+                              key={`${item.id}-${document.id}`}
+                              variant="inline"
+                              target="_blank"
+                              href={document.src}
+                            >
+                              {document.name}.pdf
+                            </Link>
+                          ))}
+                        </TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </StyledAccordion>
+              ))}
           </LargeDiv>
         </Column>
       </Row>
