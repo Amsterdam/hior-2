@@ -17,3 +17,24 @@ export interface Filter {
   area: string;
   query: string;
 }
+
+export interface Hior {
+  id: number;
+  description: string;
+  text: string
+}
+
+export interface HiorEnriched {
+  id: number;
+  description: string;
+  text: string
+
+  source: string;
+  level: string;
+  theme: string;
+  type: string;
+  area: string;
+
+  images: any[]
+  documents: any[]
+}
