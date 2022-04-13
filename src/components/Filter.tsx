@@ -27,7 +27,7 @@ const Filter = ({ groups }) => {
       theme: e.target.form.theme.value,
       type: e.target.form.type.value,
       area: e.target.form.area.value,
-      query: e.target.form.query.value
+      query: e.target.form.query.value,
     };
 
     //@ts-ignore
@@ -86,7 +86,7 @@ const Filter = ({ groups }) => {
                 ))}
               </Select>
 
-              <TextField id="query" label="Filter op tekst" onChange={updateFilter}/>
+              <TextField id="query" label="Filter op tekst" onChange={updateFilter} />
             </div>
           </Column>
         </Row>
