@@ -19,6 +19,7 @@ import { getByUri } from "../services/api";
 import GroupSelector from "../components/GroupSelector";
 import { FilterContext } from "../filter/FilterContext";
 import Loader from "../components/Loader";
+import Filter from "../components/Filter";
 
 const StyledDiv = styled.div`
   margin-top: ${themeSpacing(10)};
@@ -54,6 +55,7 @@ const List = () => {
     level: [],
     theme: [],
     type: [],
+    area: []
   });
   const [allItems, setAllItems] = useState<any[]>([]);
   const { loading, results, fetchData } = useDataFetching();
@@ -63,12 +65,12 @@ const List = () => {
 
   const {
     //@ts-ignore
-    state: { filter, sort, group },
+    state: { filter },
     //@ts-ignore
     // dispatch,
   } = useContext(FilterContext);
   // eslint-disable-next-line no-console
-  // console.log("context", filter, sort, group);
+  // console.log("context", filter, group);
 
   const getProperties = useCallback(async () => {
     const props = await getByUri(HIOR_PROPERTIES_URL);
@@ -88,11 +90,6 @@ const List = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // useEffect(() => {
-  // eslint-disable-next-line no-console
-  // console.log("group", group);
-  // }, [group]);
-
   useEffect(() => {
     if (!results || !properties || !attributes) {
       return;
@@ -103,6 +100,7 @@ const List = () => {
       level: [],
       theme: [],
       type: [],
+      area: []
     };
     // enrich items with properties and attributes
     // @ts-ignore
@@ -147,6 +145,8 @@ const List = () => {
       if (!foundGroups.theme.includes(newAttr.theme)) foundGroups.theme.push(newAttr.theme);
       // @ts-ignore
       if (!foundGroups.type.includes(newAttr.type)) foundGroups.type.push(newAttr.type);
+      // @ts-ignore
+      if (!foundGroups.area.includes(newAttr.area)) foundGroups.area.push(newAttr.area);
 
       return {
         ...i,
@@ -159,33 +159,62 @@ const List = () => {
     });
 
     // sort alphabettically
-    const sorted = items.sort((a: any, b: any) => {
-      if (a.text < b.text) {
-        return -1;
-      }
-      if (a.text > b.text) {
-        return 1;
-      }
-      return 0;
-    });
+    // const sorted = items.sort((a: any, b: any) => {
+    //   if (a.text < b.text) {
+    //     return -1;
+    //   }
+    //   if (a.text > b.text) {
+    //     return 1;
+    //   }
+    //   return 0;
+    // });
 
-    setAllItems(sorted);
+    setAllItems(items);
 
     setGroups(foundGroups);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [results, properties, attributes]);
 
-  console.log('List', loading, properties?.length, attributes?.length);
-  
+  const filteredItems = allItems.filter((i :any) => {
+    if (!filter.level && !filter.source && !filter.theme && !filter.type && !filter.area && !filter.query) {
+      return true;
+    }
+    let result = false;
+
+    if (filter.source) {
+      result = result || filter.source === i.source;
+    }
+    if (filter.level) {
+      result = result || filter.level === i.level;
+    }
+    if (filter.theme) {
+      result = result || filter.theme === i.theme;
+    }
+    if (filter.type) {
+      result = result || filter.type === i.type;
+    }
+    if (filter.area) {
+      result = result || filter.area === i.area;
+    }
+    if (filter.query) {
+      // search in description and text fields
+      // result  = result || i.text.match(/openbare ruimte/gi)[0];
+      // result  = result || i.description.match(/openbare ruimte/gi)[0]
+    }
+
+    return result
+  });
+
   return (
     <StyledDiv data-testid="list">
       <Row>
         <Column span={12}>
           <LargeDiv>
-            <StyledHeading>Resultaten</StyledHeading>
-            <br />
-            <br />
+            <Filter groups={groups} />
+            
+            <StyledHeading>Resultaten ({filteredItems.length})</StyledHeading>
+
             <GroupSelector groups={groups} />
 
             <br />
@@ -194,7 +223,7 @@ const List = () => {
             {!loading &&
               attributes &&
               properties &&
-              allItems.map((item: any) => (
+              filteredItems.map((item: any) => (
                 <StyledAccordion id={`a${item.id}`} key={item.id} title={`${item.id} ${item.text}`}>
                   <StyledParagraph>{item.description}</StyledParagraph>
 
@@ -206,7 +235,18 @@ const List = () => {
                     <TableBody>
                       <TableRow>
                         <TableCell>Bron</TableCell>
-                        <TableCell>{item.source}</TableCell>
+                        <TableCell>
+                          {item.documents.map((document: any) => (
+                            <Link
+                              key={`${item.id}-${document.id}`}
+                              variant="inline"
+                              target="_blank"
+                              href={document.src}
+                            >
+                              {document.name}
+                            </Link>
+                          ))}
+                        </TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell>Niveau</TableCell>
@@ -224,23 +264,9 @@ const List = () => {
                         <TableCell>Stadsdeel</TableCell>
                         <TableCell>{item.area}</TableCell>
                       </TableRow>
-                      <TableRow>
-                        <TableCell>Documenten</TableCell>
-                        <TableCell>
-                          {item.documents.map((document: any) => (
-                            <Link
-                              key={`${item.id}-${document.id}`}
-                              variant="inline"
-                              target="_blank"
-                              href={document.src}
-                            >
-                              {document.name}.pdf
-                            </Link>
-                          ))}
-                        </TableCell>
-                      </TableRow>
                     </TableBody>
                   </Table>
+                  checklist hier
                 </StyledAccordion>
               ))}
           </LargeDiv>
