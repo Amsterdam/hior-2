@@ -26,6 +26,7 @@ const Filter = ({ groups }) => {
       level: e.target.form.level.value,
       theme: e.target.form.theme.value,
       type: e.target.form.type.value,
+      area: e.target.form.area.value,
     };
 
     //@ts-ignore
@@ -33,48 +34,59 @@ const Filter = ({ groups }) => {
 
     console.log("updateFilter click", e.target.form.level.value);
   };
-  console.log("updateFilter groups", groups);
 
   return (
     <StyledDiv data-testid="filter">
       <form>
         <Row>
           <Column span={6}>
-            <Select id="source" label="Bron" onChange={updateFilter}>
-              <option value="">Kies een bron</option>
-              {groups.source.map((option: string) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </Select>
-            <Select id="theme" label="Thema" onChange={updateFilter}>
-              <option value="">Kies een bron</option>
-              {groups.theme.map((option: string) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </Select>
+            <div>
+              <Select id="source" label="Bron" onChange={updateFilter}>
+                <option value="">Kies een bron</option>
+                {groups.source.map((option: string) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </Select>
+              <Select id="theme" label="Thema" onChange={updateFilter}>
+                <option value="">Kies een bron</option>
+                {groups.theme.map((option: string) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </Select>
+              <Select id="area" label="Stadsdeel" onChange={updateFilter}>
+                <option value="">Kies een standsdeel</option>
+                {groups.area.map((option: string) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </Select>
+            </div>
           </Column>
 
           <Column span={6}>
-            <Select id="level" label="Niveau" onChange={updateFilter}>
-              <option value="">Kies een niveau</option>
-              {groups.level.map((option: string) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </Select>
-            <Select id="type" label="Type" onChange={updateFilter}>
-              <option value="">Kies een niveau</option>
-              {groups.type.map((option: string) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </Select>
+            <div>
+              <Select id="level" label="Niveau" onChange={updateFilter}>
+                <option value="">Kies een niveau</option>
+                {groups.level.map((option: string) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </Select>
+              <Select id="type" label="Type" onChange={updateFilter}>
+                <option value="">Kies een niveau</option>
+                {groups.type.map((option: string) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </Select>
+            </div>
           </Column>
         </Row>
       </form>
