@@ -8,7 +8,7 @@ const StyledDiv = styled.div`
   align-content: center;
   align-items: center;
   flex-wrap: nowrap;
-  padding: ${themeSpacing(6)};
+  padding: ${themeSpacing(40)};
 `;
 
 const Loader = () => {
