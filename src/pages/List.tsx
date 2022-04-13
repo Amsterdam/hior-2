@@ -14,6 +14,7 @@ import {
   themeSpacing,
 } from "@amsterdam/asc-ui";
 import useDataFetching from "../hooks/useDataFetching";
+import useFilter from "../hooks/useFilter";
 import { IMAGE_URL, HIOR_ITEMS_URL, HIOR_PROPERTIES_URL, HIOR_ATTRIBUTES_URL, DOCUMENT_URL } from "../constants";
 import { getByUri } from "../services/api";
 import GroupSelector from "../components/GroupSelector";
@@ -176,38 +177,7 @@ const List = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [results, properties, attributes]);
 
-  const filteredItems = allItems.filter((i: any) => {
-    if (!filter.level && !filter.source && !filter.theme && !filter.type && !filter.area && !filter.query) {
-      return true;
-    }
-    let result = false;
-
-    if (filter.source) {
-      result = result || filter.source === i.source;
-    }
-    if (filter.level) {
-      result = result || filter.level === i.level;
-    }
-    if (filter.theme) {
-      result = result || filter.theme === i.theme;
-    }
-    if (filter.type) {
-      result = result || filter.type === i.type;
-    }
-    if (filter.area) {
-      result = result || filter.area === i.area;
-    }
-    if (filter.query) {
-      // search in description and text fields
-      const re = new RegExp(filter.query, "gim");
-      const textFound = i.text.match(re);
-      result = result || (textFound && textFound[0]);
-      const descriptionFound = i.description.match(re);
-      result = result || (descriptionFound && descriptionFound[0]);
-    }
-
-    return result;
-  });
+  const filteredItems = useFilter(filter, allItems);
 
   return (
     <StyledDiv data-testid="list">
