@@ -55,7 +55,7 @@ const List = () => {
     level: [],
     theme: [],
     type: [],
-    area: []
+    area: [],
   });
   const [allItems, setAllItems] = useState<any[]>([]);
   const { loading, results, fetchData } = useDataFetching();
@@ -100,7 +100,7 @@ const List = () => {
       level: [],
       theme: [],
       type: [],
-      area: []
+      area: [],
     };
     // enrich items with properties and attributes
     // @ts-ignore
@@ -176,7 +176,7 @@ const List = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [results, properties, attributes]);
 
-  const filteredItems = allItems.filter((i :any) => {
+  const filteredItems = allItems.filter((i: any) => {
     if (!filter.level && !filter.source && !filter.theme && !filter.type && !filter.area && !filter.query) {
       return true;
     }
@@ -199,11 +199,14 @@ const List = () => {
     }
     if (filter.query) {
       // search in description and text fields
-      // result  = result || i.text.match(/openbare ruimte/gi)[0];
-      // result  = result || i.description.match(/openbare ruimte/gi)[0]
+      const re = new RegExp(filter.query, "gim");
+      const textFound = i.text.match(re);
+      result = result || (textFound && textFound[0]);
+      const descriptionFound = i.description.match(re);
+      result = result || (descriptionFound && descriptionFound[0]);
     }
 
-    return result
+    return result;
   });
 
   return (
@@ -212,7 +215,7 @@ const List = () => {
         <Column span={12}>
           <LargeDiv>
             <Filter groups={groups} />
-            
+
             <StyledHeading>Resultaten ({filteredItems.length})</StyledHeading>
 
             <GroupSelector groups={groups} />
@@ -226,11 +229,9 @@ const List = () => {
               filteredItems.map((item: any) => (
                 <StyledAccordion id={`a${item.id}`} key={item.id} title={`${item.id} ${item.text}`}>
                   <StyledParagraph>{item.description}</StyledParagraph>
-
                   {item?.images?.map((image: any) => (
                     <StyledImg src={image.src} key={`${item.id}-${image.id}`} alt={image.alt}></StyledImg>
                   ))}
-
                   <Table>
                     <TableBody>
                       <TableRow>

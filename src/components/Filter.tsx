@@ -78,7 +78,7 @@ const Filter = ({ groups }) => {
                 ))}
               </Select>
               <Select id="type" label="Type" onChange={updateFilter}>
-                <option value="">Kies een niveau</option>
+                <option value="">Kies een type</option>
                 {groups.type.map((option: string) => (
                   <option key={option} value={option}>
                     {option}
