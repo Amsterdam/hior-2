@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Column, Row, Select, themeSpacing } from "@amsterdam/asc-ui";
+import { Column, Row, Select, TextField, themeSpacing } from "@amsterdam/asc-ui";
 import { useContext } from "react";
 import { FilterContext } from "../filter/FilterContext";
 import { actions } from "../filter/reducer";
@@ -27,12 +27,11 @@ const Filter = ({ groups }) => {
       theme: e.target.form.theme.value,
       type: e.target.form.type.value,
       area: e.target.form.area.value,
+      query: e.target.form.query.value,
     };
 
     //@ts-ignore
     dispatch(actions.setFilter(newFilter));
-
-    console.log("updateFilter click", e.target.form.level.value);
   };
 
   return (
@@ -86,6 +85,8 @@ const Filter = ({ groups }) => {
                   </option>
                 ))}
               </Select>
+
+              <TextField id="query" label="Filter op tekst" />
             </div>
           </Column>
         </Row>
