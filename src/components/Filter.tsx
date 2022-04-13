@@ -49,7 +49,7 @@ const Filter = ({ groups }) => {
                 ))}
               </Select>
               <Select id="theme" label="Thema" onChange={updateFilter}>
-                <option value="">Kies een bron</option>
+                <option value="">Kies een thema</option>
                 {groups.theme.map((option: string) => (
                   <option key={option} value={option}>
                     {option}
