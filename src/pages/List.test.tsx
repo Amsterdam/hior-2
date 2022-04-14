@@ -33,28 +33,20 @@ describe("List", () => {
     );
 
     await act(async () => {
-      expect(await screen.queryByTestId("list")).toBeInTheDocument();
-      expect(await screen.queryByText("Resultaten")).toBeInTheDocument();
+      //
     });
 
-    // there should be 2 items
-    // expect(await container.querySelectorAll("BUTTON").length).toBe(2);
+    expect(await screen.queryByTestId("list")).toBeInTheDocument();
+    expect(await screen.queryByTestId("filter")).toBeInTheDocument();
+    expect(await screen.queryByTestId("group-selector")).toBeInTheDocument();
 
-    // expect(await screen.queryByText("Niveau")).toBeInTheDocument();
-    expect(await screen.queryByText("Strategisch Niveau")).toBeInTheDocument();
-    // expect(await screen.queryByText("Thema")).toBeInTheDocument();
-    expect(await screen.queryByText("12. Groen")).toBeInTheDocument();
-    // expect(await screen.queryByText("Type")).toBeInTheDocument();
-    expect(await screen.queryByText("Ambitie")).toBeInTheDocument();
-    // expect(await screen.queryByText("Stadsdeel")).toBeInTheDocument();
-    expect(await screen.queryByText("Heel Amsterdam")).toBeInTheDocument();
+    // there should be 2 items
+    expect(await container.querySelectorAll("button").length).toBe(7);
 
     // there should be 3 images
-    expect(await container.querySelectorAll("IMG").length).toBe(3);
+    expect(await container.querySelectorAll("img").length).toBe(3);
 
     // there should be 1 document
-    // expect(await screen.queryByText("Omgevingsvisie 2050 (2021)")).toBeInTheDocument();
-
-    // await screen.debug();
+    expect(await screen.queryByText("Omgevingsvisie 2050 (2021)")).toBeInTheDocument();
   });
 });
