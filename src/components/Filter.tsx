@@ -5,16 +5,19 @@ import { FilterContext } from "../filter/FilterContext";
 import { actions } from "../filter/reducer";
 
 const StyledDiv = styled.div`
-  margin-top: ${themeSpacing(10)};
   margin-bottom: ${themeSpacing(10)};
   width: 100%;
+
+  label {
+    margin-top: ${themeSpacing(3)};
+  }
 `;
 
 //@ts-ignore
 const Filter = ({ groups }) => {
   const {
     //@ts-ignore
-    state: { filter },
+    // state: { filter },
     //@ts-ignore
     dispatch,
     //@ts-ignore
