@@ -30,7 +30,6 @@ const Filter = ({ groups }) => {
       query: e.target.form.query.value,
     };
 
-    //@ts-ignore
     dispatch(actions.setFilter(newFilter));
   };
 

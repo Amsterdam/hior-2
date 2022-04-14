@@ -38,3 +38,9 @@ export interface HiorEnriched {
   images: any[]
   documents: any[]
 }
+
+export interface Faq {
+  id: number;
+  question: string;
+  answer: string
+}

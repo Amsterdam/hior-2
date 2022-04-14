@@ -21,6 +21,7 @@ import GroupSelector from "../components/GroupSelector";
 import { FilterContext } from "../filter/FilterContext";
 import Loader from "../components/Loader";
 import Filter from "../components/Filter";
+import { HiorEnriched } from "../types";
 
 const StyledDiv = styled.div`
   margin-top: ${themeSpacing(10)};
@@ -196,7 +197,7 @@ const List = () => {
             {!loading &&
               attributes &&
               properties &&
-              filteredItems.map((item: any) => (
+              filteredItems.map((item: HiorEnriched) => (
                 <StyledAccordion id={`a${item.id}`} key={item.id} title={`${item.id} ${item.text}`}>
                   <StyledParagraph>{item.description}</StyledParagraph>
                   {item?.images?.map((image: any) => (
