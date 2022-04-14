@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { getByUri } from "../services/api";
+import { Apicall } from "../types";
 
 function useDataFetching() {
   const [errorMessage, setErrorMessage] = useState<string>();
-  const [results, setResults] = useState(null);
+  const [results, setResults] = useState<Apicall | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
   async function fetchData(endpoint: string) {
