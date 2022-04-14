@@ -1,4 +1,4 @@
-import { Action, Filter } from "../types";
+import { Action, Group, Filter } from "../types";
 
 export const SET_FILTER = `SET_FILTER`;
 export const SET_GROUP = `SET_GROUP`;
@@ -12,7 +12,7 @@ export const initialState = {
     area: "",
     query: "",
   } as Filter,
-  group: "theme" as "theme" | "source" | "level" | "type",
+  group: "theme" as Group,
 };
 
 const filterReducer = (state = initialState, action: Action | undefined) => {

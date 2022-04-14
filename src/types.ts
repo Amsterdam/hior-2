@@ -9,6 +9,8 @@ export interface Action {
   payload: any;
 }
 
+export type Group = "theme" | "source" | "level" | "type";
+
 export interface Filter {
   source: string;
   level: string;
@@ -21,13 +23,13 @@ export interface Filter {
 export interface Hior {
   id: number;
   description: string;
-  text: string
+  text: string;
 }
 
 export interface HiorEnriched {
   id: number;
   description: string;
-  text: string
+  text: string;
 
   source: string;
   level: string;
@@ -35,12 +37,12 @@ export interface HiorEnriched {
   type: string;
   area: string;
 
-  images: any[]
-  documents: any[]
+  images: any[];
+  documents: any[];
 }
 
 export interface Faq {
   id: number;
   question: string;
-  answer: string
+  answer: string;
 }
