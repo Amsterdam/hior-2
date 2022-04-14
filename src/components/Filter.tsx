@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { Column, Row, Select, TextField, themeSpacing } from "@amsterdam/asc-ui";
+import { Button, Column, Row, Select, TextField, themeSpacing } from "@amsterdam/asc-ui";
 import { useContext } from "react";
 import { FilterContext } from "../filter/FilterContext";
-import { actions } from "../filter/reducer";
+import { actions, initialState } from "../filter/reducer";
 
 const StyledDiv = styled.div`
   margin-bottom: ${themeSpacing(10)};
@@ -34,6 +34,10 @@ const Filter = ({ groups }) => {
     };
 
     dispatch(actions.setFilter(newFilter));
+  };
+
+  const resetFilter = () => {
+    dispatch(actions.setFilter(initialState.filter));
   };
 
   return (
@@ -92,6 +96,9 @@ const Filter = ({ groups }) => {
             </div>
           </Column>
         </Row>
+        <Button variant="secondary" onClick={resetFilter}>
+          Wis filter
+        </Button>
       </form>
     </StyledDiv>
   );
