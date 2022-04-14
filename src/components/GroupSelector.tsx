@@ -55,7 +55,7 @@ const GroupSelector = ({ groups }) => {
 
   return (
     <StyledDiv data-testid="group-selector">
-      <Tabs label="" initialTab={group}>
+      <Tabs label="" activeTab={group}>
         {allGroups.map((b: any) => (
           <StyledTab key={b.value} id={b.value} data-value={b.value} label={b.label} onClick={onClickGroup}>
             {groups[b.value].map((group: string) => (
