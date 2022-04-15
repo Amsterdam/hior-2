@@ -26,7 +26,6 @@ describe("List", () => {
           {/* @ts-ignore */}
           <FilterContext.Provider value={{ state: initialState }}>
             <List />
-            {/* @ts-ignore */}
           </FilterContext.Provider>
         </>,
       ),
