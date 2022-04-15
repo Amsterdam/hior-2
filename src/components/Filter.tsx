@@ -1,6 +1,6 @@
 import "react-multiple-select-dropdown-lite/dist/index.css";
 import styled from "styled-components";
-import { Button, Column, Label, Row, TextField, themeSpacing } from "@amsterdam/asc-ui";
+import { Button, Column, Input, Label, Row, themeSpacing } from "@amsterdam/asc-ui";
 //@ts-ignore
 import MultiSelect from "react-multiple-select-dropdown-lite";
 import { useContext, useState } from "react";
@@ -13,6 +13,7 @@ const StyledDiv = styled.div`
 
   label {
     margin-top: ${themeSpacing(3)};
+    font-weight: bold;
   }
 `;
 
@@ -115,9 +116,9 @@ const Filter = ({ groups }) => {
                   updateFilter();
                 }}
               />
-              <TextField
+              <Label label="Filter op tekst" />
+              <Input
                 id="query"
-                label="Filter op tekst"
                 onChange={(e: any) => {
                   setQuery(e.target.value);
                   updateFilter();
