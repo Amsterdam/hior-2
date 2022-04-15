@@ -96,7 +96,7 @@ const Filter = ({ groups }) => {
             </div>
           </Column>
         </Row>
-        <Button variant="secondary" onClick={resetFilter}>
+        <Button variant="secondary" data-testid="reset" onClick={resetFilter}>
           Wis filter
         </Button>
       </form>
