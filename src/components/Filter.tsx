@@ -114,6 +114,7 @@ const Filter = ({ groups }) => {
               />
               <Label label="Filter op tekst" />
               <Input
+                type="text"
                 id="query"
                 onChange={(e: any) => {
                   updateFilter("query", e.target.value);

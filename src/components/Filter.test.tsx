@@ -29,9 +29,9 @@ describe("Filter", () => {
     expect(screen.queryByTestId("reset")).toBeInTheDocument();
 
     // all selects
-    expect(container.querySelectorAll("select").length).toBe(5);
+    expect(container.querySelectorAll("input[type=hidden]").length).toBe(5);
     // query input
-    expect(container.querySelectorAll("input").length).toBe(1);
+    expect(container.querySelectorAll("input[type=text]").length).toBe(1);
     // reset button
     expect(container.querySelectorAll("button").length).toBe(1);
   });
