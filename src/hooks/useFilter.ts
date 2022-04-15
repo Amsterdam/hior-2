@@ -36,15 +36,9 @@ function useFilter(filter: Filter, data: HiorEnriched[]): HiorEnriched[] {
     }
 
     if (filter.query) {
-      const re = new RegExp(filter.query, "gim");
+      const query = filter.query.toLowerCase();
       filteredData = filteredData.filter((d: HiorEnriched) => {
-        const found = d.text.match(re);
-        return found && found[0];
-      });
-
-      filteredData = filteredData.filter((d: HiorEnriched) => {
-        const found = d.description.match(re);
-        return found && found[0];
+        return d.text.toLowerCase().includes(query) || d.description.toLowerCase().includes(query);
       });
     }
 
