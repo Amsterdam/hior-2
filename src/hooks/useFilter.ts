@@ -7,31 +7,31 @@ function useFilter(filter: Filter, data: HiorEnriched[]): HiorEnriched[] {
 
     if (filter.source) {
       filteredData = filteredData.filter((d: HiorEnriched) => {
-        return d.source === filter.source;
+        return filter.source.includes(d.source);
       });
     }
 
     if (filter.level) {
       filteredData = filteredData.filter((d: HiorEnriched) => {
-        return d.level === filter.level;
+        return filter.level.includes(d.level);
       });
     }
 
     if (filter.theme) {
       filteredData = filteredData.filter((d: HiorEnriched) => {
-        return d.theme === filter.theme;
+        return filter.theme.includes(d.theme);
       });
     }
 
     if (filter.type) {
       filteredData = filteredData.filter((d: HiorEnriched) => {
-        return d.type === filter.type;
+        return filter.type.includes(d.type);
       });
     }
 
     if (filter.area) {
       filteredData = filteredData.filter((d: HiorEnriched) => {
-        return d.area === filter.area;
+        return filter.area.includes(d.area);
       });
     }
 

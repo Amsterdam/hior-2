@@ -31,29 +31,30 @@ const Filter = ({ groups }) => {
     //@ts-ignore
   } = useContext(FilterContext);
 
-  const [source, setSource] = useState<string>("");
-  const [theme, setTheme] = useState<string>("");
-  const [area, setArea] = useState<string>("");
-  const [level, setLevel] = useState<string>("");
-  const [type, setType] = useState<string>("");
-  const [query, setQuery] = useState<string>("");
+  const [allGroups, setGroups] = useState<any>({
+    source: "",
+    level: "",
+    theme: "",
+    type: "",
+    area: "",
+    query: "",
+  });
 
-  const updateFilter = () => {
+  const updateFilter = (group: string, values: string) => {
     const newFilter = {
-      source,
-      level,
-      theme,
-      type,
-      area,
-      query,
+      ...allGroups,
+      [group]: values,
     };
 
+    setGroups(newFilter);
+    
     dispatch(actions.setFilter(newFilter));
   };
 
   const resetFilter = () => {
     dispatch(actions.setFilter(initialState.filter));
   };
+
 
   return (
     <StyledDiv data-testid="filter">
@@ -67,8 +68,7 @@ const Filter = ({ groups }) => {
                 placeholder="Kies een bron"
                 options={groups.source.map((option: string) => ({ label: option, value: option }))}
                 onChange={(values: string) => {
-                  setSource(values);
-                  updateFilter();
+                  updateFilter("source", values);
                 }}
               />
               <Label label="Thema" />
@@ -77,8 +77,7 @@ const Filter = ({ groups }) => {
                 placeholder="Kies een thema"
                 options={groups.theme.map((option: string) => ({ label: option, value: option }))}
                 onChange={(values: string) => {
-                  setTheme(values);
-                  updateFilter();
+                  updateFilter("theme", values);
                 }}
               />
               <Label label="Stadsdeel" />
@@ -87,8 +86,7 @@ const Filter = ({ groups }) => {
                 placeholder="Kies een standsdeel"
                 options={groups.area.map((option: string) => ({ label: option, value: option }))}
                 onChange={(values: string) => {
-                  setArea(values);
-                  updateFilter();
+                  updateFilter("area", values);
                 }}
               />
             </div>
@@ -102,8 +100,7 @@ const Filter = ({ groups }) => {
                 name="level"
                 options={groups.level.map((option: string) => ({ label: option, value: option }))}
                 onChange={(values: string) => {
-                  setLevel(values);
-                  updateFilter();
+                  updateFilter("level", values);
                 }}
               />
               <Label label="Type" />
@@ -112,16 +109,14 @@ const Filter = ({ groups }) => {
                 name="type"
                 options={groups.type.map((option: string) => ({ label: option, value: option }))}
                 onChange={(values: string) => {
-                  setType(values);
-                  updateFilter();
+                  updateFilter("type", values);
                 }}
               />
               <Label label="Filter op tekst" />
               <Input
                 id="query"
                 onChange={(e: any) => {
-                  setQuery(e.target.value);
-                  updateFilter();
+                  updateFilter("query", e.target.value);
                 }}
               />
             </div>
