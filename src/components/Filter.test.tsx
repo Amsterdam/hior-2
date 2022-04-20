@@ -5,13 +5,13 @@ import { withTheme } from "../test/utils";
 import Filter from "./Filter";
 
 describe("Filter", () => {
-  const mockGroups = {
-    source: [],
-    level: [],
-    theme: [],
-    type: [],
-    area: [],
-  };
+  // const mockGroups = {
+  //   source: [],
+  //   level: [],
+  //   theme: [],
+  //   type: [],
+  //   area: [],
+  // };
 
   it("renders correctly", () => {
     const { container } = render(
@@ -19,7 +19,7 @@ describe("Filter", () => {
         <>
           {/* @ts-ignore */}
           <FilterContext.Provider value={{ state: initialState }}>
-            <Filter groups={mockGroups} />
+            <Filter />
           </FilterContext.Provider>
         </>,
       ),
@@ -51,7 +51,7 @@ describe("Filter", () => {
         <>
           {/* @ts-ignore */}
           <FilterContext.Provider value={{ state: mockState, dispatch: dispatchSpy }}>
-            <Filter groups={mockGroups} />
+            <Filter />
           </FilterContext.Provider>
         </>,
       ),

@@ -5,21 +5,13 @@ import { withTheme } from "../test/utils";
 import GroupSelector from "./GroupSelector";
 
 describe("GroupSelector", () => {
-  const mockGroup = {
-    source: ["Omgevingsvisie 2050 (2021)"],
-    level: ["Proces"],
-    theme: ["Openbare Ruimte Algemeen"],
-    type: ["Advies"],
-    area: ["Centrum"],
-  };
-
   it("renders correctly", () => {
     render(
       withTheme(
         <>
           {/* @ts-ignore */}
           <FilterContext.Provider value={{ state: initialState }}>
-            <GroupSelector groups={mockGroup} />
+            <GroupSelector />
             {/* @ts-ignore */}
           </FilterContext.Provider>
         </>,
