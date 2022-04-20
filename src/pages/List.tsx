@@ -21,7 +21,7 @@ import GroupSelector from "../components/GroupSelector";
 import { FilterContext } from "../filter/FilterContext";
 import Loader from "../components/Loader";
 import Filter from "../components/Filter";
-import { HiorEnriched, Groups } from "../types";
+import { HiorEnriched, Groups, Group } from "../types";
 import { actions } from "../filter/reducer";
 
 const StyledDiv = styled.div`
@@ -172,7 +172,7 @@ const List = () => {
 
   const filteredItems = useFilter(filter, allItems);
 
-  console.log("List render", group, groups, attributes, properties);
+  // console.log("render", groups, group);
 
   return (
     <StyledDiv data-testid="list">
@@ -191,50 +191,62 @@ const List = () => {
             {!loading &&
               attributes &&
               properties &&
-              filteredItems.map((item: HiorEnriched) => (
-                <StyledAccordion id={`a${item.id}`} key={item.id} title={`${item.id} ${item.text}`}>
-                  <StyledParagraph>{item.description}</StyledParagraph>
-                  {item?.images?.map((image: any) => (
-                    <StyledImg src={image.src} key={`${item.id}-${image.id}`} alt={image.alt}></StyledImg>
-                  ))}
-                  <Table>
-                    <TableBody>
-                      <TableRow>
-                        <TableCell>Bron</TableCell>
-                        <TableCell>
-                          {item.documents.map((document: any) => (
-                            <Link
-                              key={`${item.id}-${document.id}`}
-                              variant="inline"
-                              target="_blank"
-                              href={document.src}
-                            >
-                              {document.name}
-                            </Link>
-                          ))}
-                        </TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>Niveau</TableCell>
-                        <TableCell>{item.level}</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>Thema</TableCell>
-                        <TableCell>{item.theme}</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>Type</TableCell>
-                        <TableCell>{item.type}</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>Stadsdeel</TableCell>
-                        <TableCell>{item.area}</TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
-                  checklist hier
-                </StyledAccordion>
-              ))}
+              groups[group].map((g: Group) => {
+                const part = filteredItems.filter((j: HiorEnriched) => g === j.theme);
+
+                return (
+                  <>
+                    <Paragraph key={g}>
+                      {g} ({part.length})
+                    </Paragraph>
+
+                    {part.map((item: HiorEnriched) => (
+                      <StyledAccordion id={`a${item.id}`} key={item.id} title={`${item.id} ${item.text}`}>
+                        <StyledParagraph>{item.description}</StyledParagraph>
+                        {item?.images?.map((image: any) => (
+                          <StyledImg src={image.src} key={`${item.id}-${image.id}`} alt={image.alt}></StyledImg>
+                        ))}
+                        <Table>
+                          <TableBody>
+                            <TableRow>
+                              <TableCell>Bron</TableCell>
+                              <TableCell>
+                                {item.documents.map((document: any) => (
+                                  <Link
+                                    key={`${item.id}-${document.id}`}
+                                    variant="inline"
+                                    target="_blank"
+                                    href={document.src}
+                                  >
+                                    {document.name}
+                                  </Link>
+                                ))}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell>Niveau</TableCell>
+                              <TableCell>{item.level}</TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell>Thema</TableCell>
+                              <TableCell>{item.theme}</TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell>Type</TableCell>
+                              <TableCell>{item.type}</TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell>Stadsdeel</TableCell>
+                              <TableCell>{item.area}</TableCell>
+                            </TableRow>
+                          </TableBody>
+                        </Table>
+                        checklist hier
+                      </StyledAccordion>
+                    ))}
+                  </>
+                );
+              })}
           </LargeDiv>
         </Column>
       </Row>
