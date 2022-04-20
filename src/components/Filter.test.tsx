@@ -5,14 +5,6 @@ import { withTheme } from "../test/utils";
 import Filter from "./Filter";
 
 describe("Filter", () => {
-  // const mockGroups = {
-  //   source: [],
-  //   level: [],
-  //   theme: [],
-  //   type: [],
-  //   area: [],
-  // };
-
   it("renders correctly", () => {
     const { container } = render(
       withTheme(
