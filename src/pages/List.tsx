@@ -21,7 +21,7 @@ import GroupSelector from "../components/GroupSelector";
 import { FilterContext } from "../filter/FilterContext";
 import Loader from "../components/Loader";
 import Filter from "../components/Filter";
-import { HiorEnriched } from "../types";
+import { HiorEnriched, Groups } from "../types";
 import { actions } from "../filter/reducer";
 
 const StyledDiv = styled.div`
@@ -95,7 +95,7 @@ const List = () => {
       theme: [],
       type: [],
       area: [],
-    };
+    } as Groups;
     // enrich items with properties and attributes
     // @ts-ignore
     const items = results.results.map((i: any) => {
