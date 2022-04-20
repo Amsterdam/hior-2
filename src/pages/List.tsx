@@ -192,7 +192,7 @@ const List = () => {
               attributes &&
               properties &&
               groups[group].map((g: Group) => {
-                const part = filteredItems.filter((j: HiorEnriched) => g === j.theme);
+                const part = filteredItems.filter((j: any) => g === j[group]);
 
                 return (
                   <>
