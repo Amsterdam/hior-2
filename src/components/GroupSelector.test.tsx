@@ -10,6 +10,7 @@ describe("GroupSelector", () => {
     level: ["Proces"],
     theme: ["Openbare Ruimte Algemeen"],
     type: ["Advies"],
+    area: ["Centrum"],
   };
 
   it("renders correctly", () => {
@@ -31,5 +32,6 @@ describe("GroupSelector", () => {
     expect(screen.queryByText("Niveau")).toBeInTheDocument();
     expect(screen.queryByText("Thema")).toBeInTheDocument();
     expect(screen.queryByText("Type")).toBeInTheDocument();
+    expect(screen.queryByText("Stadsdeel")).toBeInTheDocument();
   });
 });

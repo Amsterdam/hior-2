@@ -34,6 +34,10 @@ const GroupSelector = ({ groups }) => {
       value: "type",
       label: "Type",
     },
+    {
+      value: "area",
+      label: "Stadsdeel",
+    },
   ];
 
   const {
