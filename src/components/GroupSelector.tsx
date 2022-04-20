@@ -15,8 +15,7 @@ const StyledTab = styled(Tab)`
   margin-bottom: ${themeSpacing(6)};
 `;
 
-//@ts-ignore
-const GroupSelector = ({ groups }) => {
+const GroupSelector = () => {
   const allGroups = [
     {
       value: "source",
@@ -42,7 +41,7 @@ const GroupSelector = ({ groups }) => {
 
   const {
     //@ts-ignore
-    state: { group },
+    state: { group, groups },
     //@ts-ignore
     dispatch,
     //@ts-ignore
@@ -62,6 +61,7 @@ const GroupSelector = ({ groups }) => {
       <Tabs label="" activeTab={group}>
         {allGroups.map((b: any) => (
           <StyledTab key={b.value} id={b.value} data-value={b.value} label={b.label} onClick={onClickGroup}>
+            {/* @ts-ignore */}
             {groups[b.value].map((group: string) => (
               <span key={group}>{group}, </span>
             ))}

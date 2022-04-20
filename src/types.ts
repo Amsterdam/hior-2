@@ -9,7 +9,15 @@ export interface Action {
   payload: any;
 }
 
-export type Group = "theme" | "source" | "level" | "type";
+export type Group = "theme" | "source" | "level" | "type" | "area";
+
+export interface Groups {
+  source: string[];
+  level: string[];
+  theme: string[];
+  type: string[];
+  area: string[];
+}
 
 export interface Filter {
   source: string;

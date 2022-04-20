@@ -22,6 +22,7 @@ import { FilterContext } from "../filter/FilterContext";
 import Loader from "../components/Loader";
 import Filter from "../components/Filter";
 import { HiorEnriched } from "../types";
+import { actions } from "../filter/reducer";
 
 const StyledDiv = styled.div`
   margin-top: ${themeSpacing(10)};
@@ -52,13 +53,6 @@ const StyledParagraph = styled(Paragraph)`
 const List = () => {
   const [properties, setProperties] = useState<any[] | null>(null);
   const [attributes, setAttributes] = useState<any[] | null>(null);
-  const [groups, setGroups] = useState<any>({
-    source: [],
-    level: [],
-    theme: [],
-    type: [],
-    area: [],
-  });
   const [allItems, setAllItems] = useState<any[]>([]);
   const { loading, results, fetchData } = useDataFetching();
 
@@ -67,12 +61,10 @@ const List = () => {
 
   const {
     //@ts-ignore
-    state: { filter },
+    state: { filter, group, groups },
     //@ts-ignore
-    // dispatch,
+    dispatch,
   } = useContext(FilterContext);
-  // eslint-disable-next-line no-console
-  // console.log("context", filter, group);
 
   const getProperties = useCallback(async () => {
     const props = await getByUri(HIOR_PROPERTIES_URL);
@@ -173,23 +165,25 @@ const List = () => {
 
     setAllItems(items);
 
-    setGroups(foundGroups);
+    dispatch(actions.setGroups(foundGroups));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [results, properties, attributes]);
 
   const filteredItems = useFilter(filter, allItems);
 
+  console.log("List render", group, groups, attributes, properties);
+
   return (
     <StyledDiv data-testid="list">
       <Row>
         <Column span={12}>
           <LargeDiv>
-            <Filter groups={groups} />
+            <Filter />
 
             <StyledHeading>Resultaten ({filteredItems.length})</StyledHeading>
 
-            <GroupSelector groups={groups} />
+            <GroupSelector />
 
             <br />
             <br />

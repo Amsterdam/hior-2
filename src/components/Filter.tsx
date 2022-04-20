@@ -21,11 +21,10 @@ const StyledMultiSelect = styled(MultiSelect)`
   width: 100%;
 `;
 
-//@ts-ignore
-const Filter = ({ groups }) => {
+const Filter = () => {
   const {
     //@ts-ignore
-    // state: { filter },
+    state: { groups },
     //@ts-ignore
     dispatch,
     //@ts-ignore
@@ -47,7 +46,7 @@ const Filter = ({ groups }) => {
     };
 
     setGroups(newFilter);
-    
+
     dispatch(actions.setFilter(newFilter));
   };
 
@@ -55,6 +54,7 @@ const Filter = ({ groups }) => {
     dispatch(actions.setFilter(initialState.filter));
   };
 
+  console.log("render", groups);
 
   return (
     <StyledDiv data-testid="filter">
