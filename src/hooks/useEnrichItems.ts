@@ -16,12 +16,9 @@ const useEnrichItems = (
 
     const {
       //@ts-ignore
-      // state: { filter, group, groups }
       dispatch,
       // eslint-disable-next-line react-hooks/rules-of-hooks
     } = useContext(FilterContext);
-
-    // const enrichedItems: ItemEnriched[] = [];
 
     const groups: Groups = {
       source: [],
@@ -30,7 +27,6 @@ const useEnrichItems = (
       type: [],
       area: [],
     };
-    console.log("useEnrichItems", items, properties, attributes);
 
     //@ts-ignore
     const enrichedItems: ItemEnriched[] = items.forEach((i: Item) => {
@@ -97,8 +93,6 @@ const useEnrichItems = (
     //   }
     //   return 0;
     // });
-
-    console.log("useEnrichItems return", enrichedItems);
 
     dispatch(actions.setGroups(groups));
 
