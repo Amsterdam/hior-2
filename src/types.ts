@@ -28,13 +28,13 @@ export interface Filter {
   query: string;
 }
 
-export interface Hior {
+export interface Item {
   id: number;
   description: string;
   text: string;
 }
 
-export interface HiorEnriched {
+export interface ItemEnriched {
   id: number;
   description: string;
   text: string;

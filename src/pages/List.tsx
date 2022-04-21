@@ -21,7 +21,7 @@ import GroupSelector from "../components/GroupSelector";
 import { FilterContext } from "../filter/FilterContext";
 import Loader from "../components/Loader";
 import Filter from "../components/Filter";
-import { HiorEnriched, Groups, Group } from "../types";
+import { ItemEnriched, Groups, Group } from "../types";
 import { actions } from "../filter/reducer";
 
 const StyledDiv = styled.div`
@@ -172,7 +172,6 @@ const List = () => {
 
   const filteredItems = useFilter(filter, allItems);
 
-  // console.log("render", groups, group);
 
   return (
     <StyledDiv data-testid="list">
@@ -200,7 +199,7 @@ const List = () => {
                       {g} ({part.length})
                     </Paragraph>
 
-                    {part.map((item: HiorEnriched) => (
+                    {part.map((item: ItemEnriched) => (
                       <StyledAccordion id={`a${item.id}`} key={item.id} title={`${item.id} ${item.text}`}>
                         <StyledParagraph>{item.description}</StyledParagraph>
                         {item?.images?.map((image: any) => (
