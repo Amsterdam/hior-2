@@ -28,14 +28,14 @@ export interface Filter {
   query: string;
 }
 
-export interface Properties {
+export interface Property {
   id: number;
   item_id: number;
   name: string;
   value: string;
 }
 
-export interface Attributes {
+export interface Attribute {
   id: number;
   item_id: number;
   name: string;
