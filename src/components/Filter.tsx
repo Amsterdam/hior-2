@@ -54,8 +54,6 @@ const Filter = () => {
     dispatch(actions.setFilter(initialState.filter));
   };
 
-  console.log("render", groups);
-
   return (
     <StyledDiv data-testid="filter">
       <form>

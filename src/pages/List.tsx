@@ -15,14 +15,14 @@ import {
 } from "@amsterdam/asc-ui";
 import useDataFetching from "../hooks/useDataFetching";
 import useFilter from "../hooks/useFilter";
-import { IMAGE_URL, HIOR_ITEMS_URL, HIOR_PROPERTIES_URL, HIOR_ATTRIBUTES_URL, DOCUMENT_URL } from "../constants";
+import { HIOR_ITEMS_URL, HIOR_PROPERTIES_URL, HIOR_ATTRIBUTES_URL } from "../constants";
 import { getByUri } from "../services/api";
 import GroupSelector from "../components/GroupSelector";
 import { FilterContext } from "../filter/FilterContext";
 import Loader from "../components/Loader";
 import Filter from "../components/Filter";
-import { ItemEnriched, Groups, Group } from "../types";
-import { actions } from "../filter/reducer";
+import { ItemEnriched, Group, Property, Attribute } from "../types";
+import useEnrichItems from "../hooks/useEnrichItems";
 
 const StyledDiv = styled.div`
   margin-top: ${themeSpacing(10)};
@@ -51,19 +51,14 @@ const StyledParagraph = styled(Paragraph)`
 `;
 
 const List = () => {
-  const [properties, setProperties] = useState<any[] | null>(null);
-  const [attributes, setAttributes] = useState<any[] | null>(null);
-  const [allItems, setAllItems] = useState<any[]>([]);
+  const [properties, setProperties] = useState<Property[] | undefined>();
+  const [attributes, setAttributes] = useState<Attribute[] | undefined>();
+  // const [allItems, setAllItems] = useState<any[]>([]);
   const { loading, results, fetchData } = useDataFetching();
-
-  // eslint-disable-next-line no-console
-  console.log("allItems", allItems);
 
   const {
     //@ts-ignore
     state: { filter, group, groups },
-    //@ts-ignore
-    dispatch,
   } = useContext(FilterContext);
 
   const getProperties = useCallback(async () => {
@@ -84,94 +79,13 @@ const List = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    if (!results || !properties || !attributes) {
-      return;
-    }
+  const enrichedItems = useEnrichItems(results?.results, properties, attributes);
 
-    const foundGroups = {
-      source: [],
-      level: [],
-      theme: [],
-      type: [],
-      area: [],
-    } as Groups;
-    // enrich items with properties and attributes
-    // @ts-ignore
-    const items = results.results.map((i: any) => {
-      const foundProps = properties.filter((a: any) => i.id === a.item_id);
-      const newAttr = {};
-      foundProps.map((attr: any) => {
-        // @ts-ignore
-        newAttr[attr.name.toLowerCase()] = attr.value;
-      });
-      const foundAttr = attributes.filter((a: any) => i.id === a.item_id);
+  const filteredItems = useFilter(filter, enrichedItems);
 
-      // @ts-ignore
-      const images = [];
-      foundAttr.forEach((a: any) => {
-        if (a.name === "Image") {
-          images.push({
-            id: a.id,
-            src: `${IMAGE_URL}${a.value}`,
-            alt: a.value,
-          });
-        }
-      });
-
-      // @ts-ignore
-      const documents = [];
-      foundAttr.forEach((a: any) => {
-        if (a.name === "SourceLink") {
-          documents.push({
-            id: a.id,
-            src: `${DOCUMENT_URL}${a.value}.pdf`,
-            name: a.value,
-          });
-        }
-      });
-
-      // @ts-ignore
-      if (!foundGroups.source.includes(newAttr.source)) foundGroups.source.push(newAttr.source);
-      // @ts-ignore
-      if (!foundGroups.level.includes(newAttr.level)) foundGroups.level.push(newAttr.level);
-      // @ts-ignoren
-      if (!foundGroups.theme.includes(newAttr.theme)) foundGroups.theme.push(newAttr.theme);
-      // @ts-ignore
-      if (!foundGroups.type.includes(newAttr.type)) foundGroups.type.push(newAttr.type);
-      // @ts-ignore
-      if (!foundGroups.area.includes(newAttr.area)) foundGroups.area.push(newAttr.area);
-
-      return {
-        ...i,
-        ...newAttr,
-        //@ts-ignore
-        images,
-        //@ts-ignore
-        documents,
-      };
-    });
-
-    // sort alphabettically
-    // const sorted = items.sort((a: any, b: any) => {
-    //   if (a.text < b.text) {
-    //     return -1;
-    //   }
-    //   if (a.text > b.text) {
-    //     return 1;
-    //   }
-    //   return 0;
-    // });
-
-    setAllItems(items);
-
-    dispatch(actions.setGroups(foundGroups));
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [results, properties, attributes]);
-
-  const filteredItems = useFilter(filter, allItems);
-
+  //@ts-ignore
+  // eslint-disable-next-line no-console
+  console.log("allItems", enrichedItems);
 
   return (
     <StyledDiv data-testid="list">
@@ -180,7 +94,7 @@ const List = () => {
           <LargeDiv>
             <Filter />
 
-            <StyledHeading>Resultaten ({filteredItems.length})</StyledHeading>
+            <StyledHeading>Resultaten ({filteredItems?.length})</StyledHeading>
 
             <GroupSelector />
 
@@ -191,15 +105,15 @@ const List = () => {
               attributes &&
               properties &&
               groups[group].map((g: Group) => {
-                const part = filteredItems.filter((j: any) => g === j[group]);
+                const part = filteredItems?.filter((j: any) => g === j[group]);                
 
                 return (
                   <>
                     <Paragraph key={g}>
-                      {g} ({part.length})
+                      {g} ({part?.length})
                     </Paragraph>
 
-                    {part.map((item: ItemEnriched) => (
+                    {part?.map((item: ItemEnriched) => (
                       <StyledAccordion id={`a${item.id}`} key={item.id} title={`${item.id} ${item.text}`}>
                         <StyledParagraph>{item.description}</StyledParagraph>
                         {item?.images?.map((image: any) => (
