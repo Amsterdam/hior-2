@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { getByUri } from "../services/api";
 import { Apicall } from "../types";
 
@@ -7,11 +7,11 @@ function useDataFetching() {
   const [results, setResults] = useState<Apicall | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
-  async function fetchData(endpoint: string) {
+  const fetchData = useCallback(async (endpoint: string) => {
     setLoading(true);
     try {
       const data = await getByUri(endpoint);
-      
+
       setResults(data.data);
     } catch (e) {
       // @ts-ignore
@@ -20,7 +20,7 @@ function useDataFetching() {
 
     setLoading(false);
     return results;
-  }
+  }, [results]);
 
   return {
     errorMessage,
