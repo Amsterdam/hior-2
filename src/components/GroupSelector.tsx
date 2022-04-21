@@ -3,6 +3,7 @@ import { Tabs, Tab, themeSpacing } from "@amsterdam/asc-ui";
 import { useContext, useCallback } from "react";
 import { FilterContext } from "../filter/FilterContext";
 import { actions } from "../filter/reducer";
+import { Selector } from "../types";
 
 const StyledDiv = styled.div`
   margin-top: ${themeSpacing(10)};
@@ -16,7 +17,7 @@ const StyledTab = styled(Tab)`
 `;
 
 const GroupSelector = () => {
-  const allGroups = [
+  const allGroups: Selector[] = [
     {
       value: "source",
       label: "Bron",
@@ -59,7 +60,7 @@ const GroupSelector = () => {
   return (
     <StyledDiv data-testid="group-selector">
       <Tabs label="" activeTab={group}>
-        {allGroups.map((b: any) => (
+        {allGroups.map((b: Selector) => (
           <StyledTab key={b.value} id={b.value} data-value={b.value} label={b.label} onClick={onClickGroup}>
             {/* @ts-ignore */}
             {groups[b.value].map((group: string) => (

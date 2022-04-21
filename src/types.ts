@@ -63,6 +63,11 @@ export interface ItemEnriched {
   documents: any[];
 }
 
+export interface Selector {
+  label: string;
+  value: string;
+}
+
 export interface Faq {
   id: number;
   question: string;
