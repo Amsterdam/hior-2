@@ -6,7 +6,7 @@ import App from "./App";
 
 jest.mock("./components/UpdatedDate", () => () => "UpdatedDate");
 
-describe("App", () => {
+describe("Routes", () => {
   it("redirect from / to home is defined", () => {
     render(
       <ThemeProvider>
