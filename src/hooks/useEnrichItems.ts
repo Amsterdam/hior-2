@@ -29,7 +29,7 @@ const useEnrichItems = (
     };
 
     //@ts-ignore
-    const enrichedItems: ItemEnriched[] = items.forEach((i: Item) => {
+    const enrichedItems: ItemEnriched[] = items.map((i: Item) => {
       const foundProps = properties.filter((a: any) => i.id === a.item_id);
       const newAttr = {};
       foundProps.map((attr: any) => {
