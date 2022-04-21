@@ -103,8 +103,8 @@ const List = () => {
                 const part = filteredItems?.filter((j: any) => g === j[group]);
 
                 return (
-                  <>
-                    <Paragraph key={g}>
+                  <span key={g}>
+                    <Paragraph>
                       {g} ({part?.length})
                     </Paragraph>
 
@@ -152,7 +152,7 @@ const List = () => {
                         checklist hier
                       </StyledAccordion>
                     ))}
-                  </>
+                  </span>
                 );
               })}
           </LargeDiv>
