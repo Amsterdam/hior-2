@@ -28,6 +28,20 @@ export interface Filter {
   query: string;
 }
 
+export interface Properties {
+  id: number;
+  item_id: number;
+  name: string;
+  value: string;
+}
+
+export interface Attributes {
+  id: number;
+  item_id: number;
+  name: string;
+  value: string;
+}
+
 export interface Item {
   id: number;
   description: string;

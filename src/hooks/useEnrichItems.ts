@@ -1,9 +1,9 @@
 import { useContext, useMemo } from "react";
 import { FilterContext } from "../filter/FilterContext";
 import { actions } from "../filter/reducer";
-import { Groups, ItemEnriched } from "../types";
+import { Groups, Properties, Attributes, ItemEnriched, Item } from "../types";
 
-function useEnrichItems(items: ItemEnriched[], properties: any, attributes: any): ItemEnriched[] {
+function useEnrichItems(items: Item[], properties: Properties[], attributes: Attributes[]): ItemEnriched[] {
   return useMemo(() => {
     const {
       //@ts-ignore
@@ -13,6 +13,7 @@ function useEnrichItems(items: ItemEnriched[], properties: any, attributes: any)
     } = useContext(FilterContext);
 
     const enrichedItems: ItemEnriched[] = [];
+
     const groups: Groups = {
       source: [],
       level: [],
