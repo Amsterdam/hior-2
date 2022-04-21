@@ -53,7 +53,6 @@ const StyledParagraph = styled(Paragraph)`
 const List = () => {
   const [properties, setProperties] = useState<Property[] | undefined>();
   const [attributes, setAttributes] = useState<Attribute[] | undefined>();
-  // const [allItems, setAllItems] = useState<any[]>([]);
   const { loading, results, fetchData } = useDataFetching();
 
   const {
@@ -83,10 +82,6 @@ const List = () => {
 
   const filteredItems = useFilter(filter, enrichedItems);
 
-  //@ts-ignore
-  // eslint-disable-next-line no-console
-  console.log("allItems", enrichedItems);
-
   return (
     <StyledDiv data-testid="list">
       <Row>
@@ -105,7 +100,7 @@ const List = () => {
               attributes &&
               properties &&
               groups[group].map((g: Group) => {
-                const part = filteredItems?.filter((j: any) => g === j[group]);                
+                const part = filteredItems?.filter((j: any) => g === j[group]);
 
                 return (
                   <>
