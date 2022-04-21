@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import { Filter, ItemEnriched } from "../types";
 
-function useFilter(filter: Filter, data: ItemEnriched[]): ItemEnriched[] {
+function useFilter(filter: Filter, items: ItemEnriched[]): ItemEnriched[] {
   return useMemo(() => {
-    let filteredData: ItemEnriched[] = data;
+    let filteredData: ItemEnriched[] = items;
 
     if (filter.source) {
       filteredData = filteredData.filter((d: ItemEnriched) => {
@@ -43,7 +43,7 @@ function useFilter(filter: Filter, data: ItemEnriched[]): ItemEnriched[] {
     }
 
     return filteredData;
-  }, [data, filter]);
+  }, [items, filter]);
 }
 
 export default useFilter;
