@@ -49,9 +49,8 @@ const GroupSelector = () => {
   } = useContext(FilterContext);
 
   const onClickGroup = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>) => {
+    (e: any) => {
       e.preventDefault();
-      //@ts-ignore
       dispatch(actions.setGroup(e.target.getAttribute("data-value")));
     },
     [dispatch],
