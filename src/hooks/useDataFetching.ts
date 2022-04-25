@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { getByUri } from "../services/api";
+import { getByUri } from "../services/utils";
 
 function useDataFetching() {
   const [errorMessage, setErrorMessage] = useState<string>();

@@ -16,7 +16,7 @@ import {
 import useDataFetching from "../hooks/useDataFetching";
 import useFilter from "../hooks/useFilter";
 import { HIOR_ITEMS_URL, HIOR_PROPERTIES_URL, HIOR_ATTRIBUTES_URL } from "../constants";
-import { getByUri } from "../services/api";
+import { getByUri } from "../services/utils";
 import GroupSelector from "../components/GroupSelector";
 import { FilterContext } from "../filter/FilterContext";
 import Loader from "../components/Loader";
