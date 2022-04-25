@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import exp from "constants";
 import { FilterContext } from "../filter/FilterContext";
 import { initialState } from "../filter/reducer";
 import { withTheme } from "../test/utils";
