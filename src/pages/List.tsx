@@ -23,6 +23,7 @@ import Loader from "../components/Loader";
 import Filter from "../components/Filter";
 import { ItemEnriched, Group, Property, Attribute } from "../types";
 import useEnrichItems from "../hooks/useEnrichItems";
+import { actions } from "../filter/reducer";
 
 const StyledDiv = styled.div`
   margin-top: ${themeSpacing(10)};
@@ -58,6 +59,8 @@ const List = () => {
   const {
     //@ts-ignore
     state: { filter, group, groups },
+    //@ts-ignore
+    dispatch,
   } = useContext(FilterContext);
 
   const getProperties = useCallback(async () => {
@@ -78,9 +81,18 @@ const List = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    dispatch(actions.setFilteredItems(filteredItems));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filter]);
+
   const enrichedItems = useEnrichItems(results?.results, properties, attributes);
 
   const filteredItems = useFilter(filter, enrichedItems);
+
+  // eslint-disable-next-line no-console
+  console.log("render", filteredItems.length);
 
   return (
     <StyledDiv data-testid="list">
