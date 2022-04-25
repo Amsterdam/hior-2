@@ -85,7 +85,7 @@ const List = () => {
     dispatch(actions.setFilteredItems(filteredItems));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filter]);
+  }, [filter, results]);
 
   const enrichedItems = useEnrichItems(results?.results, properties, attributes);
 
