@@ -43,17 +43,15 @@ const filterReducer = (state = initialState, action: Action | undefined) => {
       return {
         ...state,
         groups: {
-          ...state.groups,
           ...action.payload,
         },
       };
     case SET_FILTERED_ITEMS:
       return {
         ...state,
-        filteredItems: {
-          ...state.filteredItems,
-          ...action.payload,
-        },
+        filteredItems: [
+          ...action.payload
+        ],
       };
     default:
       return state;
