@@ -1,8 +1,8 @@
 import { Selector } from "./types";
 
-export const IMAGE_URL =  "https://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/Afbeeldingen/";
+export const IMAGE_URL = "https://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/Afbeeldingen/";
 
-export const DOCUMENT_URL =  "https://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/Documenten/";
+export const DOCUMENT_URL = "https://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/Documenten/";
 
 export const HIOR_ITEMS_URL = `https://${
   process.env.NODE_ENV === "development" ? "acc." : ""
@@ -28,21 +28,26 @@ export const ALL_GROUPS: Selector[] = [
   {
     value: "source",
     label: "Bron",
+    placeholder: "Kies een bron",
   },
   {
     value: "level",
     label: "Niveau",
+    placeholder: "Kies een niveau",
   },
   {
     value: "theme",
     label: "Thema",
+    placeholder: "Kies een thema",
   },
   {
     value: "type",
     label: "Type",
+    placeholder: "Kies een type",
   },
   {
     value: "area",
     label: "Stadsdeel",
+    placeholder: "Kies een stadsdeel",
   },
 ];

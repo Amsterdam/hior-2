@@ -66,6 +66,7 @@ export interface ItemEnriched {
 export interface Selector {
   label: string;
   value: string;
+  placeholder: string;
 }
 
 export interface Faq {
