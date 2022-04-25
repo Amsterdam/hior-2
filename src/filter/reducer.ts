@@ -1,8 +1,9 @@
-import { Action, Group, Groups, Filter } from "../types";
+import { Action, Group, Groups, Filter, ItemEnriched } from "../types";
 
 export const SET_FILTER = `SET_FILTER`;
 export const SET_GROUP = `SET_GROUP`;
 export const SET_GROUPS = `SET_GROUPS`;
+export const SET_FILTERED_ITEMS = `SET_FILTERED_ITEMS`;
 
 export const initialState = {
   filter: {
@@ -21,6 +22,7 @@ export const initialState = {
     type: [],
     area: [],
   } as Groups,
+  filteredItems: [] as ItemEnriched[],
 };
 
 const filterReducer = (state = initialState, action: Action | undefined) => {
@@ -45,6 +47,14 @@ const filterReducer = (state = initialState, action: Action | undefined) => {
           ...action.payload,
         },
       };
+    case SET_FILTERED_ITEMS:
+      return {
+        ...state,
+        filteredItems: {
+          ...state.filteredItems,
+          ...action.payload,
+        },
+      };
     default:
       return state;
   }
@@ -54,6 +64,7 @@ export const actions = {
   setFilter: (payload: Filter) => ({ type: SET_FILTER, payload }),
   setGroup: (payload: string) => ({ type: SET_GROUP, payload }),
   setGroups: (payload: Groups) => ({ type: SET_GROUPS, payload }),
+  setFilteredItems: (payload: ItemEnriched[]) => ({ type: SET_FILTERED_ITEMS, payload }),
 };
 
 export default filterReducer;
