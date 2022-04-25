@@ -6,6 +6,7 @@ import MultiSelect from "react-multiple-select-dropdown-lite";
 import { useContext, useState } from "react";
 import { FilterContext } from "../filter/FilterContext";
 import { actions, initialState } from "../filter/reducer";
+import { getCount } from "../services/utils";
 
 const StyledDiv = styled.div`
   margin-bottom: ${themeSpacing(10)};
@@ -24,7 +25,7 @@ const StyledMultiSelect = styled(MultiSelect)`
 const Filter = () => {
   const {
     //@ts-ignore
-    state: { groups },
+    state: { groups, filteredItems },
     //@ts-ignore
     dispatch,
     //@ts-ignore
@@ -64,7 +65,10 @@ const Filter = () => {
               <StyledMultiSelect
                 name="source"
                 placeholder="Kies een bron"
-                options={groups.source.map((option: string) => ({ label: option, value: option }))}
+                options={groups.source.map((option: string) => ({
+                  label: `${option} (${getCount(filteredItems, "source", option)})`,
+                  value: option,
+                }))}
                 onChange={(values: string) => {
                   updateFilter("source", values);
                 }}
@@ -73,7 +77,10 @@ const Filter = () => {
               <StyledMultiSelect
                 name="theme"
                 placeholder="Kies een thema"
-                options={groups.theme.map((option: string) => ({ label: option, value: option }))}
+                options={groups.theme.map((option: string) => ({
+                  label: `${option} (${getCount(filteredItems, "theme", option)})`,
+                  value: option,
+                }))}
                 onChange={(values: string) => {
                   updateFilter("theme", values);
                 }}
@@ -82,7 +89,10 @@ const Filter = () => {
               <StyledMultiSelect
                 name="area"
                 placeholder="Kies een standsdeel"
-                options={groups.area.map((option: string) => ({ label: option, value: option }))}
+                options={groups.area.map((option: string) => ({
+                  label: `${option} (${getCount(filteredItems, "area", option)})`,
+                  value: option,
+                }))}
                 onChange={(values: string) => {
                   updateFilter("area", values);
                 }}
@@ -96,7 +106,10 @@ const Filter = () => {
               <StyledMultiSelect
                 placeholder="Kies een niveau"
                 name="level"
-                options={groups.level.map((option: string) => ({ label: option, value: option }))}
+                options={groups.level.map((option: string) => ({
+                  label: `${option} (${getCount(filteredItems, "level", option)})`,
+                  value: option,
+                }))}
                 onChange={(values: string) => {
                   updateFilter("level", values);
                 }}
@@ -105,7 +118,10 @@ const Filter = () => {
               <StyledMultiSelect
                 placeholder="Kies een type"
                 name="type"
-                options={groups.type.map((option: string) => ({ label: option, value: option }))}
+                options={groups.type.map((option: string) => ({
+                  label: `${option} (${getCount(filteredItems, "type", option)})`,
+                  value: option,
+                }))}
                 onChange={(values: string) => {
                   updateFilter("type", values);
                 }}

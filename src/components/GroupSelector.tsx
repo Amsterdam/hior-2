@@ -4,6 +4,7 @@ import { useContext, useCallback } from "react";
 import { FilterContext } from "../filter/FilterContext";
 import { actions } from "../filter/reducer";
 import { Selector } from "../types";
+import { getCount } from "../services/utils";
 
 const StyledDiv = styled.div`
   margin-top: ${themeSpacing(10)};
@@ -42,7 +43,7 @@ const GroupSelector = () => {
 
   const {
     //@ts-ignore
-    state: { group, groups },
+    state: { group, groups, filteredItems },
     //@ts-ignore
     dispatch,
     //@ts-ignore
@@ -60,10 +61,19 @@ const GroupSelector = () => {
     <StyledDiv data-testid="group-selector">
       <Tabs label="" activeTab={group}>
         {allGroups.map((b: Selector) => (
-          <StyledTab key={b.value} data-testid={`button-${b.value}`} id={b.value} data-value={b.value} label={b.label} onClick={onClickGroup}>
+          <StyledTab
+            key={b.value}
+            data-testid={`button-${b.value}`}
+            id={b.value}
+            data-value={b.value}
+            label={b.label}
+            onClick={onClickGroup}
+          >
             {/* @ts-ignore */}
-            {groups[b.value].map((group: string) => (
-              <span key={group}>{group}, </span>
+            {groups[b.value].map((group) => (
+              <span key={group}>
+                {group} ({getCount(filteredItems, b.value, group)}),{" "}
+              </span>
             ))}
           </StyledTab>
         ))}
