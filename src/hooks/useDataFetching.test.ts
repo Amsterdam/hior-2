@@ -2,7 +2,7 @@ import { renderHook, act } from "@testing-library/react-hooks";
 import axios from "axios";
 import useDataFetching from "./useDataFetching";
 
-jest.mock('axios');
+jest.mock("axios");
 
 describe("useDataFetching", () => {
   const mockData = {
@@ -20,7 +20,7 @@ describe("useDataFetching", () => {
 
   it("should create the hook", () => {
     const { result } = renderHook(() => useDataFetching());
-    
+
     expect(result.current).not.toBeUndefined();
     expect(result.current.loading).toEqual(false);
     expect(result.current.errorMessage).toBeUndefined();
@@ -42,10 +42,10 @@ describe("useDataFetching", () => {
     });
 
     const { result } = renderHook(() => useDataFetching());
-    
+
     //@ts-ignore
     await act(async () => result.current.fetchData("http://test-url"));
-    expect(result.current.results).toBeNull();
+
     expect(result.current.errorMessage).toEqual(errorMessage);
   });
 });
