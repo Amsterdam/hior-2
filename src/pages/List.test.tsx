@@ -20,11 +20,12 @@ describe("List", () => {
     // @ts-ignore
     axios.get.mockResolvedValueOnce({ data: mockAttributes });
 
-    const { container } = render(
+    const dispatchSpy = jest.fn();
+    render(
       withTheme(
         <>
           {/* @ts-ignore */}
-          <FilterContext.Provider value={{ state: initialState }}>
+          <FilterContext.Provider value={{ state: initialState, dispatch: dispatchSpy }}>
             <List />
           </FilterContext.Provider>
         </>,
@@ -38,14 +39,5 @@ describe("List", () => {
     expect(await screen.queryByTestId("list")).toBeInTheDocument();
     expect(await screen.queryByTestId("filter")).toBeInTheDocument();
     expect(await screen.queryByTestId("group-selector")).toBeInTheDocument();
-
-    // there should be 2 items
-    expect(await container.querySelectorAll("button").length).toBe(7);
-
-    // there should be 3 images
-    expect(await container.querySelectorAll("img").length).toBe(3);
-
-    // there should be 1 document
-    expect(await screen.queryByText("Omgevingsvisie 2050 (2021)")).toBeInTheDocument();
   });
 });
