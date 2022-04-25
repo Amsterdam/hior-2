@@ -5,6 +5,7 @@ import { FilterContext } from "../filter/FilterContext";
 import { actions } from "../filter/reducer";
 import { Selector } from "../types";
 import { getCount } from "../services/utils";
+import { ALL_GROUPS } from "../constants";
 
 const StyledDiv = styled.div`
   margin-top: ${themeSpacing(10)};
@@ -18,29 +19,6 @@ const StyledTab = styled(Tab)`
 `;
 
 const GroupSelector = () => {
-  const allGroups: Selector[] = [
-    {
-      value: "source",
-      label: "Bron",
-    },
-    {
-      value: "level",
-      label: "Niveau",
-    },
-    {
-      value: "theme",
-      label: "Thema",
-    },
-    {
-      value: "type",
-      label: "Type",
-    },
-    {
-      value: "area",
-      label: "Stadsdeel",
-    },
-  ];
-
   const {
     //@ts-ignore
     state: { group, groups, filteredItems },
@@ -60,7 +38,7 @@ const GroupSelector = () => {
   return (
     <StyledDiv data-testid="group-selector">
       <Tabs label="" activeTab={group}>
-        {allGroups.map((b: Selector) => (
+        {ALL_GROUPS.map((b: Selector) => (
           <StyledTab
             key={b.value}
             data-testid={`button-${b.value}`}
