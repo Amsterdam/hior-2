@@ -40,7 +40,7 @@ const GroupSelector = () => {
       if (count > 0) {
         return (
           <span>
-            {value} ({count}){" "}
+            {value} ({count}),&nbsp;&nbsp;
           </span>
         );
       }
