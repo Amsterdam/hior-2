@@ -90,7 +90,7 @@ const List = () => {
     dispatch(actions.setFilteredItems(filteredItems));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filter, results]);
+  }, [attributes, properties, filter]);
 
   const renderTitle = useCallback((title: string, count: number): ReactNode => {
     if (count > 0) {

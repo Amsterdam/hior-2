@@ -49,9 +49,7 @@ const filterReducer = (state = initialState, action: Action | undefined) => {
     case SET_FILTERED_ITEMS:
       return {
         ...state,
-        filteredItems: [
-          ...action.payload
-        ],
+        filteredItems: [...action.payload],
       };
     default:
       return state;
