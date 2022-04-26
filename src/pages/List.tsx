@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from "react";
+import { ReactNode, useCallback, useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import {
   Accordion,
@@ -87,6 +87,18 @@ const List = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter, results]);
 
+  const renderTitle = useCallback((title: string, count: number): ReactNode => {
+    if (count > 0) {
+      return (
+        <Paragraph>
+          {title} ({count})
+        </Paragraph>
+      );
+      return <span></span>;
+    }
+    return <span></span>;
+  }, []);
+
   const enrichedItems = useEnrichItems(results?.results, properties, attributes);
 
   const filteredItems = useFilter(filter, enrichedItems);
@@ -116,9 +128,7 @@ const List = () => {
 
                 return (
                   <span key={g}>
-                    <Paragraph>
-                      {g} ({part?.length})
-                    </Paragraph>
+                    {renderTitle(g, part?.length)}
 
                     {part?.map((item: ItemEnriched) => (
                       <StyledAccordion id={`a${item.id}`} key={item.id} title={`${item.id} ${item.text}`}>
