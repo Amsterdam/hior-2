@@ -36,7 +36,7 @@ const Filter = () => {
     //@ts-ignore
   } = useContext(FilterContext);
 
-  const [allGroups, setGroups] = useState<any>({
+  const [filter, setFilter] = useState<any>({
     source: "",
     level: "",
     theme: "",
@@ -48,15 +48,15 @@ const Filter = () => {
   const updateFilter = useCallback(
     (group: string, values: string) => {
       const newFilter = {
-        ...allGroups,
+        ...filter,
         [group]: values,
       };
 
-      setGroups(newFilter);
+      setFilter(newFilter);
 
       dispatch(actions.setFilter(newFilter));
     },
-    [allGroups, dispatch],
+    [filter, dispatch],
   );
 
   const resetFilter = useCallback(() => {

@@ -1,6 +1,6 @@
+import { useContext, useCallback, ReactNode } from "react";
 import styled from "styled-components";
 import { Tabs, Tab, themeSpacing } from "@amsterdam/asc-ui";
-import { useContext, useCallback, ReactNode } from "react";
 import { FilterContext } from "../filter/FilterContext";
 import { actions } from "../filter/reducer";
 import { Selector } from "../types";
