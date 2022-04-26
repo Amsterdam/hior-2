@@ -1,4 +1,4 @@
-import { useCallback, useContext, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import "react-multiple-select-dropdown-lite/dist/index.css";
 import styled from "styled-components";
 import { Button, Input, Label, themeSpacing } from "@amsterdam/asc-ui";
@@ -6,7 +6,6 @@ import { Button, Input, Label, themeSpacing } from "@amsterdam/asc-ui";
 import MultiSelect from "react-multiple-select-dropdown-lite";
 import { FilterContext } from "../filter/FilterContext";
 import { actions, initialState } from "../filter/reducer";
-import { getCount } from "../services/utils";
 
 const StyledDiv = styled.div`
   margin-bottom: ${themeSpacing(10)};
@@ -36,6 +35,12 @@ const Filter = () => {
     //@ts-ignore
   } = useContext(FilterContext);
 
+  const [source, setSoure] = useState<string[]>([]);
+  const [level, setLevel] = useState<string[]>([]);
+  const [theme, setTheme] = useState<string[]>([]);
+  const [type, setType] = useState<string[]>([]);
+  const [area, setArea] = useState<string[]>([]);
+
   const [filter, setFilter] = useState<any>({
     source: "",
     level: "",
@@ -59,6 +64,23 @@ const Filter = () => {
     [filter, dispatch],
   );
 
+  useEffect(() => {
+    setSoure(formatGroup("source"));
+    setLevel(formatGroup("level"));
+    setTheme(formatGroup("theme"));
+    setType(formatGroup("type"));
+    setArea(formatGroup("area"));
+    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [groups]);
+
+  const formatGroup = useCallback((group: string) => {
+    return groups[group].map((option: string) => ({
+      label: option,
+      value: option,
+    }));
+  }, [groups]);
+
   const resetFilter = useCallback(() => {
     dispatch(actions.setFilter(initialState.filter));
   }, [dispatch]);
@@ -71,10 +93,7 @@ const Filter = () => {
           <StyledMultiSelect
             name="source"
             placeholder="Kies een bron"
-            options={groups.source.map((option: string) => ({
-              label: `${option} (${getCount(filteredItems, "source", option)})`,
-              value: option,
-            }))}
+            options={source}
             onChange={(values: string) => {
               updateFilter("source", values);
             }}
@@ -83,10 +102,7 @@ const Filter = () => {
           <StyledMultiSelect
             name="theme"
             placeholder="Kies een thema"
-            options={groups.theme.map((option: string) => ({
-              label: `${option} (${getCount(filteredItems, "theme", option)})`,
-              value: option,
-            }))}
+            options={theme}
             onChange={(values: string) => {
               updateFilter("theme", values);
             }}
@@ -95,10 +111,7 @@ const Filter = () => {
           <StyledMultiSelect
             name="area"
             placeholder="Kies een standsdeel"
-            options={groups.area.map((option: string) => ({
-              label: `${option} (${getCount(filteredItems, "area", option)})`,
-              value: option,
-            }))}
+            options={area}
             onChange={(values: string) => {
               updateFilter("area", values);
             }}
@@ -110,10 +123,7 @@ const Filter = () => {
           <StyledMultiSelect
             placeholder="Kies een niveau"
             name="level"
-            options={groups.level.map((option: string) => ({
-              label: `${option} (${getCount(filteredItems, "level", option)})`,
-              value: option,
-            }))}
+            options={level}
             onChange={(values: string) => {
               updateFilter("level", values);
             }}
@@ -122,10 +132,7 @@ const Filter = () => {
           <StyledMultiSelect
             placeholder="Kies een type"
             name="type"
-            options={groups.type.map((option: string) => ({
-              label: `${option} (${getCount(filteredItems, "type", option)})`,
-              value: option,
-            }))}
+            options={type}
             onChange={(values: string) => {
               updateFilter("type", values);
             }}
