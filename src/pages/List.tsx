@@ -108,9 +108,6 @@ const List = () => {
 
   const filteredItems = useFilter(filter, enrichedItems);
 
-  // eslint-disable-next-line no-console
-  console.log("render", filteredItems.length);
-
   return (
     <StyledDiv data-testid="list">
       <Row>
