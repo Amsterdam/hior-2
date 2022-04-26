@@ -1,9 +1,9 @@
+import { useCallback, useContext, useState } from "react";
 import "react-multiple-select-dropdown-lite/dist/index.css";
 import styled from "styled-components";
 import { Button, Input, Label, themeSpacing } from "@amsterdam/asc-ui";
 //@ts-ignore
 import MultiSelect from "react-multiple-select-dropdown-lite";
-import { useContext, useState } from "react";
 import { FilterContext } from "../filter/FilterContext";
 import { actions, initialState } from "../filter/reducer";
 import { getCount } from "../services/utils";
@@ -45,20 +45,23 @@ const Filter = () => {
     query: "",
   });
 
-  const updateFilter = (group: string, values: string) => {
-    const newFilter = {
-      ...allGroups,
-      [group]: values,
-    };
+  const updateFilter = useCallback(
+    (group: string, values: string) => {
+      const newFilter = {
+        ...allGroups,
+        [group]: values,
+      };
 
-    setGroups(newFilter);
+      setGroups(newFilter);
 
-    dispatch(actions.setFilter(newFilter));
-  };
+      dispatch(actions.setFilter(newFilter));
+    },
+    [allGroups, dispatch],
+  );
 
-  const resetFilter = () => {
+  const resetFilter = useCallback(() => {
     dispatch(actions.setFilter(initialState.filter));
-  };
+  }, [dispatch]);
 
   return (
     <StyledDiv data-testid="filter">
