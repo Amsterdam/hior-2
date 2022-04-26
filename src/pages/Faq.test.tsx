@@ -39,7 +39,7 @@ describe("Faq", () => {
 
       expect(await screen.queryByTestId("faq")).toBeInTheDocument();
 
-      expect(await container.querySelectorAll("BUTTON").length).toBe(3);
+      expect(await container.querySelectorAll("button").length).toBe(3);
 
       expect(await screen.queryByText("vraag 1")).toBeInTheDocument();
       expect(await screen.queryByText("antwoord 1")).toBeInTheDocument();

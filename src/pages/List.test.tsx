@@ -8,6 +8,9 @@ import { mockItems, mockProperties, mockAttributes } from "./List.fixtures";
 
 jest.mock("axios");
 
+jest.mock("../components/Filter", () => () => "Filter");
+jest.mock("../components/GroupSelector", () => () => "GroupSelector");
+
 describe("List", () => {
   it("renders correctly", async () => {
     // items
@@ -20,12 +23,21 @@ describe("List", () => {
     // @ts-ignore
     axios.get.mockResolvedValueOnce({ data: mockAttributes });
 
+    const mockState = {
+      ...initialState,
+      groups: {
+        ...initialState.groups,
+        theme: ["12. Groen"],
+      },
+    };
+
     const dispatchSpy = jest.fn();
-    render(
+
+    const { container } = render(
       withTheme(
         <>
           {/* @ts-ignore */}
-          <FilterContext.Provider value={{ state: initialState, dispatch: dispatchSpy }}>
+          <FilterContext.Provider value={{ state: mockState, dispatch: dispatchSpy }}>
             <List />
           </FilterContext.Provider>
         </>,
@@ -37,7 +49,14 @@ describe("List", () => {
     });
 
     expect(await screen.queryByTestId("list")).toBeInTheDocument();
-    expect(await screen.queryByTestId("filter")).toBeInTheDocument();
-    expect(await screen.queryByTestId("group-selector")).toBeInTheDocument();
+
+    expect(await screen.queryByText("Thema")).toBeInTheDocument();
+    expect(await screen.queryByText("Bron")).toBeInTheDocument();
+    expect(await screen.queryByText("Niveau")).toBeInTheDocument();
+    expect(await screen.queryByText("Stadsdeel")).toBeInTheDocument();
+    expect(await screen.queryByText("Type")).toBeInTheDocument();
+
+    // there should be 3 images
+    expect(container.querySelectorAll("img").length).toBe(3);
   });
 });
