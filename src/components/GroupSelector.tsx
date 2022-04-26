@@ -4,7 +4,6 @@ import { useContext, useCallback } from "react";
 import { FilterContext } from "../filter/FilterContext";
 import { actions } from "../filter/reducer";
 import { Selector } from "../types";
-import { getCount } from "../services/utils";
 import { ALL_GROUPS } from "../constants";
 
 const StyledDiv = styled.div`
@@ -35,6 +34,21 @@ const GroupSelector = () => {
     [dispatch],
   );
 
+  const renderItem = useCallback(
+    (group: string, value: string) => {
+      const count = filteredItems?.filter((item: any) => item[group] === value).length;
+      if (count > 0) {
+        return (
+          <span>
+            {value} ({count}){" "}
+          </span>
+        );
+      }
+      return <span></span>;
+    },
+    [filteredItems],
+  );
+
   return (
     <StyledDiv data-testid="group-selector">
       <Tabs label="" activeTab={group}>
@@ -47,11 +61,8 @@ const GroupSelector = () => {
             label={b.label}
             onClick={onClickGroup}
           >
-            {/* @ts-ignore */}
-            {groups[b.value].map((group) => (
-              <span key={group}>
-                {group} ({getCount(filteredItems, b.value, group)}),{" "}
-              </span>
+            {groups[b.value].map((group: string) => (
+              <span key={group}>{renderItem(b.value, group)}</span>
             ))}
           </StyledTab>
         ))}
