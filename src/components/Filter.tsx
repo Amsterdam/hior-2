@@ -70,16 +70,19 @@ const Filter = () => {
     setTheme(formatGroup("theme"));
     setType(formatGroup("type"));
     setArea(formatGroup("area"));
-    
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [groups]);
 
-  const formatGroup = useCallback((group: string) => {
-    return groups[group].map((option: string) => ({
-      label: option,
-      value: option,
-    }));
-  }, [groups]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [groups, filteredItems]);
+
+  const formatGroup = useCallback(
+    (group: string) => {
+      return groups[group].map((option: string) => {
+        const count = filteredItems?.filter((item: any) => item[group] === option).length;
+        return { label: `${option} (${count})`, value: option };
+      });
+    },
+    [filteredItems, groups],
+  );
 
   const resetFilter = useCallback(() => {
     dispatch(actions.setFilter(initialState.filter));
