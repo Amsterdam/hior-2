@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Tabs, Tab, themeSpacing } from "@amsterdam/asc-ui";
-import { useContext, useCallback } from "react";
+import { useContext, useCallback, ReactNode } from "react";
 import { FilterContext } from "../filter/FilterContext";
 import { actions } from "../filter/reducer";
 import { Selector } from "../types";
@@ -35,7 +35,7 @@ const GroupSelector = () => {
   );
 
   const renderItem = useCallback(
-    (group: string, value: string) => {
+    (group: string, value: string): ReactNode => {
       const count = filteredItems?.filter((item: any) => item[group] === value).length;
       if (count > 0) {
         return (
