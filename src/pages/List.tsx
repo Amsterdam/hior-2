@@ -51,6 +51,11 @@ const StyledParagraph = styled(Paragraph)`
   white-space: pre-wrap;
 `;
 
+const StyledTitle = styled(Paragraph)`
+  margin-top: ${themeSpacing(9)};
+  font-weight: bold;
+`;
+
 const List = () => {
   const [properties, setProperties] = useState<Property[] | undefined>();
   const [attributes, setAttributes] = useState<Attribute[] | undefined>();
@@ -90,9 +95,9 @@ const List = () => {
   const renderTitle = useCallback((title: string, count: number): ReactNode => {
     if (count > 0) {
       return (
-        <Paragraph>
+        <StyledTitle>
           {title} ({count})
-        </Paragraph>
+        </StyledTitle>
       );
       return <span></span>;
     }
