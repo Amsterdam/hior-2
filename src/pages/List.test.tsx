@@ -56,6 +56,9 @@ describe("List", () => {
     expect(await screen.queryByText("Stadsdeel")).toBeInTheDocument();
     expect(await screen.queryByText("Type")).toBeInTheDocument();
 
+    // there should be 1 item
+    expect(container.querySelectorAll("button").length).toBe(1);
+
     // there should be 3 images
     expect(container.querySelectorAll("img").length).toBe(3);
   });
