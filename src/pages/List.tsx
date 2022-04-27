@@ -24,6 +24,7 @@ import Filter from "../components/Filter";
 import { ItemEnriched, Group, Property, Attribute } from "../types";
 import useEnrichItems from "../hooks/useEnrichItems";
 import { actions } from "../filter/reducer";
+import { ALL_GROUPS } from "../constants";
 
 const StyledDiv = styled.div`
   margin-top: ${themeSpacing(10)};
@@ -94,15 +95,16 @@ const List = () => {
 
   const renderTitle = useCallback((title: string, count: number): ReactNode => {
     if (count > 0) {
+      const label = ALL_GROUPS.find((item) => item.value === group)?.label;
       return (
         <StyledTitle>
-          {title} ({count})
+          {label}: {title} ({count})
         </StyledTitle>
       );
-      return <span></span>;
+      return null;
     }
     return <span></span>;
-  }, []);
+  }, [group]);
 
   const enrichedItems = useEnrichItems(results?.results, properties, attributes);
 
