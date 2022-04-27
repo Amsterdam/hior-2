@@ -43,11 +43,11 @@ const Home = () => {
       <Row data-testid="home">
         <Column span={2}>
           <div style={{ marginTop: "50px" }}>
-            <StyledImg src="intro1.jpg" alt="test" />
-            <StyledImg src="intro2.jpg" alt="test" />
-            <StyledImg src="intro3.jpg" alt="test" />
-            <StyledImg src="intro4.jpg" alt="test" />
-            <StyledImg src="intro5.jpg" alt="test" />
+            <StyledImg src="images/intro1.jpg" alt="test" />
+            <StyledImg src="images/intro2.jpg" alt="test" />
+            <StyledImg src="images/intro3.jpg" alt="test" />
+            <StyledImg src="images/intro4.jpg" alt="test" />
+            <StyledImg src="images/intro5.jpg" alt="test" />
           </div>
         </Column>
 
