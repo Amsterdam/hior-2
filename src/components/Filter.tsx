@@ -22,7 +22,8 @@ const StyledMultiSelect = styled(MultiSelect)`
 `;
 
 const SyledColumn = styled.div`
-  width: 50%;
+  width: calc(50% - ${themeSpacing(5)});
+  margin-right: ${themeSpacing(5)};
   float: left;
 `;
 
