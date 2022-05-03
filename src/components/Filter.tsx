@@ -98,13 +98,13 @@ const Filter = () => {
     <StyledDiv data-testid="filter">
       <form>
         <SyledColumn>
-          <Label label="Bron" />
+          <Label label="Type" />
           <StyledMultiSelect
-            name="source"
-            placeholder="Kies een bron"
-            options={source}
+            placeholder="Kies een type"
+            name="type"
+            options={type}
             onChange={(values: string) => {
-              updateFilter("source", values);
+              updateFilter("type", values);
             }}
           />
           <Label label="Thema" />
@@ -116,18 +116,7 @@ const Filter = () => {
               updateFilter("theme", values);
             }}
           />
-          <Label label="Stadsdeel" />
-          <StyledMultiSelect
-            name="area"
-            placeholder="Kies een standsdeel"
-            options={area}
-            onChange={(values: string) => {
-              updateFilter("area", values);
-            }}
-          />
-        </SyledColumn>
 
-        <SyledColumn>
           <Label label="Niveau" />
           <StyledMultiSelect
             placeholder="Kies een niveau"
@@ -137,15 +126,27 @@ const Filter = () => {
               updateFilter("level", values);
             }}
           />
-          <Label label="Type" />
+        </SyledColumn>
+        <SyledColumn>
+          <Label label="Algemeen beleid (Heel Amsterdam) of aanvullend beleid per stadsdeel?" />
           <StyledMultiSelect
-            placeholder="Kies een type"
-            name="type"
-            options={type}
+            name="area"
+            placeholder="Kies een standsdeel"
+            options={area}
             onChange={(values: string) => {
-              updateFilter("type", values);
+              updateFilter("area", values);
             }}
           />
+          <Label label="Bron" />
+          <StyledMultiSelect
+            name="source"
+            placeholder="Kies een bron"
+            options={source}
+            onChange={(values: string) => {
+              updateFilter("source", values);
+            }}
+          />
+
           <Label label="Filter op tekst" />
           <Input
             type="text"
