@@ -2,6 +2,9 @@
   "name": "frontend-react-template",
   "version": "0.1.0",
   "private": false,
+  "overrides": {
+    "@types/react": "^18.0.0"
+  },
   "dependencies": {
     "@amsterdam/arm-core": "^0.9.0",
     "@amsterdam/asc-assets": "^0.35.0",
