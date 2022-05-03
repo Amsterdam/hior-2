@@ -2,6 +2,7 @@ import { useContext, useMemo } from "react";
 import { DOCUMENT_URL, IMAGE_URL } from "../constants";
 import { FilterContext } from "../filter/FilterContext";
 import { actions } from "../filter/reducer";
+import { sortAsc } from "../services/utils";
 import { Groups, Property, Attribute, ItemEnriched, Item } from "../types";
 
 const useEnrichItems = (
@@ -83,16 +84,11 @@ const useEnrichItems = (
       };
     });
 
-    // sort alphabettically
-    // const sorted = items.sort((a: any, b: any) => {
-    //   if (a.text < b.text) {
-    //     return -1;
-    //   }
-    //   if (a.text > b.text) {
-    //     return 1;
-    //   }
-    //   return 0;
-    // });
+    groups.theme = groups.theme.sort((a: any, b: any) => sortAsc(a, b));
+    groups.type = groups.type.sort((a: any, b: any) => sortAsc(a, b));
+    groups.level = groups.level.sort((a: any, b: any) => sortAsc(a, b));
+    groups.source = groups.source.sort((a: any, b: any) => sortAsc(a, b));
+    groups.area = groups.area.sort((a: any, b: any) => sortAsc(a, b));
 
     dispatch(actions.setGroups(groups));
 
