@@ -31,13 +31,13 @@ describe("List", () => {
       },
     };
 
-    const dispatchSpy = jest.fn();
+    const spy = jest.fn();
 
     const { container } = render(
       withTheme(
         <>
           {/* @ts-ignore */}
-          <FilterContext.Provider value={{ state: mockState, dispatch: dispatchSpy }}>
+          <FilterContext.Provider value={{ state: mockState, dispatch: spy }}>
             <List />
           </FilterContext.Provider>
         </>,
@@ -50,16 +50,15 @@ describe("List", () => {
 
     expect(await screen.queryByTestId("list")).toBeInTheDocument();
 
+    expect(await screen.queryByText("Resultaten (2)")).toBeInTheDocument();
+
     expect(await screen.queryByText("Thema")).toBeInTheDocument();
     expect(await screen.queryByText("Bron")).toBeInTheDocument();
     expect(await screen.queryByText("Niveau")).toBeInTheDocument();
     expect(await screen.queryByText("Stadsdeel")).toBeInTheDocument();
     expect(await screen.queryByText("Type")).toBeInTheDocument();
 
-    // there should be 1 item
-    expect(container.querySelectorAll("button").length).toBe(1);
-
-    // there should be 3 images
-    expect(container.querySelectorAll("img").length).toBe(3);
+    // there should be 3 images + 1 cathegory icon
+    expect(container.querySelectorAll("img").length).toBe(4);
   });
 });
