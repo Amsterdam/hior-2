@@ -57,6 +57,12 @@ const StyledTitle = styled(Paragraph)`
   font-weight: bold;
 `;
 
+const StyledIcon = styled.img`
+  width: 32px;
+  height: 32px;
+  margin-right: 16px;
+`;
+
 const List = () => {
   const [properties, setProperties] = useState<Property[] | undefined>();
   const [attributes, setAttributes] = useState<Attribute[] | undefined>();
@@ -97,9 +103,11 @@ const List = () => {
     (title: string, count: number): ReactNode => {
       if (count > 0) {
         const label = ALL_GROUPS.find((item) => item.value === group)?.label;
+        const image = title.replace(/\d+\d*\. */g, "");
         return (
-          <StyledTitle id={title.replace(' ', '-')}>
-            {label}: {title} ({count})
+          <StyledTitle id={title.replace(" ", "-")}>
+            {group === "theme" && <StyledIcon src={`icons/${image}.png`} alt={title}></StyledIcon>} {label}: {title} (
+            {count})
           </StyledTitle>
         );
         return null;
