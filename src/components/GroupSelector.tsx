@@ -1,6 +1,6 @@
 import { useContext, useCallback, ReactNode } from "react";
 import styled from "styled-components";
-import { Tabs, Tab, themeSpacing } from "@amsterdam/asc-ui";
+import { Link, Tabs, Tab, themeSpacing } from "@amsterdam/asc-ui";
 import { FilterContext } from "../filter/FilterContext";
 import { actions } from "../filter/reducer";
 import { Selector } from "../types";
@@ -40,7 +40,9 @@ const GroupSelector = () => {
       if (count > 0) {
         return (
           <span>
-            {value} ({count}),&nbsp;&nbsp;
+            <Link href={`#${value.replace(" ", "-")}`} variant="inline">
+              {value} ({count}),&nbsp;&nbsp;
+            </Link>
           </span>
         );
       }

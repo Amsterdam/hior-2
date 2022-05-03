@@ -93,18 +93,21 @@ const List = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [attributes, properties, filter]);
 
-  const renderTitle = useCallback((title: string, count: number): ReactNode => {
-    if (count > 0) {
-      const label = ALL_GROUPS.find((item) => item.value === group)?.label;
-      return (
-        <StyledTitle>
-          {label}: {title} ({count})
-        </StyledTitle>
-      );
-      return null;
-    }
-    return <span></span>;
-  }, [group]);
+  const renderTitle = useCallback(
+    (title: string, count: number): ReactNode => {
+      if (count > 0) {
+        const label = ALL_GROUPS.find((item) => item.value === group)?.label;
+        return (
+          <StyledTitle id={title.replace(' ', '-')}>
+            {label}: {title} ({count})
+          </StyledTitle>
+        );
+        return null;
+      }
+      return <span></span>;
+    },
+    [group],
+  );
 
   const enrichedItems = useEnrichItems(results?.results, properties, attributes);
 
