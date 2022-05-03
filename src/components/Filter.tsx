@@ -77,14 +77,6 @@ const Filter = () => {
 
   const formatGroup = (group: string) => {
     return groups[group].map((option: string) => {
-      let newFilter = filter;
-      if (!filter[group].includes(option)) {
-        newFilter = { ...filter, [group]: `${filter[group]},${option}` };
-      }
-      console.log("r", group, option, newFilter);
-
-      // const items = useFilter(newFilter, filteredItems);
-
       const count = filteredItems?.filter((item: any) => item[group] === option).length;
       return { label: `${option} (${count})`, value: option };
     });
