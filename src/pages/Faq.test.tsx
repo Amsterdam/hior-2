@@ -34,6 +34,10 @@ describe("Faq", () => {
     const { container } = render(withTheme(<Faq />));
 
     await act(async () => {
+      //
+    });
+
+    await act(async () => {
       expect(await screen.queryByTestId("faq")).toBeInTheDocument();
       expect(await screen.queryByText("Veelgestelde vragen")).toBeInTheDocument();
 
