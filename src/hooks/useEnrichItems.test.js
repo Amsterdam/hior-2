@@ -1,11 +1,22 @@
 import { renderHook } from "@testing-library/react-hooks";
-import { Attribute, Item, Property } from "../types";
+// import React from "react";
+import { FilterContext } from "../filter/FilterContext";
+import { initialState } from "../filter/reducer";
 
 import useEnrichItems from "./useEnrichItems";
 
 describe("useEnrichItems", () => {
+  const spy = jest.fn();
+
+  // eslint-disable-next-line react/prop-types
+  const FilterContextProvider = ({ children }) => (
+    <FilterContext.Provider value={{ state: initialState, dispatch: spy }}>{children}</FilterContext.Provider>
+  );
+
+  const wrapper = ({ children }) => <FilterContextProvider>{children}</FilterContextProvider>;
+
   it("shoulf enrich all items", () => {
-    const mockItems: Item[] = [
+    const mockItems = [
       {
         description: "De Amsterdamse openbare ruimte speelt een hoofdrol in het sociale en economische succes.",
         id: 2,
@@ -13,7 +24,7 @@ describe("useEnrichItems", () => {
       },
     ];
 
-    const mockProperties: Property[] = [
+    const mockProperties = [
       {
         id: 3,
         item_id: 2,
@@ -40,7 +51,7 @@ describe("useEnrichItems", () => {
       },
     ];
 
-    const mockAttributes: Attribute[] = [
+    const mockAttributes = [
       {
         id: 2,
         item_id: 2,
@@ -67,8 +78,17 @@ describe("useEnrichItems", () => {
       },
     ];
 
-    const { result } = renderHook(() => useEnrichItems(mockItems, mockProperties, mockAttributes));
+    const { result } = renderHook(() => useEnrichItems(mockItems, mockProperties, mockAttributes), { wrapper });
 
-    expect(result.current).not.toBeUndefined();
+    expect(result.current).toBeDefined();
+    expect(result.current.length).toBe(1);
+    expect(result.current[0].images.length).toBe(3);
+    expect(result.current[0].documents.length).toBe(1);
+
+    expect(result.current[0].id).toBe(2);
+    expect(result.current[0].theme).toBe("12. Groen");
+    expect(result.current[0].type).toBe("Ambitie");
+    expect(result.current[0].level).toBe("Strategisch Niveau");
+    expect(result.current[0].area).toBe("Heel Amsterdam");
   });
 });
