@@ -41,8 +41,8 @@ const GroupSelector = () => {
         return (
           <span>
             <Link href={`#${value.replace(" ", "-")}`} variant="inline">
-              {value} ({count}),&nbsp;&nbsp;
-            </Link>
+              {value} ({count}),
+            </Link>&nbsp;&nbsp;
           </span>
         );
       }
