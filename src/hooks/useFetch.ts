@@ -84,7 +84,7 @@ const useFetch = (): FetchResponse => {
   const [state, dispatch] = useReducer<Reducer<State, Action>>(reducer, initialState);
 
   const controller = useMemo(() => new AbortController(), []);
-  const { signal } = controller;
+
   const requestHeaders = useCallback(
     () => ({
       "Content-Type": "application/json",
@@ -126,8 +126,12 @@ const useFetch = (): FetchResponse => {
         } else {
           //@ts-ignore
           dispatch({ type: "SET_ERROR", payload: fetchResponse as FetchError });
+          // eslint-disable-next-line no-console
+          console.error("fetch get error", url, fetchResponse);
         }
       } catch (exception: unknown) {
+        // eslint-disable-next-line no-console
+        console.error("fetch get error", url);
         dispatch({ type: "SET_ERROR", payload: exception as FetchError });
       }
     },
@@ -176,14 +180,17 @@ const useFetch = (): FetchResponse => {
               //@ts-ignore
               payload: modifyResponse as FetchError | undefined,
             });
+
+            // eslint-disable-next-line no-console
+            console.error("fetch modify error", method, url, modifyResponse);
           }
         } catch (exception: unknown) {
-          if (signal.aborted) return;
-
           dispatch({ type: "SET_ERROR", payload: exception as FetchError });
+          // eslint-disable-next-line no-console
+          console.error("fetch modify error", method, url);
         }
       },
-    [requestHeaders, signal],
+    [requestHeaders],
   );
 
   const post = useMemo(() => modify("POST"), [modify]);
