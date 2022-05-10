@@ -1,0 +1,201 @@
+import type { Reducer } from "react";
+import { useCallback, useEffect, useReducer, useMemo } from "react";
+
+type Data = Record<string, unknown>;
+
+export type FetchError = (Response | Error) & {
+  message: string;
+  detail?: string;
+};
+
+export interface State {
+  data?: any;
+  error?: boolean | FetchError;
+  loading: boolean;
+  success: boolean | undefined;
+}
+
+interface FetchResponse extends State {
+  get: (url: string, params?: Data, requestOptions?: Data) => Promise<void>;
+  patch: (url: string, modifiedData: Data, requestOptions?: Data) => Promise<void>;
+  post: (url: string, modifiedData?: Data, requestOptions?: Data) => Promise<void>;
+  put: (url: string, modifiedData: Data, requestOptions?: Data) => Promise<void>;
+}
+
+/**
+ * Custom hook useFetch
+ *
+ * Will take a URL and an optional object of parameters and use those to construct a request URL
+ * with, call fetch and return the response.
+ *
+ * @returns {FetchResponse}
+ */
+
+const useFetch = (): FetchResponse => {
+  interface Action {
+    payload: boolean | Data | FetchError;
+    type: string;
+  }
+
+  const initialState: State = {
+    data: undefined,
+    error: undefined,
+    loading: false,
+    success: undefined,
+  };
+
+  const reducer = (state: State, action: Action): State => {
+    switch (action.type) {
+      case "SET_LOADING":
+        return { ...state, loading: action.payload as boolean, error: false };
+
+      case "SET_GET_DATA":
+        return {
+          ...state,
+          data: action.payload as unknown,
+          loading: false,
+          error: false,
+        };
+
+      case "SET_MODIFY_DATA":
+        return {
+          ...state,
+          data: action.payload as unknown,
+          loading: false,
+          error: false,
+          success: true,
+        };
+
+      case "SET_ERROR":
+        return {
+          ...state,
+          loading: false,
+          success: false,
+          error: action.payload as FetchError,
+        };
+
+      /* istanbul ignore next */
+      default:
+        return state;
+    }
+  };
+
+  const [state, dispatch] = useReducer<Reducer<State, Action>>(reducer, initialState);
+
+  const controller = useMemo(() => new AbortController(), []);
+  const { signal } = controller;
+  const requestHeaders = useCallback(
+    () => ({
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    }),
+    [],
+  );
+
+  useEffect(
+    () => () => {
+      controller.abort();
+    },
+    [controller],
+  );
+
+  const get = useCallback(
+    async (url: string, params = {}, requestOptions: Data = {}) => {
+      dispatch({ type: "SET_LOADING", payload: true });
+
+      const arrayParams = Object.entries(params)
+        .filter(([, value]) => Array.isArray(value))
+        .flatMap(([key, value]) => (value as string[]).flatMap((val: string) => `${key}=${val}`));
+
+      const scalarParams = Object.entries(params)
+        .filter(([, value]) => Boolean(value) && !Array.isArray(value))
+        .flatMap(([key, value]) => `${key}=${value}`);
+
+      const queryParams = arrayParams.concat(scalarParams).join("&");
+      const requestURL = [url, queryParams].filter(Boolean).join("?");
+
+      try {
+        const fetchResponse = await fetch(requestURL, {
+          headers: requestHeaders(),
+          method: "GET",
+          signal,
+          ...requestOptions,
+        });
+
+        const responseData = (
+          requestOptions.responseType === "blob" ? await fetchResponse.blob() : await fetchResponse.json()
+        ) as Data;
+
+        if (fetchResponse.ok) {
+          dispatch({ type: "SET_GET_DATA", payload: responseData });
+        } else {
+          dispatch({ type: "SET_ERROR", payload: fetchResponse as FetchError });
+        }
+      } catch (exception: unknown) {
+        if (signal.aborted) return;
+
+        dispatch({ type: "SET_ERROR", payload: exception as FetchError });
+      }
+    },
+    [requestHeaders, signal],
+  );
+
+  const modify = useCallback(
+    (method: string) =>
+      async (url: string, modifiedData: Data = {}, requestOptions: Data = {}) => {
+        dispatch({ type: "SET_LOADING", payload: true });
+
+        try {
+          const modifyResponse = await fetch(url, {
+            headers: requestHeaders(),
+            method,
+            signal,
+            body: JSON.stringify(modifiedData),
+            ...requestOptions,
+          });
+
+          const responseData = (
+            requestOptions.responseType === "blob" ? await modifyResponse.blob() : await modifyResponse.json()
+          ) as Data;
+
+          if (modifyResponse.ok) {
+            dispatch({ type: "SET_MODIFY_DATA", payload: responseData });
+          } else {
+            dispatch({
+              type: "SET_ERROR",
+              payload: modifyResponse as FetchError,
+            });
+          }
+        } catch (exception: unknown) {
+          if (signal.aborted) return;
+
+          dispatch({ type: "SET_ERROR", payload: exception as FetchError });
+        }
+      },
+    [requestHeaders, signal],
+  );
+
+  const post = useMemo(() => modify("POST"), [modify]);
+  const patch = useMemo(() => modify("PATCH"), [modify]);
+  const put = useMemo(() => modify("PUT"), [modify]);
+
+  /**
+   * @typedef {Object} FetchResponse
+   * @property {Object} data - Fetch response
+   * @property {Error} error - Error object thrown during fetch and data parsing
+   * @property {Function} get - Function that expects a URL and a query parameter object
+   * @property {Boolean} loading - Indicator of fetch request status
+   * @property {Boolean} success - Indicator of post or patch request status
+   * @property {Function} patch - Function that expects a URL and a data object as parameters
+   * @property {Function} post - Function that expects a URL and a data object as parameters
+   */
+  return {
+    get,
+    patch,
+    post,
+    put,
+    ...state,
+  };
+};
+
+export default useFetch;
