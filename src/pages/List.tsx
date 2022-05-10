@@ -13,10 +13,10 @@ import {
   TableRow,
   themeSpacing,
 } from "@amsterdam/asc-ui";
+import axios from "axios";
 import useDataFetching from "../hooks/useDataFetching";
 import useFilter from "../hooks/useFilter";
 import { HIOR_ITEMS_URL, HIOR_PROPERTIES_URL, HIOR_ATTRIBUTES_URL } from "../constants";
-import { getByUri } from "../services/utils";
 import GroupSelector from "../components/GroupSelector";
 import { FilterContext } from "../filter/FilterContext";
 import Loader from "../components/Loader";
@@ -76,12 +76,12 @@ const List = () => {
   } = useContext(FilterContext);
 
   const getProperties = useCallback(async () => {
-    const props = await getByUri(HIOR_PROPERTIES_URL);
+    const props = await axios.get(HIOR_PROPERTIES_URL);
     setProperties(props.data.results);
   }, []);
 
   const getAttributes = useCallback(async () => {
-    const attr = await getByUri(HIOR_ATTRIBUTES_URL);
+    const attr = await axios.get(HIOR_ATTRIBUTES_URL);
     setAttributes(attr.data.results);
   }, []);
 
