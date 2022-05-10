@@ -1,3 +1,4 @@
+import axios from "axios";
 import type { Reducer } from "react";
 import { useCallback, useEffect, useReducer, useMemo } from "react";
 
@@ -115,29 +116,25 @@ const useFetch = (): FetchResponse => {
       const requestURL = [url, queryParams].filter(Boolean).join("?");
 
       try {
-        const fetchResponse = await fetch(requestURL, {
+        const fetchResponse: any = await axios.get(requestURL, {
           headers: requestHeaders(),
-          method: "GET",
-          signal,
           ...requestOptions,
         });
 
-        const responseData = (
-          requestOptions.responseType === "blob" ? await fetchResponse.blob() : await fetchResponse.json()
-        ) as Data;
+        console.log("fetchResponse", fetchResponse);
 
-        if (fetchResponse.ok) {
-          dispatch({ type: "SET_GET_DATA", payload: responseData });
+        if (fetchResponse.statusText === "OK") {
+          dispatch({ type: "SET_GET_DATA", payload: fetchResponse.data });
         } else {
+          //@ts-ignore
           dispatch({ type: "SET_ERROR", payload: fetchResponse as FetchError });
         }
       } catch (exception: unknown) {
-        if (signal.aborted) return;
-
         dispatch({ type: "SET_ERROR", payload: exception as FetchError });
       }
     },
-    [requestHeaders, signal],
+
+    [requestHeaders],
   );
 
   const modify = useCallback(
@@ -145,25 +142,41 @@ const useFetch = (): FetchResponse => {
       async (url: string, modifiedData: Data = {}, requestOptions: Data = {}) => {
         dispatch({ type: "SET_LOADING", payload: true });
 
+        let modifyResponse;
         try {
-          const modifyResponse = await fetch(url, {
-            headers: requestHeaders(),
-            method,
-            signal,
-            body: JSON.stringify(modifiedData),
-            ...requestOptions,
-          });
+          switch (method) {
+            case "POST":
+              modifyResponse = await axios.post(url, {
+                headers: requestHeaders(),
+                body: JSON.stringify(modifiedData),
+                ...requestOptions,
+              });
+              break;
 
-          const responseData = (
-            requestOptions.responseType === "blob" ? await modifyResponse.blob() : await modifyResponse.json()
-          ) as Data;
+            case "PATCH":
+              modifyResponse = await axios.patch(url, {
+                headers: requestHeaders(),
+                body: JSON.stringify(modifiedData),
+                ...requestOptions,
+              });
+              break;
 
-          if (modifyResponse.ok) {
-            dispatch({ type: "SET_MODIFY_DATA", payload: responseData });
+            case "PUT":
+              modifyResponse = await axios.put(url, {
+                headers: requestHeaders(),
+                body: JSON.stringify(modifiedData),
+                ...requestOptions,
+              });
+              break;
+          }
+
+          if (modifyResponse?.statusText === "OK") {
+            dispatch({ type: "SET_MODIFY_DATA", payload: modifyResponse.data });
           } else {
             dispatch({
               type: "SET_ERROR",
-              payload: modifyResponse as FetchError,
+              //@ts-ignore
+              payload: modifyResponse as FetchError | undefined,
             });
           }
         } catch (exception: unknown) {
