@@ -121,8 +121,6 @@ const useFetch = (): FetchResponse => {
           ...requestOptions,
         });
 
-        console.log("fetchResponse", fetchResponse);
-
         if (fetchResponse.statusText === "OK") {
           dispatch({ type: "SET_GET_DATA", payload: fetchResponse.data });
         } else {
