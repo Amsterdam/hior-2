@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import { Accordion, Column, Heading, Paragraph, Row, themeSpacing } from "@amsterdam/asc-ui";
 import Loader from "../components/Loader";
-import useDataFetching from "../hooks/useDataFetching";
+import useFetch from "../hooks/useFetch";
 import { HIOR_FAQ_URL } from "../constants";
 import { Faq as FaqType } from "../types";
 
@@ -24,10 +24,10 @@ const StyledParagraph = styled(Paragraph)`
 `;
 
 const Faq = () => {
-  const { results, loading, fetchData } = useDataFetching();
+  const { data, loading, get } = useFetch();
 
   useEffect(() => {
-    fetchData(HIOR_FAQ_URL);
+    get(HIOR_FAQ_URL);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -41,7 +41,7 @@ const Faq = () => {
             {loading && <Loader />}
             {/* @ts-ignore */}
             {!loading &&
-              results?.results?.map((faq: FaqType) => (
+              data?.results?.map((faq: FaqType) => (
                 <StyledAccordion key={faq.id} id={`a${faq.id}`} title={faq.question}>
                   <StyledParagraph gutterBottom={0}>{faq.answer}</StyledParagraph>
                 </StyledAccordion>
