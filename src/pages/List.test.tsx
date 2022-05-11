@@ -15,13 +15,13 @@ describe("List", () => {
   it("renders correctly", async () => {
     // items
     // @ts-ignore
-    axios.get.mockResolvedValueOnce({ data: mockItems });
+    axios.get.mockResolvedValueOnce({ data: mockItems, statusText: "OK" });
     // properties
     // @ts-ignore
-    axios.get.mockResolvedValueOnce({ data: mockProperties });
+    axios.get.mockResolvedValueOnce({ data: mockProperties, statusText: "OK" });
     // attributes
     // @ts-ignore
-    axios.get.mockResolvedValueOnce({ data: mockAttributes });
+    axios.get.mockResolvedValueOnce({ data: mockAttributes, statusText: "OK" });
 
     const mockState = {
       ...initialState,

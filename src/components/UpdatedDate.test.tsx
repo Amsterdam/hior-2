@@ -20,7 +20,7 @@ describe("UpdatedDate", () => {
 
   it("renders correctly", async () => {
     //@ts-ignore
-    axios.get.mockResolvedValueOnce({ data: mockData });
+    axios.get.mockResolvedValueOnce({ data: mockData, statusText: "OK" });
 
     render(withTheme(<UpdatedDate />));
 

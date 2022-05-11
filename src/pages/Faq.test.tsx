@@ -29,7 +29,7 @@ describe("Faq", () => {
 
   it("renders correctly", async () => {
     //@ts-ignore
-    axios.get.mockResolvedValueOnce({ data: mockData });
+    axios.get.mockResolvedValueOnce({ data: mockData, statusText: "OK" });
 
     const { container } = render(withTheme(<Faq />));
 
