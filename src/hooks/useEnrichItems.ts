@@ -1,7 +1,5 @@
-import { useContext, useMemo } from "react";
+import { useMemo } from "react";
 import { DOCUMENT_URL, IMAGE_URL } from "../constants";
-import { FilterContext } from "../filter/FilterContext";
-import { actions } from "../filter/reducer";
 import { sortAsc } from "../services/utils";
 import { Groups, Property, Attribute, ItemEnriched, Item } from "../types";
 
@@ -9,17 +7,11 @@ const useEnrichItems = (
   items: Item[],
   properties: Property[] | undefined,
   attributes: Attribute[] | undefined,
-): ItemEnriched[] => {
+): any => {
   return useMemo(() => {
     if (!items || !properties || !attributes) {
       return [];
     }
-
-    const {
-      //@ts-ignore
-      dispatch,
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-    } = useContext(FilterContext);
 
     const groups: Groups = {
       source: [],
@@ -90,9 +82,7 @@ const useEnrichItems = (
     groups.source = groups.source.sort((a: any, b: any) => sortAsc(a, b));
     groups.area = groups.area.sort((a: any, b: any) => sortAsc(a, b));
 
-    dispatch(actions.setGroups(groups));
-
-    return enrichedItems;
+    return { enrichedItems, allGroups: groups };
   }, [attributes, items, properties]);
 };
 

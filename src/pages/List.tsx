@@ -66,7 +66,6 @@ const StyledIcon = styled.img`
 const List = () => {
   const [properties, setProperties] = useState<Property[] | undefined>();
   const [attributes, setAttributes] = useState<Attribute[] | undefined>();
-  // ?  const { loading, results, fetchData } = useDataFetching();
   const { data, loading, get } = useFetch();
 
   const {
@@ -95,6 +94,7 @@ const List = () => {
   }, []);
 
   useEffect(() => {
+    if (!filteredItems) return;
     dispatch(actions.setFilteredItems(filteredItems));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -118,7 +118,14 @@ const List = () => {
     [group],
   );
 
-  const enrichedItems = useEnrichItems(data?.results, properties, attributes);
+  const { enrichedItems, allGroups } = useEnrichItems(data?.results, properties, attributes);
+
+  useEffect(() => {
+    if (!allGroups) return;
+    dispatch(actions.setGroups(allGroups));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [allGroups]);
 
   const filteredItems = useFilter(filter, enrichedItems);
 

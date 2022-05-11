@@ -1,19 +1,7 @@
 import { renderHook } from "@testing-library/react-hooks";
-import { FilterContext } from "../filter/FilterContext";
-import { initialState, SET_GROUPS } from "../filter/reducer";
-
 import useEnrichItems from "./useEnrichItems";
 
 describe("useEnrichItems", () => {
-  const spy = jest.fn();
-
-  // eslint-disable-next-line react/prop-types
-  const FilterContextProvider = ({ children }) => (
-    <FilterContext.Provider value={{ state: initialState, dispatch: spy }}>{children}</FilterContext.Provider>
-  );
-
-  const wrapper = ({ children }) => <FilterContextProvider>{children}</FilterContextProvider>;
-
   it("shoulf enrich all items", () => {
     const mockItems = [
       {
@@ -83,29 +71,24 @@ describe("useEnrichItems", () => {
       },
     ];
 
-    const { result } = renderHook(() => useEnrichItems(mockItems, mockProperties, mockAttributes), { wrapper });
+    const { result } = renderHook(() => useEnrichItems(mockItems, mockProperties, mockAttributes));
 
     expect(result.current).toBeDefined();
-    expect(result.current.length).toBe(1);
-    expect(result.current[0].images.length).toBe(3);
-    expect(result.current[0].documents.length).toBe(1);
+    expect(result.current.enrichedItems.length).toBe(1);
+    expect(result.current.enrichedItems[0].images.length).toBe(3);
+    expect(result.current.enrichedItems[0].documents.length).toBe(1);
 
-    expect(result.current[0].id).toBe(2);
-    expect(result.current[0].source).toBe("Omgevingsvisie 2050 (2021)");
-    expect(result.current[0].theme).toBe("12. Groen");
-    expect(result.current[0].type).toBe("Ambitie");
-    expect(result.current[0].level).toBe("Strategisch Niveau");
-    expect(result.current[0].area).toBe("Heel Amsterdam");
+    expect(result.current.enrichedItems[0].id).toBe(2);
+    expect(result.current.enrichedItems[0].source).toBe("Omgevingsvisie 2050 (2021)");
+    expect(result.current.enrichedItems[0].theme).toBe("12. Groen");
+    expect(result.current.enrichedItems[0].type).toBe("Ambitie");
+    expect(result.current.enrichedItems[0].level).toBe("Strategisch Niveau");
+    expect(result.current.enrichedItems[0].area).toBe("Heel Amsterdam");
 
-    expect(spy).toBeCalledWith({
-      type: SET_GROUPS,
-      payload: {
-        source: ["Omgevingsvisie 2050 (2021)"],
-        area: ["Heel Amsterdam"],
-        level: ["Strategisch Niveau"],
-        type: ["Ambitie"],
-        theme: ["12. Groen"],
-      },
-    });
+    expect(result.current.allGroups.theme.length).toBe(1);
+    expect(result.current.allGroups.type.length).toBe(1);
+    expect(result.current.allGroups.level.length).toBe(1);
+    expect(result.current.allGroups.source.length).toBe(1);
+    expect(result.current.allGroups.area.length).toBe(1);
   });
 });
