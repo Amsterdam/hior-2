@@ -14,7 +14,6 @@ import {
   themeSpacing,
 } from "@amsterdam/asc-ui";
 import axios from "axios";
-import useDataFetching from "../hooks/useDataFetching";
 import useFilter from "../hooks/useFilter";
 import { HIOR_ITEMS_URL, HIOR_PROPERTIES_URL, HIOR_ATTRIBUTES_URL } from "../constants";
 import GroupSelector from "../components/GroupSelector";
@@ -25,6 +24,7 @@ import { ItemEnriched, Group, Property, Attribute } from "../types";
 import useEnrichItems from "../hooks/useEnrichItems";
 import { actions } from "../filter/reducer";
 import { ALL_GROUPS } from "../constants";
+import useFetch from "../hooks/useFetch";
 
 const StyledDiv = styled.div`
   margin-top: ${themeSpacing(10)};
@@ -66,7 +66,8 @@ const StyledIcon = styled.img`
 const List = () => {
   const [properties, setProperties] = useState<Property[] | undefined>();
   const [attributes, setAttributes] = useState<Attribute[] | undefined>();
-  const { loading, results, fetchData } = useDataFetching();
+  // ?  const { loading, results, fetchData } = useDataFetching();
+  const { data, loading, get } = useFetch();
 
   const {
     //@ts-ignore
@@ -86,7 +87,7 @@ const List = () => {
   }, []);
 
   useEffect(() => {
-    fetchData(HIOR_ITEMS_URL);
+    get(HIOR_ITEMS_URL);
     getProperties();
     getAttributes();
 
@@ -117,7 +118,7 @@ const List = () => {
     [group],
   );
 
-  const enrichedItems = useEnrichItems(results?.results, properties, attributes);
+  const enrichedItems = useEnrichItems(data?.results, properties, attributes);
 
   const filteredItems = useFilter(filter, enrichedItems);
 
