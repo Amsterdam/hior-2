@@ -1,4 +1,4 @@
-import { Action, Group, Groups, Filter, ItemEnriched } from "../types";
+import { Action, State, Groups, Filter, ItemEnriched } from "../types";
 
 export const SET_FILTER = `SET_FILTER`;
 export const SET_GROUP = `SET_GROUP`;
@@ -13,17 +13,17 @@ export const initialState = {
     type: "",
     area: "",
     query: "",
-  } as Filter,
-  group: "theme" as Group,
+  },
+  group: "theme",
   groups: {
     source: [],
     level: [],
     theme: [],
     type: [],
     area: [],
-  } as Groups,
-  filteredItems: [] as ItemEnriched[],
-};
+  },
+  filteredItems: [],
+} as State;
 
 const filterReducer = (state = initialState, action: Action | undefined) => {
   switch (action?.type) {
