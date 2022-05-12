@@ -15,6 +15,20 @@ export const mockItems = {
   ],
 };
 
+export const mockEnriched = [
+  {
+    id: 2,
+    description: "Lange omschrijving 2",
+    text: "Amsterdam wil een leefbare stad zijn voor mens en dier",
+    theme: "12. Groen",
+    type: "Ambitie",
+    level: "Strategisch Niveau",
+    area: "Heel Amsterdam",
+    images: [],
+    documents: [],
+  },
+];
+
 export const mockProperties = {
   results: [
     {
