@@ -74,3 +74,10 @@ export interface Faq {
   question: string;
   answer: string;
 }
+
+export interface State {
+  filter: Filter;
+  group: Group;
+  groups: Groups;
+  filteredItems: ItemEnriched[];
+}
