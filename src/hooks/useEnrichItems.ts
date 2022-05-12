@@ -1,6 +1,6 @@
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { DOCUMENT_URL, IMAGE_URL } from "../constants";
-import { sortAsc } from "../services/utils";
+// import { sortAsc } from "../services/utils";
 import { Groups, Property, Attribute, ItemEnriched, Item } from "../types";
 
 const useEnrichItems = (
@@ -8,6 +8,10 @@ const useEnrichItems = (
   properties: Property[] | undefined,
   attributes: Attribute[] | undefined,
 ): any => {
+  const sortAsc = useCallback((a: string, b: string) => {
+    return a < b ? -1 : a > b ? 1 : 0;
+  }, []);
+
   return useMemo(() => {
     if (!items || !properties || !attributes) {
       return [];
@@ -24,10 +28,21 @@ const useEnrichItems = (
     //@ts-ignore
     const enrichedItems: ItemEnriched[] = items.map((i: Item) => {
       const foundProps = properties.filter((a: any) => i.id === a.item_id);
+      const foundThemes = properties.filter((a: any) => i.id === a.item_id && a.name === "Theme");
+
+      const themeValue = foundThemes
+        .map((t: any) => t.value)
+        .flat()
+        .join(", ");
+      console.log("--", i.id, themeValue);
+
       const newAttr = {};
       foundProps.map((attr: any) => {
+        const item = attr.name.toLowerCase();
+        // if (item === "theme") return;
+
         // @ts-ignore
-        newAttr[attr.name.toLowerCase()] = attr.value;
+        newAttr[item] = attr.value;
       });
       const foundAttr = attributes.filter((a: Attribute) => i.id === a.item_id);
 
@@ -66,9 +81,12 @@ const useEnrichItems = (
       // @ts-ignore
       if (!groups.area.includes(newAttr.area)) groups.area.push(newAttr.area);
 
+      // console.log('--', newAttr);
+
       return {
         ...i,
         ...newAttr,
+        theme: themeValue,
         //@ts-ignore
         images,
         //@ts-ignore
@@ -81,6 +99,8 @@ const useEnrichItems = (
     groups.level = groups.level.sort((a: any, b: any) => sortAsc(a, b));
     groups.source = groups.source.sort((a: any, b: any) => sortAsc(a, b));
     groups.area = groups.area.sort((a: any, b: any) => sortAsc(a, b));
+
+    console.log("groups", groups);
 
     return { enrichedItems, allGroups: groups };
   }, [attributes, items, properties]);
