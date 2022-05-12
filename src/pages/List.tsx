@@ -119,6 +119,7 @@ const List = () => {
   );
 
   const { enrichedItems, allGroups } = useEnrichItems(data?.results, properties, attributes);
+  const filteredItems = useFilter(filter, enrichedItems);
 
   useEffect(() => {
     if (!allGroups) return;
@@ -126,8 +127,6 @@ const List = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allGroups]);
-
-  const filteredItems = useFilter(filter, enrichedItems);
 
   return (
     <StyledDiv data-testid="list">
