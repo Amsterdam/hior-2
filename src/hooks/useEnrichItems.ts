@@ -34,7 +34,6 @@ const useEnrichItems = (
         .map((t: any) => t.value)
         .flat()
         .join(", ");
-      console.log("--", i.id, themeValue);
 
       const newAttr = {};
       foundProps.map((attr: any) => {
@@ -81,8 +80,6 @@ const useEnrichItems = (
       // @ts-ignore
       if (!groups.area.includes(newAttr.area)) groups.area.push(newAttr.area);
 
-      // console.log('--', newAttr);
-
       return {
         ...i,
         ...newAttr,
@@ -99,8 +96,6 @@ const useEnrichItems = (
     groups.level = groups.level.sort((a: any, b: any) => sortAsc(a, b));
     groups.source = groups.source.sort((a: any, b: any) => sortAsc(a, b));
     groups.area = groups.area.sort((a: any, b: any) => sortAsc(a, b));
-
-    console.log("groups", groups);
 
     return { enrichedItems, allGroups: groups };
   }, [attributes, items, properties]);
