@@ -97,7 +97,7 @@ const useEnrichItems = (
     groups.source = groups.source.sort((a: any, b: any) => sortAsc(a, b));
 
     return { enrichedItems, allGroups: groups };
-  }, [attributes, items, properties]);
+  }, [attributes, items, properties, sortAsc]);
 };
 
 export default useEnrichItems;
