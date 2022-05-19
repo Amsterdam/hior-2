@@ -95,7 +95,6 @@ const useEnrichItems = (
     groups.type = groups.type.sort((a: any, b: any) => sortAsc(a, b));
     groups.level = groups.level.sort((a: any, b: any) => sortAsc(a, b));
     groups.source = groups.source.sort((a: any, b: any) => sortAsc(a, b));
-    groups.area = groups.area.sort((a: any, b: any) => sortAsc(a, b));
 
     return { enrichedItems, allGroups: groups };
   }, [attributes, items, properties]);
