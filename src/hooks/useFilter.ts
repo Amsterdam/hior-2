@@ -19,7 +19,14 @@ function useFilter(filter: Filter, items: ItemEnriched[]): ItemEnriched[] {
 
     if (filter.theme) {
       filteredData = filteredData.filter((d: ItemEnriched) => {
-        return filter.theme.includes(d.theme);
+        const themes = d.theme.split(", ");
+        let found = false;
+        themes.forEach((theme: string) => {
+          if (found) return;
+          found = filter.theme.includes(theme);
+        });
+
+        return found;
       });
     }
 
