@@ -9,6 +9,18 @@ const useEnrichItems = (
   attributes: Attribute[] | undefined,
 ): any => {
   const sortAsc = useCallback((a: string, b: string) => {
+    const foundA = a.match(/^(\d+\d*?)/);
+    if (foundA) {
+      const foundB = b.match(/^(\d+\d*?)/);
+      if (foundB) {
+        return parseInt(foundA[1], 10) < parseInt(foundB[1], 10)
+          ? -1
+          : parseInt(foundA[1], 10) > parseInt(foundB[1], 10)
+          ? 1
+          : 0;
+      }
+    }
+
     return a < b ? -1 : a > b ? 1 : 0;
   }, []);
 
