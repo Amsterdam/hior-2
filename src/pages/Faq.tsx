@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import { Accordion, Column, Heading, Paragraph, Row, themeSpacing } from "@amsterdam/asc-ui";
 import Loader from "../components/Loader";
-import useFetch from "../hooks/useFetch";
+import useFetchData from "../hooks/useFetchData";
 import { HIOR_FAQ_URL } from "../constants";
 import { Faq as FaqType } from "../types";
 
@@ -24,7 +24,7 @@ const StyledParagraph = styled(Paragraph)`
 `;
 
 const Faq = () => {
-  const { data, loading, get } = useFetch();
+  const { data, loading, get } = useFetchData();
 
   useEffect(() => {
     get(HIOR_FAQ_URL);

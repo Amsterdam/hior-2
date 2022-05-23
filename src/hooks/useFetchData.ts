@@ -24,7 +24,7 @@ interface FetchResponse extends State {
 }
 
 /**
- * Custom hook useFetch
+ * Custom hook useFetchData
  *
  * Will take a URL and an optional object of parameters and use those to construct a request URL
  * with, call fetch and return the response.
@@ -32,7 +32,7 @@ interface FetchResponse extends State {
  * @returns {FetchResponse}
  */
 
-const useFetch = (): FetchResponse => {
+const useFetchData = (): FetchResponse => {
   interface Action {
     payload: boolean | Data | FetchError;
     type: string;
@@ -216,4 +216,4 @@ const useFetch = (): FetchResponse => {
   };
 };
 
-export default useFetch;
+export default useFetchData;

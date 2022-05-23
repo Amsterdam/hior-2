@@ -24,7 +24,7 @@ import { ItemEnriched, Group, Property, Attribute } from "../types";
 import useEnrichItems from "../hooks/useEnrichItems";
 import { actions } from "../filter/reducer";
 import { ALL_GROUPS } from "../constants";
-import useFetch from "../hooks/useFetch";
+import useFetchData from "../hooks/useFetchData";
 
 const StyledDiv = styled.div`
   margin-top: ${themeSpacing(10)};
@@ -66,7 +66,7 @@ const StyledIcon = styled.img`
 const List = () => {
   const [properties, setProperties] = useState<Property[] | undefined>();
   const [attributes, setAttributes] = useState<Attribute[] | undefined>();
-  const { data, loading, get } = useFetch();
+  const { data, loading, get } = useFetchData();
 
   const {
     //@ts-ignore

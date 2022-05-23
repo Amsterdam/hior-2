@@ -5,8 +5,8 @@ import axios from "axios";
 // import { getAuthHeaders } from "shared/services/auth/auth";
 // import { mocked } from "jest-mock";
 
-// import type { FetchError } from "./useFetch";
-import useFetch from "./useFetch";
+// import type { FetchError } from "./useFetchData";
+import useFetchData from "./useFetchData";
 
 jest.mock("axios");
 
@@ -14,7 +14,7 @@ jest.mock("axios");
 // const URL = "https://here-is-my.api/someId/6";
 // const mockResult = { mock: "resutl" };
 
-describe("hooks/useFetch", () => {
+describe("hooks/useFetchData", () => {
   const mockData = {
     data: "mock-data",
   };
@@ -27,7 +27,7 @@ describe("hooks/useFetch", () => {
     //@ts-ignore
     axios.get.mockResolvedValueOnce({ data: mockData, statusText: "OK" });
 
-    const { result, unmount } = renderHook(() => useFetch());
+    const { result, unmount } = renderHook(() => useFetchData());
 
     await act(async () => result.current.get("http://test-url"));
 
@@ -42,7 +42,7 @@ describe("hooks/useFetch", () => {
     //@ts-ignore
     axios.get.mockResolvedValueOnce({ data: mockData, statusText: "false" });
 
-    const { result, unmount } = renderHook(() => useFetch());
+    const { result, unmount } = renderHook(() => useFetchData());
 
     await act(async () => result.current.get("http://test-url"));
 
@@ -57,7 +57,7 @@ describe("hooks/useFetch", () => {
     //@ts-ignore
     axios.post.mockResolvedValueOnce({ data: mockData, statusText: "OK" });
 
-    const { result, unmount } = renderHook(() => useFetch());
+    const { result, unmount } = renderHook(() => useFetchData());
 
     const patchObject = {};
 
@@ -74,7 +74,7 @@ describe("hooks/useFetch", () => {
     //@ts-ignore
     axios.patch.mockResolvedValueOnce({ data: mockData, statusText: "OK" });
 
-    const { result, unmount } = renderHook(() => useFetch());
+    const { result, unmount } = renderHook(() => useFetchData());
 
     const patchObject = {};
 
@@ -91,7 +91,7 @@ describe("hooks/useFetch", () => {
     //@ts-ignore
     axios.put.mockResolvedValueOnce({ data: mockData, statusText: "OK" });
 
-    const { result, unmount } = renderHook(() => useFetch());
+    const { result, unmount } = renderHook(() => useFetchData());
 
     const patchObject = {};
 

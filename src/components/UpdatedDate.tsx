@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 // import useDataFetching from "../hooks/useDataFetching";
-import useFetch from "../hooks/useFetch";
+import useFetchData from "../hooks/useFetchData";
 import { HIOR_METADATA_URL } from "../constants";
 
 const UpdatedDate = () => {
-  const { data, get } = useFetch();
+  const { data, get } = useFetchData();
   const [date, setDate] = useState<string>("");
 
   useEffect(() => {
