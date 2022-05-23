@@ -1,6 +1,6 @@
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { DOCUMENT_URL, IMAGE_URL } from "../constants";
-import { sortAsc } from "../services/utils";
+// import { sortAsc } from "../services/utils";
 import { Groups, Property, Attribute, ItemEnriched, Item } from "../types";
 
 const useEnrichItems = (
@@ -8,6 +8,22 @@ const useEnrichItems = (
   properties: Property[] | undefined,
   attributes: Attribute[] | undefined,
 ): any => {
+  const sortAsc = useCallback((a: string, b: string) => {
+    const foundA = a.match(/^(\d+\d*?)/);
+    if (foundA) {
+      const foundB = b.match(/^(\d+\d*?)/);
+      if (foundB) {
+        return parseInt(foundA[1], 10) < parseInt(foundB[1], 10)
+          ? -1
+          : parseInt(foundA[1], 10) > parseInt(foundB[1], 10)
+          ? 1
+          : 0;
+      }
+    }
+
+    return a < b ? -1 : a > b ? 1 : 0;
+  }, []);
+
   return useMemo(() => {
     if (!items || !properties || !attributes) {
       return [];
@@ -24,10 +40,20 @@ const useEnrichItems = (
     //@ts-ignore
     const enrichedItems: ItemEnriched[] = items.map((i: Item) => {
       const foundProps = properties.filter((a: any) => i.id === a.item_id);
+      const foundThemes = properties.filter((a: any) => i.id === a.item_id && a.name === "Theme");
+
+      const themeValue = foundThemes
+        .map((t: any) => t.value)
+        .flat()
+        .join(", ");
+
       const newAttr = {};
       foundProps.map((attr: any) => {
+        const item = attr.name.toLowerCase();
+        // if (item === "theme") return;
+
         // @ts-ignore
-        newAttr[attr.name.toLowerCase()] = attr.value;
+        newAttr[item] = attr.value;
       });
       const foundAttr = attributes.filter((a: Attribute) => i.id === a.item_id);
 
@@ -69,6 +95,7 @@ const useEnrichItems = (
       return {
         ...i,
         ...newAttr,
+        theme: themeValue,
         //@ts-ignore
         images,
         //@ts-ignore
@@ -83,7 +110,7 @@ const useEnrichItems = (
     groups.area = groups.area.sort((a: any, b: any) => sortAsc(a, b));
 
     return { enrichedItems, allGroups: groups };
-  }, [attributes, items, properties]);
+  }, [attributes, items, properties, sortAsc]);
 };
 
 export default useEnrichItems;

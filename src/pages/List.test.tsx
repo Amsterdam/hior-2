@@ -3,16 +3,26 @@ import axios from "axios";
 import { FilterContext } from "../filter/FilterContext";
 import { initialState } from "../filter/reducer";
 import { withTheme } from "../test/utils";
+import useEnrichItems from "../hooks/useEnrichItems";
 import List from "./List";
-import { mockItems, mockProperties, mockAttributes } from "./List.fixtures";
+import { mockItems, mockProperties, mockAttributes, mockEnriched } from "./List.fixtures";
 
 jest.mock("axios");
+jest.mock("../hooks/useEnrichItems");
 
 jest.mock("../components/Filter", () => () => "Filter");
 jest.mock("../components/GroupSelector", () => () => "GroupSelector");
 
 describe("List", () => {
   it("renders correctly", async () => {
+    // @ts-ignore
+    useEnrichItems.mockImplementation(() => {
+      return {
+        enrichedItems: mockEnriched,
+        allGroups: {},
+      };
+    });
+
     // items
     // @ts-ignore
     axios.get.mockResolvedValueOnce({ data: mockItems, statusText: "OK" });
@@ -50,15 +60,16 @@ describe("List", () => {
 
     expect(await screen.queryByTestId("list")).toBeInTheDocument();
 
-    expect(await screen.queryByText("Resultaten (2)")).toBeInTheDocument();
+    expect(await screen.queryByText("Resultaten (1)")).not.toBeNull();
 
-    expect(await screen.queryByText("Thema")).toBeInTheDocument();
-    expect(await screen.queryByText("Bron")).toBeInTheDocument();
-    expect(await screen.queryByText("Niveau")).toBeInTheDocument();
-    expect(await screen.queryByText("Stadsdeel")).toBeInTheDocument();
-    expect(await screen.queryByText("Type")).toBeInTheDocument();
-
-    // there should be 3 images + 1 cathegory icon
-    expect(container.querySelectorAll("img").length).toBe(4);
+    expect(await screen.queryByText("Bron")).not.toBeNull();
+    expect(await screen.queryByText("Thema")).not.toBeNull();
+    expect(await screen.queryByText("12. Groen")).not.toBeNull();
+    expect(await screen.queryByText("Niveau")).not.toBeNull();
+    expect(await screen.queryByText("Strategisch Niveau")).not.toBeNull();
+    expect(await screen.queryByText("Type")).not.toBeNull();
+    expect(await screen.queryByText("Ambitie")).not.toBeNull();
+    expect(await screen.queryByText("Stadsdeel")).not.toBeNull();
+    expect(await screen.queryByText("Heel Amsterdam")).not.toBeNull();
   });
 });
