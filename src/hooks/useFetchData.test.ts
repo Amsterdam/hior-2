@@ -1,18 +1,8 @@
 import { renderHook, act } from "@testing-library/react-hooks";
 import axios from "axios";
-// import JSONresponse from "utils/__tests__/fixtures/user.json";
-// import { getErrorMessage } from "shared/services/api/api";
-// import { getAuthHeaders } from "shared/services/auth/auth";
-// import { mocked } from "jest-mock";
-
-// import type { FetchError } from "./useFetchData";
 import useFetchData from "./useFetchData";
 
 jest.mock("axios");
-
-// const mockGetAuthHeaders = mocked(getAuthHeaders);
-// const URL = "https://here-is-my.api/someId/6";
-// const mockResult = { mock: "resutl" };
 
 describe("hooks/useFetchData", () => {
   const mockData = {
@@ -51,7 +41,6 @@ describe("hooks/useFetchData", () => {
 
     unmount();
   });
-
 
   it("should do a POST request", async () => {
     //@ts-ignore
