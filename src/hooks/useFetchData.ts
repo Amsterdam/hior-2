@@ -83,21 +83,12 @@ const useFetchData = (): FetchResponse => {
 
   const [state, dispatch] = useReducer<Reducer<State, Action>>(reducer, initialState);
 
-  const controller = useMemo(() => new AbortController(), []);
-
   const requestHeaders = useCallback(
     () => ({
       "Content-Type": "application/json",
       Accept: "application/json",
     }),
     [],
-  );
-
-  useEffect(
-    () => () => {
-      controller.abort();
-    },
-    [controller],
   );
 
   const get = useCallback(
