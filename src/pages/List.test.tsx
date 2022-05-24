@@ -43,7 +43,7 @@ describe("List", () => {
 
     const spy = jest.fn();
 
-    const { container } = render(
+    render(
       withTheme(
         <>
           {/* @ts-ignore */}
