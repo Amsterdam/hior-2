@@ -13,7 +13,7 @@ const HistoryRouter = ({ history, ...props }) => {
   return <Router {...props} location={state.location} navigationType={state.action} navigator={history} />;
 };
 
-CustomRouter.propTypes = {
+HistoryRouter.propTypes = {
   history: PropTypes.shape(),
 };
 
