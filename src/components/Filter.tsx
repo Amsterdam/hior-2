@@ -99,7 +99,7 @@ const Filter = () => {
 
   return (
     <StyledDiv data-testid="filter">
-      <form>
+      <form method="get">
         <SyledColumn>
           <Label label="Type" />
           <StyledMultiSelect
