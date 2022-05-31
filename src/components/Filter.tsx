@@ -67,7 +67,7 @@ const Filter = () => {
         ...filter,
       };
 
-      if (group && value|| value === "")  {
+      if ((group && value) || value === "") {
         newFilter = {
           ...filter,
           [group]: value,
@@ -108,7 +108,7 @@ const Filter = () => {
 
   return (
     <StyledDiv data-testid="filter">
-      <form>
+      <form method="get">
         <SyledColumn>
           <Label label="Type" />
           <StyledMultiSelect
