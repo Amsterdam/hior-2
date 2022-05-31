@@ -6,11 +6,12 @@ import Filter from "./Filter";
 
 describe("Filter", () => {
   it("renders correctly", () => {
+    const dispatchSpy = jest.fn();
     const { container } = render(
       withTheme(
         <>
           {/* @ts-ignore */}
-          <FilterContext.Provider value={{ state: initialState }}>
+          <FilterContext.Provider value={{ state: initialState, dispatch: dispatchSpy }}>
             <Filter />
           </FilterContext.Provider>
         </>,
@@ -22,8 +23,8 @@ describe("Filter", () => {
 
     // all selects
     expect(container.querySelectorAll("input[type=hidden]").length).toBe(5);
-    // query input
-    expect(container.querySelectorAll("input[type=text]").length).toBe(1);
+    // query input = 1 + 5 selects
+    expect(container.querySelectorAll("input[type=text]").length).toBe(6);
     // reset button
     expect(container.querySelectorAll("button").length).toBe(1);
   });
