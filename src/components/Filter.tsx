@@ -40,6 +40,12 @@ const Filter = () => {
   const [types, setTypes] = useState<string[]>([]);
   const [areas, setAreas] = useState<string[]>([]);
 
+  const [source, setSource] = useState<any[]>([]);
+  const [level, setLevel] = useState<any[]>([]);
+  const [theme, setTheme] = useState<any[]>([]);
+  const [type, setType] = useState<any[]>([]);
+  const [area, setArea] = useState<any[]>([{ label: "Heel Amsterdam", value: "Heel Amsterdam" }]);
+
   const [filter, setFilter] = useState<any>({
     source: "",
     level: "",
@@ -50,7 +56,9 @@ const Filter = () => {
   });
 
   const updateFilter = useCallback(
-    (group: string, values: string) => {
+    (group: string, values: any) => {
+      console.log("updateFilter", values);
+      return;
       const newFilter = {
         ...filter,
         [group]: values,
@@ -93,11 +101,11 @@ const Filter = () => {
             placeholder="Kies een type"
             name="type"
             isMulti
+            defaultValue={type}
             options={types}
             onChange={(values: any) => {
-              console.log("values", values);
-
-              // updateFilter("type", values);
+              setType(values);
+              updateFilter("type", values);
             }}
           />
           <Label label="Thema" />
@@ -105,11 +113,11 @@ const Filter = () => {
             name="theme"
             placeholder="Kies een thema"
             isMulti
+            defaultValue={theme}
             options={themes}
             onChange={(values: any) => {
-              console.log("values", values);
-
-              // updateFilter("theme", values);
+              setTheme(values);
+              updateFilter("theme", values);
             }}
           />
 
@@ -117,12 +125,12 @@ const Filter = () => {
           <StyledMultiSelect
             placeholder="Kies een niveau"
             isMulti
+            defaultValue={level}
             name="level"
             options={levels}
             onChange={(values: any) => {
-              console.log("values", values);
-
-              // updateFilter("level", values);
+              setLevel(values);
+              updateFilter("level", values);
             }}
           />
         </SyledColumn>
@@ -132,12 +140,11 @@ const Filter = () => {
             name="area"
             placeholder="Kies een standsdeel"
             isMulti
-            defaultValue={[{ label: "Heel Amsterdam", value: "Heel Amsterdam" }]}
+            defaultValue={area}
             options={areas}
             onChange={(values: any) => {
-              console.log("values", values);
-
-              // updateFilter("area", values);
+              setArea(values);
+              updateFilter("area", values);
             }}
           />
           <Label label="Bron" />
@@ -145,9 +152,11 @@ const Filter = () => {
             name="source"
             placeholder="Kies een bron"
             isMulti
+            defaultValue={source}
             options={sources}
             onChange={(values: any) => {
-              // updateFilter("source", values);
+              setSource(values);
+              updateFilter("source", values);
             }}
           />
 
