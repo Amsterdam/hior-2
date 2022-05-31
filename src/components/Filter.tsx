@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Button, Input, Label, themeSpacing } from "@amsterdam/asc-ui";
 import Select from "react-select";
 import { FilterContext } from "../filter/FilterContext";
-import { actions, initialState } from "../filter/reducer";
+import { actions, initialState, defaultArea } from "../filter/reducer";
 
 const StyledDiv = styled.div`
   margin-bottom: ${themeSpacing(10)};
@@ -28,7 +28,7 @@ const SyledColumn = styled.div`
 const Filter = () => {
   const {
     //@ts-ignore
-    state: { groups, filteredItems },
+    state: { groups /* filteredItems */ },
     //@ts-ignore
     dispatch,
     //@ts-ignore
@@ -44,31 +44,50 @@ const Filter = () => {
   const [level, setLevel] = useState<any[]>([]);
   const [theme, setTheme] = useState<any[]>([]);
   const [type, setType] = useState<any[]>([]);
-  const [area, setArea] = useState<any[]>([{ label: "Heel Amsterdam", value: "Heel Amsterdam" }]);
+  const [area, setArea] = useState<any[]>(defaultArea);
 
   const [filter, setFilter] = useState<any>({
     source: "",
     level: "",
     theme: "",
     type: "",
-    area: "",
+    area: defaultArea[0].value,
     query: "",
   });
 
   const updateFilter = useCallback(
-    (group: string, values: any) => {
-      console.log("updateFilter", values);
-      return;
-      const newFilter = {
+    (group = "", values = null) => {
+      let value = null;
+
+      if (group && values) {
+        value = values.map((item: any) => item.value).join("|");
+      }
+
+      let newFilter = {
         ...filter,
-        [group]: values,
       };
+
+      if (group && value|| value === "")  {
+        newFilter = {
+          ...filter,
+          [group]: value,
+        };
+      }
 
       setFilter(newFilter);
 
       dispatch(actions.setFilter(newFilter));
     },
     [filter, dispatch],
+  );
+
+  const formatGroup = useCallback(
+    (group: string) => {
+      return groups[group].map((option: string) => {
+        return { label: option, value: option };
+      });
+    },
+    [groups],
   );
 
   useEffect(() => {
@@ -78,15 +97,10 @@ const Filter = () => {
     setTypes(formatGroup("type"));
     setAreas(formatGroup("area"));
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [groups, filteredItems]);
+    updateFilter();
 
-  const formatGroup = (group: string) => {
-    return groups[group].map((option: string) => {
-      // const count = filteredItems?.filter((item: any) => item[group] === option).length;
-      return { label: option, value: option };
-    });
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [groups]);
 
   const resetFilter = useCallback(() => {
     dispatch(actions.setFilter(initialState.filter));

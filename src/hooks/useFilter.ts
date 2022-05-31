@@ -3,6 +3,9 @@ import { Filter, ItemEnriched } from "../types";
 
 function useFilter(filter: Filter, items: ItemEnriched[]): ItemEnriched[] {
   return useMemo(() => {
+    if (!items) { 
+      return [];
+    }
     let filteredData: ItemEnriched[] = items;
 
     if (filter.source) {
