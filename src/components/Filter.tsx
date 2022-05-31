@@ -1,9 +1,7 @@
 import { useCallback, useContext, useEffect, useState } from "react";
-import "react-multiple-select-dropdown-lite/dist/index.css";
 import styled from "styled-components";
 import { Button, Input, Label, themeSpacing } from "@amsterdam/asc-ui";
-//@ts-ignore
-import MultiSelect from "react-multiple-select-dropdown-lite";
+import Select from "react-select";
 import { FilterContext } from "../filter/FilterContext";
 import { actions, initialState } from "../filter/reducer";
 
@@ -17,7 +15,7 @@ const StyledDiv = styled.div`
   }
 `;
 
-const StyledMultiSelect = styled(MultiSelect)`
+const StyledMultiSelect = styled(Select)`
   width: 100%;
 `;
 
@@ -36,11 +34,11 @@ const Filter = () => {
     //@ts-ignore
   } = useContext(FilterContext);
 
-  const [source, setSoure] = useState<string[]>([]);
-  const [level, setLevel] = useState<string[]>([]);
-  const [theme, setTheme] = useState<string[]>([]);
-  const [type, setType] = useState<string[]>([]);
-  const [area, setArea] = useState<string[]>([]);
+  const [sources, setSoures] = useState<string[]>([]);
+  const [levels, setLevels] = useState<string[]>([]);
+  const [themes, setThemes] = useState<string[]>([]);
+  const [types, setTypes] = useState<string[]>([]);
+  const [areas, setAreas] = useState<string[]>([]);
 
   const [filter, setFilter] = useState<any>({
     source: "",
@@ -66,19 +64,19 @@ const Filter = () => {
   );
 
   useEffect(() => {
-    setSoure(formatGroup("source"));
-    setLevel(formatGroup("level"));
-    setTheme(formatGroup("theme"));
-    setType(formatGroup("type"));
-    setArea(formatGroup("area"));
+    setSoures(formatGroup("source"));
+    setLevels(formatGroup("level"));
+    setThemes(formatGroup("theme"));
+    setTypes(formatGroup("type"));
+    setAreas(formatGroup("area"));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [groups, filteredItems]);
 
   const formatGroup = (group: string) => {
     return groups[group].map((option: string) => {
-      const count = filteredItems?.filter((item: any) => item[group] === option).length;
-      return { label: `${option} (${count})`, value: option };
+      // const count = filteredItems?.filter((item: any) => item[group] === option).length;
+      return { label: option, value: option };
     });
   };
 
