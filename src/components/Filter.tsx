@@ -4,6 +4,7 @@ import Select from "react-select";
 import { Button, Input, Label, themeSpacing } from "@amsterdam/asc-ui";
 import { FilterContext } from "../filter/FilterContext";
 import { actions, initialState, defaultArea } from "../filter/reducer";
+import { useSearchParams } from "react-router-dom";
 
 const StyledDiv = styled.div`
   margin-bottom: ${themeSpacing(10)};
@@ -26,6 +27,8 @@ const SyledColumn = styled.div`
 `;
 
 const Filter = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const {
     //@ts-ignore
     state: { groups, filteredItems, filter },
@@ -45,7 +48,7 @@ const Filter = () => {
       let value: any = null;
 
       if (group && values) {
-        value = values.map((item: any) => item.value).join("|");
+        value = values.map((item: any) => item.value).join(",");
       }
 
       let newFilter = {
@@ -95,7 +98,9 @@ const Filter = () => {
 
   const resetFilter = useCallback(() => {
     dispatch(actions.setFilter(initialState.filter));
-  }, [dispatch]);
+    //@ts-ignore
+    setSearchParams(initialState.filter);
+  }, [dispatch, setSearchParams]);
 
   return (
     <StyledDiv data-testid="filter">
