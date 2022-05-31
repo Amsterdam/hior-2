@@ -92,28 +92,37 @@ const Filter = () => {
           <StyledMultiSelect
             placeholder="Kies een type"
             name="type"
-            options={type}
-            onChange={(values: string) => {
-              updateFilter("type", values);
+            isMulti
+            options={types}
+            onChange={(values: any) => {
+              console.log("values", values);
+
+              // updateFilter("type", values);
             }}
           />
           <Label label="Thema" />
           <StyledMultiSelect
             name="theme"
             placeholder="Kies een thema"
-            options={theme}
-            onChange={(values: string) => {
-              updateFilter("theme", values);
+            isMulti
+            options={themes}
+            onChange={(values: any) => {
+              console.log("values", values);
+
+              // updateFilter("theme", values);
             }}
           />
 
           <Label label="Niveau" />
           <StyledMultiSelect
             placeholder="Kies een niveau"
+            isMulti
             name="level"
-            options={level}
-            onChange={(values: string) => {
-              updateFilter("level", values);
+            options={levels}
+            onChange={(values: any) => {
+              console.log("values", values);
+
+              // updateFilter("level", values);
             }}
           />
         </SyledColumn>
@@ -122,18 +131,23 @@ const Filter = () => {
           <StyledMultiSelect
             name="area"
             placeholder="Kies een standsdeel"
-            options={area}
-            onChange={(values: string) => {
-              updateFilter("area", values);
+            isMulti
+            defaultValue={[{ label: "Heel Amsterdam", value: "Heel Amsterdam" }]}
+            options={areas}
+            onChange={(values: any) => {
+              console.log("values", values);
+
+              // updateFilter("area", values);
             }}
           />
           <Label label="Bron" />
           <StyledMultiSelect
             name="source"
             placeholder="Kies een bron"
-            options={source}
-            onChange={(values: string) => {
-              updateFilter("source", values);
+            isMulti
+            options={sources}
+            onChange={(values: any) => {
+              // updateFilter("source", values);
             }}
           />
 
