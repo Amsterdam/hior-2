@@ -1,11 +1,9 @@
 import { useCallback, useContext, useEffect, useState } from "react";
-import "react-multiple-select-dropdown-lite/dist/index.css";
 import styled from "styled-components";
 import { Button, Input, Label, themeSpacing } from "@amsterdam/asc-ui";
-//@ts-ignore
-import MultiSelect from "react-multiple-select-dropdown-lite";
+import Select from "react-select";
 import { FilterContext } from "../filter/FilterContext";
-import { actions, initialState } from "../filter/reducer";
+import { actions, initialState, defaultArea } from "../filter/reducer";
 
 const StyledDiv = styled.div`
   margin-bottom: ${themeSpacing(10)};
@@ -17,7 +15,7 @@ const StyledDiv = styled.div`
   }
 `;
 
-const StyledMultiSelect = styled(MultiSelect)`
+const StyledMultiSelect = styled(Select)`
   width: 100%;
 `;
 
@@ -30,33 +28,51 @@ const SyledColumn = styled.div`
 const Filter = () => {
   const {
     //@ts-ignore
-    state: { groups, filteredItems },
+    state: { groups /* filteredItems */ },
     //@ts-ignore
     dispatch,
     //@ts-ignore
   } = useContext(FilterContext);
 
-  const [source, setSoure] = useState<string[]>([]);
-  const [level, setLevel] = useState<string[]>([]);
-  const [theme, setTheme] = useState<string[]>([]);
-  const [type, setType] = useState<string[]>([]);
-  const [area, setArea] = useState<string[]>([]);
+  const [sources, setSoures] = useState<string[]>([]);
+  const [levels, setLevels] = useState<string[]>([]);
+  const [themes, setThemes] = useState<string[]>([]);
+  const [types, setTypes] = useState<string[]>([]);
+  const [areas, setAreas] = useState<string[]>([]);
+
+  const [source, setSource] = useState<any[]>([]);
+  const [level, setLevel] = useState<any[]>([]);
+  const [theme, setTheme] = useState<any[]>([]);
+  const [type, setType] = useState<any[]>([]);
+  const [area, setArea] = useState<any[]>(defaultArea);
 
   const [filter, setFilter] = useState<any>({
     source: "",
     level: "",
     theme: "",
     type: "",
-    area: "",
+    area: defaultArea[0].value,
     query: "",
   });
 
   const updateFilter = useCallback(
-    (group: string, values: string) => {
-      const newFilter = {
+    (group = "", values = null) => {
+      let value = null;
+
+      if (group && values) {
+        value = values.map((item: any) => item.value).join("|");
+      }
+
+      let newFilter = {
         ...filter,
-        [group]: values,
       };
+
+      if (group && value|| value === "")  {
+        newFilter = {
+          ...filter,
+          [group]: value,
+        };
+      }
 
       setFilter(newFilter);
 
@@ -65,22 +81,26 @@ const Filter = () => {
     [filter, dispatch],
   );
 
+  const formatGroup = useCallback(
+    (group: string) => {
+      return groups[group].map((option: string) => {
+        return { label: option, value: option };
+      });
+    },
+    [groups],
+  );
+
   useEffect(() => {
-    setSoure(formatGroup("source"));
-    setLevel(formatGroup("level"));
-    setTheme(formatGroup("theme"));
-    setType(formatGroup("type"));
-    setArea(formatGroup("area"));
+    setSoures(formatGroup("source"));
+    setLevels(formatGroup("level"));
+    setThemes(formatGroup("theme"));
+    setTypes(formatGroup("type"));
+    setAreas(formatGroup("area"));
+
+    updateFilter();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [groups, filteredItems]);
-
-  const formatGroup = (group: string) => {
-    return groups[group].map((option: string) => {
-      const count = filteredItems?.filter((item: any) => item[group] === option).length;
-      return { label: `${option} (${count})`, value: option };
-    });
-  };
+  }, [groups]);
 
   const resetFilter = useCallback(() => {
     dispatch(actions.setFilter(initialState.filter));
@@ -94,8 +114,11 @@ const Filter = () => {
           <StyledMultiSelect
             placeholder="Kies een type"
             name="type"
-            options={type}
-            onChange={(values: string) => {
+            isMulti
+            defaultValue={type}
+            options={types}
+            onChange={(values: any) => {
+              setType(values);
               updateFilter("type", values);
             }}
           />
@@ -103,8 +126,11 @@ const Filter = () => {
           <StyledMultiSelect
             name="theme"
             placeholder="Kies een thema"
-            options={theme}
-            onChange={(values: string) => {
+            isMulti
+            defaultValue={theme}
+            options={themes}
+            onChange={(values: any) => {
+              setTheme(values);
               updateFilter("theme", values);
             }}
           />
@@ -112,9 +138,12 @@ const Filter = () => {
           <Label label="Niveau" />
           <StyledMultiSelect
             placeholder="Kies een niveau"
+            isMulti
+            defaultValue={level}
             name="level"
-            options={level}
-            onChange={(values: string) => {
+            options={levels}
+            onChange={(values: any) => {
+              setLevel(values);
               updateFilter("level", values);
             }}
           />
@@ -124,8 +153,11 @@ const Filter = () => {
           <StyledMultiSelect
             name="area"
             placeholder="Kies een standsdeel"
-            options={area}
-            onChange={(values: string) => {
+            isMulti
+            defaultValue={area}
+            options={areas}
+            onChange={(values: any) => {
+              setArea(values);
               updateFilter("area", values);
             }}
           />
@@ -133,8 +165,11 @@ const Filter = () => {
           <StyledMultiSelect
             name="source"
             placeholder="Kies een bron"
-            options={source}
-            onChange={(values: string) => {
+            isMulti
+            defaultValue={source}
+            options={sources}
+            onChange={(values: any) => {
+              setSource(values);
               updateFilter("source", values);
             }}
           />
