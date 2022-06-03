@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/static/js/main.138869b9.js",
-    "static/js/27.4031f823.chunk.js": "/static/js/27.4031f823.chunk.js",
-    "index.html": "/index.html"
+    "main.js": "/hior-2/static/js/main.0d3a7851.js",
+    "static/js/27.4031f823.chunk.js": "/hior-2/static/js/27.4031f823.chunk.js",
+    "index.html": "/hior-2/index.html"
   },
   "entrypoints": [
-    "static/js/main.138869b9.js"
+    "static/js/main.0d3a7851.js"
   ]
 }
