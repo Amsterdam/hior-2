@@ -2,6 +2,7 @@
   "name": "hior",
   "version": "0.1.0",
   "private": false,
+  "homepage": "https://amsterdam.github.io/hior-2/",
   "dependencies": {
     "axios": "^0.27.2",
     "gh-pages": "^4.0.0",
@@ -22,7 +23,6 @@
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test --watchAll=false",
     "test:watch": "react-scripts test",
-    "deploy": "gh-pages -b master -d build",
     "eject": "react-scripts eject"
   },
   "browserslist": {
