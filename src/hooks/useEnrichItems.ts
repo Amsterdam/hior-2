@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { useMemo } from "react";
 import { DOCUMENT_URL, IMAGE_URL } from "../constants";
 // import { sortAsc } from "../services/utils";
 import { Groups, Property, Attribute, ItemEnriched, Item } from "../types";
@@ -8,26 +8,26 @@ const useEnrichItems = (
   properties: Property[] | undefined,
   attributes: Attribute[] | undefined,
 ): any => {
-  const sortAsc = useCallback((a: string, b: string) => {
-    const foundA = a.match(/^(\d+\d*?)/);
-    if (foundA) {
-      const foundB = b.match(/^(\d+\d*?)/);
-      if (foundB) {
-        return parseInt(foundA[1], 10) < parseInt(foundB[1], 10)
-          ? -1
-          : parseInt(foundA[1], 10) > parseInt(foundB[1], 10)
-          ? 1
-          : 0;
-      }
-    }
-
-    return a < b ? -1 : a > b ? 1 : 0;
-  }, []);
-
   return useMemo(() => {
     if (!items || !properties || !attributes) {
       return [];
     }
+
+    const sortAsc = (a: string, b: string) => {
+      const foundA = a.match(/^(\d+\d*?)/);
+      if (foundA) {
+        const foundB = b.match(/^(\d+\d*?)/);
+        if (foundB) {
+          return parseInt(foundA[1], 10) < parseInt(foundB[1], 10)
+            ? -1
+            : parseInt(foundA[1], 10) > parseInt(foundB[1], 10)
+            ? 1
+            : 0;
+        }
+      }
+
+      return a < b ? -1 : a > b ? 1 : 0;
+    };
 
     const groups: Groups = {
       source: [],
@@ -110,7 +110,7 @@ const useEnrichItems = (
     groups.area = groups.area.sort((a: any, b: any) => sortAsc(a, b));
 
     return { enrichedItems, allGroups: groups };
-  }, [attributes, items, properties, sortAsc]);
+  }, [attributes, items, properties]);
 };
 
 export default useEnrichItems;

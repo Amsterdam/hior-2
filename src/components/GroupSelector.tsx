@@ -36,13 +36,14 @@ const GroupSelector = () => {
 
   const renderItem = useCallback(
     (group: string, value: string): ReactNode => {
-      const count = filteredItems?.filter((item: any) => item[group] === value).length;
+      const count = filteredItems?.filter((item: any) => (item[group] as string).includes(value)).length;
       if (count > 0) {
         return (
           <span>
             <Link href={`#${value.replace(" ", "-")}`} variant="inline">
               {value} ({count}),
-            </Link>&nbsp;&nbsp;
+            </Link>
+            &nbsp;&nbsp;
           </span>
         );
       }

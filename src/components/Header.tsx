@@ -4,6 +4,10 @@ import { Header as ASCHeader, MenuItem, MenuButton, MenuInline } from "@amsterda
 const Header = () => {
   const location = useLocation();
 
+  function isHome() {
+    return !!matchPath(location.pathname, "/home");
+  }
+
   return (
     <ASCHeader
       tall={false}
@@ -17,7 +21,7 @@ const Header = () => {
           <MenuInline>
             <MenuItem>
               {/* @ts-ignore */}
-              <MenuButton as={Link} to="/home" active={!!matchPath(location.pathname, "/home")} data-testid="header-home-button">
+              <MenuButton as={Link} to="/home" active={isHome()} data-testid="header-home-button">
                 Startpagina
               </MenuButton>
             </MenuItem>

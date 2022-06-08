@@ -111,7 +111,6 @@ const List = () => {
             {count})
           </StyledTitle>
         );
-        return null;
       }
       return <span></span>;
     },
