@@ -1,6 +1,6 @@
 import { Selector } from "./types";
 
-const acc = process.env.NODE_ENV === "production" ? "" : "acc.";
+const acc = ""; // process.env.NODE_ENV === "production" ? "" : "acc.";
 
 export const IMAGE_URL = "https://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/Afbeeldingen/";
 
