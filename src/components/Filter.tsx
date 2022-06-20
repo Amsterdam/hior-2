@@ -59,7 +59,7 @@ const Filter = () => {
     (group = "", values = null) => {
       let value: any = null;
 
-      if (group && values) {
+      if (group && values && value.length) {
         value = values.map((item: any) => item.value).join("|");
       }
 
