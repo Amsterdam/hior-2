@@ -56,10 +56,10 @@ const Filter = () => {
   });
 
   const updateFilter = useCallback(
-    (group = "", values = null) => {
+    (group = "", values = []) => {
       let value: any = null;
 
-      if (group && values && values.map) {
+      if (group && values) {
         value = values.map((item: any) => item.value).join("|");
       }
 
