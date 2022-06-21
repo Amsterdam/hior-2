@@ -4,7 +4,7 @@ import HistoryRouter from "./HistoryRouter";
 
 export const history = createMemoryHistory();
 
-export const withTheme = (Component) => {
+export const withTheme = (Component: any) => {
   return (
     <ThemeProvider>
       <HistoryRouter history={history}>{Component}</HistoryRouter>
