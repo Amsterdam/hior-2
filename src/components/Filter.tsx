@@ -4,7 +4,7 @@ import Select from "react-select";
 import { Button, Input, Label, themeSpacing } from "@amsterdam/asc-ui";
 import { FilterContext } from "../filter/FilterContext";
 import { actions, initialState, defaultArea } from "../filter/reducer";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useLocation } from "react-router-dom";
 
 const StyledDiv = styled.div`
   margin-bottom: ${themeSpacing(10)};
@@ -28,6 +28,9 @@ const SyledColumn = styled.div`
 
 const Filter = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+
+  // console.log("filter", location.search);
 
   const {
     //@ts-ignore
@@ -96,6 +99,40 @@ const Filter = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const doThings = () => {
+    if (location.search) {
+      const parts = location.search.replace("?", "").split("&");
+      const params = {};
+
+      parts.forEach((v: any) => {
+        const items = v.split("=");
+
+        //@ts-ignore
+        params[items[0]] = items[1];
+      });
+
+      //@ts-ignore
+      if (params.type) {
+        //@ts-ignore
+        let typeVar = decodeURIComponent(params.type).split(",");
+        //@ts-ignore
+        typeVar = typeVar.map((val: any) => ({
+          label: val,
+          value: val,
+        }));
+        setType(typeVar);
+
+        console.log("change search setType", typeVar);
+      }
+    }
+  };
+
+  // useEffect(() => {
+  //   }
+  // }, [location.search]);
+
+  // console.log("type", type);
+
   const resetFilter = useCallback(() => {
     dispatch(actions.setFilter(initialState.filter));
     //@ts-ignore
@@ -115,6 +152,7 @@ const Filter = () => {
             options={formatGroup("type")}
             onChange={(values: any) => {
               setType(values);
+              console.log("onChange setType", values);
               updateFilter("type", values);
             }}
           />
@@ -179,7 +217,6 @@ const Filter = () => {
             }}
           />
         </SyledColumn>
-
         <Button variant="secondary" data-testid="reset" onClick={resetFilter}>
           Wis filter
         </Button>
