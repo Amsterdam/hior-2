@@ -63,9 +63,9 @@ const Filter = () => {
 
   const updateFilter = useCallback(
     (group = "", values = []) => {
-      let value: any = null;
+      let value = null;
 
-      if (group && values) {
+      if (Array.isArray(values)) {
         value = values.map((item: any) => item.value).join(",");
       }
 
