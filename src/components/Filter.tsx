@@ -1,10 +1,10 @@
 import { useCallback, useContext, useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import Select from "react-select";
 import { Button, Input, Label, themeSpacing } from "@amsterdam/asc-ui";
 import { FilterContext } from "../filter/FilterContext";
 import { actions, initialState, defaultArea } from "../filter/reducer";
-import { useSearchParams, useLocation } from "react-router-dom";
 
 const StyledDiv = styled.div`
   margin-bottom: ${themeSpacing(10)};
@@ -28,9 +28,6 @@ const SyledColumn = styled.div`
 
 const Filter = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const location = useLocation();
-
-  console.log("filter", location.search, searchParams.keys().next());
 
   const {
     //@ts-ignore
