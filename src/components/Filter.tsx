@@ -96,7 +96,7 @@ const Filter = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const doThings = () => {
+  const updateParams = () => {
     const params: { [key: string]: string | null } = {};
     [...searchParams.keys()].forEach((key) => (params[key] = searchParams.get(key)));
 
