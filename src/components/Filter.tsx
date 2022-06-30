@@ -49,6 +49,8 @@ const Filter = () => {
   const [type, setType] = useState<any[]>([]);
   const [area, setArea] = useState<any[]>(defaultArea);
 
+  const [params, setParams] = useState<any>({});
+
   const [filter, setFilter] = useState<any>({
     source: "",
     level: "",
@@ -77,6 +79,7 @@ const Filter = () => {
         };
       }
 
+      updateParams()
       setFilter(newFilter);
       setSearchParams(newFilter);
       dispatch(actions.setFilter(newFilter));
@@ -100,16 +103,19 @@ const Filter = () => {
     setTypes(formatGroup("type"));
     setAreas(formatGroup("area"));
 
-    // doThings();
     updateFilter();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [groups]);
 
-  const doThings = () => {
+  const updateParams = () => {
     const params: { [key: string]: string | null } = {};
     [...searchParams.keys()].forEach((key) => (params[key] = searchParams.get(key)));
 
+    setParams(params);
+  };
+
+  const doThings = () => {
     if (params.type) {
       const typeVar = params.type.split(",");
 
