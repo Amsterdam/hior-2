@@ -30,7 +30,7 @@ const Filter = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
 
-  // console.log("filter", location.search);
+  console.log("filter", location.search, searchParams.keys().next());
 
   const {
     //@ts-ignore
@@ -102,7 +102,7 @@ const Filter = () => {
     setThemes(formatGroup("theme"));
     setTypes(formatGroup("type"));
     setAreas(formatGroup("area"));
-    
+
     // doThings();
     updateFilter();
 
@@ -110,30 +110,19 @@ const Filter = () => {
   }, [groups]);
 
   const doThings = () => {
-    if (location.search) {
-      const parts = location.search.replace("?", "").split("&");
-      const params = {};
+    const params: { [key: string]: string | null } = {};
+    [...searchParams.keys()].forEach((key) => (params[key] = searchParams.get(key)));
 
-      parts.forEach((v: any) => {
-        const items = v.split("=");
+    if (params.type) {
+      const typeVar = params.type.split(",");
 
-        //@ts-ignore
-        params[items[0]] = items[1];
-      });
+      const typeResult: { label: string; value: string }[] = typeVar.map((val: any) => ({
+        label: val,
+        value: val,
+      }));
+      setType(typeResult);
 
-      //@ts-ignore
-      if (params.type) {
-        //@ts-ignore
-        let typeVar = decodeURIComponent(params.type).split(",");
-        //@ts-ignore
-        typeVar = typeVar.map((val: any) => ({
-          label: val,
-          value: val,
-        }));
-        setType(typeVar);
-
-        console.log("change search setType", typeVar);
-      }
+      console.log("change search setType", typeResult);
     }
   };
 
