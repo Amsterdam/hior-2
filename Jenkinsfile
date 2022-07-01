@@ -24,11 +24,11 @@ node {
     }
 }
 
-//     stage('Test') {
-//         tryStep "test", {
-//             sh "docker-compose up --abort-on-container-exit unittest"
-//         }
-//     }
+stage('Test') {
+    tryStep "test", {
+        sh "docker-compose up --abort-on-container-exit unittest"
+    }
+}
 
 node {
     stage("Build and push acceptance image") {
