@@ -22,12 +22,13 @@ node {
     stage("Checkout") {
         checkout scm
     }
-}
+
 
 stage('Test') {
     tryStep "test", {
         sh "docker-compose up --abort-on-container-exit unittest"
     }
+}
 }
 
 node {
