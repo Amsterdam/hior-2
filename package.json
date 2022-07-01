@@ -1,8 +1,7 @@
 {
   "name": "hior",
   "version": "0.1.0",
-  "private": false,
-  "homepage": "https://amsterdam.github.io/hior-2/",
+  "private": true,
   "dependencies": {
     "axios": "^0.27.2",
     "gh-pages": "^4.0.0",
