@@ -122,12 +122,6 @@ const Filter = () => {
     }
   };
 
-  // useEffect(() => {
-  //   }
-  // }, [location.search]);
-
-  // console.log("type", type);
-
   const resetFilter = useCallback(() => {
     dispatch(actions.setFilter(initialState.filter));
     //@ts-ignore
