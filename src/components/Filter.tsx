@@ -26,8 +26,30 @@ const SyledColumn = styled.div`
   float: left;
 `;
 
-const Filter = () => {
+function formatSearchParams(searchParams: URLSearchParams) {
+  const params: Record<string, string | null> = {};
+  [...searchParams.keys()].forEach((key) => (params[key] = searchParams.get(key)));
+  return params;
+}
+
+function useGetFormattedSearchParams() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [formattedSearchParams, setFormattedParams] = useState<Record<string, string | null>>(
+    formatSearchParams(searchParams),
+  );
+
+  useEffect(() => {
+    setFormattedParams(formatSearchParams(searchParams));
+  }, [searchParams]);
+
+  return {
+    formattedSearchParams,
+    setSearchParams,
+  };
+}
+
+const Filter = () => {
+  const { formattedSearchParams, setSearchParams } = useGetFormattedSearchParams();
 
   const {
     //@ts-ignore
@@ -48,8 +70,6 @@ const Filter = () => {
   const [theme, setTheme] = useState<any[]>([]);
   const [type, setType] = useState<any[]>([]);
   const [area, setArea] = useState<any[]>(defaultArea);
-
-  const [params, setParams] = useState<any>({});
 
   const [filter, setFilter] = useState<any>({
     source: "",
@@ -79,7 +99,6 @@ const Filter = () => {
         };
       }
 
-      updateParams()
       setFilter(newFilter);
       setSearchParams(newFilter);
       dispatch(actions.setFilter(newFilter));
@@ -108,16 +127,9 @@ const Filter = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [groups]);
 
-  const updateParams = () => {
-    const params: { [key: string]: string | null } = {};
-    [...searchParams.keys()].forEach((key) => (params[key] = searchParams.get(key)));
-
-    setParams(params);
-  };
-
   const doThings = () => {
-    if (params.type) {
-      const typeVar = params.type.split(",");
+    if (formattedSearchParams.type) {
+      const typeVar = formattedSearchParams.type.split(",");
 
       const typeResult: { label: string; value: string }[] = typeVar.map((val: any) => ({
         label: val,
@@ -128,12 +140,6 @@ const Filter = () => {
       console.log("change search setType", typeResult);
     }
   };
-
-  // useEffect(() => {
-  //   }
-  // }, [location.search]);
-
-  // console.log("type", type);
 
   const resetFilter = useCallback(() => {
     dispatch(actions.setFilter(initialState.filter));
