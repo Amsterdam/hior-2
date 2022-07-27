@@ -1,5 +1,4 @@
-import { render, screen } from "@testing-library/react";
-import { act } from "@testing-library/react-hooks";
+import { act, render, screen } from "@testing-library/react";
 import axios from "axios";
 import { withTheme } from "../test/utils";
 import Faq from "./Faq";
