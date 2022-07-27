@@ -2,6 +2,8 @@ import { useCallback, useReducer, useMemo } from "react";
 import axios from "axios";
 import type { Reducer } from "react";
 
+// TODO: Swap this module out for React Query.
+
 type Data = Record<string, unknown>;
 
 export type FetchError = (Response | Error) & {
@@ -110,7 +112,7 @@ const useFetchData = (): FetchResponse => {
           ...requestOptions,
         });
 
-        if (fetchResponse.statusText === "OK") {
+        if ([200, 201].includes(fetchResponse.status)) {
           dispatch({ type: "SET_GET_DATA", payload: fetchResponse.data });
         } else {
           //@ts-ignore
