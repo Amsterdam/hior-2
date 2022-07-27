@@ -1,5 +1,10 @@
+// No check because typing of asc-ui is not correct.
+// @ts-nocheck
 import { Link, useLocation, matchPath } from "react-router-dom";
 import { Header as ASCHeader, MenuItem, MenuButton, MenuInline } from "@amsterdam/asc-ui";
+
+// We need to filter the active prop as else it gets passed to the DOM with an invalid value.
+const LinkWoActive = ({ active, ...other }) => <Link {...other} />;
 
 const Header = () => {
   const location = useLocation();
@@ -20,26 +25,27 @@ const Header = () => {
         <>
           <MenuInline>
             <MenuItem>
-              {/* @ts-ignore */}
-              <MenuButton as={Link} to="/home" active={isHome()} data-testid="header-home-button">
+              <MenuButton
+                forwardedAs={LinkWoActive}
+                to="/home"
+                active={!!matchPath(location.pathname, "/home")}
+                data-testid="header-home-button"
+              >
                 Startpagina
               </MenuButton>
             </MenuItem>
             <MenuItem>
-              {/* @ts-ignore */}
-              <MenuButton as={Link} to="/list" active={!!matchPath(location.pathname, "/list")}>
+              <MenuButton forwardedAs={LinkWoActive} to="/list" active={!!matchPath(location.pathname, "/list")}>
                 Zoek
               </MenuButton>
             </MenuItem>
             <MenuItem>
-              {/* @ts-ignore */}
-              <MenuButton as={Link} to="/faq" active={!!matchPath(location.pathname, "/faq")}>
+              <MenuButton forwardedAs={LinkWoActive} to="/faq" active={!!matchPath(location.pathname, "/faq")}>
                 FAQ
               </MenuButton>
             </MenuItem>
             <MenuItem>
-              {/* @ts-ignore */}
-              <MenuButton as="a" href="mailto:hior@amsterdam.nl">
+              <MenuButton forwardedAs="a" href="mailto:hior@amsterdam.nl">
                 Contact
               </MenuButton>
             </MenuItem>
