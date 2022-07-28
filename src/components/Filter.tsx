@@ -1,11 +1,11 @@
-import { useCallback, useContext, useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useCallback, useEffect, useState } from "react";
+import Select from "react-select";
 import styled from "styled-components";
 import { Button, Input, Label, themeSpacing } from "@amsterdam/asc-ui";
-import Select from "react-select";
-import { FilterContext, useDispatch } from "../filter/FilterContext";
+import { useDispatch, useFilterState } from "../filter/FilterContext";
 import { actions, initialState, defaultArea } from "../filter/reducer";
 import { FormattedOption, Group, SearchFilter } from "../types";
+import { useGetFormattedSearchParams } from "../hooks/useGetFormattedSearchParams";
 
 const StyledDiv = styled.div`
   margin-bottom: ${themeSpacing(10)};
@@ -27,40 +27,6 @@ const SyledColumn = styled.div`
   float: left;
 `;
 
-function formatSearchParams(searchParams: URLSearchParams) {
-  const params: Record<string, string | null> = {};
-  [...searchParams.keys()].forEach((key) => (params[key] = searchParams.get(key)));
-  return params;
-}
-
-function useGetFormattedSearchParams() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [formattedSearchParams, setFormattedParams] = useState<Record<Group, string | null>>(
-    formatSearchParams(searchParams),
-  );
-
-  useEffect(() => {
-    setFormattedParams(formatSearchParams(searchParams));
-  }, [searchParams]);
-
-  function setParams(filter: SearchFilter) {
-    const params = new URLSearchParams();
-
-    type FilterKey = keyof SearchFilter;
-
-    (Object.keys(filter) as FilterKey[]).forEach((key) => {
-      params.set(key, filter[key]);
-    });
-
-    setSearchParams(params);
-  }
-
-  return {
-    formattedSearchParams,
-    setSearchParams: setParams,
-  };
-}
-
 function formatOption(option: string): FormattedOption {
   return { label: option, value: option };
 }
@@ -68,10 +34,7 @@ function formatOption(option: string): FormattedOption {
 const Filter = () => {
   const dispatch = useDispatch();
   const { formattedSearchParams, setSearchParams } = useGetFormattedSearchParams();
-
-  const {
-    state: { groups, filteredItems, filter },
-  } = useContext(FilterContext);
+  const { groups } = useFilterState();
 
   const [sources, setSoures] = useState<FormattedOption[]>([]);
   const [levels, setLevels] = useState<FormattedOption[]>([]);
@@ -94,15 +57,6 @@ const Filter = () => {
   );
   const [area, setArea] = useState<FormattedOption[]>(defaultArea);
 
-  // const [filter, setFilter] = useState<Filter>({
-  //   source: "",
-  //   level: "",
-  //   theme: "",
-  //   type: "",
-  //   area: defaultArea[0].value,
-  //   query: "",
-  // });
-
   useEffect(() => {
     const filter: SearchFilter = {
       source: source.map((i) => i.value).join(","),
@@ -113,39 +67,9 @@ const Filter = () => {
       query,
     };
 
-    console.log("filter", filter);
-
     dispatch(actions.setFilter(filter));
     setSearchParams(filter);
-  }, [source, level, theme, type, area, query]);
-
-  // const updateFilter = useCallback(
-  //   (group = "", values = []) => {
-  //     let value = null;
-
-  //     if (Array.isArray(values)) {
-  //       value = values.map((item: any) => item.value).join(",");
-  //     }
-
-  //     let newFilter = {
-  //       ...filter,
-  //     };
-
-  //     if ((group && value) || value === "") {
-  //       newFilter = {
-  //         ...filter,
-  //         [group]: value,
-  //       };
-  //     }
-
-  //     console.log("newFilter", newFilter);
-
-  //     setFilter(newFilter);
-  //     setSearchParams(newFilter);
-  //     dispatch(actions.setFilter(newFilter));
-  //   },
-  //   [filter, dispatch],
-  // );
+  }, [source, level, theme, type, area, query, dispatch, setSearchParams]);
 
   const formatGroup = useCallback(
     (group: Group) => {
@@ -161,24 +85,8 @@ const Filter = () => {
     setTypes(formatGroup("type"));
     setAreas(formatGroup("area"));
 
-    // updateFilter();
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [groups]);
-
-  // const doThings = () => {
-  //   if (formattedSearchParams.type) {
-  //     const typeVar = formattedSearchParams.type.split(",");
-
-  //     const typeResult: { label: string; value: string }[] = typeVar.map((val: any) => ({
-  //       label: val,
-  //       value: val,
-  //     }));
-  //     setType(typeResult);
-
-  //     console.log("change search setType", typeResult);
-  //   }
-  // };
 
   const resetFilter = useCallback(() => {
     dispatch(actions.setFilter(initialState.filter));
