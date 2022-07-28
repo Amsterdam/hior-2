@@ -3,8 +3,9 @@ import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import { Button, Input, Label, themeSpacing } from "@amsterdam/asc-ui";
 import Select from "react-select";
-import { FilterContext } from "../filter/FilterContext";
+import { FilterContext, useDispatch } from "../filter/FilterContext";
 import { actions, initialState, defaultArea } from "../filter/reducer";
+import { FormattedOption, Group, SearchFilter } from "../types";
 
 const StyledDiv = styled.div`
   margin-bottom: ${themeSpacing(10)};
@@ -34,7 +35,7 @@ function formatSearchParams(searchParams: URLSearchParams) {
 
 function useGetFormattedSearchParams() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [formattedSearchParams, setFormattedParams] = useState<Record<string, string | null>>(
+  const [formattedSearchParams, setFormattedParams] = useState<Record<Group, string | null>>(
     formatSearchParams(searchParams),
   );
 
@@ -42,75 +43,113 @@ function useGetFormattedSearchParams() {
     setFormattedParams(formatSearchParams(searchParams));
   }, [searchParams]);
 
+  function setParams(filter: SearchFilter) {
+    const params = new URLSearchParams();
+
+    type FilterKey = keyof SearchFilter;
+
+    (Object.keys(filter) as FilterKey[]).forEach((key) => {
+      params.set(key, filter[key]);
+    });
+
+    setSearchParams(params);
+  }
+
   return {
     formattedSearchParams,
-    setSearchParams,
+    setSearchParams: setParams,
   };
 }
 
+function formatOption(option: string): FormattedOption {
+  return { label: option, value: option };
+}
+
 const Filter = () => {
+  const dispatch = useDispatch();
   const { formattedSearchParams, setSearchParams } = useGetFormattedSearchParams();
 
   const {
-    //@ts-ignore
     state: { groups /* filteredItems */ },
-    //@ts-ignore
-    dispatch,
-    //@ts-ignore
   } = useContext(FilterContext);
 
-  const [sources, setSoures] = useState<string[]>([]);
-  const [levels, setLevels] = useState<string[]>([]);
-  const [themes, setThemes] = useState<string[]>([]);
-  const [types, setTypes] = useState<string[]>([]);
-  const [areas, setAreas] = useState<string[]>([]);
+  const [sources, setSoures] = useState<FormattedOption[]>([]);
+  const [levels, setLevels] = useState<FormattedOption[]>([]);
+  const [themes, setThemes] = useState<FormattedOption[]>([]);
+  const [types, setTypes] = useState<FormattedOption[]>([]);
+  const [areas, setAreas] = useState<FormattedOption[]>([]);
+  const [query, setQuery] = useState("");
 
-  const [source, setSource] = useState<any[]>([]);
-  const [level, setLevel] = useState<any[]>([]);
-  const [theme, setTheme] = useState<any[]>([]);
-  const [type, setType] = useState<any[]>([]);
-  const [area, setArea] = useState<any[]>(defaultArea);
-
-  const [filter, setFilter] = useState<any>({
-    source: "",
-    level: "",
-    theme: "",
-    type: "",
-    area: defaultArea[0].value,
-    query: "",
-  });
-
-  const updateFilter = useCallback(
-    (group = "", values = []) => {
-      let value = null;
-
-      if (Array.isArray(values)) {
-        value = values.map((item: any) => item.value).join(",");
-      }
-
-      let newFilter = {
-        ...filter,
-      };
-
-      if ((group && value) || value === "") {
-        newFilter = {
-          ...filter,
-          [group]: value,
-        };
-      }
-
-      setFilter(newFilter);
-      setSearchParams(newFilter);
-      dispatch(actions.setFilter(newFilter));
-    },
-    [filter, dispatch],
+  const [source, setSource] = useState<FormattedOption[]>(
+    formattedSearchParams.source ? [formatOption(formattedSearchParams.source)] : [],
   );
+  const [level, setLevel] = useState<FormattedOption[]>(
+    formattedSearchParams.level ? [formatOption(formattedSearchParams.level)] : [],
+  );
+  const [theme, setTheme] = useState<FormattedOption[]>(
+    formattedSearchParams.theme ? [formatOption(formattedSearchParams.theme)] : [],
+  );
+  const [type, setType] = useState<FormattedOption[]>(
+    formattedSearchParams.type ? [formatOption(formattedSearchParams.type)] : [],
+  );
+  const [area, setArea] = useState<FormattedOption[]>(defaultArea);
+
+  // const [filter, setFilter] = useState<Filter>({
+  //   source: "",
+  //   level: "",
+  //   theme: "",
+  //   type: "",
+  //   area: defaultArea[0].value,
+  //   query: "",
+  // });
+
+  useEffect(() => {
+    const filter: SearchFilter = {
+      source: source.map((i) => i.value).join(","),
+      level: level.map((i) => i.value).join(","),
+      theme: theme.map((i) => i.value).join(","),
+      type: type.map((i) => i.value).join(","),
+      area: area.map((i) => i.value).join(","),
+      query,
+    };
+
+    console.log("filter", filter);
+
+    dispatch(actions.setFilter(filter));
+    setSearchParams(filter);
+  }, [source, level, theme, type, area, query]);
+
+  // const updateFilter = useCallback(
+  //   (group = "", values = []) => {
+  //     let value = null;
+
+  //     if (Array.isArray(values)) {
+  //       value = values.map((item: any) => item.value).join(",");
+  //     }
+
+  //     let newFilter = {
+  //       ...filter,
+  //     };
+
+  //     if ((group && value) || value === "") {
+  //       newFilter = {
+  //         ...filter,
+  //         [group]: value,
+  //       };
+  //     }
+
+  //     console.log("newFilter", newFilter);
+
+  //     setFilter(newFilter);
+  //     setSearchParams(newFilter);
+  //     dispatch(actions.setFilter(newFilter));
+  //   },
+  //   [filter, dispatch],
+  // );
 
   const formatGroup = useCallback(
-    (group: string) => {
-      return groups[group].map((option: string) => {
-        return { label: option, value: option };
-      });
+    (group: Group) => {
+      return groups[group].map(formatOption);
     },
     [groups],
   );
@@ -122,28 +161,28 @@ const Filter = () => {
     setTypes(formatGroup("type"));
     setAreas(formatGroup("area"));
 
-    updateFilter();
+    // updateFilter();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [groups]);
 
-  const doThings = () => {
-    if (formattedSearchParams.type) {
-      const typeVar = formattedSearchParams.type.split(",");
+  // const doThings = () => {
+  //   if (formattedSearchParams.type) {
+  //     const typeVar = formattedSearchParams.type.split(",");
 
-      const typeResult: { label: string; value: string }[] = typeVar.map((val: any) => ({
-        label: val,
-        value: val,
-      }));
-      setType(typeResult);
+  //     const typeResult: { label: string; value: string }[] = typeVar.map((val: any) => ({
+  //       label: val,
+  //       value: val,
+  //     }));
+  //     setType(typeResult);
 
-      console.log("change search setType", typeResult);
-    }
-  };
+  //     console.log("change search setType", typeResult);
+  //   }
+  // };
 
   const resetFilter = useCallback(() => {
     dispatch(actions.setFilter(initialState.filter));
-    //@ts-ignore
+
     setSearchParams(initialState.filter);
   }, [dispatch, setSearchParams]);
 
@@ -160,8 +199,6 @@ const Filter = () => {
             options={types}
             onChange={(values: any) => {
               setType(values);
-              console.log("onChange setType", values);
-              updateFilter("type", values);
             }}
           />
           <Label label="Thema" />
@@ -173,7 +210,6 @@ const Filter = () => {
             options={themes}
             onChange={(values: any) => {
               setTheme(values);
-              updateFilter("theme", values);
             }}
           />
 
@@ -186,7 +222,6 @@ const Filter = () => {
             options={levels}
             onChange={(values: any) => {
               setLevel(values);
-              updateFilter("level", values);
             }}
           />
         </SyledColumn>
@@ -200,7 +235,6 @@ const Filter = () => {
             options={areas}
             onChange={(values: any) => {
               setArea(values);
-              updateFilter("area", values);
             }}
           />
           <Label label="Bron" />
@@ -212,7 +246,6 @@ const Filter = () => {
             options={sources}
             onChange={(values: any) => {
               setSource(values);
-              updateFilter("source", values);
             }}
           />
 
@@ -221,7 +254,7 @@ const Filter = () => {
             type="text"
             id="query"
             onChange={(e: any) => {
-              updateFilter("query", e.target.value);
+              setQuery(e.target.value);
             }}
           />
         </SyledColumn>
