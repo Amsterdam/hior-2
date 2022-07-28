@@ -39,7 +39,7 @@ const Faq = () => {
           <StyledDiv>
             <StyledHeading>Veelgestelde vragen</StyledHeading>
             {loading && <Loader />}
-            {/* @ts-ignore */}
+
             {!loading &&
               data?.results?.map((faq: FaqType) => (
                 <StyledAccordion key={faq.id} id={`a${faq.id}`} title={faq.question}>
