@@ -30,4 +30,10 @@ export function useDispatch() {
   return dispatch;
 }
 
+export function useFilterState() {
+  const { state } = useContext(FilterContext);
+
+  return state;
+}
+
 export default FilterContextProvider;
