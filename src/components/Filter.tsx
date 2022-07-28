@@ -1,9 +1,11 @@
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import Select from "react-select";
 import styled from "styled-components";
 import { Button, Input, Label, themeSpacing } from "@amsterdam/asc-ui";
-import Select from "react-select";
-import { FilterContext } from "../filter/FilterContext";
+import { useDispatch, useFilterState } from "../filter/FilterContext";
 import { actions, initialState, defaultArea } from "../filter/reducer";
+import { FormattedOption, Group, SearchFilter } from "../types";
+import { useGetFormattedSearchParams } from "../hooks/useGetFormattedSearchParams";
 
 const StyledDiv = styled.div`
   margin-bottom: ${themeSpacing(10)};
@@ -25,67 +27,53 @@ const SyledColumn = styled.div`
   float: left;
 `;
 
+function formatOption(option: string): FormattedOption {
+  return { label: option, value: option };
+}
+
 const Filter = () => {
-  const {
-    //@ts-ignore
-    state: { groups /* filteredItems */ },
-    //@ts-ignore
-    dispatch,
-    //@ts-ignore
-  } = useContext(FilterContext);
+  const dispatch = useDispatch();
+  const { formattedSearchParams, setSearchParams } = useGetFormattedSearchParams();
+  const { groups } = useFilterState();
 
-  const [sources, setSoures] = useState<string[]>([]);
-  const [levels, setLevels] = useState<string[]>([]);
-  const [themes, setThemes] = useState<string[]>([]);
-  const [types, setTypes] = useState<string[]>([]);
-  const [areas, setAreas] = useState<string[]>([]);
+  const [sources, setSoures] = useState<FormattedOption[]>([]);
+  const [levels, setLevels] = useState<FormattedOption[]>([]);
+  const [themes, setThemes] = useState<FormattedOption[]>([]);
+  const [types, setTypes] = useState<FormattedOption[]>([]);
+  const [areas, setAreas] = useState<FormattedOption[]>([]);
+  const [query, setQuery] = useState("");
 
-  const [source, setSource] = useState<any[]>([]);
-  const [level, setLevel] = useState<any[]>([]);
-  const [theme, setTheme] = useState<any[]>([]);
-  const [type, setType] = useState<any[]>([]);
-  const [area, setArea] = useState<any[]>(defaultArea);
-
-  const [filter, setFilter] = useState<any>({
-    source: "",
-    level: "",
-    theme: "",
-    type: "",
-    area: defaultArea[0].value,
-    query: "",
-  });
-
-  const updateFilter = useCallback(
-    (group = "", values = []) => {
-      let value: any = null;
-
-      if (group && values) {
-        value = values.map((item: any) => item.value).join("|");
-      }
-
-      let newFilter = {
-        ...filter,
-      };
-
-      if (group && value|| value === "")  {
-        newFilter = {
-          ...filter,
-          [group]: value,
-        };
-      }
-
-      setFilter(newFilter);
-
-      dispatch(actions.setFilter(newFilter));
-    },
-    [filter, dispatch],
+  const [source, setSource] = useState<FormattedOption[]>(
+    formattedSearchParams.source ? [formatOption(formattedSearchParams.source)] : [],
   );
+  const [level, setLevel] = useState<FormattedOption[]>(
+    formattedSearchParams.level ? [formatOption(formattedSearchParams.level)] : [],
+  );
+  const [theme, setTheme] = useState<FormattedOption[]>(
+    formattedSearchParams.theme ? [formatOption(formattedSearchParams.theme)] : [],
+  );
+  const [type, setType] = useState<FormattedOption[]>(
+    formattedSearchParams.type ? [formatOption(formattedSearchParams.type)] : [],
+  );
+  const [area, setArea] = useState<FormattedOption[]>(defaultArea);
+
+  useEffect(() => {
+    const filter: SearchFilter = {
+      source: source.map((i) => i.value).join(","),
+      level: level.map((i) => i.value).join(","),
+      theme: theme.map((i) => i.value).join(","),
+      type: type.map((i) => i.value).join(","),
+      area: area.map((i) => i.value).join(","),
+      query,
+    };
+
+    dispatch(actions.setFilter(filter));
+    setSearchParams(filter);
+  }, [source, level, theme, type, area, query, dispatch, setSearchParams]);
 
   const formatGroup = useCallback(
-    (group: string) => {
-      return groups[group].map((option: string) => {
-        return { label: option, value: option };
-      });
+    (group: Group) => {
+      return groups[group].map(formatOption);
     },
     [groups],
   );
@@ -97,18 +85,18 @@ const Filter = () => {
     setTypes(formatGroup("type"));
     setAreas(formatGroup("area"));
 
-    updateFilter();
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [groups]);
 
   const resetFilter = useCallback(() => {
     dispatch(actions.setFilter(initialState.filter));
-  }, [dispatch]);
+
+    setSearchParams(initialState.filter);
+  }, [dispatch, setSearchParams]);
 
   return (
     <StyledDiv data-testid="filter">
-      <form>
+      <form method="get">
         <SyledColumn>
           <Label label="Type" />
           <StyledMultiSelect
@@ -119,7 +107,6 @@ const Filter = () => {
             options={types}
             onChange={(values: any) => {
               setType(values);
-              updateFilter("type", values);
             }}
           />
           <Label label="Thema" />
@@ -131,7 +118,6 @@ const Filter = () => {
             options={themes}
             onChange={(values: any) => {
               setTheme(values);
-              updateFilter("theme", values);
             }}
           />
 
@@ -144,7 +130,6 @@ const Filter = () => {
             options={levels}
             onChange={(values: any) => {
               setLevel(values);
-              updateFilter("level", values);
             }}
           />
         </SyledColumn>
@@ -158,7 +143,6 @@ const Filter = () => {
             options={areas}
             onChange={(values: any) => {
               setArea(values);
-              updateFilter("area", values);
             }}
           />
           <Label label="Bron" />
@@ -170,7 +154,6 @@ const Filter = () => {
             options={sources}
             onChange={(values: any) => {
               setSource(values);
-              updateFilter("source", values);
             }}
           />
 
@@ -179,11 +162,10 @@ const Filter = () => {
             type="text"
             id="query"
             onChange={(e: any) => {
-              updateFilter("query", e.target.value);
+              setQuery(e.target.value);
             }}
           />
         </SyledColumn>
-
         <Button variant="secondary" data-testid="reset" onClick={resetFilter}>
           Wis filter
         </Button>

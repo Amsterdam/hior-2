@@ -2,6 +2,8 @@ import { useCallback, useReducer, useMemo } from "react";
 import axios from "axios";
 import type { Reducer } from "react";
 
+// TODO: Swap this module out for React Query.
+
 type Data = Record<string, unknown>;
 
 export type FetchError = (Response | Error) & {
@@ -31,6 +33,11 @@ interface FetchResponse extends State {
  *
  * @returns {FetchResponse}
  */
+
+const requestHeaders = {
+  "Content-Type": "application/json",
+  Accept: "application/json",
+};
 
 const useFetchData = (): FetchResponse => {
   interface Action {
@@ -83,50 +90,40 @@ const useFetchData = (): FetchResponse => {
 
   const [state, dispatch] = useReducer<Reducer<State, Action>>(reducer, initialState);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const requestHeaders = {
-    "Content-Type": "application/json",
-    Accept: "application/json",
-  };
+  const get = useCallback(async (url: string, params = {}, requestOptions: any = {}) => {
+    dispatch({ type: "SET_LOADING", payload: true });
 
-  const get = useCallback(
-    async (url: string, params = {}, requestOptions: any = {}) => {
-      dispatch({ type: "SET_LOADING", payload: true });
+    const arrayParams = Object.entries(params)
+      .filter(([, value]) => Array.isArray(value))
+      .flatMap(([key, value]) => (value as string[]).flatMap((val: string) => `${key}=${val}`));
 
-      const arrayParams = Object.entries(params)
-        .filter(([, value]) => Array.isArray(value))
-        .flatMap(([key, value]) => (value as string[]).flatMap((val: string) => `${key}=${val}`));
+    const scalarParams = Object.entries(params)
+      .filter(([, value]) => Boolean(value) && !Array.isArray(value))
+      .flatMap(([key, value]) => `${key}=${value}`);
 
-      const scalarParams = Object.entries(params)
-        .filter(([, value]) => Boolean(value) && !Array.isArray(value))
-        .flatMap(([key, value]) => `${key}=${value}`);
+    const queryParams = arrayParams.concat(scalarParams).join("&");
+    const requestURL = [url, queryParams].filter(Boolean).join("?");
 
-      const queryParams = arrayParams.concat(scalarParams).join("&");
-      const requestURL = [url, queryParams].filter(Boolean).join("?");
+    try {
+      const fetchResponse = await axios.get(requestURL, {
+        ...requestHeaders,
+        ...requestOptions,
+      });
 
-      try {
-        const fetchResponse: any = await axios.get(requestURL, {
-          ...requestHeaders,
-          ...requestOptions,
-        });
-
-        if (fetchResponse.statusText === "OK") {
-          dispatch({ type: "SET_GET_DATA", payload: fetchResponse.data });
-        } else {
-          //@ts-ignore
-          dispatch({ type: "SET_ERROR", payload: fetchResponse as FetchError });
-          // eslint-disable-next-line no-console
-          console.error("fetch get error", url, fetchResponse);
-        }
-      } catch (exception: unknown) {
+      if ([200, 201].includes(fetchResponse?.status)) {
+        dispatch({ type: "SET_GET_DATA", payload: fetchResponse.data });
+      } else {
+        //@ts-ignore
+        dispatch({ type: "SET_ERROR", payload: fetchResponse as FetchError });
         // eslint-disable-next-line no-console
-        console.error("fetch get error", url);
-        dispatch({ type: "SET_ERROR", payload: exception as FetchError });
+        console.error("fetch get error", url, fetchResponse);
       }
-    },
-
-    [requestHeaders],
-  );
+    } catch (exception: unknown) {
+      // eslint-disable-next-line no-console
+      console.error("fetch get error", url, exception);
+      dispatch({ type: "SET_ERROR", payload: exception as FetchError });
+    }
+  }, []);
 
   const modify = useCallback(
     (method: string) =>
@@ -179,7 +176,7 @@ const useFetchData = (): FetchResponse => {
           console.error("fetch modify error", method, url);
         }
       },
-    [requestHeaders],
+    [],
   );
 
   const post = useMemo(() => modify("POST"), [modify]);
