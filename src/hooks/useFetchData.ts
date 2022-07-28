@@ -176,7 +176,7 @@ const useFetchData = (): FetchResponse => {
           console.error("fetch modify error", method, url);
         }
       },
-    [requestHeaders],
+    [],
   );
 
   const post = useMemo(() => modify("POST"), [modify]);
