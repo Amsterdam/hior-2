@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
-// import useDataFetching from "../hooks/useDataFetching";
 import useFetchData from "../hooks/useFetchData";
 import { HIOR_METADATA_URL } from "../constants";
 
 const UpdatedDate = () => {
   const { data, get } = useFetchData();
-  const [date, setDate] = useState<string>("");
+  const [date, setDate] = useState<string | null>(null);
 
   useEffect(() => {
     get(HIOR_METADATA_URL);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [get]);
 
   useEffect(() => {
-    //@ts-ignore
+    if (!data) {
+      return;
+    }
+
     const d: Date = new Date(data?.results[0].value.substr(0, 10));
 
     if (data && d) {
@@ -22,11 +22,9 @@ const UpdatedDate = () => {
     } else {
       setDate("geen datum gevonden");
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
-  return <span data-testid="updated-date">{date}</span>;
+  return date !== null ? <span data-testid="updated-date">{date}</span> : <span></span>;
 };
 
 export default UpdatedDate;

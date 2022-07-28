@@ -1,35 +1,30 @@
-import { render, screen, act } from "@testing-library/react";
-import axios from "axios";
+import { render, screen } from "@testing-library/react";
+import nock from "nock";
 import { withTheme } from "../test/utils";
 import UpdatedDate from "./UpdatedDate";
 
-jest.mock("axios");
+const mockData = {
+  results: [
+    {
+      value: "2022-03-11 00:00:00",
+    },
+  ],
+};
 
 describe("UpdatedDate", () => {
-  afterEach(() => {
-    jest.resetAllMocks();
+  beforeAll(() => {
+    nock.disableNetConnect();
   });
 
-  const mockData = {
-    results: [
-      {
-        value: "2022-03-11 00:00:00",
-      },
-    ],
-  };
+  beforeEach(() => {
+    nock("http://localhost").get("/vsd/hior_metadata/?page=1&page_size=100000&format=json").reply(200, mockData);
+  });
 
   it("renders correctly", async () => {
-    //@ts-ignore
-    axios.get.mockResolvedValueOnce({ data: mockData, statusText: "OK" });
-
     render(withTheme(<UpdatedDate />));
 
-    await act(async () => {
-      //
-    });
+    await screen.findByTestId("updated-date");
 
-    expect(await screen.findByTestId("updated-date")).toBeInTheDocument();
-
-    expect(await screen.getByTestId("updated-date")).toHaveTextContent("11-3-2022");
+    expect(screen.getByTestId("updated-date")).toHaveTextContent("11-3-2022");
   });
 });

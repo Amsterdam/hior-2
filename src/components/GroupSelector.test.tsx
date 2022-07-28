@@ -8,13 +8,9 @@ describe("GroupSelector", () => {
   it("renders correctly", () => {
     render(
       withTheme(
-        <>
-          {/* @ts-ignore */}
-          <FilterContext.Provider value={{ state: initialState }}>
-            <GroupSelector />
-            {/* @ts-ignore */}
-          </FilterContext.Provider>
-        </>,
+        <FilterContext.Provider value={{ state: initialState, dispatch: jest.fn() }}>
+          <GroupSelector />
+        </FilterContext.Provider>,
       ),
     );
 
@@ -29,21 +25,17 @@ describe("GroupSelector", () => {
 
   it("should select a group when clicked", () => {
     const spy = jest.fn();
-    
+
     render(
       withTheme(
-        <>
-          {/* @ts-ignore */}
-          <FilterContext.Provider value={{ state: initialState, dispatch: spy }}>
-            <GroupSelector />
-            {/* @ts-ignore */}
-          </FilterContext.Provider>
-        </>,
+        <FilterContext.Provider value={{ state: initialState, dispatch: spy }}>
+          <GroupSelector />
+        </FilterContext.Provider>,
       ),
     );
 
     fireEvent.click(screen.getByTestId("button-level"));
-    
-    expect(spy).toBeCalledWith({"payload": "level", "type": "SET_GROUP"})
+
+    expect(spy).toBeCalledWith({ payload: "level", type: "SET_GROUP" });
   });
 });
