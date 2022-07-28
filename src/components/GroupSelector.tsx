@@ -1,7 +1,7 @@
 import { useContext, useCallback, ReactNode } from "react";
 import styled from "styled-components";
 import { Link, Tabs, Tab, themeSpacing } from "@amsterdam/asc-ui";
-import { FilterContext } from "../filter/FilterContext";
+import { FilterContext, useDispatch } from "../filter/FilterContext";
 import { actions } from "../filter/reducer";
 import { Selector } from "../types";
 import { ALL_GROUPS } from "../constants";
@@ -19,12 +19,10 @@ const StyledTab = styled(Tab)`
 
 const GroupSelector = () => {
   const {
-    //@ts-ignore
     state: { group, groups, filteredItems },
-    //@ts-ignore
-    dispatch,
-    //@ts-ignore
   } = useContext(FilterContext);
+
+  const dispatch = useDispatch();
 
   const onClickGroup = useCallback(
     (e: any) => {

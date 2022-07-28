@@ -1,4 +1,4 @@
-import { Action, State, Groups, Filter, ItemEnriched } from "../types";
+import { Action, State, Groups, SearchFilter, ItemEnriched } from "../types";
 
 export const SET_FILTER = `SET_FILTER`;
 export const SET_GROUP = `SET_GROUP`;
@@ -59,7 +59,7 @@ const filterReducer = (state = initialState, action: Action | undefined) => {
 };
 
 export const actions = {
-  setFilter: (payload: Filter) => ({ type: SET_FILTER, payload }),
+  setFilter: (payload: SearchFilter) => ({ type: SET_FILTER, payload }),
   setGroup: (payload: string) => ({ type: SET_GROUP, payload }),
   setGroups: (payload: Groups) => ({ type: SET_GROUPS, payload }),
   setFilteredItems: (payload: ItemEnriched[]) => ({ type: SET_FILTERED_ITEMS, payload }),

@@ -17,10 +17,10 @@ import axios from "axios";
 import useFilter from "../hooks/useFilter";
 import { HIOR_ITEMS_URL, HIOR_PROPERTIES_URL, HIOR_ATTRIBUTES_URL } from "../constants";
 import GroupSelector from "../components/GroupSelector";
-import { FilterContext } from "../filter/FilterContext";
+import { FilterContext, useDispatch } from "../filter/FilterContext";
 import Loader from "../components/Loader";
 import Filter from "../components/Filter";
-import { ItemEnriched, Group, Property, Attribute } from "../types";
+import { ItemEnriched, Property, Attribute } from "../types";
 import useEnrichItems from "../hooks/useEnrichItems";
 import { actions } from "../filter/reducer";
 import { ALL_GROUPS } from "../constants";
@@ -67,12 +67,10 @@ const List = () => {
   const [properties, setProperties] = useState<Property[] | undefined>();
   const [attributes, setAttributes] = useState<Attribute[] | undefined>();
   const { data, loading, get } = useFetchData();
+  const dispatch = useDispatch();
 
   const {
-    //@ts-ignore
     state: { filter, group, groups },
-    //@ts-ignore
-    dispatch,
   } = useContext(FilterContext);
 
   const getProperties = useCallback(async () => {
@@ -144,7 +142,7 @@ const List = () => {
             {!loading &&
               attributes &&
               properties &&
-              groups[group].map((g: Group) => {
+              groups[group].map((g) => {
                 const part = filteredItems?.filter((j: any) => g === j[group]);
 
                 return (
