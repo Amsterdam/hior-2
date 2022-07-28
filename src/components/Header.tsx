@@ -3,7 +3,8 @@
 import { Link, useLocation, matchPath } from "react-router-dom";
 import { Header as ASCHeader, MenuItem, MenuButton, MenuInline } from "@amsterdam/asc-ui";
 
-// We need to filter the active prop as else it gets passed to the DOM with an invalid value.
+// We need to filter the active prop as else it gets passed to the DOM with an invalid value which results in error.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const LinkWoActive = ({ active, ...other }) => <Link {...other} />;
 
 const Header = () => {
