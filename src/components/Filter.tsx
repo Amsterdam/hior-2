@@ -10,7 +10,6 @@ import { useGetFormattedSearchParams } from "../hooks/useGetFormattedSearchParam
 const StyledDiv = styled.div`
   margin-bottom: ${themeSpacing(10)};
   width: 100%;
-
   label {
     margin-top: ${themeSpacing(3)};
     font-weight: bold;
@@ -75,7 +74,7 @@ const Filter = () => {
     (group: Group) => {
       return groups[group].map(formatOption);
     },
-    [groups, filteredItems],
+    [groups],
   );
 
   useEffect(() => {
@@ -104,7 +103,7 @@ const Filter = () => {
             name="type"
             isMulti
             defaultValue={type}
-            options={formatGroup("type")}
+            options={types}
             onChange={(values: any) => {
               setType(values);
             }}
@@ -115,7 +114,7 @@ const Filter = () => {
             placeholder="Kies een thema"
             isMulti
             defaultValue={theme}
-            options={formatGroup("theme")}
+            options={themes}
             onChange={(values: any) => {
               setTheme(values);
             }}
@@ -127,7 +126,7 @@ const Filter = () => {
             isMulti
             defaultValue={level}
             name="level"
-            options={formatGroup("level")}
+            options={levels}
             onChange={(values: any) => {
               setLevel(values);
             }}
@@ -140,7 +139,7 @@ const Filter = () => {
             placeholder="Kies een standsdeel"
             isMulti
             defaultValue={area}
-            options={formatGroup("area")}
+            options={areas}
             onChange={(values: any) => {
               setArea(values);
             }}
@@ -151,7 +150,7 @@ const Filter = () => {
             placeholder="Kies een bron"
             isMulti
             defaultValue={source}
-            options={formatGroup("source")}
+            options={sources}
             onChange={(values: any) => {
               setSource(values);
             }}
