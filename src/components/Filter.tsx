@@ -1,7 +1,7 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import styled from "styled-components";
-import { Button, Input, Label, themeSpacing } from "@amsterdam/asc-ui";
 import Select from "react-select";
+import { Button, Input, Label, themeSpacing } from "@amsterdam/asc-ui";
 import { FilterContext } from "../filter/FilterContext";
 import { actions, initialState, defaultArea } from "../filter/reducer";
 
@@ -28,32 +28,17 @@ const SyledColumn = styled.div`
 const Filter = () => {
   const {
     //@ts-ignore
-    state: { groups /* filteredItems */ },
+    state: { groups, filteredItems, filter },
     //@ts-ignore
     dispatch,
     //@ts-ignore
   } = useContext(FilterContext);
-
-  const [sources, setSoures] = useState<string[]>([]);
-  const [levels, setLevels] = useState<string[]>([]);
-  const [themes, setThemes] = useState<string[]>([]);
-  const [types, setTypes] = useState<string[]>([]);
-  const [areas, setAreas] = useState<string[]>([]);
 
   const [source, setSource] = useState<any[]>([]);
   const [level, setLevel] = useState<any[]>([]);
   const [theme, setTheme] = useState<any[]>([]);
   const [type, setType] = useState<any[]>([]);
   const [area, setArea] = useState<any[]>(defaultArea);
-
-  const [filter, setFilter] = useState<any>({
-    source: "",
-    level: "",
-    theme: "",
-    type: "",
-    area: defaultArea[0].value,
-    query: "",
-  });
 
   const updateFilter = useCallback(
     (group = "", values = []) => {
@@ -67,14 +52,12 @@ const Filter = () => {
         ...filter,
       };
 
-      if (group && value|| value === "")  {
+      if ((group && value) || value === "") {
         newFilter = {
           ...filter,
           [group]: value,
         };
       }
-
-      setFilter(newFilter);
 
       dispatch(actions.setFilter(newFilter));
     },
@@ -83,24 +66,32 @@ const Filter = () => {
 
   const formatGroup = useCallback(
     (group: string) => {
-      return groups[group].map((option: string) => {
-        return { label: option, value: option };
-      });
+      return (
+        groups[group]
+          .map((option: string) => {
+            // Get the count first
+            const count = filteredItems?.filter((item: any) => (item[group] as string).includes(option)).length;
+
+            return {
+              count,
+              option,
+            };
+          })
+          // Filter items with count = 0 because we can't use them as filter option.
+          .filter(({ count }: { count: number }) => count > 0)
+          // Convert to label, value object
+          .map(({ option, count }: { option: string; count: number }) => {
+            return { label: `${option} (${count})`, value: option };
+          })
+      );
     },
-    [groups],
+    [groups, filteredItems],
   );
 
   useEffect(() => {
-    setSoures(formatGroup("source"));
-    setLevels(formatGroup("level"));
-    setThemes(formatGroup("theme"));
-    setTypes(formatGroup("type"));
-    setAreas(formatGroup("area"));
-
     updateFilter();
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [groups]);
+  }, []);
 
   const resetFilter = useCallback(() => {
     dispatch(actions.setFilter(initialState.filter));
@@ -116,7 +107,7 @@ const Filter = () => {
             name="type"
             isMulti
             defaultValue={type}
-            options={types}
+            options={formatGroup("type")}
             onChange={(values: any) => {
               setType(values);
               updateFilter("type", values);
@@ -128,7 +119,7 @@ const Filter = () => {
             placeholder="Kies een thema"
             isMulti
             defaultValue={theme}
-            options={themes}
+            options={formatGroup("theme")}
             onChange={(values: any) => {
               setTheme(values);
               updateFilter("theme", values);
@@ -141,7 +132,7 @@ const Filter = () => {
             isMulti
             defaultValue={level}
             name="level"
-            options={levels}
+            options={formatGroup("level")}
             onChange={(values: any) => {
               setLevel(values);
               updateFilter("level", values);
@@ -155,7 +146,7 @@ const Filter = () => {
             placeholder="Kies een standsdeel"
             isMulti
             defaultValue={area}
-            options={areas}
+            options={formatGroup("area")}
             onChange={(values: any) => {
               setArea(values);
               updateFilter("area", values);
@@ -167,7 +158,7 @@ const Filter = () => {
             placeholder="Kies een bron"
             isMulti
             defaultValue={source}
-            options={sources}
+            options={formatGroup("source")}
             onChange={(values: any) => {
               setSource(values);
               updateFilter("source", values);
