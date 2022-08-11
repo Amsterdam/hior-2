@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useContext, useEffect, useState } from "react";
+import { ReactNode, useCallback, useEffect } from "react";
 import styled from "styled-components";
 import {
   Accordion,
@@ -13,18 +13,18 @@ import {
   TableRow,
   themeSpacing,
 } from "@amsterdam/asc-ui";
-import axios from "axios";
 import useFilter from "../hooks/useFilter";
-import { HIOR_ITEMS_URL, HIOR_PROPERTIES_URL, HIOR_ATTRIBUTES_URL } from "../constants";
 import GroupSelector from "../components/GroupSelector";
-import { FilterContext, useDispatch } from "../filter/FilterContext";
+import { useDispatch, useFilterState } from "../filter/FilterContext";
 import Loader from "../components/Loader";
 import Filter from "../components/Filter";
-import { ItemEnriched, Property, Attribute } from "../types";
+import { ItemEnriched } from "../types";
 import useEnrichItems from "../hooks/useEnrichItems";
 import { actions } from "../filter/reducer";
 import { ALL_GROUPS } from "../constants";
-import useFetchData from "../hooks/useFetchData";
+import { useFetchAttributes } from "../hooks/useFetchAttributes";
+import { useFetchProperties } from "../hooks/useFetchProperties";
+import { useFetchItems } from "../hooks/useFetchItems";
 
 const StyledDiv = styled.div`
   margin-top: ${themeSpacing(10)};
@@ -64,39 +64,21 @@ const StyledIcon = styled.img`
 `;
 
 const List = () => {
-  const [properties, setProperties] = useState<Property[] | undefined>();
-  const [attributes, setAttributes] = useState<Attribute[] | undefined>();
-  const { data, loading, get } = useFetchData();
+  const { data: properties, isLoading: isLoadingProps } = useFetchProperties();
+  const { data: attributes, isLoading: isLoadingAttrs } = useFetchAttributes();
+  const { data: items, isLoading: isLoadingItems } = useFetchItems();
   const dispatch = useDispatch();
 
-  const {
-    state: { filter, group, groups },
-  } = useContext(FilterContext);
+  const loading = isLoadingProps || isLoadingAttrs || isLoadingItems;
 
-  const getProperties = useCallback(async () => {
-    const props = await axios.get(HIOR_PROPERTIES_URL);
-    setProperties(props.data.results);
-  }, []);
-
-  const getAttributes = useCallback(async () => {
-    const attr = await axios.get(HIOR_ATTRIBUTES_URL);
-    setAttributes(attr.data.results);
-  }, []);
-
-  useEffect(() => {
-    get(HIOR_ITEMS_URL);
-    getProperties();
-    getAttributes();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { filter, group, groups } = useFilterState();
 
   useEffect(() => {
     if (!filteredItems) return;
     dispatch(actions.setFilteredItems(filteredItems));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [attributes, properties, filter]);
+  }, [attributes?.results, properties?.results, filter]);
 
   const renderTitle = useCallback(
     (title: string, count: number): ReactNode => {
@@ -115,7 +97,7 @@ const List = () => {
     [group],
   );
 
-  const { enrichedItems, allGroups } = useEnrichItems(data?.results, properties, attributes);
+  const { enrichedItems, allGroups } = useEnrichItems(items?.results, properties?.results, attributes?.results);
   const filteredItems = useFilter(filter, enrichedItems);
 
   useEffect(() => {
@@ -138,7 +120,7 @@ const List = () => {
 
             <br />
             <br />
-            {(loading || !attributes || !properties) && <Loader />}
+            {loading && <Loader />}
             {!loading &&
               attributes &&
               properties &&
