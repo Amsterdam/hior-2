@@ -19,7 +19,7 @@ export interface Groups {
   area: string[];
 }
 
-export interface Filter {
+export interface SearchFilter {
   source: string;
   level: string;
   theme: string;
@@ -65,7 +65,7 @@ export interface ItemEnriched {
 
 export interface Selector {
   label: string;
-  value: string;
+  value: Group;
   placeholder: string;
 }
 
@@ -76,8 +76,10 @@ export interface Faq {
 }
 
 export interface State {
-  filter: Filter;
+  filter: SearchFilter;
   group: Group;
   groups: Groups;
   filteredItems: ItemEnriched[];
 }
+
+export type FormattedOption = { label: string; value: string };

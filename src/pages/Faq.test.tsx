@@ -1,11 +1,13 @@
-import { act, render, screen } from "@testing-library/react";
-import axios from "axios";
+import { render, screen, waitForElementToBeRemoved } from "@testing-library/react";
+import nock from "nock";
 import { withTheme } from "../test/utils";
 import Faq from "./Faq";
 
-jest.mock("axios");
-
 describe("Faq", () => {
+  beforeAll(() => {
+    nock.disableNetConnect();
+  });
+
   const mockData = {
     results: [
       {
@@ -24,32 +26,27 @@ describe("Faq", () => {
         question: "antwoord 3",
       },
     ],
+    count: 3,
   };
 
-  it("renders correctly", async () => {
-    //@ts-ignore
-    axios.get.mockResolvedValueOnce({ data: mockData, statusText: "OK" });
+  beforeEach(() => {
+    nock("http://localhost").get("/vsd/hior_faq/?page=1&page_size=100000&format=json").reply(200, mockData);
+  });
 
+  it("renders correctly", async () => {
     const { container } = render(withTheme(<Faq />));
 
-    await act(async () => {
-      //
-    });
+    await screen.findByText("Veelgestelde vragen");
 
-    await act(async () => {
-      expect(await screen.queryByTestId("faq")).toBeInTheDocument();
-      expect(await screen.queryByText("Veelgestelde vragen")).toBeInTheDocument();
+    await waitForElementToBeRemoved(() => screen.getByTestId("loader"));
 
-      expect(await screen.queryByTestId("faq")).toBeInTheDocument();
+    expect(await container.querySelectorAll("button").length).toBe(3);
 
-      expect(await container.querySelectorAll("button").length).toBe(3);
-
-      expect(await screen.queryByText("vraag 1")).toBeInTheDocument();
-      expect(await screen.queryByText("antwoord 1")).toBeInTheDocument();
-      expect(await screen.queryByText("vraag 2")).toBeInTheDocument();
-      expect(await screen.queryByText("antwoord 2")).toBeInTheDocument();
-      expect(await screen.queryByText("vraag 3")).toBeInTheDocument();
-      expect(await screen.queryByText("antwoord 3")).toBeInTheDocument();
-    });
+    expect(screen.getByText("vraag 1")).toBeInTheDocument();
+    expect(screen.getByText("antwoord 1")).toBeInTheDocument();
+    expect(screen.getByText("vraag 2")).toBeInTheDocument();
+    expect(screen.getByText("antwoord 2")).toBeInTheDocument();
+    expect(screen.getByText("vraag 3")).toBeInTheDocument();
+    expect(screen.getByText("antwoord 3")).toBeInTheDocument();
   });
 });

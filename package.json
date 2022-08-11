@@ -50,6 +50,7 @@
     "eslint-plugin-prettier": "^4.1.0",
     "eslint-plugin-promise": "^6.0.0",
     "jest-styled-components": "^7.0.8",
+    "nock": "^13.2.9",
     "prettier": "^2.7.1"
   }
 }

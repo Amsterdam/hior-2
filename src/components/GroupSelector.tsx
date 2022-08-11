@@ -1,9 +1,9 @@
-import { useContext, useCallback, ReactNode } from "react";
+import { useCallback } from "react";
 import styled from "styled-components";
 import { Link, Tabs, Tab, themeSpacing } from "@amsterdam/asc-ui";
-import { FilterContext } from "../filter/FilterContext";
+import { useDispatch, useFilterState } from "../filter/FilterContext";
 import { actions } from "../filter/reducer";
-import { Selector } from "../types";
+import { Group, Selector } from "../types";
 import { ALL_GROUPS } from "../constants";
 
 const StyledDiv = styled.div`
@@ -17,14 +17,27 @@ const StyledTab = styled(Tab)`
   margin-bottom: ${themeSpacing(6)};
 `;
 
+const GroupItem = ({ value, group, index }: { value: string; group: Group; index: number }) => {
+  const { filteredItems } = useFilterState();
+  const count = filteredItems?.filter((item: any) => item[group] === value).length;
+
+  if (count > 0) {
+    return (
+      <span>
+        <Link href={`#${value.replace(" ", "-")}`} variant="inline">
+          {value} ({count}){count - 1 !== index && count > 1 ? "," : ""}
+        </Link>
+        &nbsp;&nbsp;
+      </span>
+    );
+  }
+  return <span></span>;
+};
+
 const GroupSelector = () => {
-  const {
-    //@ts-ignore
-    state: { group, groups, filteredItems },
-    //@ts-ignore
-    dispatch,
-    //@ts-ignore
-  } = useContext(FilterContext);
+  const { group, groups } = useFilterState();
+
+  const dispatch = useDispatch();
 
   const onClickGroup = useCallback(
     (e: any) => {
@@ -32,24 +45,6 @@ const GroupSelector = () => {
       dispatch(actions.setGroup(e.target.getAttribute("data-value")));
     },
     [dispatch],
-  );
-
-  const renderItem = useCallback(
-    (group: string, value: string): ReactNode => {
-      const count = filteredItems?.filter((item: any) => (item[group] as string).includes(value)).length;
-      if (count > 0) {
-        return (
-          <span>
-            <Link href={`#${value.replace(" ", "-")}`} variant="inline">
-              {value} ({count}),
-            </Link>
-            &nbsp;&nbsp;
-          </span>
-        );
-      }
-      return <span></span>;
-    },
-    [filteredItems],
   );
 
   return (
@@ -64,8 +59,10 @@ const GroupSelector = () => {
             label={b.label}
             onClick={onClickGroup}
           >
-            {groups[b.value].map((group: string) => (
-              <span key={group}>{renderItem(b.value, group)}</span>
+            {groups[b.value].map((value: string, index) => (
+              <span key={value}>
+                <GroupItem value={value} group={b.value} index={index} />
+              </span>
             ))}
           </StyledTab>
         ))}
