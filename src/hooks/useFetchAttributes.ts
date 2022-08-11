@@ -5,7 +5,7 @@ import { defaultQuerySettings } from "../queryClient";
 
 export function useFetchAttributes() {
   return useQuery(
-    ["attributes"],
+    ["hior_attributes"],
     () => {
       return axios.get<any>(HIOR_ATTRIBUTES_URL, {
         headers: requestHeaders,
