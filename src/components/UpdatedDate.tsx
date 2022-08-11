@@ -1,28 +1,25 @@
 import { useEffect, useState } from "react";
-import useFetchData from "../hooks/useFetchData";
-import { HIOR_METADATA_URL } from "../constants";
+import useFetchMetaData from "../hooks/useFetchMetaData";
 
 const UpdatedDate = () => {
-  const { data, get } = useFetchData();
+  const query = useFetchMetaData();
   const [date, setDate] = useState<string | null>(null);
 
   useEffect(() => {
-    get(HIOR_METADATA_URL);
-  }, [get]);
-
-  useEffect(() => {
-    if (!data) {
+    if (!query.isFetched || !query.isSuccess) {
       return;
     }
 
-    const d: Date = new Date(data?.results[0].value.substr(0, 10));
+    const { data } = query;
+
+    const d: Date = new Date(data.results[0].value.slice(0, 10));
 
     if (data && d) {
       setDate(`${d.getDate()}-${d.getMonth() + 1}-${d.getFullYear()}`);
     } else {
       setDate("geen datum gevonden");
     }
-  }, [data]);
+  }, [query]);
 
   return date !== null ? <span data-testid="updated-date">{date}</span> : <span></span>;
 };

@@ -47,3 +47,8 @@ export const ALL_GROUPS: Selector[] = [
     placeholder: "Kies een stadsdeel",
   },
 ];
+
+export const requestHeaders = {
+  "Content-Type": "application/json",
+  Accept: "application/json",
+};
