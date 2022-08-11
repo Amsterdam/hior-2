@@ -10,10 +10,6 @@ const LinkWoActive = ({ active, ...other }) => <Link {...other} />;
 const Header = () => {
   const location = useLocation();
 
-  function isHome() {
-    return !!matchPath(location.pathname, "/home");
-  }
-
   return (
     <ASCHeader
       tall={false}
