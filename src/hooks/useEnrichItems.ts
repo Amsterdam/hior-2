@@ -4,7 +4,7 @@ import { DOCUMENT_URL, IMAGE_URL } from "../constants";
 import { Groups, Property, Attribute, ItemEnriched, Item } from "../types";
 
 const useEnrichItems = (
-  items: Item[],
+  items: Item[] | undefined,
   properties: Property[] | undefined,
   attributes: Attribute[] | undefined,
 ): any => {

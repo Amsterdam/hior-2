@@ -1,10 +1,11 @@
 import { Selector } from "./types";
 
-const acc = process.env.NODE_ENV === "production" ? "" : "acc.";
+const acc = window?.location?.host?.includes(".acc");
 
 const tst = process.env.NODE_ENV === "test";
 
-const host = (() => (tst ? "http://localhost" : `https:/${acc}api.data.amsterdam.nl`))();
+const host = (() =>
+  tst ? "http://localhost" : acc ? process.env.REACT_APP_HIOR_API_ACC : process.env.REACT_APP_HIOR_API)();
 
 export const IMAGE_URL = "https://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/Afbeeldingen/";
 
@@ -47,3 +48,8 @@ export const ALL_GROUPS: Selector[] = [
     placeholder: "Kies een stadsdeel",
   },
 ];
+
+export const requestHeaders = {
+  "Content-Type": "application/json",
+  Accept: "application/json",
+};
