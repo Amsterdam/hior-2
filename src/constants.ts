@@ -4,7 +4,12 @@ const acc = process.env.NODE_ENV === "production" ? "" : "acc.";
 
 const tst = process.env.NODE_ENV === "test";
 
-const host = (() => (tst ? "http://localhost" : `https:/${acc}api.data.amsterdam.nl`))();
+const host = (() =>
+  process.env.REACT_APP_HIOR_API !== undefined
+    ? process.env.REACT_APP_HIOR_API
+    : tst
+    ? "http://localhost"
+    : `https:/${acc}api.data.amsterdam.nl`)();
 
 export const IMAGE_URL = "https://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/Afbeeldingen/";
 
