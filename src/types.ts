@@ -31,7 +31,7 @@ export interface SearchFilter {
 export interface Property {
   id: number;
   item_id: number;
-  name: string;
+  name: "Area" | "Type" | "Level" | "Source" | "Theme";
   value: string;
 }
 

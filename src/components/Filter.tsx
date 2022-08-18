@@ -1,14 +1,16 @@
 import { useCallback, useEffect, useState } from "react";
 import Select from "react-select";
 import styled from "styled-components";
-import { Button, Input, Label, themeSpacing } from "@amsterdam/asc-ui";
+import { Button, Label, themeSpacing } from "@amsterdam/asc-ui";
 import { useDispatch, useFilterState } from "../filter/FilterContext";
 import { actions, initialState, defaultArea } from "../filter/reducer";
 import { FormattedOption, Group, SearchFilter } from "../types";
 import { useGetFormattedSearchParams } from "../hooks/useGetFormattedSearchParams";
+import { StyledInput } from "./Components";
+import { useDebounce } from "../hooks/useDebounce";
 
 const StyledDiv = styled.div`
-  margin-bottom: ${themeSpacing(10)};
+  margin-bottom: ${themeSpacing(6)};
   width: 100%;
   label {
     margin-top: ${themeSpacing(3)};
@@ -20,10 +22,24 @@ const StyledMultiSelect = styled(Select)`
   width: 100%;
 `;
 
-const SyledColumn = styled.div`
-  width: calc(50% - ${themeSpacing(5)});
-  margin-right: ${themeSpacing(5)};
+const FirstColumn = styled.div`
+  width: calc(50% - ${themeSpacing(2)});
+  margin-right: ${themeSpacing(2)};
   float: left;
+`;
+
+const SecondColumn = styled("div")`
+  width: calc(50% - ${themeSpacing(2)});
+  margin-left: ${themeSpacing(2)};
+  float: left;
+`;
+
+const Center = styled("div")`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  padding-top: ${themeSpacing(4)};
 `;
 
 function formatOption(option: string): FormattedOption {
@@ -35,12 +51,15 @@ const Filter = () => {
   const { formattedSearchParams, setSearchParams } = useGetFormattedSearchParams();
   const { groups } = useFilterState();
 
+  // TODO: Sort out all the useState calls here. Do we really need them?
+
   const [sources, setSoures] = useState<FormattedOption[]>([]);
   const [levels, setLevels] = useState<FormattedOption[]>([]);
   const [themes, setThemes] = useState<FormattedOption[]>([]);
   const [types, setTypes] = useState<FormattedOption[]>([]);
   const [areas, setAreas] = useState<FormattedOption[]>([]);
   const [query, setQuery] = useState("");
+  const debouncedQuery = useDebounce(query, 150);
 
   const [source, setSource] = useState<FormattedOption[]>(
     formattedSearchParams.source ? [formatOption(formattedSearchParams.source)] : [],
@@ -63,12 +82,12 @@ const Filter = () => {
       theme: theme.map((i) => i.value).join(","),
       type: type.map((i) => i.value).join(","),
       area: area.map((i) => i.value).join(","),
-      query,
+      query: debouncedQuery,
     };
 
     dispatch(actions.setFilter(filter));
     setSearchParams(filter);
-  }, [source, level, theme, type, area, query, dispatch, setSearchParams]);
+  }, [source, level, theme, type, area, debouncedQuery, dispatch, setSearchParams]);
 
   const formatGroup = useCallback(
     (group: Group) => {
@@ -96,7 +115,7 @@ const Filter = () => {
   return (
     <StyledDiv data-testid="filter">
       <form method="get">
-        <SyledColumn>
+        <FirstColumn>
           <Label label="Type" />
           <StyledMultiSelect
             placeholder="Kies een type"
@@ -131,8 +150,8 @@ const Filter = () => {
               setLevel(values);
             }}
           />
-        </SyledColumn>
-        <SyledColumn>
+        </FirstColumn>
+        <SecondColumn>
           <Label label="Algemeen beleid (Heel Amsterdam) of aanvullend beleid per stadsdeel?" />
           <StyledMultiSelect
             name="area"
@@ -157,17 +176,19 @@ const Filter = () => {
           />
 
           <Label label="Filter op tekst" />
-          <Input
+          <StyledInput
             type="text"
             id="query"
             onChange={(e: any) => {
               setQuery(e.target.value);
             }}
           />
-        </SyledColumn>
-        <Button variant="secondary" data-testid="reset" onClick={resetFilter}>
-          Wis filter
-        </Button>
+        </SecondColumn>
+        <Center>
+          <Button variant="secondary" data-testid="reset" onClick={resetFilter}>
+            Wis filter
+          </Button>
+        </Center>
       </form>
     </StyledDiv>
   );

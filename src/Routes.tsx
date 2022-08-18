@@ -2,7 +2,7 @@ import { Route, Routes as DomRoutes, Navigate } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Faq from "./pages/Faq";
-import List from './pages/List';
+import List from "./pages/List";
 
 const Routes = () => (
   <DomRoutes>

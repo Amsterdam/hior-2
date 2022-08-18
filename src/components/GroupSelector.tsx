@@ -6,32 +6,41 @@ import { actions } from "../filter/reducer";
 import { Group, Selector } from "../types";
 import { ALL_GROUPS } from "../constants";
 
-const StyledDiv = styled.div`
-  margin-top: ${themeSpacing(10)};
+const Wrapper = styled.div`
+  margin-top: ${themeSpacing(8)};
   width: 100%;
 `;
 
-const StyledTab = styled(Tab)`
-  width: 100%;
+const TabContent = styled("div")`
   padding-top: ${themeSpacing(2)};
   margin-bottom: ${themeSpacing(6)};
 `;
 
-const GroupItem = ({ value, group, index }: { value: string; group: Group; index: number }) => {
+const ItemWrapper = styled("span")`
+  padding-left: ${themeSpacing(1)};
+  padding-right: ${themeSpacing(1)};
+
+  &:first-child {
+    padding-left: 0px;
+  }
+`;
+
+const GroupItem = ({ value, group }: { value: string; group: Group }) => {
   const { filteredItems } = useFilterState();
   const count = filteredItems?.filter((item: any) => item[group] === value).length;
 
   if (count > 0) {
     return (
-      <span>
+      <ItemWrapper>
         <Link href={`#${value.replace(" ", "-")}`} variant="inline">
-          {value} ({count}){count - 1 !== index && count > 1 ? "," : ""}
+          {value} ({count})
         </Link>
         &nbsp;&nbsp;
-      </span>
+      </ItemWrapper>
     );
   }
-  return <span></span>;
+
+  return null;
 };
 
 const GroupSelector = () => {
@@ -48,10 +57,10 @@ const GroupSelector = () => {
   );
 
   return (
-    <StyledDiv data-testid="group-selector">
+    <Wrapper data-testid="group-selector">
       <Tabs label="" activeTab={group}>
         {ALL_GROUPS.map((b: Selector) => (
-          <StyledTab
+          <Tab
             key={b.value}
             data-testid={`button-${b.value}`}
             id={b.value}
@@ -59,15 +68,15 @@ const GroupSelector = () => {
             label={b.label}
             onClick={onClickGroup}
           >
-            {groups[b.value].map((value: string, index) => (
-              <span key={value}>
-                <GroupItem value={value} group={b.value} index={index} />
-              </span>
-            ))}
-          </StyledTab>
+            <TabContent>
+              {groups[b.value].map((value, index) => (
+                <GroupItem key={index} value={value} group={b.value} />
+              ))}
+            </TabContent>
+          </Tab>
         ))}
       </Tabs>
-    </StyledDiv>
+    </Wrapper>
   );
 };
 
