@@ -1,5 +1,3 @@
-import { Row, Column } from "@amsterdam/asc-ui";
-
 import FilterContextProvider from "./filter/FilterContext";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -11,11 +9,7 @@ function App() {
     <FilterContextProvider>
       <Header />
 
-      <Row>
-        <Column span={12}>
-          <Routes />
-        </Column>
-      </Row>
+      <Routes />
 
       <Footer />
     </FilterContextProvider>

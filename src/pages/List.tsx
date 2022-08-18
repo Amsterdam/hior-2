@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { themeSpacing } from "@amsterdam/asc-ui";
+import { Column, Row, themeSpacing } from "@amsterdam/asc-ui";
 
 import GroupSelector from "../components/GroupSelector";
 import { useFilterState } from "../filter/FilterContext";
@@ -23,32 +23,36 @@ const List = () => {
   const { filteredItems, groups, isLoading } = useFilteredItems();
 
   return (
-    <StyledDiv data-testid="list">
-      <Filter />
+    <Row>
+      <Column span={12}>
+        <StyledDiv data-testid="list">
+          <Filter />
 
-      <StyledHeading>Resultaten ({filteredItems?.length})</StyledHeading>
+          <StyledHeading>Resultaten ({filteredItems?.length})</StyledHeading>
 
-      <GroupSelector />
+          <GroupSelector />
 
-      {isLoading && <Loader />}
-      {!isLoading && (
-        <div>
-          {groups[group].map((g) => {
-            const items = filteredItems?.filter((j: any) => g === j[group]);
+          {isLoading && <Loader />}
+          {!isLoading && (
+            <div>
+              {groups[group].map((g) => {
+                const items = filteredItems?.filter((j: any) => g === j[group]);
 
-            return (
-              <section key={g}>
-                <ResultGroupTitle title={g} count={items?.length || 0} group={group} />
+                return (
+                  <section key={g}>
+                    <ResultGroupTitle title={g} count={items?.length || 0} group={group} />
 
-                {items?.map((item) => (
-                  <ListItem item={item} key={item.id} />
-                ))}
-              </section>
-            );
-          })}
-        </div>
-      )}
-    </StyledDiv>
+                    {items?.map((item) => (
+                      <ListItem item={item} key={item.id} />
+                    ))}
+                  </section>
+                );
+              })}
+            </div>
+          )}
+        </StyledDiv>
+      </Column>
+    </Row>
   );
 };
 
