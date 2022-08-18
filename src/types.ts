@@ -78,8 +78,6 @@ export interface Faq {
 export interface State {
   filter: SearchFilter;
   group: Group;
-  groups: Groups;
-  filteredItems: ItemEnriched[];
 }
 
 export type FormattedOption = { label: string; value: string };

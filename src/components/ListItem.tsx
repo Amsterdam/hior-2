@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { Accordion, Link, TableBody, TableCell, TableRow, themeSpacing } from "@amsterdam/asc-ui";
+import { Accordion, Link, TableBody, TableCell, TableRow, themeSpacing, Table } from "@amsterdam/asc-ui";
 import { ItemEnriched } from "../types";
-import { Table } from "@amsterdam/asc-assets";
 
 const StyledAccordion = styled(Accordion)`
   margin-top: ${themeSpacing(3)};
@@ -54,36 +53,6 @@ const ListItem = ({ item }: { item: ItemEnriched }) => {
           </TableRow>
         </TableBody>
       </Table>
-      {/* <table>
-        <tbody>
-          <tr>
-            <td>Bron</td>
-            <td>
-              {item.documents.map((document: any) => (
-                <Link key={`${item.id}-${document.id}`} variant="inline" target="_blank" href={document.src}>
-                  {document.name}
-                </Link>
-              ))}
-            </td>
-          </tr>
-          <tr>
-            <td>Niveau</td>
-            <td>{item.level}</td>
-          </tr>
-          <tr>
-            <td>Thema</td>
-            <td>{item.theme}</td>
-          </tr>
-          <tr>
-            <td>Type</td>
-            <td>{item.type}</td>
-          </tr>
-          <tr>
-            <td>Stadsdeel</td>
-            <td>{item.area}</td>
-          </tr>
-        </tbody>
-      </table> */}
       checklist hier
     </StyledAccordion>
   );

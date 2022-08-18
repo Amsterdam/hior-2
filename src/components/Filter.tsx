@@ -2,14 +2,15 @@ import { useCallback, useEffect, useState } from "react";
 import Select from "react-select";
 import styled from "styled-components";
 import { Button, Label, themeSpacing } from "@amsterdam/asc-ui";
-import { useDispatch, useFilterState } from "../filter/FilterContext";
+import { useDispatch } from "../filter/FilterContext";
 import { actions, initialState, defaultArea } from "../filter/reducer";
-import { FormattedOption, Group, SearchFilter } from "../types";
+import { FormattedOption, SearchFilter } from "../types";
 import { useGetFormattedSearchParams } from "../hooks/useGetFormattedSearchParams";
 import { StyledInput } from "./Components";
 import { useDebounce } from "../hooks/useDebounce";
+import useFilteredItems from "../hooks/useFilteredItems";
 
-const StyledDiv = styled.div`
+const StyledDiv = styled("div")`
   margin-bottom: ${themeSpacing(6)};
   width: 100%;
   label {
@@ -22,7 +23,7 @@ const StyledMultiSelect = styled(Select)`
   width: 100%;
 `;
 
-const FirstColumn = styled.div`
+const FirstColumn = styled("div")`
   width: calc(50% - ${themeSpacing(2)});
   margin-right: ${themeSpacing(2)};
   float: left;
@@ -49,17 +50,15 @@ function formatOption(option: string): FormattedOption {
 const Filter = () => {
   const dispatch = useDispatch();
   const { formattedSearchParams, setSearchParams } = useGetFormattedSearchParams();
-  const { groups } = useFilterState();
+  const { groups } = useFilteredItems();
 
   // TODO: Sort out all the useState calls here. Do we really need them?
 
-  const [sources, setSoures] = useState<FormattedOption[]>([]);
-  const [levels, setLevels] = useState<FormattedOption[]>([]);
-  const [themes, setThemes] = useState<FormattedOption[]>([]);
-  const [types, setTypes] = useState<FormattedOption[]>([]);
-  const [areas, setAreas] = useState<FormattedOption[]>([]);
-  const [query, setQuery] = useState("");
-  const debouncedQuery = useDebounce(query, 150);
+  const sources = groups.source.map(formatOption);
+  const levels = groups.level.map(formatOption);
+  const themes = groups.theme.map(formatOption);
+  const types = groups.type.map(formatOption);
+  const areas = groups.area.map(formatOption);
 
   const [source, setSource] = useState<FormattedOption[]>(
     formattedSearchParams.source ? [formatOption(formattedSearchParams.source)] : [],
@@ -74,6 +73,8 @@ const Filter = () => {
     formattedSearchParams.type ? [formatOption(formattedSearchParams.type)] : [],
   );
   const [area, setArea] = useState<FormattedOption[]>(defaultArea);
+  const [query, setQuery] = useState("");
+  const debouncedQuery = useDebounce(query, 150);
 
   useEffect(() => {
     const filter: SearchFilter = {
@@ -88,23 +89,6 @@ const Filter = () => {
     dispatch(actions.setFilter(filter));
     setSearchParams(filter);
   }, [source, level, theme, type, area, debouncedQuery, dispatch, setSearchParams]);
-
-  const formatGroup = useCallback(
-    (group: Group) => {
-      return groups[group].map(formatOption);
-    },
-    [groups],
-  );
-
-  useEffect(() => {
-    setSoures(formatGroup("source"));
-    setLevels(formatGroup("level"));
-    setThemes(formatGroup("theme"));
-    setTypes(formatGroup("type"));
-    setAreas(formatGroup("area"));
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [groups]);
 
   const resetFilter = useCallback(() => {
     dispatch(actions.setFilter(initialState.filter));

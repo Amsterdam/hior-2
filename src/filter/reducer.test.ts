@@ -1,4 +1,4 @@
-import filterReducer, { initialState, SET_FILTER, SET_FILTERED_ITEMS, SET_GROUP, SET_GROUPS } from "./reducer";
+import filterReducer, { initialState, SET_FILTER, SET_GROUP } from "./reducer";
 
 describe("filterReducer", () => {
   it("should return initial state oogn default", () => {
@@ -50,53 +50,6 @@ describe("filterReducer", () => {
         ...initialState,
         group: action.payload,
       });
-    });
-  });
-
-  it("setGroups", () => {
-    const action = {
-      type: SET_GROUPS,
-      payload: {
-        source: ["foo"],
-        level: [],
-        theme: [],
-        type: [],
-        area: [],
-      },
-    };
-
-    filterReducer(initialState, action);
-
-    const action2 = {
-      type: SET_GROUPS,
-      payload: {
-        source: [],
-        level: ["bar"],
-        theme: [],
-        type: [],
-        area: [],
-      },
-    };
-
-    expect(filterReducer(initialState, action2)).toEqual({
-      ...initialState,
-      groups: action2.payload,
-    });
-  });
-
-  it("setFilteredItems", () => {
-    const action = {
-      type: SET_FILTERED_ITEMS,
-      payload: [
-        {
-          id: 42,
-        },
-      ],
-    };
-
-    expect(filterReducer(initialState, action)).toEqual({
-      ...initialState,
-      filteredItems: action.payload,
     });
   });
 });

@@ -1,12 +1,13 @@
-import { useCallback } from "react";
+import { useCallback, MouseEvent } from "react";
 import styled from "styled-components";
 import { Link, Tabs, Tab, themeSpacing } from "@amsterdam/asc-ui";
 import { useDispatch, useFilterState } from "../filter/FilterContext";
 import { actions } from "../filter/reducer";
 import { Group, Selector } from "../types";
 import { ALL_GROUPS } from "../constants";
+import useFilteredItems from "../hooks/useFilteredItems";
 
-const Wrapper = styled.div`
+const Wrapper = styled("div")`
   margin-top: ${themeSpacing(8)};
   width: 100%;
 `;
@@ -26,8 +27,8 @@ const ItemWrapper = styled("span")`
 `;
 
 const GroupItem = ({ value, group }: { value: string; group: Group }) => {
-  const { filteredItems } = useFilterState();
-  const count = filteredItems?.filter((item: any) => item[group] === value).length;
+  const { filteredItems } = useFilteredItems();
+  const count = filteredItems?.filter((item) => item[group] === value).length;
 
   if (count > 0) {
     return (
@@ -44,14 +45,15 @@ const GroupItem = ({ value, group }: { value: string; group: Group }) => {
 };
 
 const GroupSelector = () => {
-  const { group, groups } = useFilterState();
+  const { group } = useFilterState();
+  const { groups } = useFilteredItems();
 
   const dispatch = useDispatch();
 
   const onClickGroup = useCallback(
-    (e: any) => {
+    (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
-      dispatch(actions.setGroup(e.target.getAttribute("data-value")));
+      dispatch(actions.setGroup(e.currentTarget.getAttribute("data-value") || ""));
     },
     [dispatch],
   );

@@ -1,9 +1,7 @@
-import { Action, State, Groups, SearchFilter, ItemEnriched } from "../types";
+import { Action, State, SearchFilter } from "../types";
 
 export const SET_FILTER = `SET_FILTER`;
 export const SET_GROUP = `SET_GROUP`;
-export const SET_GROUPS = `SET_GROUPS`;
-export const SET_FILTERED_ITEMS = `SET_FILTERED_ITEMS`;
 
 export const defaultArea = [{ label: "Heel Amsterdam", value: "Heel Amsterdam" }];
 
@@ -17,14 +15,6 @@ export const initialState = {
     query: "",
   },
   group: "theme",
-  groups: {
-    source: [],
-    level: [],
-    theme: [],
-    type: [],
-    area: [],
-  },
-  filteredItems: [],
 } as State;
 
 const filterReducer = (state = initialState, action: Action | undefined) => {
@@ -41,18 +31,7 @@ const filterReducer = (state = initialState, action: Action | undefined) => {
         ...state,
         group: action.payload,
       };
-    case SET_GROUPS:
-      return {
-        ...state,
-        groups: {
-          ...action.payload,
-        },
-      };
-    case SET_FILTERED_ITEMS:
-      return {
-        ...state,
-        filteredItems: [...action.payload],
-      };
+
     default:
       return state;
   }
@@ -61,8 +40,6 @@ const filterReducer = (state = initialState, action: Action | undefined) => {
 export const actions = {
   setFilter: (payload: SearchFilter) => ({ type: SET_FILTER, payload }),
   setGroup: (payload: string) => ({ type: SET_GROUP, payload }),
-  setGroups: (payload: Groups) => ({ type: SET_GROUPS, payload }),
-  setFilteredItems: (payload: ItemEnriched[]) => ({ type: SET_FILTERED_ITEMS, payload }),
 };
 
 export default filterReducer;

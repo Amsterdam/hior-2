@@ -27,10 +27,6 @@ describe("List", () => {
   it("renders correctly", async () => {
     const mockState = {
       ...initialState,
-      groups: {
-        ...initialState.groups,
-        theme: ["12. Groen"],
-      },
     };
 
     render(

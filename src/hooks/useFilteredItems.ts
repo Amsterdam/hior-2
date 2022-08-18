@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useFilterState } from "../filter/FilterContext";
 import useEnrichedItems from "./useEnrichedItems";
-import { filterItems } from "./useFilter";
+import { filterItems } from "./filterItems";
 
 function useFilteredItems() {
   const { enrichedItems, groups, isLoading } = useEnrichedItems();
@@ -21,8 +21,6 @@ function useFilteredItems() {
         },
       };
     }
-
-    console.log("useFiltedItems");
 
     return {
       isLoading,

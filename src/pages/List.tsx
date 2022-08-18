@@ -9,12 +9,12 @@ import ResultGroupTitle from "../components/ResultGroupTitle";
 import ListItem from "../components/ListItem";
 import useFilteredItems from "../hooks/useFilteredItems";
 
-const StyledDiv = styled.div`
+const StyledDiv = styled("div")`
   margin-top: ${themeSpacing(5)};
   width: 100%;
 `;
 
-const StyledHeading = styled("h2")`
+const Heading = styled("h2")`
   margin-bottom: ${themeSpacing(5)};
 `;
 
@@ -28,7 +28,7 @@ const List = () => {
         <StyledDiv data-testid="list">
           <Filter />
 
-          <StyledHeading>Resultaten ({filteredItems?.length})</StyledHeading>
+          <Heading>Resultaten ({filteredItems?.length})</Heading>
 
           <GroupSelector />
 

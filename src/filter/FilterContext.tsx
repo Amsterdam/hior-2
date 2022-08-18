@@ -10,6 +10,8 @@ export type FilterContext = {
 
 export const FilterContext = createContext<FilterContext>({ state: initialState });
 
+// Use state instead of reducer?
+
 const FilterContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer<Reducer<State, Action>>(filterReducer, initialState);
 
