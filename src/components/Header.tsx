@@ -15,7 +15,7 @@ const Header = () => {
       tall={false}
       data-testid="header"
       homeLink="/"
-      fullWidth
+      fullWidth={false}
       css={{ zIndex: 20 }}
       title="Handboek Inrichting Openbare Ruimte"
       navigation={

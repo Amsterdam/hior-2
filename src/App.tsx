@@ -9,11 +9,7 @@ import Routes from "./Routes";
 function App() {
   return (
     <FilterContextProvider>
-      <Row>
-        <Column span={12}>
-          <Header />
-        </Column>
-      </Row>
+      <Header />
 
       <Row>
         <Column span={12}>
@@ -21,11 +17,7 @@ function App() {
         </Column>
       </Row>
 
-      <Row>
-        <Column span={12}>
-          <Footer />
-        </Column>
-      </Row>
+      <Footer />
     </FilterContextProvider>
   );
 }
