@@ -23,7 +23,7 @@ const List = () => {
   const { filteredItems, groups, isLoading } = useFilteredItems();
 
   // TODO: sortering van items
-  // TODO: why does 1 search item not show up in results on Theme page?
+  // TODO: why does 1 search item not show up in results on Theme page? (Is because a nested lookup is needed to decide if we show or no)
   // TODO: als er maar 1 groep keuze is deze niet meer tonen
 
   return (

@@ -58,11 +58,11 @@ export const defaultArea = [{ label: "Heel Amsterdam", value: "Heel Amsterdam" }
 
 export const initialState = {
   filter: {
-    source: "",
-    level: "",
-    theme: "",
-    type: "",
-    area: defaultArea[0].value,
+    source: [],
+    level: [],
+    theme: [],
+    type: [],
+    area: [defaultArea[0].value],
     query: "",
   },
   group: "theme",

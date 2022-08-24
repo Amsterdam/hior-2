@@ -2,7 +2,7 @@ import { useCallback, MouseEvent } from "react";
 import styled from "styled-components";
 import { Link, Tabs, Tab, themeSpacing } from "@amsterdam/asc-ui";
 import { useGroupState } from "../filter/FilterContext";
-import { Group, Selector } from "../types";
+import { Group, ItemEnriched, Selector } from "../types";
 import { ALL_GROUPS } from "../constants";
 import useFilteredItems from "../hooks/useFilteredItems";
 
@@ -25,8 +25,7 @@ const ItemWrapper = styled("span")`
   }
 `;
 
-const GroupItem = ({ value, group }: { value: string; group: Group }) => {
-  const { filteredItems } = useFilteredItems();
+const GroupItem = ({ value, group, filteredItems }: { value: string; group: Group; filteredItems: ItemEnriched[] }) => {
   const count = filteredItems?.filter((item) => item[group] === value).length;
 
   if (count > 0) {
@@ -45,7 +44,7 @@ const GroupItem = ({ value, group }: { value: string; group: Group }) => {
 
 const GroupSelector = () => {
   const { group, setGroup } = useGroupState();
-  const { groups } = useFilteredItems();
+  const { groups, filteredItems } = useFilteredItems();
 
   const onClickGroup = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
@@ -69,7 +68,7 @@ const GroupSelector = () => {
           >
             <TabContent>
               {groups[b.value].map((value, index) => (
-                <GroupItem key={index} value={value} group={b.value} />
+                <GroupItem key={index} value={value} group={b.value} filteredItems={filteredItems} />
               ))}
             </TabContent>
           </Tab>

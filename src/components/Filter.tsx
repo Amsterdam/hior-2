@@ -55,12 +55,21 @@ function formatOption(option: string): FormattedOption {
   return { label: option, value: option };
 }
 
+const getSearchParamsValueOrDefault = (
+  searchParamValue: string | null | undefined,
+  defaultValue: FormattedOption[],
+) => {
+  if (searchParamValue === undefined || searchParamValue === null || searchParamValue === "") {
+    return defaultValue;
+  }
+
+  return searchParamValue.split(",").map((v) => formatOption(v));
+};
+
 const Filter = () => {
   const { setFilter } = useFilterState();
   const { formattedSearchParams, setSearchParams } = useGetFormattedSearchParams();
   const { groups } = useFilteredItems();
-
-  // TODO: Sort out all the useState calls here. Do we really need them?
 
   const sources = groups.source.map(formatOption);
   const levels = groups.level.map(formatOption);
@@ -69,28 +78,24 @@ const Filter = () => {
   const areas = groups.area.map(formatOption);
 
   const [source, setSource] = useState<FormattedOption[]>(
-    formattedSearchParams.source ? [formatOption(formattedSearchParams.source)] : [],
+    getSearchParamsValueOrDefault(formattedSearchParams.source, []),
   );
-  const [level, setLevel] = useState<FormattedOption[]>(
-    formattedSearchParams.level ? [formatOption(formattedSearchParams.level)] : [],
+  const [level, setLevel] = useState<FormattedOption[]>(getSearchParamsValueOrDefault(formattedSearchParams.level, []));
+  const [theme, setTheme] = useState<FormattedOption[]>(getSearchParamsValueOrDefault(formattedSearchParams.theme, []));
+  const [type, setType] = useState<FormattedOption[]>(getSearchParamsValueOrDefault(formattedSearchParams.type, []));
+  const [area, setArea] = useState<FormattedOption[]>(
+    getSearchParamsValueOrDefault(formattedSearchParams.area, defaultArea),
   );
-  const [theme, setTheme] = useState<FormattedOption[]>(
-    formattedSearchParams.theme ? [formatOption(formattedSearchParams.theme)] : [],
-  );
-  const [type, setType] = useState<FormattedOption[]>(
-    formattedSearchParams.type ? [formatOption(formattedSearchParams.type)] : [],
-  );
-  const [area, setArea] = useState<FormattedOption[]>(defaultArea);
   const [query, setQuery] = useState(formattedSearchParams.query ?? "");
   const debouncedQuery = useDebounce(query, 150);
 
   useEffect(() => {
     const filter: SearchFilter = {
-      source: source.map((i) => i.value).join(","),
-      level: level.map((i) => i.value).join(","),
-      theme: theme.map((i) => i.value).join(","),
-      type: type.map((i) => i.value).join(","),
-      area: area.map((i) => i.value).join(","),
+      source: source.map((i) => i.value),
+      level: level.map((i) => i.value),
+      theme: theme.map((i) => i.value),
+      type: type.map((i) => i.value),
+      area: area.map((i) => i.value),
       query: debouncedQuery,
     };
 

@@ -12,7 +12,7 @@ function formatSearchParams(searchParams: URLSearchParams) {
 
 export function useGetFormattedSearchParams() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [formattedSearchParams, setFormattedParams] = useState<Record<SearchFilterKeys, string | null>>(
+  const [formattedSearchParams, setFormattedParams] = useState<Record<SearchFilterKeys, string | null | undefined>>(
     formatSearchParams(searchParams),
   );
 
@@ -25,7 +25,7 @@ export function useGetFormattedSearchParams() {
       const params = new URLSearchParams();
 
       (Object.keys(filter) as SearchFilterKeys[]).forEach((key) => {
-        params.set(key, filter[key]);
+        params.set(key, filter[key].toString());
       });
 
       setSearchParams(params);

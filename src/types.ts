@@ -20,11 +20,11 @@ export interface Groups {
 }
 
 export interface SearchFilter {
-  source: string;
-  level: string;
-  theme: string;
-  type: string;
-  area: string;
+  source: string[];
+  level: string[];
+  theme: string[];
+  type: string[];
+  area: string[];
   query: string;
 }
 
