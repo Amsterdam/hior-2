@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { FilterContext } from "../filter/FilterContext";
-import { initialState, SET_FILTER } from "../filter/reducer";
+import { initialState } from "../constants";
 import { withTheme } from "../test/utils";
 import Filter from "./Filter";
 
@@ -52,6 +52,6 @@ describe("Filter", () => {
 
     fireEvent.click(screen.getByTestId("reset"));
 
-    expect(dispatchSpy).toHaveBeenCalledWith({ type: SET_FILTER, payload: initialState.filter });
+    expect(dispatchSpy).toHaveBeenCalledWith({ type: "", payload: initialState.filter });
   });
 });

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Column, Row, themeSpacing } from "@amsterdam/asc-ui";
 
 import GroupSelector from "../components/GroupSelector";
-import { useFilterState } from "../filter/FilterContext";
+import { useGroupState } from "../filter/FilterContext";
 import Loader from "../components/Loader";
 import Filter from "../components/Filter";
 import ResultGroupTitle from "../components/ResultGroupTitle";
@@ -19,7 +19,7 @@ const Heading = styled("h2")`
 `;
 
 const List = () => {
-  const { group } = useFilterState();
+  const { group } = useGroupState();
   const { filteredItems, groups, isLoading } = useFilteredItems();
 
   return (

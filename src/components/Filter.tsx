@@ -2,8 +2,8 @@ import { useCallback, useEffect, useState } from "react";
 import Select from "react-select";
 import styled from "styled-components";
 import { Button, Label, themeSpacing } from "@amsterdam/asc-ui";
-import { useDispatch } from "../filter/FilterContext";
-import { actions, initialState, defaultArea } from "../filter/reducer";
+import { useFilterState } from "../filter/FilterContext";
+import { initialState, defaultArea } from "../constants";
 import { FormattedOption, SearchFilter } from "../types";
 import { useGetFormattedSearchParams } from "../hooks/useGetFormattedSearchParams";
 import { StyledInput } from "./Components";
@@ -48,7 +48,7 @@ function formatOption(option: string): FormattedOption {
 }
 
 const Filter = () => {
-  const dispatch = useDispatch();
+  const { setFilter } = useFilterState();
   const { formattedSearchParams, setSearchParams } = useGetFormattedSearchParams();
   const { groups } = useFilteredItems();
 
@@ -86,15 +86,15 @@ const Filter = () => {
       query: debouncedQuery,
     };
 
-    dispatch(actions.setFilter(filter));
+    setFilter(filter);
     setSearchParams(filter);
-  }, [source, level, theme, type, area, debouncedQuery, dispatch, setSearchParams]);
+  }, [source, level, theme, type, area, debouncedQuery, setSearchParams, setFilter]);
 
   const resetFilter = useCallback(() => {
-    dispatch(actions.setFilter(initialState.filter));
+    setFilter(initialState.filter);
 
     setSearchParams(initialState.filter);
-  }, [dispatch, setSearchParams]);
+  }, [setSearchParams, setFilter]);
 
   return (
     <StyledDiv data-testid="filter">

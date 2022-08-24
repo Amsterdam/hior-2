@@ -1,8 +1,7 @@
 import { useCallback, MouseEvent } from "react";
 import styled from "styled-components";
 import { Link, Tabs, Tab, themeSpacing } from "@amsterdam/asc-ui";
-import { useDispatch, useFilterState } from "../filter/FilterContext";
-import { actions } from "../filter/reducer";
+import { useGroupState } from "../filter/FilterContext";
 import { Group, Selector } from "../types";
 import { ALL_GROUPS } from "../constants";
 import useFilteredItems from "../hooks/useFilteredItems";
@@ -45,17 +44,15 @@ const GroupItem = ({ value, group }: { value: string; group: Group }) => {
 };
 
 const GroupSelector = () => {
-  const { group } = useFilterState();
+  const { group, setGroup } = useGroupState();
   const { groups } = useFilteredItems();
-
-  const dispatch = useDispatch();
 
   const onClickGroup = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
-      dispatch(actions.setGroup(e.currentTarget.getAttribute("data-value") || ""));
+      setGroup((e.currentTarget.getAttribute("data-value") || "") as Group);
     },
-    [dispatch],
+    [setGroup],
   );
 
   return (
