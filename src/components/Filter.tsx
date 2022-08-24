@@ -24,15 +24,23 @@ const StyledMultiSelect = styled(Select)`
 `;
 
 const FirstColumn = styled("div")`
-  width: calc(50% - ${themeSpacing(2)});
-  margin-right: ${themeSpacing(2)};
+  width: 100%;
   float: left;
+
+  @media (min-width: 650px) {
+    width: calc(50% - ${themeSpacing(2)});
+    margin-right: ${themeSpacing(2)};
+  }
 `;
 
 const SecondColumn = styled("div")`
-  width: calc(50% - ${themeSpacing(2)});
-  margin-left: ${themeSpacing(2)};
+  width: 100%;
   float: left;
+
+  @media (min-width: 650px) {
+    width: calc(50% - ${themeSpacing(2)});
+    margin-left: ${themeSpacing(2)};
+  }
 `;
 
 const Center = styled("div")`
@@ -73,7 +81,7 @@ const Filter = () => {
     formattedSearchParams.type ? [formatOption(formattedSearchParams.type)] : [],
   );
   const [area, setArea] = useState<FormattedOption[]>(defaultArea);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(formattedSearchParams.query ?? "");
   const debouncedQuery = useDebounce(query, 150);
 
   useEffect(() => {
@@ -163,6 +171,7 @@ const Filter = () => {
           <StyledInput
             type="text"
             id="query"
+            value={query}
             onChange={(e: any) => {
               setQuery(e.target.value);
             }}

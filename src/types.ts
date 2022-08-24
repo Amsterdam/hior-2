@@ -59,8 +59,22 @@ export interface ItemEnriched {
   type: string;
   area: string;
 
-  images: any[];
-  documents: any[];
+  images: Image[];
+  documents: Document[];
+
+  links: Document[];
+}
+
+export interface Image {
+  id: number;
+  src: string;
+  alt: string;
+}
+
+export interface Document {
+  id: number;
+  src: string;
+  name: string;
 }
 
 export interface Selector {

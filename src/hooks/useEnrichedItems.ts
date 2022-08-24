@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { DOCUMENT_URL, IMAGE_URL } from "../constants";
-import { Groups, Attribute, ItemEnriched, Item, Group } from "../types";
+import { Groups, Attribute, ItemEnriched, Item, Group, Image, Document } from "../types";
 import { useFetchAttributes } from "./useFetchAttributes";
 import { useFetchProperties } from "./useFetchProperties";
 import { useFetchItems } from "./useFetchItems";
@@ -74,7 +74,9 @@ const useEnrichedItems = (): Return => {
       });
       const foundAttr = attributes.results.filter((a: Attribute) => i.id === a.item_id);
 
-      const images: { id: number; src: string; alt: string }[] = [];
+      const images: Image[] = [];
+      const documents: Document[] = [];
+      const links: Document[] = [];
       foundAttr.forEach((a) => {
         if (a.name === "Image") {
           images.push({
@@ -83,14 +85,19 @@ const useEnrichedItems = (): Return => {
             alt: a.value,
           });
         }
-      });
 
-      const documents: { id: number; src: string; name: string }[] = [];
-      foundAttr.forEach((a: any) => {
         if (a.name === "SourceLink") {
           documents.push({
             id: a.id,
             src: `${DOCUMENT_URL}${a.value}.pdf`,
+            name: a.value,
+          });
+        }
+
+        if (a.name === "Link") {
+          links.push({
+            id: a.id,
+            src: `${DOCUMENT_URL}${a.value}`,
             name: a.value,
           });
         }
@@ -108,6 +115,7 @@ const useEnrichedItems = (): Return => {
         theme: themeValue,
         images,
         documents,
+        links,
       };
     });
 

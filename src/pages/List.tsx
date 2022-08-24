@@ -22,6 +22,10 @@ const List = () => {
   const { group } = useGroupState();
   const { filteredItems, groups, isLoading } = useFilteredItems();
 
+  // TODO: sortering van items
+  // TODO: why does 1 search item not show up in results on Theme page?
+  // TODO: als er maar 1 groep keuze is deze niet meer tonen
+
   return (
     <Row>
       <Column span={12}>
