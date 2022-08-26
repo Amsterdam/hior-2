@@ -31,7 +31,7 @@ const ListItem = ({ item }: { item: ItemEnriched }) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <ItemWrapper>
+    <ItemWrapper data-testid={`item-${item.id}`}>
       <StyledAccordion
         id={`${item.id}`}
         key={item.id}

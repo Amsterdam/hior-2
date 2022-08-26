@@ -63,6 +63,18 @@ export interface ItemEnriched {
   documents: Document[];
 
   links: Document[];
+
+  sortKey: string;
+  themeSortKey: string;
+}
+
+export interface ItemTemp {
+  id: number;
+  source: string;
+  level: string;
+  theme: string;
+  type: string;
+  area: string;
 }
 
 export interface Image {

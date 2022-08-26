@@ -3,17 +3,26 @@ import { MemoryRouter } from "react-router";
 import { ThemeProvider } from "@amsterdam/asc-ui";
 
 import App from "./App";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "./queryClient";
 
 jest.mock("./components/UpdatedDate", () => () => "UpdatedDate");
+const Wrapper = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider>{children}</ThemeProvider>
+    </QueryClientProvider>
+  );
+};
 
 describe("Routes", () => {
   it("redirect from / to home is defined", () => {
     render(
-      <ThemeProvider>
+      <Wrapper>
         <MemoryRouter initialEntries={["/"]}>
           <App />
         </MemoryRouter>
-      </ThemeProvider>,
+      </Wrapper>,
     );
 
     expect(screen.queryByTestId("home")).toBeInTheDocument();
@@ -21,37 +30,23 @@ describe("Routes", () => {
 
   it("route to home is defined", () => {
     render(
-      <ThemeProvider>
+      <Wrapper>
         <MemoryRouter initialEntries={["/home"]}>
           <App />
         </MemoryRouter>
-      </ThemeProvider>,
+      </Wrapper>,
     );
 
     expect(screen.queryByTestId("home")).toBeInTheDocument();
   });
-  
-  // disabled because failing build
-  //
-  // it("route to list is defined", async () => {
-  //   render(
-  //     <ThemeProvider>
-  //       <MemoryRouter initialEntries={["/list"]}>
-  //         <App />
-  //       </MemoryRouter>
-  //     </ThemeProvider>,
-  //   );
-
-  //   expect(await screen.queryByTestId("list")).toBeInTheDocument();
-  // });
 
   it("route to faq is defined", async () => {
     render(
-      <ThemeProvider>
+      <Wrapper>
         <MemoryRouter initialEntries={["/faq"]}>
           <App />
         </MemoryRouter>
-      </ThemeProvider>,
+      </Wrapper>,
     );
 
     expect(await screen.queryByTestId("faq")).toBeInTheDocument();

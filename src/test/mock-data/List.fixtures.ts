@@ -1,7 +1,7 @@
 export const mockItems = {
   results: [
     {
-      // this item has ot text and desription
+      // this item has only text and desription
       id: 1,
       description: "Lange omschrijving 1",
       text: 'De Omgevingsvisie 2050 onderscheidt zes soort plekken van "stedelijke betekekenis".',
@@ -11,6 +11,11 @@ export const mockItems = {
       id: 2,
       description: "Lange omschrijving 2",
       text: "Amsterdam wil een leefbare stad zijn voor mens en dier",
+    },
+    {
+      id: 3,
+      description: "Lange omschrijving 3",
+      text: "Behoudens voor verplanten wordt de vergunning of jaarvergunning geweigerd voor zover dit het vellen van een houtopstand betreft",
     },
   ],
 };
@@ -44,7 +49,7 @@ export const mockProperties = {
       value: "12. Groen",
     },
     {
-      d: 4,
+      id: 4,
       item_id: 2,
       name: "Type",
       value: "Ambitie",
@@ -54,6 +59,30 @@ export const mockProperties = {
       item_id: 2,
       name: "Level",
       value: "Strategisch Niveau",
+    },
+    {
+      id: 6,
+      item_id: 3,
+      name: "Area",
+      value: "Centrum",
+    },
+    {
+      id: 7,
+      item_id: 3,
+      name: "Theme",
+      value: "7. Auto",
+    },
+    {
+      id: 8,
+      item_id: 3,
+      name: "Type",
+      value: "Uitgangspunt",
+    },
+    {
+      id: 9,
+      item_id: 3,
+      name: "Level",
+      value: "Proces",
     },
   ],
 };
@@ -81,6 +110,12 @@ export const mockAttributes = {
     {
       id: 5,
       item_id: 2,
+      name: "SourceLink",
+      value: "Omgevingsvisie 2050 (2021)",
+    },
+    {
+      id: 6,
+      item_id: 3,
       name: "SourceLink",
       value: "Omgevingsvisie 2050 (2021)",
     },

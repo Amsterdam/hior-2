@@ -67,3 +67,17 @@ export const initialState = {
   },
   group: "theme",
 } as State;
+
+export const LEVEL_ORDER = {
+  "Strategisch Niveau": 1,
+  "Tactisch Niveau": 2,
+  "Operationeel Niveau": 3,
+  Proces: 4,
+};
+
+export const TYPE_ORDER = {
+  Randvoorwaarde: 1,
+  Uitgangspunt: 2,
+  Ambitie: 3,
+  Advies: 4,
+};

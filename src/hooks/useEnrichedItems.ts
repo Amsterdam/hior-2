@@ -1,9 +1,10 @@
 import { useMemo } from "react";
-import { DOCUMENT_URL, IMAGE_URL } from "../constants";
+import { DOCUMENT_URL, IMAGE_URL, LEVEL_ORDER, TYPE_ORDER } from "../constants";
 import { Groups, Attribute, ItemEnriched, Item, Group, Image, Document } from "../types";
 import { useFetchAttributes } from "./useFetchAttributes";
 import { useFetchProperties } from "./useFetchProperties";
 import { useFetchItems } from "./useFetchItems";
+import { itemOrder, KeyOfLevel, KeyOfType } from "./sorting";
 
 type Return = {
   enrichedItems: ItemEnriched[] | undefined;
@@ -25,6 +26,20 @@ function sortAsc(a: string, b: string) {
   }
 
   return a < b ? -1 : a > b ? 1 : 0;
+}
+
+function sortLevel(a: KeyOfLevel, b: KeyOfLevel) {
+  const aOrder = LEVEL_ORDER[a];
+  const bOrder = LEVEL_ORDER[b];
+
+  return aOrder < bOrder ? -1 : aOrder > bOrder ? 1 : 0;
+}
+
+function sortType(a: KeyOfType, b: KeyOfType) {
+  const aOrder = TYPE_ORDER[a];
+  const bOrder = TYPE_ORDER[b];
+
+  return aOrder < bOrder ? -1 : aOrder > bOrder ? 1 : 0;
 }
 
 const useEnrichedItems = (): Return => {
@@ -58,7 +73,7 @@ const useEnrichedItems = (): Return => {
       const themeValue = foundThemes
         .map((t: any) => t.value)
         .flat()
-        .join(", ");
+        .join(",");
 
       const newAttr: { [key in Group]: string } = {
         theme: "",
@@ -109,6 +124,12 @@ const useEnrichedItems = (): Return => {
       if (!groups.type.includes(newAttr.type)) groups.type.push(newAttr.type);
       if (!groups.area.includes(newAttr.area)) groups.area.push(newAttr.area);
 
+      const sortKey = itemOrder({
+        id: i.id,
+        ...newAttr,
+        theme: themeValue,
+      });
+
       return {
         ...i,
         ...newAttr,
@@ -116,14 +137,16 @@ const useEnrichedItems = (): Return => {
         images,
         documents,
         links,
+        sortKey,
+        themeSortKey: sortKey.substring(3),
       };
     });
 
-    groups.theme = groups.theme.sort((a: any, b: any) => sortAsc(a, b));
-    groups.type = groups.type.sort((a: any, b: any) => sortAsc(a, b));
-    groups.level = groups.level.sort((a: any, b: any) => sortAsc(a, b));
-    groups.source = groups.source.sort((a: any, b: any) => sortAsc(a, b));
-    groups.area = groups.area.sort((a: any, b: any) => sortAsc(a, b));
+    groups.theme = groups.theme.sort(sortAsc);
+    groups.type = (groups.type as KeyOfType[]).sort(sortType);
+    groups.level = (groups.level as KeyOfLevel[]).sort(sortLevel);
+    groups.source = groups.source.sort(sortAsc);
+    groups.area = groups.area.sort(sortAsc);
 
     return { enrichedItems, groups, isLoading };
   }, [attributes, items, properties, isLoading]);

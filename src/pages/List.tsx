@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Column, Row, themeSpacing } from "@amsterdam/asc-ui";
+import orderBy from "lodash/orderBy";
 
 import GroupSelector from "../components/GroupSelector";
 import { useGroupState } from "../filter/FilterContext";
@@ -22,7 +23,6 @@ const List = () => {
   const { group } = useGroupState();
   const { filteredItems, groups, isLoading } = useFilteredItems();
 
-  // TODO: sortering van items
   // TODO: why does 1 search item not show up in results on Theme page? (Is because a nested lookup is needed to decide if we show or no)
   // TODO: als er maar 1 groep keuze is deze niet meer tonen
 
@@ -40,7 +40,11 @@ const List = () => {
           {!isLoading && (
             <div>
               {groups[group].map((g) => {
-                const items = filteredItems?.filter((j: any) => g === j[group]);
+                const items = orderBy(
+                  filteredItems?.filter((j: any) => g === j[group]),
+                  group === "theme" ? ["themeSortKey"] : ["sortKey"],
+                  ["asc"],
+                );
 
                 return (
                   <section key={g}>

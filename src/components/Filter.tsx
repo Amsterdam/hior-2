@@ -57,7 +57,7 @@ function formatOption(option: string): FormattedOption {
 
 const getSearchParamsValueOrDefault = (
   searchParamValue: string | null | undefined,
-  defaultValue: FormattedOption[],
+  defaultValue: FormattedOption[] = [],
 ) => {
   if (searchParamValue === undefined || searchParamValue === null || searchParamValue === "") {
     return defaultValue;
@@ -71,19 +71,25 @@ const Filter = () => {
   const { formattedSearchParams, setSearchParams } = useGetFormattedSearchParams();
   const { groups } = useFilteredItems();
 
+  console.log("formattedSearchParams", formattedSearchParams);
+
   const sources = groups.source.map(formatOption);
   const levels = groups.level.map(formatOption);
   const themes = groups.theme.map(formatOption);
   const types = groups.type.map(formatOption);
   const areas = groups.area.map(formatOption);
 
-  const [source, setSource] = useState<FormattedOption[]>(
-    getSearchParamsValueOrDefault(formattedSearchParams.source, []),
+  const [source, setSource] = useState<FormattedOption[] | null>(
+    getSearchParamsValueOrDefault(formattedSearchParams.source),
   );
-  const [level, setLevel] = useState<FormattedOption[]>(getSearchParamsValueOrDefault(formattedSearchParams.level, []));
-  const [theme, setTheme] = useState<FormattedOption[]>(getSearchParamsValueOrDefault(formattedSearchParams.theme, []));
-  const [type, setType] = useState<FormattedOption[]>(getSearchParamsValueOrDefault(formattedSearchParams.type, []));
-  const [area, setArea] = useState<FormattedOption[]>(
+  const [level, setLevel] = useState<FormattedOption[] | null>(
+    getSearchParamsValueOrDefault(formattedSearchParams.level),
+  );
+  const [theme, setTheme] = useState<FormattedOption[] | null>(
+    getSearchParamsValueOrDefault(formattedSearchParams.theme),
+  );
+  const [type, setType] = useState<FormattedOption[] | null>(getSearchParamsValueOrDefault(formattedSearchParams.type));
+  const [area, setArea] = useState<FormattedOption[] | null>(
     getSearchParamsValueOrDefault(formattedSearchParams.area, defaultArea),
   );
   const [query, setQuery] = useState(formattedSearchParams.query ?? "");
@@ -91,30 +97,39 @@ const Filter = () => {
 
   useEffect(() => {
     const filter: SearchFilter = {
-      source: source.map((i) => i.value),
-      level: level.map((i) => i.value),
-      theme: theme.map((i) => i.value),
-      type: type.map((i) => i.value),
-      area: area.map((i) => i.value),
+      source: source?.map((i) => i.value) || [],
+      level: level?.map((i) => i.value) || [],
+      theme: theme?.map((i) => i.value) || [],
+      type: type?.map((i) => i.value) || [],
+      area: area?.map((i) => i.value) || [],
       query: debouncedQuery,
     };
+
+    // console.log("filter", filter);
 
     setFilter(filter);
     setSearchParams(filter);
   }, [source, level, theme, type, area, debouncedQuery, setSearchParams, setFilter]);
 
   const resetFilter = useCallback(() => {
-    setFilter(initialState.filter);
-
+    // setFilter(initialState.filter);
     setSearchParams(initialState.filter);
-  }, [setSearchParams, setFilter]);
+
+    setSource(null);
+    setLevel(null);
+    setTheme(null);
+    setType(null);
+    setArea(initialState.filter.area.map((o) => formatOption(o)));
+    setQuery(initialState.filter.query);
+  }, [setSource, setLevel, setTheme, setType, setArea, setQuery]);
 
   return (
     <StyledDiv data-testid="filter">
       <form method="get">
         <FirstColumn>
-          <Label label="Type" />
+          <Label label="Type" id="type-label" />
           <StyledMultiSelect
+            aria-labelledby="type-label"
             placeholder="Kies een type"
             name="type"
             isMulti
@@ -124,8 +139,9 @@ const Filter = () => {
               setType(values);
             }}
           />
-          <Label label="Thema" />
+          <Label label="Thema" id="thema-label" />
           <StyledMultiSelect
+            aria-labelledby="thema-label"
             name="theme"
             placeholder="Kies een thema"
             isMulti
@@ -136,8 +152,9 @@ const Filter = () => {
             }}
           />
 
-          <Label label="Niveau" />
+          <Label label="Niveau" id="niveau-label" />
           <StyledMultiSelect
+            aria-labelledby="niveau-label"
             placeholder="Kies een niveau"
             isMulti
             defaultValue={level}
@@ -149,8 +166,9 @@ const Filter = () => {
           />
         </FirstColumn>
         <SecondColumn>
-          <Label label="Algemeen beleid (Heel Amsterdam) of aanvullend beleid per stadsdeel?" />
+          <Label label="Algemeen beleid (Heel Amsterdam) of aanvullend beleid per stadsdeel?" id="area-label" />
           <StyledMultiSelect
+            aria-labelledby="area-label"
             name="area"
             placeholder="Kies een standsdeel"
             isMulti
@@ -160,8 +178,9 @@ const Filter = () => {
               setArea(values);
             }}
           />
-          <Label label="Bron" />
+          <Label label="Bron" id="source-label" />
           <StyledMultiSelect
+            aria-labelledby="source-label"
             name="source"
             placeholder="Kies een bron"
             isMulti
@@ -172,8 +191,9 @@ const Filter = () => {
             }}
           />
 
-          <Label label="Filter op tekst" />
+          <Label label="Filter op tekst" id="text-label" />
           <StyledInput
+            aria-labelledby="text-label"
             type="text"
             id="query"
             value={query}
