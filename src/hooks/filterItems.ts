@@ -1,44 +1,24 @@
-import { SearchFilter, ItemEnriched } from "../types";
+import { SearchFilter, ItemEnriched, Group } from "../types";
 
 function filterItems(filter: SearchFilter, items: ItemEnriched[]) {
+  type FilterKeys = keyof SearchFilter;
   let filteredData: ItemEnriched[] = items;
+  const keys = Object.keys(filter).filter((k) => k !== "query") as FilterKeys[];
 
-  if (filter.source.length > 0) {
-    filteredData = filteredData.filter((d: ItemEnriched) => {
-      return filter.source.includes(d.source);
-    });
-  }
+  keys.forEach((key) => {
+    if (filter[key].length > 0) {
+      filteredData = filteredData.filter((d: ItemEnriched) => {
+        const values = d[key as Group];
+        let found = false;
+        values.forEach((value: string) => {
+          if (found) return;
+          found = filter[key].includes(value);
+        });
 
-  if (filter.level.length > 0) {
-    filteredData = filteredData.filter((d: ItemEnriched) => {
-      return filter.level.includes(d.level);
-    });
-  }
-
-  if (filter.theme.length > 0) {
-    filteredData = filteredData.filter((d: ItemEnriched) => {
-      const themes = d.theme.split(", ");
-      let found = false;
-      themes.forEach((theme: string) => {
-        if (found) return;
-        found = filter.theme.includes(theme);
+        return found;
       });
-
-      return found;
-    });
-  }
-
-  if (filter.type.length > 0) {
-    filteredData = filteredData.filter((d: ItemEnriched) => {
-      return filter.type.includes(d.type);
-    });
-  }
-
-  if (filter.area.length > 0) {
-    filteredData = filteredData.filter((d: ItemEnriched) => {
-      return filter.area.includes(d.area);
-    });
-  }
+    }
+  });
 
   if (filter.query.length > 0) {
     const query = filter.query.toLowerCase();
@@ -46,6 +26,8 @@ function filterItems(filter: SearchFilter, items: ItemEnriched[]) {
       return d.text.toLowerCase().includes(query) || d.description.toLowerCase().includes(query);
     });
   }
+
+  console.log(filter, filteredData);
 
   return filteredData;
 }

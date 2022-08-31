@@ -67,7 +67,7 @@ const getSearchParamsValueOrDefault = (
     return [];
   }
 
-  return searchParamValue.split(",").map((v) => formatOption(v));
+  return searchParamValue.split(", ").map((v) => formatOption(v));
 };
 
 const Filter = () => {
@@ -216,6 +216,7 @@ const Filter = () => {
               e.preventDefault();
               resetFilter();
             }}
+            type="button"
           >
             Wis filter
           </Button>

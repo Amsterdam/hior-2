@@ -42,7 +42,7 @@ const Header = () => {
               </MenuButton>
             </MenuItem>
             <MenuItem>
-              <MenuButton forwardedAs="a" href="mailto:hior@amsterdam.nl">
+              <MenuButton forwardedAs="a" href="mailto:hior@amsterdam.nl?subject=Ik heb een vraag over HIOR Amsterdam">
                 Contact
               </MenuButton>
             </MenuItem>

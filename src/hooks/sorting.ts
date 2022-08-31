@@ -25,7 +25,7 @@ export type KeyOfType = keyof typeof TYPE_ORDER;
  * When ordering properties arrays, the minimum property of the values in the array are returned,
  * e.g. level = ['Proces', 'Tactisch Niveau'] will return 2
  */
-export function propertyOrder(property: { name: Group; values: string }) {
+export function propertyOrder(property: { name: Group; values: string[] }) {
   if (property.values.length === 0) {
     return 9;
   }
@@ -47,7 +47,7 @@ export function propertyOrder(property: { name: Group; values: string }) {
   /**
    * Returns the minimum order of the values for the given property
    */
-  const values = property.values.split(",");
+  const values = property.values;
   return values.reduce((minOrder, value) => {
     const propertyOrder = getOrder(value);
     return minOrder === "" || propertyOrder < minOrder ? propertyOrder : minOrder;
@@ -66,3 +66,33 @@ export function itemOrder(item: ItemTemp) {
  * Utility method to convert a number to a leftpadded string of length n
  */
 const numToString = (n: number, length: number) => n.toString().padStart(length, "0");
+
+export function sortAsc(a: string, b: string) {
+  const foundA = a.match(/^(\d+\d*?)/);
+  if (foundA) {
+    const foundB = b.match(/^(\d+\d*?)/);
+    if (foundB) {
+      return parseInt(foundA[1], 10) < parseInt(foundB[1], 10)
+        ? -1
+        : parseInt(foundA[1], 10) > parseInt(foundB[1], 10)
+        ? 1
+        : 0;
+    }
+  }
+
+  return a < b ? -1 : a > b ? 1 : 0;
+}
+
+export function sortLevel(a: KeyOfLevel, b: KeyOfLevel) {
+  const aOrder = LEVEL_ORDER[a];
+  const bOrder = LEVEL_ORDER[b];
+
+  return aOrder < bOrder ? -1 : aOrder > bOrder ? 1 : 0;
+}
+
+export function sortType(a: KeyOfType, b: KeyOfType) {
+  const aOrder = TYPE_ORDER[a];
+  const bOrder = TYPE_ORDER[b];
+
+  return aOrder < bOrder ? -1 : aOrder > bOrder ? 1 : 0;
+}

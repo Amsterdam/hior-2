@@ -4,11 +4,6 @@ export interface Apicall {
   _links: any;
 }
 
-export interface Action {
-  type: string;
-  payload: any;
-}
-
 export type Group = "theme" | "source" | "level" | "type" | "area";
 
 export interface Groups {
@@ -53,11 +48,11 @@ export interface ItemEnriched {
   description: string;
   text: string;
 
-  source: string;
-  level: string;
-  theme: string;
-  type: string;
-  area: string;
+  source: string[];
+  level: string[];
+  theme: string[];
+  type: string[];
+  area: string[];
 
   images: Image[];
   documents: Document[];
@@ -70,11 +65,11 @@ export interface ItemEnriched {
 
 export interface ItemTemp {
   id: number;
-  source: string;
-  level: string;
-  theme: string;
-  type: string;
-  area: string;
+  source: string[];
+  level: string[];
+  theme: string[];
+  type: string[];
+  area: string[];
 }
 
 export interface Image {

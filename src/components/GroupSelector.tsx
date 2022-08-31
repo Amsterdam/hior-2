@@ -26,7 +26,7 @@ const ItemWrapper = styled("span")`
 `;
 
 const GroupItem = ({ value, group, filteredItems }: { value: string; group: Group; filteredItems: ItemEnriched[] }) => {
-  const count = filteredItems?.filter((item) => item[group] === value).length;
+  const count = filteredItems?.filter((item) => item[group].includes(value)).length;
 
   if (count > 0) {
     return (

@@ -32,12 +32,7 @@ const ListItem = ({ item }: { item: ItemEnriched }) => {
 
   return (
     <ItemWrapper data-testid={`item-${item.id}`}>
-      <StyledAccordion
-        id={`${item.id}`}
-        key={item.id}
-        title={`${item.id} ${item.text}`}
-        onToggle={(open) => setOpen(open)}
-      >
+      <StyledAccordion id={`${item.id}`} key={item.id} title={item.text} onToggle={(open) => setOpen(open)}>
         {open && (
           <>
             <StyledParagraph>{item.description}</StyledParagraph>

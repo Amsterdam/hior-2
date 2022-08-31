@@ -55,6 +55,8 @@ describe("List", () => {
 
     await screen.findByText("Resultaten (1)");
 
+    userEvent.click(screen.getByRole("button", { name: /wis filter/i }));
+
     expect(screen.getByTestId("item-2")).toBeInTheDocument();
 
     userEvent.click(screen.getByRole("button", { name: /remove heel amsterdam/i }));
@@ -88,9 +90,17 @@ describe("List", () => {
 
     await screen.findByText("Resultaten (1)");
 
-    expect(screen.getByTestId("item-2")).toBeInTheDocument();
+    userEvent.click(screen.getByRole("button", { name: /wis filter/i }));
 
-    userEvent.click(screen.getByRole("button", { name: /remove heel amsterdam/i }));
+    await screen.findByText("Resultaten (1)");
+
+    await selectEvent.clearFirst(
+      screen.getByRole("combobox", {
+        name: /algemeen beleid \(heel amsterdam\) of aanvullend beleid per stadsdeel\?/i,
+      }),
+    );
+
+    await screen.findByText("Resultaten (3)");
 
     await selectEvent.select(
       screen.getByRole("combobox", {
@@ -99,7 +109,18 @@ describe("List", () => {
       ["7. Auto"],
     );
 
+    await screen.findByText("Resultaten (1)");
+
     expect(screen.queryByTestId("item-2")).not.toBeInTheDocument();
+
+    await selectEvent.select(
+      screen.getByRole("combobox", {
+        name: /algemeen beleid \(heel amsterdam\) of aanvullend beleid per stadsdeel\?/i,
+      }),
+      ["Centrum"],
+    );
+
+    await screen.findByText("Resultaten (1)");
 
     expect(screen.getByTestId("item-3")).toBeInTheDocument();
   });

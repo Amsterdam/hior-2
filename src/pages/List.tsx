@@ -41,7 +41,7 @@ const List = () => {
             <div>
               {groups[group].map((g) => {
                 const items = orderBy(
-                  filteredItems?.filter((j: any) => g === j[group]),
+                  filteredItems?.filter((j) => j[group].includes(g)),
                   group === "theme" ? ["themeSortKey"] : ["sortKey"],
                   ["asc"],
                 );
