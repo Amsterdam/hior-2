@@ -28,9 +28,10 @@ export function useGetFormattedSearchParams() {
         params.set(key, filter[key].toString());
       });
 
+      setFormattedParams(formatSearchParams(params));
       setSearchParams(params);
     },
-    [setSearchParams],
+    [setFormattedParams, setSearchParams],
   );
 
   return {

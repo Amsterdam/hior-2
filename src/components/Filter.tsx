@@ -59,8 +59,12 @@ const getSearchParamsValueOrDefault = (
   searchParamValue: string | null | undefined,
   defaultValue: FormattedOption[] = [],
 ) => {
-  if (searchParamValue === undefined || searchParamValue === null || searchParamValue === "") {
+  if (searchParamValue === undefined || searchParamValue === null) {
     return defaultValue;
+  }
+
+  if (searchParamValue === "") {
+    return [];
   }
 
   return searchParamValue.split(",").map((v) => formatOption(v));
@@ -70,8 +74,6 @@ const Filter = () => {
   const { setFilter } = useFilterState();
   const { formattedSearchParams, setSearchParams } = useGetFormattedSearchParams();
   const { groups } = useFilteredItems();
-
-  console.log("formattedSearchParams", formattedSearchParams);
 
   const sources = groups.source.map(formatOption);
   const levels = groups.level.map(formatOption);
@@ -105,23 +107,22 @@ const Filter = () => {
       query: debouncedQuery,
     };
 
-    // console.log("filter", filter);
-
     setFilter(filter);
     setSearchParams(filter);
   }, [source, level, theme, type, area, debouncedQuery, setSearchParams, setFilter]);
 
   const resetFilter = useCallback(() => {
-    // setFilter(initialState.filter);
-    setSearchParams(initialState.filter);
-
     setSource(null);
     setLevel(null);
     setTheme(null);
     setType(null);
-    setArea(initialState.filter.area.map((o) => formatOption(o)));
-    setQuery(initialState.filter.query);
-  }, [setSource, setLevel, setTheme, setType, setArea, setQuery]);
+    setArea(getSearchParamsValueOrDefault(null, defaultArea));
+    setQuery("");
+
+    setFilter(initialState.filter);
+
+    setSearchParams(initialState.filter);
+  }, [setSearchParams, setFilter, setSource, setLevel, setTheme, setType, setArea, setQuery]);
 
   return (
     <StyledDiv data-testid="filter">
@@ -133,6 +134,7 @@ const Filter = () => {
             placeholder="Kies een type"
             name="type"
             isMulti
+            value={type}
             defaultValue={type}
             options={types}
             onChange={(values: any) => {
@@ -145,6 +147,7 @@ const Filter = () => {
             name="theme"
             placeholder="Kies een thema"
             isMulti
+            value={theme}
             defaultValue={theme}
             options={themes}
             onChange={(values: any) => {
@@ -157,6 +160,7 @@ const Filter = () => {
             aria-labelledby="niveau-label"
             placeholder="Kies een niveau"
             isMulti
+            value={level}
             defaultValue={level}
             name="level"
             options={levels}
@@ -172,6 +176,7 @@ const Filter = () => {
             name="area"
             placeholder="Kies een standsdeel"
             isMulti
+            value={area}
             defaultValue={area}
             options={areas}
             onChange={(values: any) => {
@@ -184,6 +189,7 @@ const Filter = () => {
             name="source"
             placeholder="Kies een bron"
             isMulti
+            value={source}
             defaultValue={source}
             options={sources}
             onChange={(values: any) => {
@@ -203,7 +209,14 @@ const Filter = () => {
           />
         </SecondColumn>
         <Center>
-          <Button variant="secondary" data-testid="reset" onClick={resetFilter}>
+          <Button
+            variant="secondary"
+            data-testid="reset"
+            onClick={(e) => {
+              e.preventDefault();
+              resetFilter();
+            }}
+          >
             Wis filter
           </Button>
         </Center>
