@@ -27,8 +27,6 @@ function filterItems(filter: SearchFilter, items: ItemEnriched[]) {
     });
   }
 
-  console.log(filter, filteredData);
-
   return filteredData;
 }
 
