@@ -18,75 +18,66 @@ def tryStep(String message, Closure block, Closure tearDown = null) {
 
 String BUILD_ID = "${Math.abs(new Random().nextInt() % 600) + 1}"
 
-node {
-    stage('Test') {
-        tryStep "test", {
-            sh "docker-compose up --abort-on-container-exit unittest"
-        }
-    }
-}
-
-node {
-    stage("Build and push acceptance image") {
-
-        tryStep "build image", {
-            def image = docker.build("docker-registry.secure.amsterdam.nl/ruimte/hior:${BUILD_ID}",
-            "--shm-size 1G " +
-            "--build-arg BUILD_NUMBER=${BUILD_ID} " +
-            ". ")
-
-            image.push("acceptance")
-        }
-    }
-}
-
-
-String BRANCH = "${env.BRANCH_NAME}"
-
-
-if (BRANCH == "master" || BRANCH == "develop") {
-    node {
-        stage("Deploy to ACC") {
-            tryStep "deployment", {
-                build job: 'Subtask_Openstack_Playbook',
-                parameters: [
-                    [$class: 'StringParameterValue', name: 'INVENTORY', value: 'acceptance'],
-                    [$class: 'StringParameterValue', name: 'PLAYBOOK', value: 'deploy.yml'],
-                    [$class: 'StringParameterValue', name: 'PLAYBOOKPARAMS', value: "-e cmdb_id=app_hior"]
-                ]
+pipeline {
+    agent any
+    stages {
+        stage('Test') {
+            tryStep "test", {
+                sh "docker-compose up --abort-on-container-exit unittest"
             }
         }
-    }
-}
 
-if (BRANCH == "master") {
+        stage("Build and push acceptance image") {
 
-    stage('Waiting for approval') {
-        slackSend channel: '#ci-channel', color: 'warning', message: 'HIOR Dashboard is waiting for Production Release - please confirm'
-        timeout(10) {
-          input "Deploy to Production?"
-        }
-    }
+            tryStep "build image", {
+                def image = docker.build("docker-registry.secure.amsterdam.nl/ruimte/hior:${BUILD_ID}",
+                "--shm-size 1G " +
+                "--build-arg BUILD_NUMBER=${BUILD_ID} " +
+                ". ")
 
-    node {
-        stage("Push Production image") {
-            tryStep "build", {
-                def image = docker.image("docker-registry.secure.amsterdam.nl/ruimte/hior:${BUILD_ID}")
-                image.push("production")
-                image.push("latest")
+                image.push("acceptance")
             }
         }
-    }
 
+        String BRANCH = "${env.BRANCH_NAME}"
 
-    node {
-        stage("Deploy") {
-            tryStep "deployment", {
-                build job: 'Subtask_Openstack_Playbook',
-                parameters: [
-                    [$class: 'StringParameterValue', name: 'INVENTORY', value: 'production'],
-                    [$class: 'StringParameterValue', name: 'PLAYBOOK', value: 'deploy.yml'],
-                    [$class: 'StringParameterValue', name: 'PLAYBOOKPARAMS', value: "-e cmdb_id=app_hior"]                  ]
+        if (BRANCH == "master" || BRANCH == "develop") {
+            stage("Deploy to ACC") {
+                tryStep "deployment", {
+                    build job: 'Subtask_Openstack_Playbook',
+                    parameters: [
+                        [$class: 'StringParameterValue', name: 'INVENTORY', value: 'acceptance'],
+                        [$class: 'StringParameterValue', name: 'PLAYBOOK', value: 'deploy.yml'],
+                        [$class: 'StringParameterValue', name: 'PLAYBOOKPARAMS', value: "-e cmdb_id=app_hior"]
+                    ]
+                }
+            }
+        }
+
+        if (BRANCH == "master") {
+            stage('Waiting for approval') {
+                slackSend channel: '#ci-channel', color: 'warning', message: 'HIOR Dashboard is waiting for Production Release - please confirm'
+                timeout(10) {
+                input "Deploy to Production?"
+                }
+            }
+        
+            stage("Push Production image") {
+                tryStep "build", {
+                    def image = docker.image("docker-registry.secure.amsterdam.nl/ruimte/hior:${BUILD_ID}")
+                    image.push("production")
+                    image.push("latest")
+                }
+            }
+
+            stage("Deploy") {
+                tryStep "deployment", {
+                    build job: 'Subtask_Openstack_Playbook',
+                    parameters: [
+                        [$class: 'StringParameterValue', name: 'INVENTORY', value: 'production'],
+                        [$class: 'StringParameterValue', name: 'PLAYBOOK', value: 'deploy.yml'],
+                        [$class: 'StringParameterValue', name: 'PLAYBOOKPARAMS', value: "-e cmdb_id=app_hior"]                  ]
+                }
             }
         }
     }
