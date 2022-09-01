@@ -1,7 +1,8 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { Accordion, Link, TableBody, TableCell, TableRow, themeSpacing, Table } from "@amsterdam/asc-ui";
 import { Document, Image, ItemEnriched } from "../types";
-import { useState } from "react";
+import Modal, { ModalProps } from "./Modal";
 
 const StyledAccordion = styled(Accordion)`
   margin-top: ${themeSpacing(3)};
@@ -27,8 +28,29 @@ const ItemWrapper = styled("div")`
   }
 `;
 
+interface ImageViewerProps extends Omit<ModalProps, "children"> {
+  image: Image | null;
+}
+
+const ImageViewer = ({ image, ...props }: ImageViewerProps) => {
+  return (
+    image && (
+      <Modal {...props}>
+        <img style={{ width: "100%" }} src={image.src} alt={image.alt}></img>
+      </Modal>
+    )
+  );
+};
+
 const ListItem = ({ item }: { item: ItemEnriched }) => {
   const [open, setOpen] = useState(false);
+  const [image, setImage] = useState<Image | null>(null);
+  const [showModal, setShowModal] = useState(false);
+
+  const showImageModal = (image: Image) => {
+    setImage(image);
+    setShowModal(true);
+  };
 
   return (
     <ItemWrapper data-testid={`item-${item.id}`}>
@@ -37,7 +59,14 @@ const ListItem = ({ item }: { item: ItemEnriched }) => {
           <>
             <StyledParagraph>{item.description}</StyledParagraph>
             {item?.images?.map((image: Image) => (
-              <StyledImg src={image.src} key={`${item.id}-${image.id}`} alt={image.alt}></StyledImg>
+              <StyledImg
+                src={image.src}
+                key={`${item.id}-${image.id}`}
+                alt={image.alt}
+                onClick={() => {
+                  showImageModal(image);
+                }}
+              ></StyledImg>
             ))}
             <Table>
               <TableBody>
@@ -81,6 +110,8 @@ const ListItem = ({ item }: { item: ItemEnriched }) => {
                 )}
               </TableBody>
             </Table>
+
+            <ImageViewer image={image} showModal={showModal} setShowModal={setShowModal} />
           </>
         )}
       </StyledAccordion>
