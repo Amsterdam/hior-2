@@ -39,7 +39,7 @@ describe("List", () => {
 
     expect(
       screen.getByRole("button", {
-        name: /2 amsterdam wil een leefbare stad zijn voor mens en dier/i,
+        name: /amsterdam wil een leefbare stad zijn voor mens en dier/i,
       }),
     ).toBeInTheDocument();
   });
@@ -74,7 +74,7 @@ describe("List", () => {
 
     expect(
       screen.getByRole("button", {
-        name: /3 behoudens voor verplanten wordt de vergunning of jaarvergunning geweigerd voor zover dit het vellen van een houtopstand betreft/i,
+        name: /behoudens voor verplanten wordt de vergunning of jaarvergunning geweigerd voor zover dit het vellen van een houtopstand betreft/i,
       }),
     ).toBeInTheDocument();
   });

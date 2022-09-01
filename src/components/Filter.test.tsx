@@ -1,19 +1,24 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import { FilterContext } from "../filter/FilterContext";
-import { initialState } from "../constants";
+import { render, screen } from "@testing-library/react";
+import nock from "nock";
+import FilterContextProvider from "../filter/FilterContext";
+import { mockAttributes } from "../test/mock-data/List.fixtures";
 import { withTheme } from "../test/utils";
 import Filter from "./Filter";
 
 describe("Filter", () => {
+  beforeEach(() => {
+    nock("http://localhost")
+      .get("/vsd/hior_attributes/?page=1&page_size=100000&format=json")
+      .reply(200, mockAttributes);
+  });
+
   it("renders correctly", () => {
-    const dispatchSpy = jest.fn();
     const { container } = render(
       withTheme(
         <>
-          {/* @ts-ignore */}
-          <FilterContext.Provider value={{ state: initialState, dispatch: dispatchSpy }}>
+          <FilterContextProvider>
             <Filter />
-          </FilterContext.Provider>
+          </FilterContextProvider>
         </>,
       ),
     );
@@ -27,31 +32,5 @@ describe("Filter", () => {
     expect(container.querySelectorAll("input[type=text]").length).toBe(6);
     // reset button
     expect(container.querySelectorAll("button").length).toBe(1);
-  });
-
-  it("should reset filter when reset button is clicked", () => {
-    const dispatchSpy = jest.fn();
-    const mockState = {
-      ...initialState,
-      filter: {
-        ...initialState.filter,
-        query: "overtoom",
-      },
-    };
-
-    render(
-      withTheme(
-        <>
-          {/* @ts-ignore */}
-          <FilterContext.Provider value={{ state: mockState, dispatch: dispatchSpy }}>
-            <Filter />
-          </FilterContext.Provider>
-        </>,
-      ),
-    );
-
-    fireEvent.click(screen.getByTestId("reset"));
-
-    expect(dispatchSpy).toHaveBeenCalledWith({ type: "", payload: initialState.filter });
   });
 });
