@@ -1,8 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Accordion, Link, TableBody, TableCell, TableRow, themeSpacing, Table } from "@amsterdam/asc-ui";
+import { Link, TableBody, TableCell, TableRow, themeSpacing, Table, themeColor } from "@amsterdam/asc-ui";
 import { Document, Image, ItemEnriched } from "../types";
-import Modal, { ModalProps } from "./Modal";
+import Accordion from "./Accordion";
+import ImageViewer from "./ImageViewer";
 
 const StyledAccordion = styled(Accordion)`
   margin-top: ${themeSpacing(3)};
@@ -26,23 +27,23 @@ const ItemWrapper = styled("div")`
   a {
     font-size: 1rem;
   }
+
+  .filterText {
+    background-color: ${themeColor("secondary")};
+  }
 `;
 
-interface ImageViewerProps extends Omit<ModalProps, "children"> {
-  image: Image | null;
+function filteredText(text: string, filterText: string) {
+  const addSpan = (match: string, p1: string) => {
+    if (p1 && p1.startsWith("href=")) {
+      return match;
+    }
+    return `<span class="filterText">${match}</span>`;
+  };
+  return filterText ? text.replace(RegExp(`(href=[\\S]*)|(${filterText})`, "ig"), addSpan) : text;
 }
 
-const ImageViewer = ({ image, ...props }: ImageViewerProps) => {
-  return (
-    image && (
-      <Modal {...props}>
-        <img style={{ width: "100%" }} src={image.src} alt={image.alt}></img>
-      </Modal>
-    )
-  );
-};
-
-const ListItem = ({ item }: { item: ItemEnriched }) => {
+const ListItem = ({ item, searchTerm }: { item: ItemEnriched; searchTerm: string | undefined }) => {
   const [open, setOpen] = useState(false);
   const [image, setImage] = useState<Image | null>(null);
   const [showModal, setShowModal] = useState(false);
@@ -54,10 +55,18 @@ const ListItem = ({ item }: { item: ItemEnriched }) => {
 
   return (
     <ItemWrapper data-testid={`item-${item.id}`}>
-      <StyledAccordion id={`${item.id}`} key={item.id} title={item.text} onToggle={(open) => setOpen(open)}>
+      <StyledAccordion
+        id={`${item.id}`}
+        key={item.id}
+        title={item.text}
+        HTMLTitle={<span dangerouslySetInnerHTML={{ __html: filteredText(item.text, searchTerm || "") }}></span>}
+        onToggle={(open) => setOpen(open)}
+      >
         {open && (
           <>
-            <StyledParagraph>{item.description}</StyledParagraph>
+            <StyledParagraph
+              dangerouslySetInnerHTML={{ __html: filteredText(item.description, searchTerm || "") }}
+            ></StyledParagraph>
             {item?.images?.map((image: Image) => (
               <StyledImg
                 src={image.src}

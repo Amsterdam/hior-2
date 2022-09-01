@@ -60,6 +60,7 @@ function useFilteredItems() {
       isLoading,
       filteredItems,
       groups: getGroups(filteredItems),
+      filter,
     };
   }, [isLoading, filter, enrichedItems]);
 }

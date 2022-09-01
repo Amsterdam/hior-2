@@ -21,7 +21,7 @@ const Heading = styled("h2")`
 
 const List = () => {
   const { group } = useGroupState();
-  const { filteredItems, groups, isLoading } = useFilteredItems();
+  const { filteredItems, groups, isLoading, filter } = useFilteredItems();
 
   // TODO: why does 1 search item not show up in results on Theme page? (Is because a nested lookup is needed to decide if we show or no)
   // TODO: als er maar 1 groep keuze is deze niet meer tonen
@@ -51,7 +51,7 @@ const List = () => {
                     <ResultGroupTitle title={g} count={items?.length || 0} group={group} />
 
                     {items?.map((item) => (
-                      <ListItem item={item} key={item.id} />
+                      <ListItem item={item} key={item.id} searchTerm={filter?.query} />
                     ))}
                   </section>
                 );
