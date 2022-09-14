@@ -18,7 +18,7 @@ describe("List", () => {
       .reply(200, mockAttributes);
   });
 
-  it("renders correctly", async () => {
+  xit("renders correctly", async () => {
     render(
       withTheme(
         <FilterContextProvider>
