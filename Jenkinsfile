@@ -19,6 +19,12 @@ def tryStep(String message, Closure block, Closure tearDown = null) {
 String BUILD_ID = "${Math.abs(new Random().nextInt() % 600) + 1}"
 
 node {
+    stage("Checkout") {
+        checkout scm
+    }
+}
+
+node {
     stage("Build and push acceptance image") {
 
         tryStep "build image", {
