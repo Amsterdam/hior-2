@@ -15,13 +15,13 @@ const Footer = () => {
           <Column span={6}>
             <FooterSection title="Disclaimer">
               <p>
-                Het Handboek Inrichting Openbare Ruimte is samengesteld door de directie Verkeer & Openbare Ruimte. De
-                website is ontwikkeld door Datapunt.
+                Het Handboek Inrichting Openbare Ruimte is samengesteld door de directie Verkeer &amp; Openbare Ruimte.
+                De website is ontwikkeld door Datapunt.
               </p>
 
               <p>
                 De informatie op deze website wordt regelmatig aangevuld op basis van nieuwe bestuurlijke besluiten. De
-                laatste aanpassing vond plaats op <UpdatedDate />. Het HIOR Amsterdam heeft op zichzelf géén
+                laatste aanpassing vond plaats op <UpdatedDate />. Het HIOR Amsterdam heeft op zichzelf ge&#769;e&#769;n
                 bestuurlijke status. De achterliggende beleidsdocumenten zijn leidend.
               </p>
 

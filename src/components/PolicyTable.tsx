@@ -30,8 +30,8 @@ const PolicyTable = () => {
             <StyledTablecell>Ambitie</StyledTablecell>
             <StyledTablecell>
               De door de gemeenteraad, het college of het stadsdeelbestuur vastgestelde ambities worden meegenomen bij
-              het inrichten van de openbare ruimte. Niet alle ambities zijn binnen één straat, park of plein te
-              realiseren. Op projectniveau worden hierin keuzes gemaakt.
+              het inrichten van de openbare ruimte. Niet alle ambities zijn binnen e&#769;e&#769;n straat, park of plein
+              te realiseren. Op projectniveau worden hierin keuzes gemaakt.
             </StyledTablecell>
           </TableRow>
           <TableRow>
