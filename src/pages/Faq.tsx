@@ -18,6 +18,7 @@ const StyledAccordion = styled(Accordion)`
 
 const StyledParagraph = styled(Paragraph)`
   white-space: pre-wrap;
+  font-size: 1rem;
 `;
 
 const Faq = () => {

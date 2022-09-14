@@ -1,39 +1,59 @@
-import React, { useReducer, createContext, useContext } from "react";
-import type { Reducer } from "react";
-import filterReducer, { initialState } from "./reducer";
-import { State, Action } from "../types";
+import React, { createContext, useContext, useState } from "react";
+import { initialState } from "../constants";
+import { Group, SearchFilter } from "../types";
 
 export type FilterContext = {
-  state: State;
-  dispatch?: React.Dispatch<Action>;
+  group: Group;
+  setGroup: React.Dispatch<React.SetStateAction<Group>> | undefined;
+  filter: SearchFilter;
+  setFilter: React.Dispatch<React.SetStateAction<SearchFilter>> | undefined;
 };
 
-export const FilterContext = createContext<FilterContext>({ state: initialState });
+export const FilterContext = createContext<FilterContext>({
+  group: initialState.group,
+  setGroup: undefined,
+  filter: initialState.filter,
+  setFilter: undefined,
+});
 
 const FilterContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const [state, dispatch] = useReducer<Reducer<State, Action>>(filterReducer, initialState);
+  const [group, setGroup] = useState<Group>(initialState.group);
+  const [filter, setFilter] = useState<SearchFilter>(initialState.filter);
 
   return (
     <>
-      <FilterContext.Provider value={{ state, dispatch }}>{children}</FilterContext.Provider>
+      <FilterContext.Provider
+        value={{
+          group,
+          setGroup,
+          filter,
+          setFilter,
+        }}
+      >
+        {children}
+      </FilterContext.Provider>
     </>
   );
 };
 
-export function useDispatch() {
-  const { dispatch } = useContext(FilterContext);
+export function useFilterState() {
+  const { filter, setFilter } = useContext(FilterContext);
 
-  if (dispatch === undefined) {
-    throw Error("No dispatch property found. Is your component wrapped (at a level) by a Provider component?");
+  if (setFilter === undefined) {
+    throw new Error("setFilter was not defined. Is your component wrapped (at a level) by a Provider component?");
   }
 
-  return dispatch;
+  return { filter, setFilter };
 }
 
-export function useFilterState() {
-  const { state } = useContext(FilterContext);
+export function useGroupState() {
+  const { group, setGroup } = useContext(FilterContext);
 
-  return state;
+  if (setGroup === undefined) {
+    throw new Error("setGroup was not defined. Is your component wrapped (at a level) by a Provider component?");
+  }
+
+  return { group, setGroup };
 }
 
 export default FilterContextProvider;

@@ -1,0 +1,28 @@
+{
+  "_links": {
+    "self": {
+      "href": "https://acc.api.data.amsterdam.nl/vsd/hior_metadata/?page=1&page_size=100000&format=json"
+    },
+    "next": {
+      "href": null
+    },
+    "previous": {
+      "href": null
+    }
+  },
+  "count": 1,
+  "results": [
+    {
+      "_links": {
+        "self": {
+          "href": "https://acc.api.data.amsterdam.nl/vsd/hior_metadata/2/",
+          "title": "last_updated"
+        }
+      },
+      "_display": "last_updated",
+      "id": 2,
+      "property": "last_updated",
+      "value": "2022-05-03 00:00:00"
+    }
+  ]
+}

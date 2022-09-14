@@ -1,14 +1,5 @@
 import styled from "styled-components";
-import {
-  Footer as ASCFooter,
-  FooterTop,
-  Link,
-  Row,
-  Column,
-  FooterSection,
-  FooterBottom,
-  themeSpacing,
-} from "@amsterdam/asc-ui";
+import { Footer as ASCFooter, FooterTop, Link, Row, Column, FooterSection, themeSpacing } from "@amsterdam/asc-ui";
 
 import UpdatedDate from "./UpdatedDate";
 
@@ -57,14 +48,6 @@ const Footer = () => {
           </Column>
         </Row>
       </FooterTop>
-      <FooterBottom>
-        <Link href="/" inList>
-          Privacy and cookies
-        </Link>
-        <Link href="/" inList>
-          About this site
-        </Link>
-      </FooterBottom>
     </StyledFooter>
   );
 };
