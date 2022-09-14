@@ -1,12 +1,18 @@
 import { useCallback, MouseEvent } from "react";
 import styled from "styled-components";
-import { Link, Tabs, Tab, themeSpacing } from "@amsterdam/asc-ui";
+import { Link, Tabs, Tab, themeSpacing, breakpoint } from "@amsterdam/asc-ui";
 import { useGroupState } from "../filter/FilterContext";
 import { Group, ItemEnriched, Selector } from "../types";
 import { ALL_GROUPS } from "../constants";
 import useFilteredItems from "../hooks/useFilteredItems";
 
 const Wrapper = styled("div")`
+  display: none;
+
+  @media screen and ${breakpoint("min-width", "tabletS")} {
+    display: block;
+  }
+
   margin-top: ${themeSpacing(8)};
   width: 100%;
 `;

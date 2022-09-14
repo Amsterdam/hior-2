@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import Select from "react-select";
 import styled from "styled-components";
-import { Button, Label, themeSpacing } from "@amsterdam/asc-ui";
+import { breakpoint, Button, Label, themeSpacing } from "@amsterdam/asc-ui";
 import { useFilterState } from "../filter/FilterContext";
 import { initialState, defaultArea } from "../constants";
 import { FormattedOption, SearchFilter } from "../types";
@@ -27,7 +27,7 @@ const FirstColumn = styled("div")`
   width: 100%;
   float: left;
 
-  @media (min-width: 650px) {
+  @media screen and ${breakpoint("min-width", "tabletS")} {
     width: calc(50% - ${themeSpacing(2)});
     margin-right: ${themeSpacing(2)};
   }
@@ -37,7 +37,7 @@ const SecondColumn = styled("div")`
   width: 100%;
   float: left;
 
-  @media (min-width: 650px) {
+  @media screen and ${breakpoint("min-width", "tabletS")} {
     width: calc(50% - ${themeSpacing(2)});
     margin-left: ${themeSpacing(2)};
   }

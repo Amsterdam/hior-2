@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Column, Row, themeSpacing } from "@amsterdam/asc-ui";
+import { breakpoint, Column, Row, themeSpacing } from "@amsterdam/asc-ui";
 import orderBy from "lodash/orderBy";
 
 import GroupSelector from "../components/GroupSelector";
@@ -10,8 +10,10 @@ import ResultGroupTitle from "../components/ResultGroupTitle";
 import ListItem from "../components/ListItem";
 import useFilteredItems from "../hooks/useFilteredItems";
 
-const StyledDiv = styled("div")`
-  margin-top: ${themeSpacing(5)};
+const ListWrapper = styled("div")`
+  @media screen and ${breakpoint("min-width", "tabletS")} {
+    margin-top: ${themeSpacing(5)};
+  }
   width: 100%;
 `;
 
@@ -29,7 +31,7 @@ const List = () => {
   return (
     <Row>
       <Column span={12}>
-        <StyledDiv data-testid="list">
+        <ListWrapper data-testid="list">
           <Filter />
 
           <Heading>Resultaten ({filteredItems?.length})</Heading>
@@ -58,7 +60,7 @@ const List = () => {
               })}
             </div>
           )}
-        </StyledDiv>
+        </ListWrapper>
       </Column>
     </Row>
   );
