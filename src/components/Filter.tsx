@@ -10,7 +10,7 @@ import { StyledInput } from "./Components";
 import { useDebounce } from "../hooks/useDebounce";
 import useFilteredItems from "../hooks/useFilteredItems";
 
-const StyledDiv = styled("div")`
+const ListWrapper = styled("div")`
   margin-bottom: ${themeSpacing(6)};
   width: 100%;
   label {
@@ -35,7 +35,6 @@ const ColumnWrapper = styled("div")`
 
 const Column = styled("div")`
   width: 100%;
-  float: left;
 
   @media screen and ${breakpoint("min-width", "tabletS")} {
     width: calc(50% - ${themeSpacing(2)});
@@ -136,7 +135,7 @@ const Filter = () => {
   }, [setSearchParams, setFilter, setSource, setLevel, setTheme, setType, setArea, setQuery]);
 
   return (
-    <StyledDiv data-testid="filter">
+    <ListWrapper data-testid="filter">
       <form method="get">
         <ColumnWrapper>
           <FirstColumn>
@@ -236,7 +235,7 @@ const Filter = () => {
           </Button>
         </Center>
       </form>
-    </StyledDiv>
+    </ListWrapper>
   );
 };
 
