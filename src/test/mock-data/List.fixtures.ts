@@ -84,6 +84,13 @@ export const mockProperties = {
       name: "Level",
       value: "Proces",
     },
+    {
+      _display: "Source",
+      id: 20,
+      item_id: 2,
+      name: "Source",
+      value: "Omgevingsvisie 2050 (2021)",
+    },
   ],
 };
 

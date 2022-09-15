@@ -16,10 +16,14 @@ function getGroups(items: ItemEnriched[]) {
 
   type GroupKeys = keyof typeof groups;
 
+  // For each group key (source, level, etc)
   (Object.keys(groups) as GroupKeys[]).map((key) => {
     items.forEach((item) => {
+      // For each item we got passed
       item[key].forEach((value) => {
+        // If the group value for this item is not already in the list of values
         if (!groups[key].includes(value)) {
+          // add it, this gives us per group (source, level, etc.) a list of values which can be used to filter
           groups[key].push(value);
         }
       });

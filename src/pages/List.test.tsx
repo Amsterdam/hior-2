@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import selectEvent from "react-select-event";
 import nock from "nock";
 import { withTheme } from "../test/utils";
 import List from "./List";
 import { mockItems, mockProperties, mockAttributes } from "../test/mock-data/List.fixtures";
 import FilterContextProvider from "../filter/FilterContext";
-import selectEvent from "react-select-event";
 
 describe("List", () => {
   beforeEach(() => {
@@ -18,7 +18,7 @@ describe("List", () => {
       .reply(200, mockAttributes);
   });
 
-  xit("renders correctly", async () => {
+  it("renders correctly", async () => {
     render(
       withTheme(
         <FilterContextProvider>
@@ -31,11 +31,11 @@ describe("List", () => {
 
     expect(screen.getByTestId("list")).toBeInTheDocument();
 
-    expect(screen.getByRole("tab", { name: /bron/i })).toBeInTheDocument();
-    expect(screen.getByRole("tab", { name: /thema/i })).toBeInTheDocument();
-    expect(screen.getByRole("tab", { name: /niveau/i })).toBeInTheDocument();
-    expect(screen.getByRole("tab", { name: /type/i })).toBeInTheDocument();
-    expect(screen.getByRole("tab", { name: /stadsdeel/i })).toBeInTheDocument();
+    expect(screen.getByTestId("button-source")).toBeInTheDocument();
+    expect(screen.getByTestId("button-theme")).toBeInTheDocument();
+    expect(screen.getByTestId("button-level")).toBeInTheDocument();
+    expect(screen.getByTestId("button-type")).toBeInTheDocument();
+    expect(screen.getByTestId("button-area")).toBeInTheDocument();
 
     expect(
       screen.getByRole("button", {
@@ -124,4 +124,62 @@ describe("List", () => {
 
     expect(screen.getByTestId("item-3")).toBeInTheDocument();
   });
+
+  it("should show different results when filtering source", async () => {
+    render(
+      withTheme(
+        <FilterContextProvider>
+          <List />
+        </FilterContextProvider>,
+      ),
+    );
+
+    await screen.findByText("Resultaten (1)");
+
+    userEvent.click(screen.getByRole("button", { name: /wis filter/i }));
+
+    await screen.findByText("Resultaten (1)");
+
+    await selectEvent.select(screen.getByRole("combobox", { name: /bron/i }), ["Omgevingsvisie 2050 (2021)"]);
+
+    expect(screen.queryByTestId("item-3")).not.toBeInTheDocument();
+    expect(screen.getByTestId("item-2")).toBeInTheDocument();
+  });
+
+  it("should show different results when filtering level", async () => {
+    render(
+      withTheme(
+        <FilterContextProvider>
+          <List />
+        </FilterContextProvider>,
+      ),
+    );
+
+    await screen.findByText("Resultaten (1)");
+
+    userEvent.click(screen.getByRole("button", { name: /wis filter/i }));
+
+    await screen.findByText("Resultaten (1)");
+
+    userEvent.click(screen.getByRole("button", { name: /remove heel amsterdam/i }));
+
+    await screen.findByText("Resultaten (3)");
+
+    await selectEvent.select(
+      screen.getByRole("combobox", {
+        name: /algemeen beleid \(heel amsterdam\) of aanvullend beleid per stadsdeel\?/i,
+      }),
+      ["Centrum"],
+    );
+
+    await screen.findByText("Resultaten (1)");
+
+    await selectEvent.select(screen.getByRole("combobox", { name: /niveau/i }), ["Proces"]);
+
+    expect(screen.queryByTestId("item-2")).not.toBeInTheDocument();
+    expect(screen.getByTestId("item-3")).toBeInTheDocument();
+  });
+
+  //type
+  //text query
 });
