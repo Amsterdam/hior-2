@@ -23,22 +23,33 @@ const StyledMultiSelect = styled(Select)`
   width: 100%;
 `;
 
-const FirstColumn = styled("div")`
+const ColumnWrapper = styled("div")`
+  display: block;
+  align-items: normal;
+
+  @media screen and ${breakpoint("min-width", "tabletS")} {
+    display: flex;
+    align-items: flex-end;
+  }
+`;
+
+const Column = styled("div")`
   width: 100%;
   float: left;
 
   @media screen and ${breakpoint("min-width", "tabletS")} {
     width: calc(50% - ${themeSpacing(2)});
+  }
+`;
+
+const FirstColumn = styled(Column)`
+  @media screen and ${breakpoint("min-width", "tabletS")} {
     margin-right: ${themeSpacing(2)};
   }
 `;
 
-const SecondColumn = styled("div")`
-  width: 100%;
-  float: left;
-
+const SecondColumn = styled(Column)`
   @media screen and ${breakpoint("min-width", "tabletS")} {
-    width: calc(50% - ${themeSpacing(2)});
     margin-left: ${themeSpacing(2)};
   }
 `;
@@ -127,87 +138,90 @@ const Filter = () => {
   return (
     <StyledDiv data-testid="filter">
       <form method="get">
-        <FirstColumn>
-          <Label label="Type" id="type-label" />
-          <StyledMultiSelect
-            aria-labelledby="type-label"
-            placeholder="Kies een type"
-            name="type"
-            isMulti
-            value={type}
-            defaultValue={type}
-            options={types}
-            onChange={(values: any) => {
-              setType(values);
-            }}
-          />
-          <Label label="Thema" id="thema-label" />
-          <StyledMultiSelect
-            aria-labelledby="thema-label"
-            name="theme"
-            placeholder="Kies een thema"
-            isMulti
-            value={theme}
-            defaultValue={theme}
-            options={themes}
-            onChange={(values: any) => {
-              setTheme(values);
-            }}
-          />
+        <ColumnWrapper>
+          <FirstColumn>
+            <Label label="Type" id="type-label" />
+            <StyledMultiSelect
+              aria-labelledby="type-label"
+              placeholder="Kies een type"
+              name="type"
+              isMulti
+              value={type}
+              defaultValue={type}
+              options={types}
+              onChange={(values: any) => {
+                setType(values);
+              }}
+            />
+            <Label label="Thema" id="thema-label" />
+            <StyledMultiSelect
+              aria-labelledby="thema-label"
+              name="theme"
+              placeholder="Kies een thema"
+              isMulti
+              value={theme}
+              defaultValue={theme}
+              options={themes}
+              onChange={(values: any) => {
+                setTheme(values);
+              }}
+            />
 
-          <Label label="Niveau" id="niveau-label" />
-          <StyledMultiSelect
-            aria-labelledby="niveau-label"
-            placeholder="Kies een niveau"
-            isMulti
-            value={level}
-            defaultValue={level}
-            name="level"
-            options={levels}
-            onChange={(values: any) => {
-              setLevel(values);
-            }}
-          />
-        </FirstColumn>
-        <SecondColumn>
-          <Label label="Algemeen beleid (Heel Amsterdam) of aanvullend beleid per stadsdeel?" id="area-label" />
-          <StyledMultiSelect
-            aria-labelledby="area-label"
-            name="area"
-            placeholder="Kies een standsdeel"
-            isMulti
-            value={area}
-            defaultValue={area}
-            options={areas}
-            onChange={(values: any) => {
-              setArea(values);
-            }}
-          />
-          <Label label="Bron" id="source-label" />
-          <StyledMultiSelect
-            aria-labelledby="source-label"
-            name="source"
-            placeholder="Kies een bron"
-            isMulti
-            value={source}
-            defaultValue={source}
-            options={sources}
-            onChange={(values: any) => {
-              setSource(values);
-            }}
-          />
+            <Label label="Niveau" id="niveau-label" />
+            <StyledMultiSelect
+              aria-labelledby="niveau-label"
+              placeholder="Kies een niveau"
+              isMulti
+              value={level}
+              defaultValue={level}
+              name="level"
+              options={levels}
+              onChange={(values: any) => {
+                setLevel(values);
+              }}
+            />
+          </FirstColumn>
+          <SecondColumn>
+            <Label label="Algemeen beleid (Heel Amsterdam) of aanvullend beleid per stadsdeel?" id="area-label" />
+            <StyledMultiSelect
+              aria-labelledby="area-label"
+              name="area"
+              placeholder="Kies een standsdeel"
+              isMulti
+              value={area}
+              defaultValue={area}
+              options={areas}
+              onChange={(values: any) => {
+                setArea(values);
+              }}
+            />
+            <Label label="Bron" id="source-label" />
+            <StyledMultiSelect
+              aria-labelledby="source-label"
+              name="source"
+              placeholder="Kies een bron"
+              isMulti
+              value={source}
+              defaultValue={source}
+              options={sources}
+              onChange={(values: any) => {
+                setSource(values);
+              }}
+            />
 
-          <Label label="Filter op tekst" id="text-label" />
-          <StyledInput
-            aria-labelledby="text-label"
-            type="text"
-            id="query"
-            value={query}
-            onChange={(e: any) => {
-              setQuery(e.target.value);
-            }}
-          />
-        </SecondColumn>
+            <Label label="Filter op tekst" id="text-label" />
+            <StyledInput
+              aria-labelledby="text-label"
+              type="text"
+              id="query"
+              value={query}
+              onChange={(e: any) => {
+                setQuery(e.target.value);
+              }}
+            />
+          </SecondColumn>
+        </ColumnWrapper>
+
         <Center>
           <Button
             variant="secondary"

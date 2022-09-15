@@ -22,7 +22,7 @@ const Text = styled("span")`
   line-height: ${themeSpacing(8)};
 `;
 
-const StyledIcon = styled.img`
+const StyledIcon = styled("img")`
   width: 32px;
   height: 32px;
   margin-right: ${themeSpacing(4)};

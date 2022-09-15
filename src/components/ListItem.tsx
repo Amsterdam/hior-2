@@ -29,7 +29,7 @@ const ItemWrapper = styled("div")`
   }
 
   .filterText {
-    background-color: ${themeColor("secondary")};
+    color: ${themeColor("secondary")};
   }
 `;
 

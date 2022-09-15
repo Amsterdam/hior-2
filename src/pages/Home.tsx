@@ -34,9 +34,8 @@ const StyledAccordion = styled(Accordion)`
   margin-top: ${themeSpacing(3)};
 `;
 
-const StyledImg = styled.img`
+const StyledImg = styled("img")`
   width: 100%;
-  height: -moz-fit-content;
   height: fit-content;
   margin-bottom: 20px;
 `;

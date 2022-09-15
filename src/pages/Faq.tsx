@@ -3,7 +3,7 @@ import { Accordion, Column, Heading, Paragraph, Row, themeSpacing } from "@amste
 import Loader from "../components/Loader";
 import { useFetchFaq } from "../hooks/useFetchFaq";
 
-const StyledDiv = styled.div`
+const StyledDiv = styled("div")`
   margin-top: ${themeSpacing(10)};
   width: 100%;
 `;

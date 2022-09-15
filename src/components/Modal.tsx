@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Modal as ASCModal, themeSpacing } from "@amsterdam/asc-ui";
 
-const ModalContent = styled.div`
+const ModalContent = styled("div")`
   padding: ${themeSpacing(3)};
 `;
 
