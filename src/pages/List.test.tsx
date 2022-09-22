@@ -1,19 +1,13 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import selectEvent from "react-select-event";
 import nock from "nock";
-import { FilterContext } from "../filter/FilterContext";
-import { initialState } from "../filter/reducer";
 import { withTheme } from "../test/utils";
 import List from "./List";
-import { mockItems, mockProperties, mockAttributes } from "./List.fixtures";
-
-jest.mock("../components/Filter", () => () => "Filter");
-jest.mock("../components/GroupSelector", () => () => "GroupSelector");
+import { mockItems, mockProperties, mockAttributes } from "../test/mock-data/List.fixtures";
+import FilterContextProvider from "../filter/FilterContext";
 
 describe("List", () => {
-  beforeAll(() => {
-    nock.disableNetConnect();
-  });
-
   beforeEach(() => {
     nock("http://localhost")
       .get("/vsd/hior_items/?page=1&page_size=100000&format=json")
@@ -25,19 +19,11 @@ describe("List", () => {
   });
 
   it("renders correctly", async () => {
-    const mockState = {
-      ...initialState,
-      groups: {
-        ...initialState.groups,
-        theme: ["12. Groen"],
-      },
-    };
-
     render(
       withTheme(
-        <FilterContext.Provider value={{ state: mockState, dispatch: jest.fn() }}>
+        <FilterContextProvider>
           <List />
-        </FilterContext.Provider>,
+        </FilterContextProvider>,
       ),
     );
 
@@ -45,16 +31,155 @@ describe("List", () => {
 
     expect(screen.getByTestId("list")).toBeInTheDocument();
 
-    expect(screen.getByText("Resultaten (1)")).toBeInTheDocument();
+    expect(screen.getByTestId("button-source")).toBeInTheDocument();
+    expect(screen.getByTestId("button-theme")).toBeInTheDocument();
+    expect(screen.getByTestId("button-level")).toBeInTheDocument();
+    expect(screen.getByTestId("button-type")).toBeInTheDocument();
+    expect(screen.getByTestId("button-area")).toBeInTheDocument();
 
-    expect(screen.getByText("Bron")).toBeInTheDocument();
-    expect(screen.getByText("Thema")).toBeInTheDocument();
-    expect(screen.getByText("12. Groen")).toBeInTheDocument();
-    expect(screen.getByText("Niveau")).toBeInTheDocument();
-    expect(screen.getByText("Strategisch Niveau")).toBeInTheDocument();
-    expect(screen.getByText("Type")).toBeInTheDocument();
-    expect(screen.getByText("Ambitie")).toBeInTheDocument();
-    expect(screen.getByText("Stadsdeel")).toBeInTheDocument();
-    expect(screen.getByText("Heel Amsterdam")).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", {
+        name: /amsterdam wil een leefbare stad zijn voor mens en dier/i,
+      }),
+    ).toBeInTheDocument();
   });
+
+  it("should show different results when selecting a different area", async () => {
+    render(
+      withTheme(
+        <FilterContextProvider>
+          <List />
+        </FilterContextProvider>,
+      ),
+    );
+
+    await screen.findByText("Resultaten (1)");
+
+    userEvent.click(screen.getByRole("button", { name: /wis filter/i }));
+
+    expect(screen.getByTestId("item-2")).toBeInTheDocument();
+
+    userEvent.click(screen.getByRole("button", { name: /remove heel amsterdam/i }));
+
+    await screen.findByText("Resultaten (3)");
+
+    await selectEvent.select(
+      screen.getByRole("combobox", {
+        name: /algemeen beleid \(heel amsterdam\) of aanvullend beleid per stadsdeel\?/i,
+      }),
+      ["Centrum"],
+    );
+
+    await screen.findByText("Resultaten (1)");
+
+    expect(
+      screen.getByRole("button", {
+        name: /behoudens voor verplanten wordt de vergunning of jaarvergunning geweigerd voor zover dit het vellen van een houtopstand betreft/i,
+      }),
+    ).toBeInTheDocument();
+  });
+
+  it("should show different results when filtering theme", async () => {
+    render(
+      withTheme(
+        <FilterContextProvider>
+          <List />
+        </FilterContextProvider>,
+      ),
+    );
+
+    await screen.findByText("Resultaten (1)");
+
+    userEvent.click(screen.getByRole("button", { name: /wis filter/i }));
+
+    await screen.findByText("Resultaten (1)");
+
+    await selectEvent.clearFirst(
+      screen.getByRole("combobox", {
+        name: /algemeen beleid \(heel amsterdam\) of aanvullend beleid per stadsdeel\?/i,
+      }),
+    );
+
+    await screen.findByText("Resultaten (3)");
+
+    await selectEvent.select(
+      screen.getByRole("combobox", {
+        name: /thema/i,
+      }),
+      ["7. Auto"],
+    );
+
+    await screen.findByText("Resultaten (1)");
+
+    expect(screen.queryByTestId("item-2")).not.toBeInTheDocument();
+
+    await selectEvent.select(
+      screen.getByRole("combobox", {
+        name: /algemeen beleid \(heel amsterdam\) of aanvullend beleid per stadsdeel\?/i,
+      }),
+      ["Centrum"],
+    );
+
+    await screen.findByText("Resultaten (1)");
+
+    expect(screen.getByTestId("item-3")).toBeInTheDocument();
+  });
+
+  it("should show different results when filtering source", async () => {
+    render(
+      withTheme(
+        <FilterContextProvider>
+          <List />
+        </FilterContextProvider>,
+      ),
+    );
+
+    await screen.findByText("Resultaten (1)");
+
+    userEvent.click(screen.getByRole("button", { name: /wis filter/i }));
+
+    await screen.findByText("Resultaten (1)");
+
+    await selectEvent.select(screen.getByRole("combobox", { name: /bron/i }), ["Omgevingsvisie 2050 (2021)"]);
+
+    expect(screen.queryByTestId("item-3")).not.toBeInTheDocument();
+    expect(screen.getByTestId("item-2")).toBeInTheDocument();
+  });
+
+  it("should show different results when filtering level", async () => {
+    render(
+      withTheme(
+        <FilterContextProvider>
+          <List />
+        </FilterContextProvider>,
+      ),
+    );
+
+    await screen.findByText("Resultaten (1)");
+
+    userEvent.click(screen.getByRole("button", { name: /wis filter/i }));
+
+    await screen.findByText("Resultaten (1)");
+
+    userEvent.click(screen.getByRole("button", { name: /remove heel amsterdam/i }));
+
+    await screen.findByText("Resultaten (3)");
+
+    await selectEvent.select(
+      screen.getByRole("combobox", {
+        name: /algemeen beleid \(heel amsterdam\) of aanvullend beleid per stadsdeel\?/i,
+      }),
+      ["Centrum"],
+    );
+
+    await screen.findByText("Resultaten (1)");
+
+    await selectEvent.select(screen.getByRole("combobox", { name: /niveau/i }), ["Proces"]);
+
+    expect(screen.queryByTestId("item-2")).not.toBeInTheDocument();
+    expect(screen.getByTestId("item-3")).toBeInTheDocument();
+  });
+
+  //type
+  //text query
 });

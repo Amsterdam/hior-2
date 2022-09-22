@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Group, SearchFilter } from "../types";
+import { SearchFilter } from "../types";
+
+type SearchFilterKeys = keyof SearchFilter;
 
 function formatSearchParams(searchParams: URLSearchParams) {
   const params: Record<string, string | null> = {};
@@ -10,7 +12,7 @@ function formatSearchParams(searchParams: URLSearchParams) {
 
 export function useGetFormattedSearchParams() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [formattedSearchParams, setFormattedParams] = useState<Record<Group, string | null>>(
+  const [formattedSearchParams, setFormattedParams] = useState<Record<SearchFilterKeys, string | null | undefined>>(
     formatSearchParams(searchParams),
   );
 
@@ -22,15 +24,14 @@ export function useGetFormattedSearchParams() {
     (filter: SearchFilter) => {
       const params = new URLSearchParams();
 
-      type FilterKey = keyof SearchFilter;
-
-      (Object.keys(filter) as FilterKey[]).forEach((key) => {
-        params.set(key, filter[key]);
+      (Object.keys(filter) as SearchFilterKeys[]).forEach((key) => {
+        params.set(key, filter[key].toString());
       });
 
+      setFormattedParams(formatSearchParams(params));
       setSearchParams(params);
     },
-    [setSearchParams],
+    [setFormattedParams, setSearchParams],
   );
 
   return {

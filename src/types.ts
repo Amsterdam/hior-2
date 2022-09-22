@@ -4,11 +4,6 @@ export interface Apicall {
   _links: any;
 }
 
-export interface Action {
-  type: string;
-  payload: any;
-}
-
 export type Group = "theme" | "source" | "level" | "type" | "area";
 
 export interface Groups {
@@ -20,18 +15,18 @@ export interface Groups {
 }
 
 export interface SearchFilter {
-  source: string;
-  level: string;
-  theme: string;
-  type: string;
-  area: string;
+  source: string[];
+  level: string[];
+  theme: string[];
+  type: string[];
+  area: string[];
   query: string;
 }
 
 export interface Property {
   id: number;
   item_id: number;
-  name: string;
+  name: "Area" | "Type" | "Level" | "Source" | "Theme";
   value: string;
 }
 
@@ -53,14 +48,40 @@ export interface ItemEnriched {
   description: string;
   text: string;
 
-  source: string;
-  level: string;
-  theme: string;
-  type: string;
-  area: string;
+  source: string[];
+  level: string[];
+  theme: string[];
+  type: string[];
+  area: string[];
 
-  images: any[];
-  documents: any[];
+  images: Image[];
+  documents: Document[];
+
+  links: Document[];
+
+  sortKey: string;
+  themeSortKey: string;
+}
+
+export interface ItemTemp {
+  id: number;
+  source: string[];
+  level: string[];
+  theme: string[];
+  type: string[];
+  area: string[];
+}
+
+export interface Image {
+  id: number;
+  src: string;
+  alt: string;
+}
+
+export interface Document {
+  id: number;
+  src: string;
+  name: string;
 }
 
 export interface Selector {
@@ -78,8 +99,6 @@ export interface Faq {
 export interface State {
   filter: SearchFilter;
   group: Group;
-  groups: Groups;
-  filteredItems: ItemEnriched[];
 }
 
 export type FormattedOption = { label: string; value: string };

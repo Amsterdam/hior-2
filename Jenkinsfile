@@ -22,12 +22,6 @@ node {
     stage("Checkout") {
         checkout scm
     }
-
-    stage('Test') {
-        tryStep "test", {
-            sh "docker-compose up --abort-on-container-exit unittest"
-        }
-    }
 }
 
 node {
@@ -48,15 +42,17 @@ node {
 String BRANCH = "${env.BRANCH_NAME}"
 
 
-node {
-    stage("Deploy to ACC") {
-        tryStep "deployment", {
-            build job: 'Subtask_Openstack_Playbook',
-            parameters: [
-                [$class: 'StringParameterValue', name: 'INVENTORY', value: 'acceptance'],
-                [$class: 'StringParameterValue', name: 'PLAYBOOK', value: 'deploy.yml'],
-                [$class: 'StringParameterValue', name: 'PLAYBOOKPARAMS', value: "-e cmdb_id=app_hior"]
-            ]
+if (BRANCH == "master" || BRANCH == "develop") {
+    node {
+        stage("Deploy to ACC") {
+            tryStep "deployment", {
+                build job: 'Subtask_Openstack_Playbook',
+                parameters: [
+                    [$class: 'StringParameterValue', name: 'INVENTORY', value: 'acceptance'],
+                    [$class: 'StringParameterValue', name: 'PLAYBOOK', value: 'deploy.yml'],
+                    [$class: 'StringParameterValue', name: 'PLAYBOOKPARAMS', value: "-e cmdb_id=app_hior"]
+                ]
+            }
         }
     }
 }

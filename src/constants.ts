@@ -1,4 +1,4 @@
-import { Selector } from "./types";
+import { Selector, State } from "./types";
 
 const acc = window?.location?.host?.includes(".acc");
 
@@ -52,4 +52,32 @@ export const ALL_GROUPS: Selector[] = [
 export const requestHeaders = {
   "Content-Type": "application/json",
   Accept: "application/json",
+};
+
+export const defaultArea = [{ label: "Heel Amsterdam", value: "Heel Amsterdam" }];
+
+export const initialState = {
+  filter: {
+    source: [],
+    level: [],
+    theme: [],
+    type: [],
+    area: [defaultArea[0].value],
+    query: "",
+  },
+  group: "theme",
+} as State;
+
+export const LEVEL_ORDER = {
+  "Strategisch Niveau": 1,
+  "Tactisch Niveau": 2,
+  "Operationeel Niveau": 3,
+  Proces: 4,
+};
+
+export const TYPE_ORDER = {
+  Randvoorwaarde: 1,
+  Uitgangspunt: 2,
+  Ambitie: 3,
+  Advies: 4,
 };

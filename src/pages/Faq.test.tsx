@@ -4,10 +4,6 @@ import { withTheme } from "../test/utils";
 import Faq from "./Faq";
 
 describe("Faq", () => {
-  beforeAll(() => {
-    nock.disableNetConnect();
-  });
-
   const mockData = {
     results: [
       {

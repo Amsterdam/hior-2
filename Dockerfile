@@ -1,10 +1,9 @@
-FROM node:16-stretch AS builder
-
+FROM node:16-bullseye AS builder
 LABEL maintainer="datapunt@amsterdam.nl"
 
-EXPOSE 80
-
 WORKDIR /app
+
+COPY . /app
 
 COPY package.json \
   package-lock.json \
@@ -16,19 +15,22 @@ COPY package.json \
 RUN git config --global url."https://".insteadOf git://
 RUN git config --global url."https://github.com/".insteadOf git@github.com:
 
-
 # Install NPM dependencies.
-RUN npm --production=false --unsafe-perm ci --legacy-peer-deps && \
+RUN npm --production=false --unsafe-perm ci && \
   npm cache clean --force
 
-COPY . /app
+# Test 
+FROM builder as test
+RUN echo "run test"
+RUN npm run test
 
 # Build
+FROM builder as build
 RUN echo "run build"
 RUN GENERATE_SOURCEMAP=false npm run build
 
 # Deploy
 FROM nginx:stable-alpine
-COPY --from=builder /app/build/. /var/www/html/
+COPY --from=build /app/build/. /var/www/html/
 
 COPY default.conf /etc/nginx/conf.d/
