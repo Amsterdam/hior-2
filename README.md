@@ -1,4 +1,14 @@
-# HIOR 2
+# HIOR
+
+> Handboek Inrichting Openbare Ruimte
+
+Het HIOR is een integrale verzameling van het vigerend beleid voor de inrichting van de openbare ruimte in Amsterdam.
+Het HIOR helpt opdrachtgevers, projectleiders, ontwerpers, adviseurs en beheerders om invulling te geven aan het Amsterdamse beleid.
+
+In deze applicatie kan beleid worden gezocht:
+
+- Per thema, bijvoorbeeld 'fiets', 'voetganger', 'groen', 'water & oevers' en 'straatmeubilair'
+- Per beleidsproduct, bijvoorbeeld alle hoofdlijnen van de 'visie openbare ruimte' of de 'nota parkeernormen'
 
 ![](https://github.com/amsterdam/hior-2/actions/workflows/ci.yml/badge.svg)
 [![TypeScript](https://badges.frapsoft.com/typescript/version/typescript-next.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
@@ -55,4 +65,3 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
