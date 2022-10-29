@@ -2,6 +2,9 @@
 
 > Handboek Inrichting Openbare Ruimte
 
+- PROD: [https://hior.amsterdam.nl](https://hior.amsterdam.nl)
+- ACC: [https://acc.hior.amsterdam.nl](https://acc.hior.amsterdam.nl)
+
 Het HIOR is een integrale verzameling van het vigerend beleid voor de inrichting van de openbare ruimte in Amsterdam.
 Het HIOR helpt opdrachtgevers, projectleiders, ontwerpers, adviseurs en beheerders om invulling te geven aan het Amsterdamse beleid.
 
@@ -9,9 +12,6 @@ In deze applicatie kan beleid worden gezocht:
 
 - Per thema, bijvoorbeeld 'fiets', 'voetganger', 'groen', 'water & oevers' en 'straatmeubilair'
 - Per beleidsproduct, bijvoorbeeld alle hoofdlijnen van de 'visie openbare ruimte' of de 'nota parkeernormen'
-
-- PROD: [https://hior.amsterdam.nl](https://hior.amsterdam.nl)
-- ACC: [https://acc.hior.amsterdam.nl](https://acc.hior.amsterdam.nl)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
