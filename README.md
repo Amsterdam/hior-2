@@ -10,11 +10,6 @@ In deze applicatie kan beleid worden gezocht:
 - Per thema, bijvoorbeeld 'fiets', 'voetganger', 'groen', 'water & oevers' en 'straatmeubilair'
 - Per beleidsproduct, bijvoorbeeld alle hoofdlijnen van de 'visie openbare ruimte' of de 'nota parkeernormen'
 
-![](https://github.com/amsterdam/hior-2/actions/workflows/ci.yml/badge.svg)
-[![TypeScript](https://badges.frapsoft.com/typescript/version/typescript-next.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
-
 - PROD: [https://hior.amsterdam.nl](https://hior.amsterdam.nl)
 - ACC: [https://acc.hior.amsterdam.nl](https://acc.hior.amsterdam.nl)
 
