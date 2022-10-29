@@ -1,6 +1,6 @@
 # HIOR
 
-> Handboek Inrichting Openbare Ruimte
+Handboek Inrichting Openbare Ruimte
 
 - PROD: [https://hior.amsterdam.nl](https://hior.amsterdam.nl)
 - ACC: [https://acc.hior.amsterdam.nl](https://acc.hior.amsterdam.nl)
