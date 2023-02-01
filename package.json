@@ -54,10 +54,5 @@
     "jest-styled-components": "^7.1.1",
     "nock": "^13.3.0",
     "prettier": "^2.8.3"
-  },
-  "jest": {
-    "transformIgnorePatterns": [
-      "node_modules/(?!(axios))"
-    ]
   }
 }
