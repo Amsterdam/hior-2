@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { HIOR_FAQ_URL, requestHeaders } from "../constants";
 import { Faq as FaqType } from "../types";
 import { defaultQuerySettings } from "../queryClient";
+import { niceFetch } from "../utils/niceFetch";
 
 export function useFetchFaq() {
   return useQuery(
     ["hior_faq"],
     () => {
-      return axios.get<{
+      return niceFetch<{
         results: FaqType[];
       }>(HIOR_FAQ_URL, {
         headers: requestHeaders,
@@ -16,7 +16,7 @@ export function useFetchFaq() {
     },
     {
       ...defaultQuerySettings,
-      select: (res) => res.data,
+      select: (res) => res,
     },
   );
 }

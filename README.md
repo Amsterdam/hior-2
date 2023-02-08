@@ -1,12 +1,17 @@
-# HIOR 2
+# HIOR
 
-![](https://github.com/amsterdam/hior-2/actions/workflows/ci.yml/badge.svg)
-[![TypeScript](https://badges.frapsoft.com/typescript/version/typescript-next.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
+Handboek Inrichting Openbare Ruimte
 
 - PROD: [https://hior.amsterdam.nl](https://hior.amsterdam.nl)
 - ACC: [https://acc.hior.amsterdam.nl](https://acc.hior.amsterdam.nl)
+
+Het HIOR is een integrale verzameling van het vigerend beleid voor de inrichting van de openbare ruimte in Amsterdam.
+Het HIOR helpt opdrachtgevers, projectleiders, ontwerpers, adviseurs en beheerders om invulling te geven aan het Amsterdamse beleid.
+
+In deze applicatie kan beleid worden gezocht:
+
+- Per thema, bijvoorbeeld 'fiets', 'voetganger', 'groen', 'water & oevers' en 'straatmeubilair'
+- Per beleidsproduct, bijvoorbeeld alle hoofdlijnen van de 'visie openbare ruimte' of de 'nota parkeernormen'
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -55,4 +60,3 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-

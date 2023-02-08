@@ -12,6 +12,10 @@ const UpdatedDate = () => {
 
     const { data } = query;
 
+    if (!data) {
+      return;
+    }
+
     const d: Date = new Date(data.results[0].value.slice(0, 10));
 
     if (data && d) {
