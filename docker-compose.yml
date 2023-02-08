@@ -1,10 +1,11 @@
 version: '3.5'
 services:
-  web:
+  dev:
     build:
       context: .
       args:
         - BUILD_ARG=acc
+    image: 127.0.0.1:5001/hior:${VERSION:-latest}
     environment:
       - TZ=Europe/Amsterdam
     ipc: host
