@@ -5,5 +5,4 @@ metadata:
   labels:
     app: app
 data:
-  BUILD_ARG: "acc"
   TZ: "Europe/Amsterdam"

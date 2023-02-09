@@ -19,6 +19,9 @@ RUN git config --global url."https://github.com/".insteadOf git@github.com:
 RUN npm --production=false --unsafe-perm ci && \
   npm cache clean --force
 
+RUN chown -R node:node /app
+USER node
+
 # Test 
 FROM builder as test
 RUN echo "run test"
