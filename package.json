@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@tanstack/react-query": "^4.2.3",
-    "@tanstack/react-query-devtools": "^4.13.5",
+    "@tanstack/react-query-devtools": "^4.26.1",
     "@types/lodash": "^4.14.186",
     "axios": "^0.27.2",
     "gh-pages": "^4.0.0",
