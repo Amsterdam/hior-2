@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { HIOR_ITEMS_URL, requestHeaders } from "../constants";
 import { defaultQuerySettings } from "../queryClient";
 import { Item } from "../types";
+import { niceFetch } from "../utils/niceFetch";
 
 export function useFetchItems() {
   return useQuery(
     ["hior_items"],
     () => {
-      return axios.get<{
+      return niceFetch<{
         results: Item[];
       }>(HIOR_ITEMS_URL, {
         headers: requestHeaders,
@@ -16,7 +16,7 @@ export function useFetchItems() {
     },
     {
       ...defaultQuerySettings,
-      select: (res) => res.data,
+      select: (res) => res,
     },
   );
 }
