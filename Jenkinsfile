@@ -42,7 +42,7 @@ node {
 String BRANCH = "${env.BRANCH_NAME}"
 
 
-if (BRANCH == "main" || BRANCH == "develop") {
+if (BRANCH == "main") {
     node {
         stage("Deploy to ACC") {
             tryStep "deployment", {
