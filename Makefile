@@ -23,4 +23,4 @@ clean:                              ## Clean docker stuff
 	$(dc) down -v --remove-orphans
 
 trivy:                              ## Detect image vulnerabilities
-	trivy image --ignore-unfixed nginx:mainline-alpine-slim
+	trivy image --ignore-unfixed nginxinc/nginx-unprivileged:mainline-alpine-slim
