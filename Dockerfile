@@ -30,7 +30,7 @@ RUN echo "run build"
 RUN GENERATE_SOURCEMAP=false npm run build
 
 # Deploy
-FROM nginx:mainline-alpine-slim
+FROM nginxinc/nginx-unprivileged:mainline-alpine-slim
 COPY --from=build /app/build/. /var/www/html/
 
 COPY default.conf /etc/nginx/conf.d/

@@ -9,7 +9,7 @@ services:
       - TZ=Europe/Amsterdam
     ipc: host
     ports:
-      - '3000:80'
+      - '3000:8080'
 
   unittest:
     build:
