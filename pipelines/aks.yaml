@@ -23,8 +23,6 @@ extends:
   parameters:
     name: hior
     dev:
-      serviceConnection: ARM-CCC-OPDR-ont-01
-      deploy:
-        pool: Opdrachten
-        namespace: ns-ccc-opdr-ont-01-hior
-        kubernetesServiceConnection: "SCN-K8S-ns-ccc-opdr-ont-01-hior"
+      pool: Opdrachten
+      namespace: ns-ccc-opdr-ont-01-hior
+      kubernetesServiceConnection: "SCN-K8S-ns-ccc-opdr-ont-01-hior"
