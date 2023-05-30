@@ -2,10 +2,17 @@
 # https://git.datapunt.amsterdam.nl/Datapunt/python-best-practices/blob/master/dependency_management/
 #
 # VERSION = 2020.01.29
-.PHONY: app
+.PHONY: app manifests
 
 dc = docker-compose
 run = $(dc) run --rm
+ENVIRONMENT ?= local
+VERSION ?= latest
+HELM_ARGS = manifests/chart \
+	-f manifests/values.yaml \
+	-f manifests/env/${ENVIRONMENT}.yaml \
+	--set image.tag=${VERSION} \
+	--set image.registry=${REGISTRY}
 
 help:                               ## Show this help.
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
@@ -16,7 +23,7 @@ build:                              ## Build docker image
 app:                                ## Run app
 	$(run) --service-ports web
 
-test:                               ## Execute tests
+test: build                         ## Execute tests
 	$(run) unittest $(ARGS)
 
 clean:                              ## Clean docker stuff
@@ -27,3 +34,14 @@ trivy:                              ## Detect image vulnerabilities
 
 push:                               ## Push image to docker hub
 	$(dc) push
+
+update-chart:
+	rm -rf manifests/chart
+	git clone --branch 1.4.3 --depth 1 git@github.com:Amsterdam/helm-application.git manifests/chart
+	rm -rf manifests/chart/.git
+
+manifests:
+	@helm template hior $(HELM_ARGS) $(ARGS)
+
+deploy: manifests
+	helm upgrade --install --atomic hior $(HELM_ARGS) $(ARGS)

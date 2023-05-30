@@ -1,0 +1,60 @@
+image:
+  repository: opdrachten/hior
+host: hior.azure.amsterdam.nl
+
+deployments:
+  app:
+    containers:
+      - name: main
+        volumes:
+          - name: tmp
+            mountPath: /tmp
+        secrets:
+          - app
+    labels:
+      app: app
+    volumes:
+      - name: tmp
+        spec:
+          emptyDir: {}
+
+jobs:
+  certificate-init:
+    secrets:
+      - certificate
+    annotations:
+      helm.sh/hook: post-install,post-upgrade
+    containers:
+      - name: main
+        command:
+          - sleep
+        args:
+          - "1"
+
+services:
+  app:
+    ports:
+      - name: http
+        port: 80
+        targetPort: 8080
+    selector:
+      app: app
+
+ingress:
+  app:
+    paths:
+    - path: /
+      service: app
+      port: 80
+    className: nginx
+    tls: certificate
+
+secrets:
+  certificate:
+    type: keyvault
+    tls: hior
+  app:
+    type: opaque
+    secrets:
+      cow: moo
+      secret-key: secret-value
