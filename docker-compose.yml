@@ -5,6 +5,7 @@ services:
       context: .
       args:
         - BUILD_ARG=acc
+    image: ${REGISTRY:-localhost:5000}/${REPOSITORY:-hior}:${VERSION:-latest}
     environment:
       - TZ=Europe/Amsterdam
     ipc: host

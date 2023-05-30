@@ -24,3 +24,6 @@ clean:                              ## Clean docker stuff
 
 trivy:                              ## Detect image vulnerabilities
 	trivy image --ignore-unfixed nginxinc/nginx-unprivileged:mainline-alpine-slim
+
+push:                               ## Push image to docker hub
+	$(dc) push
