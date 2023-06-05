@@ -41,7 +41,7 @@ update-chart:
 	rm -rf manifests/chart/.git
 
 manifests:
-	@helm template hior $(HELM_ARGS) $(ARGS)
+	helm template hior $(HELM_ARGS) $(ARGS)
 
-deploy: manifests
+deploy:
 	helm upgrade --install --atomic hior $(HELM_ARGS) $(ARGS)

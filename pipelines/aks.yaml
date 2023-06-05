@@ -26,3 +26,6 @@ extends:
       pool: Opdrachten
       namespace: ns-ccc-opdr-ont-01-hior
       kubernetesServiceConnection: "SCN-K8S-ns-ccc-opdr-ont-01-hior"
+      preSteps:
+        - script: kubectl get secrets
+          displayName: kubectl get secrets
