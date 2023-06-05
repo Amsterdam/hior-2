@@ -4,6 +4,16 @@ image:
   tag: latest
 
 host: hior.azure.amsterdam.nl
+labels:
+  app: hior
+
+network:
+  allow-ingress:
+    selector: app == 'hior'
+    ingress:
+      - action: Allow
+    egress:
+      - action: Allow
 
 deployments:
   app:
@@ -14,8 +24,6 @@ deployments:
             mountPath: /tmp
         secrets:
           - app
-    labels:
-      app: app
     volumes:
       - name: tmp
         spec:
