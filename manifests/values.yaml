@@ -49,7 +49,7 @@ ingress:
     - path: /
       service: app
       port: 80
-    className: nginx
+    className: nginx-internal
     tls: certificate
 
 secrets:
