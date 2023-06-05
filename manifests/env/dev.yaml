@@ -1,1 +1,21 @@
+# Default keyvault for getting secrets
+keyVaultName: hior-o-dzvotjkhjpqua
+
+# Identity AppID (clientId) used to authenticate with the keyvault
+keyVaultIdentity: 03341363-cc33-4976-ae16-27f763f014fd
+
+# We must select the nodepool to run the pods on
+nodepool: cccopdront01
+
+# Default host for the ingress resources
 host: hior-o.azure.amsterdam.nl
+
+# Some default environment variables to inject in all containers
+env:
+  AZURE_KEY_VAULT: "https://hior-o-dzvotjkhjpqua.vault.azure.net/"
+  AZURE_MANAGED_IDENTITY_CLIENTID: 03341363-cc33-4976-ae16-27f763f014fd
+
+# Specify the keyvault that has the certificate
+secrets:
+  certificate:
+    keyVaultName: shared-o-yhqbd6yktpphi
