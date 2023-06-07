@@ -8,7 +8,7 @@ keyVaultIdentity: 03341363-cc33-4976-ae16-27f763f014fd
 nodepool: cccopdront01
 
 # Default host for the ingress resources
-host: hior-o.azure.amsterdam.nl
+host: hior.opdr-o.azure.amsterdam.nl
 
 # Some default environment variables to inject in all containers
 env:
