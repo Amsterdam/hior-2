@@ -1,12 +1,12 @@
-suite: Cronjobs
+suite: CronJobs
 release:
   name: test
 templates:
-  - job.yaml
+  - cronjob.yaml
 tests:
   - it: should give an error if no repository
     set:
-      jobs:
+      cronJobs:
         app:
           containers:
             - name: main
@@ -18,11 +18,11 @@ tests:
     set:
       image:
         repository: defaultrepo
-      jobs:
+      cronJobs:
         app: {}
     asserts:
       - isKind:
-          of: Job
+          of: CronJob
       - matchRegex:
           path: metadata.name
           pattern: -test$
@@ -33,7 +33,7 @@ tests:
         registry: defaultregistry
         repository: defaultrepo
         tag: "latest"
-      jobs:
+      cronJobs:
         aaa:
           containers:
             - name: main
@@ -56,21 +56,64 @@ tests:
       - hasDocuments:
           count: 4
       - equal:
-          path: spec.template.spec.containers[0].image
+          path: spec.jobTemplate.spec.template.spec.containers[0].image
           value: myregistry/defaultrepo:latest
         documentIndex: 0
 
       - equal:
-          path: spec.template.spec.containers[0].image
+          path: spec.jobTemplate.spec.template.spec.containers[0].image
           value: defaultregistry/myrepo:latest
         documentIndex: 1
 
       - equal:
-          path: spec.template.spec.containers[0].image
+          path: spec.jobTemplate.spec.template.spec.containers[0].image
           value: defaultregistry/defaultrepo:mytag
         documentIndex: 2
 
       - equal:
-          path: spec.template.spec.containers[0].image
+          path: spec.jobTemplate.spec.template.spec.containers[0].image
           value: defaultregistry/defaultrepo:latest
         documentIndex: 3
+
+  - it: should use the default serviceAccount
+    set:
+      image:
+        repository: defaultrepo
+      serviceAccount: foo
+      cronJobs:
+        main:
+          containers:
+            - name: main
+    asserts:
+      - equal:
+          path: spec.jobTemplate.spec.template.spec.serviceAccountName
+          value: foo-test
+
+  - it: should be possible to override the serviceaccount per pod
+    set:
+      image:
+        repository: defaultrepo
+      cronJobs:
+        main:
+          serviceAccount: foo
+          containers:
+            - name: main
+    asserts:
+      - equal:
+          path: spec.jobTemplate.spec.template.spec.serviceAccountName
+          value: foo-test
+
+  - it: should inject labels to use workload identity
+    set:
+      workloadIdentity: default-client-id
+      image:
+        repository: defaultrepo
+      cronJobs:
+        main:
+          containers:
+            - name: main
+    asserts:
+      - isSubset:
+          path: spec.jobTemplate.spec.template.metadata.labels
+          content:
+            azure.workload.identity/use: "true"

@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.5.1](https://github.com/Amsterdam/helm-application/compare/1.5.0...1.5.1) (2023-06-13)
+
+
+### Bug Fixes
+
+* **workload identity:** Added label to the pods in order to use workload identity ([40a2545](https://github.com/Amsterdam/helm-application/commit/40a25459044e3a1f0776e79e20ade28c269054e0))
+* **workload identity:** When using workload identity, explicitly disable pod identity and vm identity ([35cc212](https://github.com/Amsterdam/helm-application/commit/35cc212882f19a5dc7170328cf5078d11d46bec5))
+
+## [1.5.0](https://github.com/Amsterdam/helm-application/compare/1.4.3...1.5.0) (2023-05-31)
+
+
+### Features
+
+* **keyvault:** Switch to workload identity as default instead of vm identity ([6fea023](https://github.com/Amsterdam/helm-application/commit/6fea02349da5945b997f1b2d318670d46330a153))
+* **pod:** Added possibility to configure a serviceaccount for deploy,job,cronjobs ([b4e6fe8](https://github.com/Amsterdam/helm-application/commit/b4e6fe8d4342ef40eb2eb1488015f23a43bbf028))
+* **serviceaccount:** Added the possibility to add serviceaccounts ([4285703](https://github.com/Amsterdam/helm-application/commit/428570323613884b85d214957b5dd2688d98f413))
+
+
+### Bug Fixes
+
+* **autoscale:** Autoscaler had a minimum of 3 replicas, this is now min+1 ([67313a6](https://github.com/Amsterdam/helm-application/commit/67313a694b70d185090b70eed70d43d51c9a206c))
+
 ## [1.4.3](https://github.com/Amsterdam/helm-application/compare/1.4.2...1.4.3) (2023-05-10)
 
 

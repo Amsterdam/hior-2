@@ -214,6 +214,16 @@ envFrom
 {{- end }}
 
 {{/*
+pod.serviceAccount
+*/}}
+{{- define "pod.serviceAccount" -}}
+{{- $fullName := (include "helm.fullname" .root ) }}
+{{- with .local.serviceAccount | default .root.Values.serviceAccount }}
+serviceAccountName: {{ printf "%s-%s" . $fullName }}
+{{- end }}
+{{- end }}
+
+{{/*
 tolerations
 */}}
 {{- define "pod.tolerations" -}}
@@ -276,7 +286,7 @@ container.image
 {{- define "container.image" -}}
 {{- $image := deepCopy (.local.image | default dict) | mergeOverwrite (.root.Values.image | deepCopy) }}
 {{- $repository := required "A repository configuration is required" $image.repository }}
-image: {{ printf "%s:%s" (list $image.registry $image.repository | join "/") $image.tag | quote }}
+image: {{ printf "%s:%s" (list $image.registry $image.repository | join "/") ($image.tag | default "latest") | quote }}
 imagePullPolicy: {{ $image.imagePullPolicy | default "IfNotPresent" }}
 {{- end }}
 

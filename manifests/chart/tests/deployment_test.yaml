@@ -268,7 +268,7 @@ tests:
             runAsUser: 1000
       - equal:
           path: spec.template.spec.containers[?(@.name=='main')].securityContext
-          value: 
+          value:
             privileged: false
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
@@ -297,7 +297,50 @@ tests:
             runAsUser: 2000
       - equal:
           path: spec.template.spec.containers[?(@.name=='main')].securityContext
-          value: 
+          value:
             allowPrivilegeEscalation: true
             privileged: true
             readOnlyRootFilesystem: false
+
+  - it: should use the default serviceAccount
+    set:
+      image:
+        repository: defaultrepo
+      serviceAccount: foo
+      deployments:
+        main:
+          containers:
+            - name: main
+    asserts:
+      - equal:
+          path: spec.template.spec.serviceAccountName
+          value: foo-test
+
+  - it: should be possible to override the serviceaccount per pod
+    set:
+      image:
+        repository: defaultrepo
+      deployments:
+        main:
+          serviceAccount: foo
+          containers:
+            - name: main
+    asserts:
+      - equal:
+          path: spec.template.spec.serviceAccountName
+          value: foo-test
+
+  - it: should inject labels to use workload identity
+    set:
+      workloadIdentity: default-client-id
+      image:
+        repository: defaultrepo
+      deployments:
+        main:
+          containers:
+            - name: main
+    asserts:
+      - isSubset:
+          path: spec.template.metadata.labels
+          content:
+            azure.workload.identity/use: "true"

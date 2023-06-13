@@ -17,7 +17,7 @@ metadata:
   {{- end }}
 spec:
   minReplicas: {{ .autoscale.min | default 1 }}
-  maxReplicas: {{ .autoscale.max | max (default .autoscale.min) 3 }}
+  maxReplicas: {{ .autoscale.max | default 3 | max 1 (add 1 .autoscale.min) }}
   metrics:
   {{- with .autoscale.cpu }}
   - type: Resource

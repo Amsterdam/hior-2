@@ -3,6 +3,7 @@ name: my-app
 tenantId:
 keyVaultName:
 keyVaultIdentity:
+workloadIdentity: 
 
 securityContext:
   pod:
@@ -35,6 +36,7 @@ keyvault: {}
 secrets: {}
 jobs: {}
 cronJobs: {}
+serviceAccounts: {}
 deployments: {}
 services: {}
 ingress: {}

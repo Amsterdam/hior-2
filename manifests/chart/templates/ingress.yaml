@@ -34,7 +34,7 @@ spec:
   tls:
     - hosts:
         - {{ $host | quote }}
-      secretName: hior
+      secretName: {{ printf "%s-%s" . $fullName }}
   {{- end }}
   {{- end }}
   rules:
