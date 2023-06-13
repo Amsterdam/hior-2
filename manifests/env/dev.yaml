@@ -1,3 +1,5 @@
+tenantID: 72fca1b1-2c2e-4376-a445-294d80196804
+
 # Default keyvault for getting secrets
 keyVaultName: hior-o-dzvotjkhjpqua
 
