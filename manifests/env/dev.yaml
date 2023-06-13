@@ -22,4 +22,4 @@ secrets:
 
 ingress:
   app:
-    className: nginx-internal
+    className: nginx-external
