@@ -18,9 +18,4 @@ env:
 # Specify the keyvault that has the certificate
 secrets:
   certificate:
-    enabled: false
     keyVaultName: shared-o-yhqbd6yktpphi
-
-jobs:
-  certificate-init:
-    enabled: false

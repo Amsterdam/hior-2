@@ -3,7 +3,6 @@ image:
   repository: opdrachten/hior
   tag: latest
 
-host: hior.azure.amsterdam.nl
 labels:
   app: hior
 
