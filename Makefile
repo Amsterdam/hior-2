@@ -44,4 +44,4 @@ manifests:
 	@helm template hior $(HELM_ARGS) $(ARGS)
 
 deploy: manifests
-	helm upgrade --install --atomic hior $(HELM_ARGS) $(ARGS)
+	helm upgrade --install hior $(HELM_ARGS) $(ARGS)
