@@ -2,7 +2,7 @@
 keyVaultName: hior-o-dzvotjkhjpqua
 
 # Identity AppID (clientId) used to authenticate with the keyvault
-keyVaultIdentity: 03341363-cc33-4976-ae16-27f763f014fd
+workloadIdentity: 03341363-cc33-4976-ae16-27f763f014fd
 
 # We must select the nodepool to run the pods on
 nodepool: cccopdront01
@@ -19,3 +19,7 @@ env:
 secrets:
   certificate:
     keyVaultName: shared-o-yhqbd6yktpphi
+
+ingress:
+  app:
+    className: nginx-internal
