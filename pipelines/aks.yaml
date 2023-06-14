@@ -28,5 +28,6 @@ extends:
       kubernetesServiceConnection: "SCN-K8S-ns-ccc-opdr-ont-01-hior"
       preSteps:
         - script: helm uninstall hior -n ns-ccc-opdr-ont-01-hior
+          displayName: Remove previous installation
         - script: kubectl get secrets
           displayName: kubectl get secrets
