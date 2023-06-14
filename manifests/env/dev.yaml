@@ -9,6 +9,11 @@ workloadIdentity: 03341363-cc33-4976-ae16-27f763f014fd
 # Service account to use
 serviceAccount: hior
 
+serviceAccounts:
+  hior: 
+    workloadIdentity: a338c40c-c164-48cf-87e7-6dad2c6fd988
+    enableWorkloadIdentity: true
+
 # We must select the nodepool to run the pods on
 nodepool: cccopdront01
 
