@@ -6,6 +6,9 @@ keyVaultName: hior-o-dzvotjkhjpqua
 # Identity AppID (clientId) used to authenticate with the keyvault
 workloadIdentity: 03341363-cc33-4976-ae16-27f763f014fd
 
+# Service account to use
+serviceAccount: hior
+
 # We must select the nodepool to run the pods on
 nodepool: cccopdront01
 
