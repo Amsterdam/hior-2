@@ -104,3 +104,50 @@ tests:
           path: spec.rules[0].http.paths[0]
           content:
             pathType: Exact
+
+  - it: should support TLS with secret prefix
+    set:
+      ingress:
+        my-ingress:
+          host: my.domain.com
+          paths:
+            - path: /api
+              service: api-service
+              port: 8000
+          tls:
+            secretName: certificate
+    asserts:
+      - equal:
+          path: spec.tls[0].secretName
+          value: certificate-test
+
+  - it: should support TLS with existing secret
+    set:
+      ingress:
+        my-ingress:
+          host: my.domain.com
+          paths:
+            - path: /api
+              service: api-service
+              port: 8000
+          tls:
+            secretNameOverride: existing-secret
+    asserts:
+      - equal:
+          path: spec.tls[0].secretName
+          value: existing-secret
+
+  - it: should support TLS with values-definition of chart version <=1.5.1
+    set:
+      ingress:
+        my-ingress:
+          host: my.domain.com
+          paths:
+            - path: /api
+              service: api-service
+              port: 8000
+          tls: certificate
+    asserts:
+      - equal:
+          path: spec.tls[0].secretName
+          value: certificate-test

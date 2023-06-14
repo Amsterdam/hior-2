@@ -34,7 +34,11 @@ spec:
   tls:
     - hosts:
         - {{ $host | quote }}
+      {{- if kindIs "string" . }}
       secretName: {{ printf "%s-%s" . $fullName }}
+      {{- else }}
+      secretName: {{ .secretNameOverride | default (printf "%s-%s" .secretName $fullName) }}
+      {{- end }}
   {{- end }}
   {{- end }}
   rules:

@@ -7,10 +7,10 @@ keyVaultName: hior-o-dzvotjkhjpqua
 workloadIdentity: 03341363-cc33-4976-ae16-27f763f014fd
 
 # Service account to use
-serviceAccount: hior
+serviceAccount: app
 
 serviceAccounts:
-  hior: 
+  app: 
     workloadIdentity: a338c40c-c164-48cf-87e7-6dad2c6fd988
     enableWorkloadIdentity: true
 

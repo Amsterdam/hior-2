@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.2](https://github.com/Amsterdam/helm-application/compare/1.5.1...1.5.2) (2023-06-14)
+
+
+### Bug Fixes
+
+* **ingress:** Ability to use existing certificate secret ([cba0854](https://github.com/Amsterdam/helm-application/commit/cba0854f971ccc7a2def3b00bfdd8b4aeb265b58))
+
 ## [1.5.1](https://github.com/Amsterdam/helm-application/compare/1.5.0...1.5.1) (2023-06-13)
 
 
