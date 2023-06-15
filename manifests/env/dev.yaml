@@ -11,8 +11,8 @@ serviceAccount: app
 
 serviceAccounts:
   app: 
-    workloadIdentity: a338c40c-c164-48cf-87e7-6dad2c6fd988
-    enableWorkloadIdentity: true
+    #workloadIdentity: a338c40c-c164-48cf-87e7-6dad2c6fd988
+    enableWorkloadIdentity: false
 
 # We must select the nodepool to run the pods on
 nodepool: cccopdront01
