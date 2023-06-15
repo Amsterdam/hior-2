@@ -4,15 +4,15 @@ tenantId: 72fca1b1-2c2e-4376-a445-294d80196804
 keyVaultName: hior-o-dzvotjkhjpqua
 
 # Identity AppID (clientId) used to authenticate with the keyvault
-keyvaultIdentity: 03341363-cc33-4976-ae16-27f763f014fd
+keyVaultIdentity: 03341363-cc33-4976-ae16-27f763f014fd
 
 # Service account to use
 serviceAccount: app
 
 serviceAccounts:
   app: 
-    workloadIdentity: a338c40c-c164-48cf-87e7-6dad2c6fd988
-    enableWorkloadIdentity: true
+    #workloadIdentity: a338c40c-c164-48cf-87e7-6dad2c6fd988
+    enableWorkloadIdentity: false
 
 # We must select the nodepool to run the pods on
 nodepool: cccopdront01
