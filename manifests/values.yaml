@@ -23,6 +23,8 @@ deployments:
             mountPath: /tmp
         secrets:
           - app
+        ports:
+          - containerPort: 8080
     volumes:
       - name: tmp
         spec:
@@ -48,7 +50,7 @@ services:
         port: 80
         targetPort: 8080
     selector:
-      app: app
+      app: hior
 
 ingress:
   app:
