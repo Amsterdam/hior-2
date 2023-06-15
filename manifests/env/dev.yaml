@@ -4,7 +4,7 @@ tenantId: 72fca1b1-2c2e-4376-a445-294d80196804
 keyVaultName: hior-o-dzvotjkhjpqua
 
 # Identity AppID (clientId) used to authenticate with the keyvault
-keyvaultIdentity: 03341363-cc33-4976-ae16-27f763f014fd
+keyVaultIdentity: 03341363-cc33-4976-ae16-27f763f014fd
 
 # Service account to use
 serviceAccount: app
