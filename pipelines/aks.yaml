@@ -26,8 +26,7 @@ extends:
       pool: Opdrachten
       namespace: ns-ccc-opdr-ont-01-hior
       kubernetesServiceConnection: "SCN-K8S-ns-ccc-opdr-ont-01-hior"
-      preSteps:
-        - script: helm uninstall hior -n ns-ccc-opdr-ont-01-hior
-          displayName: Remove previous installation
-        - script: kubectl get secrets
-          displayName: kubectl get secrets
+    test:
+      pool: Opdrachten
+      namespace: ns-ccc-opdr-test-01-hior
+      kubernetesServiceConnection: "SCN-K8S-ns-ccc-opdr-test-01-hior"
