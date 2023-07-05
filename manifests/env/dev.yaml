@@ -17,7 +17,7 @@ serviceAccounts:
 nodepool: cccopdront01  # Environment specific
 
 # Default host for the ingress resources
-host: hior.opdr-o.azure.amsterdam.nl  # Environment specific
+host: hior.opdr-o.azure.amsterdam.nl  # App specific
 
 # Some default environment variables to inject in all containers
 env:
