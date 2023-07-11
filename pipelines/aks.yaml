@@ -28,5 +28,5 @@ extends:
       kubernetesServiceConnection: "SCN-K8S-ns-ccc-opdr-ont-01-hior"
     test:
       pool: Opdrachten
-      namespace: ns-ccc-opdr-test-01-hior
+      namespace: ns-ccc-opdr-tst-01-hior
       kubernetesServiceConnection: "SCN-K8S-ns-ccc-opdr-tst-01-hior"
