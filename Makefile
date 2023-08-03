@@ -44,4 +44,5 @@ manifests:
 	@helm template hior $(HELM_ARGS) $(ARGS)
 
 deploy: manifests
+	helm uninstall hior
 	helm upgrade --install hior $(HELM_ARGS) $(ARGS)
