@@ -4,14 +4,14 @@ tenantId: 72fca1b1-2c2e-4376-a445-294d80196804  # Global
 keyVaultName: hior-t-oqjkm32eyl7l4  # App specific
 
 # Identity AppID (clientId) used to authenticate with the keyvault
-keyVaultIdentity: 42fbed0f-0af4-440d-8e5a-35a2c46aa314  # Environment specific
+workloadIdentity: 49234e1c-acca-4d6e-a253-86a951c0f18e  # Environment specific
 
 # Service account to use
 serviceAccount: app
 
 serviceAccounts:
   app:
-    enableWorkloadIdentity: false
+    enableWorkloadIdentity: true
 
 # We must select the nodepool to run the pods on
 nodepool: cccopdrtst01  # Environment specific
