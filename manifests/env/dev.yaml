@@ -4,7 +4,7 @@ tenantId: 72fca1b1-2c2e-4376-a445-294d80196804  # Global
 keyVaultName: hior-o-dzvotjkhjpqua  # App specific
 
 # Identity AppID (clientId) used to authenticate with the keyvault
-workloadIdentity: 03341363-cc33-4976-ae16-27f763f014fd  # Environment specific
+workloadIdentity: a338c40c-c164-48cf-87e7-6dad2c6fd988  # Environment specific
 
 # Service account to use
 serviceAccount: app
