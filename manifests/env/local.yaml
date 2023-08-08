@@ -4,7 +4,6 @@ jobs:
   certificate-init:
     enabled: false
 
-
 ingress:
   app:
     className: nginx
@@ -12,4 +11,8 @@ ingress:
 
 secrets:
   certificate:
+    enabled: false
+
+network:
+  allow-ingress:
     enabled: false
