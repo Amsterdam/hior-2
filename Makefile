@@ -37,3 +37,6 @@ undeploy_kubectl:
 
 trivy:                              ## Detect image vulnerabilities
 	trivy image --ignore-unfixed nginxinc/nginx-unprivileged:mainline-alpine-slim
+
+requirements: ## Upgrade requirements (in package.json and package-lock.json) to latest versions
+	npm upgrade 
