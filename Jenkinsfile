@@ -42,7 +42,7 @@ node {
 String BRANCH = "${env.BRANCH_NAME}"
 
 
-if (BRANCH == "master" || BRANCH == "develop") {
+if (BRANCH == "main") {
     node {
         stage("Deploy to ACC") {
             tryStep "deployment", {
@@ -57,7 +57,7 @@ if (BRANCH == "master" || BRANCH == "develop") {
     }
 }
 
-if (BRANCH == "master") {
+if (BRANCH == "main") {
 
     stage('Waiting for approval') {
         slackSend channel: '#ci-channel', color: 'warning', message: 'HIOR Dashboard is waiting for Production Release - please confirm'

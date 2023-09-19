@@ -34,3 +34,6 @@ deploy_kubectl: build
 
 undeploy_kubectl:
 	kubectl delete -f manifests
+
+trivy:                              ## Detect image vulnerabilities
+	trivy image --ignore-unfixed nginxinc/nginx-unprivileged:mainline-alpine-slim
