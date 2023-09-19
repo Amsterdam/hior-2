@@ -12,11 +12,6 @@ nodepool: cccopdront01  # Environment specific
 # Default host for the ingress resources
 host: hior.opdr-o.azure.amsterdam.nl  # App specific
 
-# Some default environment variables to inject in all containers
-env:
-  AZURE_KEY_VAULT: "https://hior-o-dzvotjkhjpqua.vault.azure.net/"  # App specific
-  AZURE_MANAGED_IDENTITY_CLIENTID: 03341363-cc33-4976-ae16-27f763f014fd  # Environment specific
-
 # Specify the keyvault that has the certificate
 secrets:
   certificate:
