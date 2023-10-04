@@ -23,7 +23,7 @@ extends:
   parameters:
     name: hior
     build:
-      analyzeImages:
+      producedImages:
       - opdrachten/hior
     dev:
       pool: Opdrachten
