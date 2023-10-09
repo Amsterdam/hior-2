@@ -37,3 +37,7 @@ extends:
       pool: Opdrachten
       namespace: ns-ccc-opdr-acc-01-hior
       kubernetesServiceConnection: "SCN-K8S-ns-ccc-opdr-acc-01-hior"
+    prod:
+      pool: Opdrachten
+      namespace: ns-ccc-opdr-prd-01-hior
+      kubernetesServiceConnection: "SCN-K8S-ns-ccc-opdr-prd-01-hior"

@@ -1,22 +1,22 @@
 tenantId: 72fca1b1-2c2e-4376-a445-294d80196804  # Global
 
 # Default keyvault for getting secrets
-keyVaultName: hior-a-kfls2aeeci7t6  # App specific
+keyVaultName: hior-p-ldlb6qymvgicu  # App specific
 
 # Identity AppID (clientId) used to authenticate with the keyvault
-workloadIdentity: 83b9e91f-58b8-465f-bfe7-95a7429fbc96  # Environment specific
+workloadIdentity: a2563b53-596e-4aea-be8a-c0dda27fd278  # Environment specific
 
 # We must select the nodepool to run the pods on
-nodepool: cccopdracc01  # Environment specific
+nodepool: cccopdrprd01  # Environment specific
 
 # Default host for the ingress resources
-host: hior.opdr-a.azure.amsterdam.nl  # App specific
+host: hior.amsterdam.nl  # App specific
 
 # Specify the keyvault that has the certificate
 secrets:
   certificate:
-    keyVaultName: shared-a-uibe5ahqv3cwo  # Environment specific
+    keyVaultName: shared-p-fvzhzurrbxcfc  # Environment specific
 
 ingress:
   app:
-    className: nginx-internal  # App specific
+    className: nginx-external  # App specific
