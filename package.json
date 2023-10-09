@@ -53,6 +53,6 @@
     "eslint-plugin-promise": "^6.1.1",
     "jest-styled-components": "^7.1.1",
     "nock": "^13.3.0",
-    "prettier": "^2.8.3"
+    "prettier": "^3.0.3"
   }
 }
