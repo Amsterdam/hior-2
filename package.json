@@ -3,18 +3,37 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@tanstack/react-query": "^4.24.4",
     "@tanstack/react-query-devtools": "^4.24.4",
+    "@tanstack/react-query": "^4.24.4",
     "lodash": "^4.17.21",
-    "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router": "^6.8.0",
     "react-router-dom": "^6.8.0",
+    "react-router": "^6.8.0",
     "react-scripts": "5.0.1",
-    "react-select": "^5.7.0",
     "react-select-event": "^5.5.1",
+    "react-select": "^5.7.0",
+    "react": "^18.2.0",
     "styled-components": "^5.3.6",
     "typescript": "^4.8.5"
+  },
+  "devDependencies": {
+    "@amsterdam/asc-assets": "^0.37.0",
+    "@amsterdam/asc-ui": "^0.37.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/jest": "^29.4.0",
+    "@types/lodash": "^4.14.191",
+    "@types/node": "^18.11.18",
+    "@types/react-dom": "^18.0.10",
+    "@types/react": "^18.0.27",
+    "@types/styled-components": "^5.1.26",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "jest-styled-components": "^7.1.1",
+    "nock": "^13.3.0",
+    "prettier": "^2.8.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -35,24 +54,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@amsterdam/asc-assets": "^0.37.0",
-    "@amsterdam/asc-ui": "^0.37.0",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^14.4.3",
-    "@types/jest": "^29.4.0",
-    "@types/lodash": "^4.14.191",
-    "@types/node": "^18.11.18",
-    "@types/react": "^18.0.27",
-    "@types/react-dom": "^18.0.10",
-    "@types/styled-components": "^5.1.26",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-promise": "^6.1.1",
-    "jest-styled-components": "^7.1.1",
-    "nock": "^13.3.0",
-    "prettier": "^2.8.3"
   }
 }
