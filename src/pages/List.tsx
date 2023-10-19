@@ -34,7 +34,7 @@ const List = () => {
         <ListWrapper data-testid="list">
           <Filter />
 
-          <Heading>Resultaten ({filteredItems?.length})</Heading>
+          <Heading data-testid="list-results">Resultaten ({filteredItems?.length})</Heading>
 
           <GroupSelector />
 

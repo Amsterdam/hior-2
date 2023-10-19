@@ -5,19 +5,18 @@ services:
       context: .
       args:
         - BUILD_ARG=acc
-    image: docker-registry.secure.amsterdam.nl/ruimte/hior:${VERSION:-latest}  
+    image: docker-registry.secure.amsterdam.nl/ruimte/hior:${VERSION:-latest}
     environment:
       - TZ=Europe/Amsterdam
     ipc: host
     ports:
       - "8000:8000"
 
-  unittest:
+  test:
     build:
       context: .
       target: builder
     environment:
-      - NODE_ENV=test
       - CI=true
       - TZ=Europe/Amsterdam
       - BUILD_ARG=acc
