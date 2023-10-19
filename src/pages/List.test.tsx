@@ -1,10 +1,10 @@
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import selectEvent from "react-select-event";
 import nock from "nock";
 import { withTheme } from "../test/utils";
 import List from "./List";
-import { mockItems, mockProperties, mockAttributes, mockEnriched } from "../test/mock-data/List.fixtures";
+import { mockItems, mockProperties, mockAttributes } from "../test/mock-data/List.fixtures";
 import FilterContextProvider from "../filter/FilterContext";
 
 describe("List", () => {
@@ -14,8 +14,6 @@ describe("List", () => {
       .reply(200, mockItems)
       .get("/vsd/hior_properties/?page=1&page_size=100000&format=json")
       .reply(200, mockProperties)
-      .get("/vsd/hior_properties/?page=1&page_size=100000&format=json")
-      .reply(200, mockEnriched)
       .get("/vsd/hior_attributes/?page=1&page_size=100000&format=json")
       .reply(200, mockAttributes);
   });
@@ -92,7 +90,9 @@ describe("List", () => {
 
     await screen.findByText("Resultaten (1)");
 
-    userEvent.click(screen.getByRole("button", { name: /wis filter/i }));
+    await act(async () => {
+      await userEvent.click(screen.getByRole("button", { name: /wis filter/i }));
+    })
 
     await screen.findByText("Resultaten (1)");
 
