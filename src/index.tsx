@@ -7,9 +7,13 @@ import { ascDefaultTheme, GlobalStyle, ThemeProvider } from "@amsterdam/asc-ui";
 import App from "./App";
 import { queryClient } from "./queryClient";
 import AmsterdamSans from "./AmsterdamSans";
+import TelemetryProvider from "./telemetry-provider";
+import { getAppInsights } from "./TelemetryService";
 
 const container = document.getElementById("root");
 const root = createRoot(container!);
+
+let appInsights = null;
 
 root.render(
   <React.StrictMode>
@@ -23,7 +27,9 @@ root.render(
       <GlobalStyle />
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          <App />
+          <TelemetryProvider instrumentationKey={process.env.REACT_APP_APPLICATION_INSIGHTS_INSTRUMENTATION_KEY} after={() => { appInsights = getAppInsights}}>
+            <App />
+          </TelemetryProvider>
         </BrowserRouter>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
