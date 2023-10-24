@@ -17,10 +17,10 @@ push: build                         ## Push prod image to Amsterdam registry
 	$(dc) push
 
 app:                                ## Run app
-	$(run) --service-ports web
+	$(run) --service-ports dev
 
 dev:						        ## Run the development app
-	$(run) --service-ports web
+	$(run) --service-ports dev
 
 test:						        ## Execute tests
 	$(run) test $(ARGS)
