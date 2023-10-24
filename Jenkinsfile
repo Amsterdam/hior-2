@@ -1,91 +1,109 @@
 #!groovy
+def PROJECT_NAME = "bereikbaarheid-backend-secure"
+def SLACK_CHANNEL = '#opdrachten-deployments'
+def PLAYBOOK = 'deploy.yml'
+def CMDB_ID = 'app_hior'
+def SLACK_MESSAGE = [
+    "title_link": BUILD_URL,
+    "fields": [
+        ["title": "Project","value": PROJECT_NAME],
+        ["title":"Branch", "value": BRANCH_NAME, "short":true],
+        ["title":"Build number", "value": BUILD_NUMBER, "short":true]
+    ]
+]
 
-def tryStep(String message, Closure block, Closure tearDown = null) {
-    try {
-        block()
-    }
-    catch (Throwable t) {
-        slackSend message: "${env.JOB_NAME}: ${message} failure ${env.BUILD_URL}", channel: '#ci-channel', color: 'danger'
 
-        throw t
+pipeline {
+    agent any
+
+    options {
+        timeout(time: 1, unit: 'HOURS')
     }
-    finally {
-        if (tearDown) {
-            tearDown()
+
+    environment {
+        SHORT_UUID = sh( script: "uuidgen | cut -d '-' -f1", returnStdout: true).trim()
+        COMPOSE_PROJECT_NAME = "${PROJECT_NAME}-${env.SHORT_UUID}"
+        VERSION = env.BRANCH_NAME.replace('/', '-').toLowerCase().replace(
+            'main', 'latest'
+        )
+    }
+
+    stages {
+        stage('Test') {
+            steps {
+                sh 'make test'
+            }
         }
-    }
-}
 
-String BUILD_ID = "${Math.abs(new Random().nextInt() % 600) + 1}"
-
-node {
-    stage("Checkout") {
-        checkout scm
-    }
-}
-
-node {
-    stage("Build and push acceptance image") {
-
-        tryStep "build image", {
-            def image = docker.build("docker-registry.secure.amsterdam.nl/ruimte/hior:${BUILD_ID}",
-            "--shm-size 1G " +
-            "--build-arg BUILD_NUMBER=${BUILD_ID} " +
-            ". ")
-
-            image.push("acceptance")
+        stage('Build') {
+            steps {
+                sh 'make build'
+            }
         }
+
+        stage('Push and deploy') {
+            when {
+                anyOf {
+                    branch 'main'
+                    buildingTag()
+                }
+            }
+            stages {
+                stage('Push') {
+                    steps {
+                        retry(3) {
+                            sh 'make push'
+                        }
+                    }
+                }
+
+                stage('Deploy to acceptance') {
+                    when {
+                        branch 'main'
+                    }
+                    steps {
+                        sh 'VERSION=acceptance make push'
+                        build job: 'Subtask_Openstack_Playbook', parameters: [
+                            string(name: 'PLAYBOOK', value: PLAYBOOK),
+                            string(name: 'INVENTORY', value: "acceptance"),
+                            string(
+                                name: 'PLAYBOOKPARAMS',
+                                value: "-e 'deployversion=${VERSION} cmdb_id=${CMDB_ID}'"
+                            )
+                        ], wait: true
+                    }
+                }
+
+                stage('Deploy to production') {
+                    when { buildingTag() }
+                    steps {
+                        sh 'VERSION=production make push'
+                        build job: 'Subtask_Openstack_Playbook', parameters: [
+                            string(name: 'PLAYBOOK', value: PLAYBOOK),
+                            string(name: 'INVENTORY', value: "production"),
+                            string(
+                                name: 'PLAYBOOKPARAMS',
+                                value: "-e 'deployversion=${VERSION} cmdb_id=${CMDB_ID}'"
+                            )
+                        ], wait: true
+                    }
+                }
+            }
+        }
+
     }
-}
-
-
-String BRANCH = "${env.BRANCH_NAME}"
-
-
-if (BRANCH == "main") {
-    node {
-        stage("Deploy to ACC") {
-            tryStep "deployment", {
-                build job: 'Subtask_Openstack_Playbook',
-                parameters: [
-                    [$class: 'StringParameterValue', name: 'INVENTORY', value: 'acceptance'],
-                    [$class: 'StringParameterValue', name: 'PLAYBOOK', value: 'deploy.yml'],
-                    [$class: 'StringParameterValue', name: 'PLAYBOOKPARAMS', value: "-e cmdb_id=app_hior"]
+    post {
+        always {
+            sh 'make clean'
+        }
+        failure {
+            slackSend(channel: SLACK_CHANNEL, attachments: [SLACK_MESSAGE <<
+                [
+                    "color": "#D53030",
+                    "title": "Build failed :fire:",
                 ]
-            }
+            ])
         }
     }
 }
 
-if (BRANCH == "main") {
-
-    stage('Waiting for approval') {
-        slackSend channel: '#ci-channel', color: 'warning', message: 'HIOR Dashboard is waiting for Production Release - please confirm'
-        timeout(10) {
-          input "Deploy to Production?"
-        }
-    }
-
-    node {
-        stage("Push Production image") {
-            tryStep "build", {
-                def image = docker.image("docker-registry.secure.amsterdam.nl/ruimte/hior:${BUILD_ID}")
-                image.push("production")
-                image.push("latest")
-            }
-        }
-    }
-
-
-    node {
-        stage("Deploy") {
-            tryStep "deployment", {
-                build job: 'Subtask_Openstack_Playbook',
-                parameters: [
-                    [$class: 'StringParameterValue', name: 'INVENTORY', value: 'production'],
-                    [$class: 'StringParameterValue', name: 'PLAYBOOK', value: 'deploy.yml'],
-                    [$class: 'StringParameterValue', name: 'PLAYBOOKPARAMS', value: "-e cmdb_id=app_hior"]                  ]
-            }
-        }
-    }
-}
