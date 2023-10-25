@@ -71,3 +71,9 @@ secrets:
     secrets:
       cow: moo
       secret-key: secret-value
+  vault:
+    type: keyvault
+    annotations:
+      helm.sh/hook-weight: "-5"
+    secrets:
+      - applicationinsights-connection-string
