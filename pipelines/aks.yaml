@@ -22,9 +22,9 @@ extends:
   template: pipelines/aks/template.yaml@templates
   parameters:
     name: hior
-    build:
-      producedImages:
-      - opdrachten/hior
+    # build:
+    #   producedImages:
+    #   - opdrachten/hior
     dev:
       pool: Opdrachten
       namespace: ns-ccc-opdr-ont-01-hior
