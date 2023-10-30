@@ -7,7 +7,7 @@ class TelemetryProvider extends Component {
     static propTypes = {
         children: PropTypes.any,
         after: PropTypes.func,
-        instrumentationKey: PropTypes.string
+        connectionString: PropTypes.string
     }
     state = {
         initialized: false
@@ -15,10 +15,10 @@ class TelemetryProvider extends Component {
 
     componentDidMount() {
         const {initialized} = this.state;
-        const AppInsightsInstrumentationKey = this.props.instrumentationKey;
+        const AppInsightsConnectionString = this.props.connectionString;
 
-        if (!initialized && AppInsightsInstrumentationKey) {
-            ai.initialize(AppInsightsInstrumentationKey);
+        if (!initialized && AppInsightsConnectionString) {
+            ai.initialize(AppInsightsConnectionString);
             this.setState({initialized: true});
         }
 

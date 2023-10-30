@@ -27,7 +27,7 @@ root.render(
       <GlobalStyle />
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          <TelemetryProvider instrumentationKey={process.env.REACT_APP_APPLICATION_INSIGHTS_INSTRUMENTATION_KEY} after={() => { appInsights = getAppInsights}}>
+          <TelemetryProvider connectionString={process.env.REACT_APP_APPLICATIONINSIGHTS_CONNECTION_STRING} after={() => { appInsights = getAppInsights}}>
             <App />
           </TelemetryProvider>
         </BrowserRouter>
