@@ -76,4 +76,4 @@ secrets:
     annotations:
       helm.sh/hook-weight: "-5"
     secrets:
-      - applicationinsights-connection-string
+      REACT_APP_APPLICATIONINSIGHTS_CONNECTION_STRING: applicationinsights-connection-string
