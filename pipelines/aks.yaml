@@ -11,7 +11,7 @@ parameters:
   - name: versionOverride
     displayName: "[OPTIONAL] Build/deploy version override"
     type: string
-    default: ''
+    default: ' '
 
 variables:
   # Debugging
@@ -28,7 +28,7 @@ extends:
   template: pipelines/aks/template.yaml@templates
   parameters:
     name: hior
-    ${{ if ne(parameters.versionOverride, '') }}:
+    ${{ if ne(parameters.versionOverride, ' ') }}:
       version: ${{ parameters.versionOverride }}
     # build:
     #   producedImages:
