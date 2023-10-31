@@ -22,7 +22,7 @@ deployments:
           - name: tmp
             mountPath: /tmp
         secrets:
-          - app
+          - vault
         ports:
           - port: 8080
             name: http
@@ -66,11 +66,6 @@ secrets:
   certificate:
     type: keyvault
     tls: hior
-  app:
-    type: opaque
-    secrets:
-      cow: moo
-      secret-key: secret-value
   vault:
     type: keyvault
     annotations:
