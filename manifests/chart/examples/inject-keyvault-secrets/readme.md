@@ -16,18 +16,36 @@ keyVaultName: <keyvault-name>
 workloadIdentity: <managed identity ClientID with secret read-permissions on the keyvault>
 
 secrets:
-  my-vault-secrets:
+  common:
     type: keyvault
     secrets:
-    # This is the name of the secret in your KeyVault
-    - foo
+      - foo
+      - bar
+      - baz
+  app1:
+    type: keyvault
+    secrets:
+      # the key will be the name of the environment variable, 
+      # the value is name of the secret in the keyvault
+      api-key: app1-api-key
+
+  app2:
+    type: keyvault
+    secrets:
+      api-key: app2-api-key
+
 
 deployments:
   my-deployment:
     containers:
-    - name: my-container
+    - name: app1
       secrets:
-      - my-vault-secrets
+      - common
+      - app1
+    - name: app2
+      secrets:
+      - common
+      - app2
 
 # The following values are the chart's defaults. So you do not necessarily have to overwrite them.
 # This creates a service account named `default-<releasename>`, which will be used to access your KeyVault.
@@ -59,5 +77,5 @@ dev:
     - identity: app-mi-o
       serviceAccounts:
         # default-example refers to the serviceAccount that has been created as part of the helm chart installation. The postfix `-example` is the release name.
-      - name: default-example
+      - default-example
 ```

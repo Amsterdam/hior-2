@@ -96,6 +96,7 @@ Volumes
 {{- include "pod.persistentVolumes" . }}
 {{- include "pod.secretVolumes" . }}
 {{- include "pod.configVolumes" . }}
+{{- include "pod.tempVolumes" . }}
 {{- end }}
 
 {{/*
@@ -163,12 +164,30 @@ Pod config volumes
 {{- end }}
 
 {{/*
+Pod temp volumes
+*/}}
+{{- define "pod.tempVolumes" -}}
+{{- $tempDirs := concat (.local.tempDirs | default list) .root.Values.tempDirs }}
+
+{{- range .local.containers }}
+{{- $tempDirs = concat $tempDirs (.tempDirs | default list) }}
+{{- end }}
+
+{{- range $tempDirs | mustUniq }}
+- name: {{ kebabcase (trimPrefix "_" (. | replace "/" "_")) }}
+  spec:
+    emptyDir: {}
+{{- end }}
+{{- end }}
+
+{{/*
 Container volumeMounts
 */}}
 {{- define "container.volumeMounts" -}}
 {{- include "container.secretVolumes" . }}
 {{- include "container.configMapVolumes" . }}
 {{- include "container.volumes" . }}
+{{- include "container.tempVolumes" . }}
 {{- end }}
 
 {{/*
@@ -179,6 +198,18 @@ Container manual volumes
 - name: {{ .name }}
   mountPath: {{ .mountPath }}
   readOnly: {{ .readOnly | default false }}
+{{- end }}
+{{- end }}
+
+{{/*
+Container temp volumes
+*/}}
+{{- define "container.tempVolumes" -}}
+{{- $tempDirs := concat (.local.tempDirs | default list) (.pod.tempDirs | default list) .root.Values.tempDirs }}
+{{- range $tempDirs | mustUniq }}
+- name: {{ kebabcase (trimPrefix "_" (. | replace "/" "_")) }}
+  mountPath: {{ . }}
+  readOnly: false
 {{- end }}
 {{- end }}
 
@@ -231,7 +262,9 @@ If its a simple opaque secret its in the format of key:value
 Else its a list
 */}}
 {{- if not (eq $secret.type "opaque") }}
-{{- $key = . }}
+{{- if kindIs "int" $key }}
+{{- $key = $value }}
+{{- end }}
 {{- end -}}
 - name: {{ $key | upper | replace "-" "_" | quote }}
   valueFrom:
@@ -364,8 +397,8 @@ containers
 {{- $context := . -}}
 
 {{- range .local.containers }}
-{{- $picked := pick $context.local "resources" "env" "secrets" "configMaps" "image" }}
-{{- $containerContext := dict "local" (merge . $picked) "root" $context.root }}
+{{- $picked := pick $context.local "resources" "env" "secrets" "configMaps" "image" "tempDirs" }}
+{{- $containerContext := dict "local" (merge . $picked) "pod" $context.local "root" $context.root }}
 - name: {{ .name }}
 {{- include "container" $containerContext | indent 2 }}
 {{- end }}
