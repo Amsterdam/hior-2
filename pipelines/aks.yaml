@@ -7,6 +7,12 @@ trigger:
     include:
       - "*.*.*"
 
+parameters:
+  - name: versionOverride
+    displayName: "[OPTIONAL] Build/deploy version override"
+    type: string
+    default: ''
+
 variables:
   # Debugging
   System.Debug: true
@@ -22,6 +28,8 @@ extends:
   template: pipelines/aks/template.yaml@templates
   parameters:
     name: hior
+    ${{ if ne(parameters.versionOverride, '') }}:
+      version: ${{ parameters.versionOverride }}
     # build:
     #   producedImages:
     #   - opdrachten/hior
