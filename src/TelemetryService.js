@@ -21,6 +21,7 @@ const createTelemetryService = () => {
                 disableFetchTracking: false,
                 enableAutoRouteTracking: true,
                 loggingLevelConsole: 2,
+                enableDebug: true,
                 extensions: [reactPlugin]
             }
         });
