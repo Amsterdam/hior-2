@@ -8,6 +8,7 @@ services:
     image: ${REGISTRY:-localhost:5000}/${REPOSITORY:-opdrachten/hior}:${VERSION:-latest}
     environment:
       - TZ=Europe/Amsterdam
+      - REACT_APP_APPLICATIONINSIGHTS_CONNECTION_STRING=${REACT_APP_APPLICATIONINSIGHTS_CONNECTION_STRING}
     ipc: host
     ports:
       - '3000:8080'
