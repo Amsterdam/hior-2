@@ -30,7 +30,19 @@ RUN echo "run build"
 RUN GENERATE_SOURCEMAP=false npm run build
 
 # Deploy
-FROM nginxinc/nginx-unprivileged:mainline-alpine-slim
+# FROM nginxinc/nginx-unprivileged:mainline-alpine-slim
+FROM nginx:1.25.3-alpine
 COPY --from=build /app/build/. /var/www/html/
 
 COPY default.conf /etc/nginx/conf.d/
+
+WORKDIR /var/www/html/
+COPY ./env.sh .
+# Add bash
+RUN apk add --no-cache bash
+
+# Make shell script executable
+RUN chmod +x env.sh
+
+# Start Nginx server
+CMD ["/bin/bash", "-c", "/var/www/html/env.sh && nginx -g \"daemon off;\""]
