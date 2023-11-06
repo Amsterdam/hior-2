@@ -21,3 +21,14 @@ services:
       - TZ=Europe/Amsterdam
       - BUILD_ARG=acc
     command: npm run test
+
+  upgrade:
+    build:
+      context: .
+      target: upgrade
+    environment: 
+      - TZ=Europe/Amsterdam
+    volumes:
+      - ./package.json:/app/package.json
+      - ./package-lock.json:/app/package-lock.json
+    command: ncu -u --doctor --target minor

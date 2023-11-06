@@ -19,8 +19,12 @@ RUN git config --global url."https://github.com/".insteadOf git@github.com:
 RUN npm --production=false --unsafe-perm ci && \
   npm cache clean --force
 
-RUN chown -R node:node /app
-USER node
+# Upgrade dependencies
+FROM builder AS upgrade
+# install dependencies
+RUN npm ci
+RUN npm install -g npm-check-updates
+CMD ["ncu", "-u", "--doctor", "--target minor"]
 
 # Test 
 FROM builder as test
@@ -29,6 +33,10 @@ RUN npm run test
 
 # Build
 FROM builder as build
+
+RUN chown -R node:node /app
+USER node
+
 RUN echo "run build"
 RUN GENERATE_SOURCEMAP=false npm run build
 

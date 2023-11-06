@@ -4,7 +4,7 @@
 # VERSION = 2020.01.29
 .PHONY: app
 
-dc = docker-compose
+dc = docker compose
 run = $(dc) run --rm
 
 help:                               ## Show this help.
@@ -38,5 +38,5 @@ undeploy_kubectl:
 trivy:                              ## Detect image vulnerabilities
 	trivy image --ignore-unfixed nginxinc/nginx-unprivileged:mainline-alpine-slim
 
-requirements: ## Upgrade requirements (in package.json and package-lock.json) to latest versions
-	npm upgrade
+requirements:                       ## Upgrade dependencies
+	$(run) upgrade $(ARGS)
