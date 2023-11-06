@@ -30,6 +30,8 @@ deployments:
       - name: tmp
         spec:
           emptyDir: {}
+    tempDirs:
+      - /tmp
 
 jobs:
   certificate-init:
