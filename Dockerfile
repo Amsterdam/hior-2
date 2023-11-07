@@ -36,7 +36,7 @@ COPY --from=build /app/build/. /var/www/html/
 
 COPY default.conf /etc/nginx/conf.d/
 
-WORKDIR /tmp/
+WORKDIR /var/www/html/env-config/
 COPY ./env.sh .
 # Add bash
 RUN apk add --no-cache bash
@@ -45,4 +45,4 @@ RUN apk add --no-cache bash
 RUN chmod +x env.sh
 
 # Start Nginx server
-CMD ["/bin/bash", "-c", "/tmp/env.sh && nginx -g \"daemon off;\""]
+CMD ["/bin/bash", "-c", "/var/www/html/env-config/env.sh && nginx -g \"daemon off;\""]

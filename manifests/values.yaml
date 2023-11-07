@@ -16,20 +16,34 @@ network:
 
 deployments:
   app:
+    tempDirs:
+      - /tmp
+      - /var/www/html/env-config
+    secrets:
+      - vault
     containers:
       - name: main
-        volumes:
-          - name: tmp
-            mountPath: /tmp
-        secrets:
-          - vault
         ports:
           - port: 8080
             name: http
-    volumes:
-      - name: tmp
-        spec:
-          emptyDir: {}
+
+# TEMP BACKUP:
+# deployments:
+#   app:
+#     containers:
+#       - name: main
+#         volumes:
+#           - name: tmp
+#             mountPath: /tmp
+#         secrets:
+#           - vault
+#         ports:
+#           - port: 8080
+#             name: http
+#     volumes:
+#       - name: tmp
+#         spec:
+#           emptyDir: {}
 
 jobs:
   certificate-init:
