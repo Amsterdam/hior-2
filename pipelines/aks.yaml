@@ -33,6 +33,7 @@ extends:
     build:
       producedImages:
       - opdrachten/hior
+      - opdrachten/hior-csv-update
     dev:
       pool: Opdrachten
       namespace: ns-ccc-opdr-ont-01-hior
