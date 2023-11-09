@@ -59,8 +59,9 @@ cronJobs:
           - vault
           - app
         command:
-          - make
-          - csv-update
+          - python
+          - manage.py
+          - csv_update
 
 services:
   app:
