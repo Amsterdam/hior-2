@@ -59,9 +59,8 @@ cronJobs:
           - vault
           - app
         command:
-          - python
-          - manage.py
-          - csv_update
+          - python3
+          - /app/import_hior.py
 
 services:
   app:
