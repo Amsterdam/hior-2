@@ -45,7 +45,11 @@ extends:
       pool: Opdrachten
       namespace: ns-ccc-opdr-acc-01-hior
       kubernetesServiceConnection: "SCN-K8S-ns-ccc-opdr-acc-01-hior"
+      preSteps:
+        - script: helm uninstall hior -n ns-ccc-opdr-acc-01-hior || true
     prod:
       pool: Opdrachten
       namespace: ns-ccc-opdr-prd-01-hior
       kubernetesServiceConnection: "SCN-K8S-ns-ccc-opdr-prd-01-hior"
+      preSteps:
+        - script: helm uninstall hior -n ns-ccc-opdr-prd-01-hior || true
