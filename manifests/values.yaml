@@ -48,6 +48,7 @@ cronJobs:
       - /tmp
     containers:
       - name: main
+        image: saks01weuacrpgpgo5qvmwo.azurecr.io/opdrachten/hior-csv-update:latest
         resources:
           requests:
             cpu: 200m

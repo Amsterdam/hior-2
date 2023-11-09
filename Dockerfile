@@ -3,11 +3,6 @@ LABEL maintainer="datapunt@amsterdam.nl"
 
 WORKDIR /app
 
-# Install latest Python with pandas for cronjob
-RUN apt-get update && \
-    apt-get install -y python3 python3-pip && \
-    pip3 install pandas openpyxl azure-storage-blob
-
 #  Changing git URL because network is blocking git protocol...
 RUN git config --global url."https://".insteadOf git://
 RUN git config --global url."https://github.com/".insteadOf git@github.com:

@@ -24,8 +24,8 @@ services:
 
   csv-update:
     build:
-      context: .
-      target: builder
+      dockerfile: Dockerfile-csv-update
+    image: ${REGISTRY:-localhost:5001}/opdrachten/hior-csv-update:latest
     environment:
       - AZURE_STORAGE_CONTAINER_NAME=foo
       - AZURE_STORAGE_CONNECTION_STRING=
