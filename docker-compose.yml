@@ -1,23 +1,22 @@
 version: '3.5'
 services:
-  web:
+  dev:
     build:
       context: .
       args:
         - BUILD_ARG=acc
-    image: ${REGISTRY:-localhost:5000}/${REPOSITORY:-opdrachten/hior}:${VERSION:-latest}
+    image: ${REGISTRY:-localhost:5001}/${REPOSITORY:-opdrachten/hior}:${VERSION:-latest}
     environment:
       - TZ=Europe/Amsterdam
     ipc: host
     ports:
-      - '3000:8080'
+      - "8080:8080"
 
-  unittest:
+  test:
     build:
       context: .
       target: builder
     environment:
-      - NODE_ENV=test
       - CI=true
       - TZ=Europe/Amsterdam
       - BUILD_ARG=acc

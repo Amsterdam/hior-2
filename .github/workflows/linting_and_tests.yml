@@ -1,0 +1,10 @@
+name: CI Checks
+
+on:
+  pull_request:
+    branches: main
+
+jobs:
+  linting-and-tests:
+    name: Linting and tests
+    uses: amsterdam/github-workflows/.github/workflows/CI.yml@v1

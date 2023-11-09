@@ -20,14 +20,27 @@ help:                               ## Show this help.
 build:                              ## Build docker image
 	$(dc) build
 
+push: build                         ## Push prod image to Amsterdam registry
+	$(dc) push
+
 app:                                ## Run app
-	$(run) --service-ports web
+	$(run) --service-ports dev
+
+dev:						        ## Run the development app
+	$(run) --service-ports dev
 
 test: build                         ## Execute tests
-	$(run) unittest $(ARGS)
+	$(run) test $(ARGS)
 
 clean:                              ## Clean docker stuff
 	$(dc) down -v --remove-orphans
+
+deploy_kubectl: build
+	$(dc) push dev  # Push dev image to kind registry
+	kubectl apply -f manifests
+
+undeploy_kubectl:
+	kubectl delete -f manifests
 
 trivy:                              ## Detect image vulnerabilities
 	trivy image --ignore-unfixed nginxinc/nginx-unprivileged:mainline-alpine-slim
@@ -45,3 +58,6 @@ manifests:
 
 deploy: manifests
 	helm upgrade --install hior $(HELM_ARGS) $(ARGS)
+
+requirements: ## Upgrade requirements (in package.json and package-lock.json) to latest versions
+	npm upgrade
