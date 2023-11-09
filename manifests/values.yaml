@@ -54,12 +54,20 @@ services:
       app: hior
 
 ingress:
-  app:
+  app-internal:
     paths:
     - path: /
       service: app
       port: 80
-    className: nginx
+    className: nginx-internal
+    tls: certificate
+
+  app-external:
+    paths:
+    - path: /
+      service: app
+      port: 80
+    className: nginx-external
     tls: certificate
 
 secrets:

@@ -18,5 +18,7 @@ secrets:
     keyVaultName: shared-a-uibe5ahqv3cwo  # Environment specific
 
 ingress:
-  app:
-    className: nginx-internal  # App specific
+  app-internal:
+    host: hior.opdr-a.azure.amsterdam.nl
+  app-external:
+    enabled: true
