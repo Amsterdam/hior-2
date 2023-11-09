@@ -21,3 +21,15 @@ services:
       - TZ=Europe/Amsterdam
       - BUILD_ARG=acc
     command: npm run test
+
+  csv-update:
+    build:
+      context: .
+      target: builder
+    environment:
+      - AZURE_STORAGE_CONTAINER_NAME=foo
+      - AZURE_STORAGE_CONNECTION_STRING=
+      - XLSX_FILE=http://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/HIOR%20Amsterdam.xlsx
+    volumes:
+      - ./import_hior.py:/app/import_hior.py
+    command: python3 /app/import_hior.py

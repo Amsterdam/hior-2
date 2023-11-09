@@ -37,6 +37,31 @@ jobs:
         args:
           - "1"
 
+cronJobs:
+  # Define daily cronjob for csv update into public storage account
+  csv-update:
+    schedule: "0 0 * * *"
+    concurrencyPolicy: Forbid
+    failedJobsHistoryLimit: 1
+    successfulJobsHistoryLimit: 1
+    tempDirs:
+      - /tmp
+    containers:
+      - name: main
+        resources:
+          requests:
+            cpu: 200m
+            memory: "128Mi"
+          limits:
+            cpu: 500m
+            memory: "500Mi"
+        secrets:
+          - vault
+          - app
+        command:
+          - make
+          - csv-update
+
 services:
   app:
     ports:
@@ -67,3 +92,16 @@ secrets:
   certificate:
     type: keyvault
     tls: hior
+
+  vault:
+    type: keyvault
+    annotations:
+      helm.sh/hook-weight: "-5"
+    secrets:
+      - azure-storage-connection-string
+
+  app:
+    type: opaque
+    secrets:
+      AZURE_STORAGE_CONTAINER_NAME: csv
+      XLSX_FILE: http://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/HIOR%20Amsterdam.xlsx

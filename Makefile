@@ -59,5 +59,8 @@ manifests:
 deploy: manifests
 	helm upgrade --install hior $(HELM_ARGS) $(ARGS)
 
+csv-update:
+	$(run) csv-update $(ARGS)
+
 requirements: ## Upgrade requirements (in package.json and package-lock.json) to latest versions
 	npm upgrade

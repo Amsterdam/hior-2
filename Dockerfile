@@ -3,7 +3,14 @@ LABEL maintainer="datapunt@amsterdam.nl"
 
 WORKDIR /app
 
-COPY . /app
+# Install latest Python with pandas for cronjob
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip && \
+    pip3 install pandas openpyxl azure-storage-blob
+
+#  Changing git URL because network is blocking git protocol...
+RUN git config --global url."https://".insteadOf git://
+RUN git config --global url."https://github.com/".insteadOf git@github.com:
 
 COPY package.json \
   package-lock.json \
@@ -11,18 +18,16 @@ COPY package.json \
   .gitignore \
   /app/
 
-#  Changing git URL because network is blocking git protocol...
-RUN git config --global url."https://".insteadOf git://
-RUN git config --global url."https://github.com/".insteadOf git@github.com:
-
 # Install NPM dependencies.
 RUN npm --production=false --unsafe-perm ci && \
   npm cache clean --force
 
+COPY . /app
+
 RUN chown -R node:node /app
 USER node
 
-# Test 
+# Test
 FROM builder as test
 RUN echo "run test"
 RUN npm run test
