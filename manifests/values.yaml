@@ -16,20 +16,13 @@ network:
 
 deployments:
   app:
+    tempDirs:
+      - /tmp
     containers:
       - name: main
-        volumes:
-          - name: tmp
-            mountPath: /tmp
-        secrets:
-          - app
         ports:
           - port: 8080
             name: http
-    volumes:
-      - name: tmp
-        spec:
-          emptyDir: {}
 
 jobs:
   certificate-init:
@@ -74,8 +67,3 @@ secrets:
   certificate:
     type: keyvault
     tls: hior
-  app:
-    type: opaque
-    secrets:
-      cow: moo
-      secret-key: secret-value
