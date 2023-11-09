@@ -25,7 +25,7 @@ services:
   csv-update:
     build:
       dockerfile: Dockerfile-csv-update
-    image: ${REGISTRY:-localhost:5001}/${REPOSITORY:-opdrachten/hior}-csv-update:${VERSION:-latest}
+    image: ${REGISTRY:-localhost:5001}/${REPOSITORY:-opdrachten/hior-csv-update}:${VERSION:-latest}
     environment:
       - AZURE_STORAGE_CONTAINER_NAME=foo
       - AZURE_STORAGE_CONNECTION_STRING=

@@ -48,7 +48,10 @@ cronJobs:
       - /tmp
     containers:
       - name: main
-        image: saks01weuacrpgpgo5qvmwo.azurecr.io/opdrachten/hior-csv-update:AKS-pipeline-207934
+        image:
+          registry: saks01weuacrpgpgo5qvmwo.azurecr.io
+          repository: opdrachten/hior-csv-update
+          tag: latest
         resources:
           requests:
             cpu: 200m
