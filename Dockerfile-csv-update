@@ -10,4 +10,6 @@ RUN  apt-get update \
  && pip3 install pandas openpyxl azure-storage-blob \
  && useradd --user-group --system datapunt
 
+COPY import_hior.py /app/import_hior.py
+
 USER datapunt
