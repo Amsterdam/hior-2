@@ -51,7 +51,6 @@ cronJobs:
         image:
           registry: saks01weuacrpgpgo5qvmwo.azurecr.io
           repository: opdrachten/hior-csv-update
-          tag: latest
         resources:
           requests:
             cpu: 200m
