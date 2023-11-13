@@ -19,7 +19,7 @@ deployments:
     tempDirs:
       - /tmp
       - /var/www/html/env-config
-      - /var/cache/nginx/client_temp
+      - /var/cache/nginx
     secrets:
       - vault
     containers:
