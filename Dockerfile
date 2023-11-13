@@ -11,13 +11,16 @@ COPY package.json \
   package-lock.json \
   .eslintrc.js \
   .gitignore \
+  .prettierrc \
+  tsconfig.json \
   /app/
 
 # Install NPM dependencies.
 RUN npm --production=false --unsafe-perm ci && \
   npm cache clean --force
 
-COPY . /app
+COPY public /app/public
+COPY src /app/src
 
 RUN chown -R node:node /app
 USER node
@@ -33,13 +36,13 @@ RUN echo "run build"
 RUN GENERATE_SOURCEMAP=false npm run build
 
 # Deploy
-# FROM nginxinc/nginx-unprivileged:mainline-alpine-slim
 FROM nginx:1.25.3-alpine
 COPY --from=build /app/build/. /var/www/html/
 
 COPY default.conf /etc/nginx/conf.d/
 
-COPY ./env.sh .
+WORKDIR /app
+COPY ./env.sh env.sh
 # Add bash
 RUN apk add --no-cache bash
 
@@ -47,4 +50,4 @@ RUN apk add --no-cache bash
 RUN chmod +x env.sh
 
 # Start Nginx server
-CMD ["/bin/bash", "-c", "/var/www/html/env-config/env.sh && nginx -g \"daemon off;\""]
+CMD ["/bin/bash", "-c", "/app/env.sh && nginx -g \"daemon off;\""]
