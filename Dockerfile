@@ -39,7 +39,6 @@ COPY --from=build /app/build/. /var/www/html/
 
 COPY default.conf /etc/nginx/conf.d/
 
-WORKDIR /var/www/html/env-config/
 COPY ./env.sh .
 # Add bash
 RUN apk add --no-cache bash
