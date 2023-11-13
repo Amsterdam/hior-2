@@ -164,6 +164,23 @@ Pod config volumes
 {{- end }}
 
 {{/*
+Pod temp volumes
+*/}}
+{{- define "pod.tempVolumes" -}}
+{{- $tempDirs := concat (.local.tempDirs | default list) .root.Values.tempDirs }}
+
+{{- range .local.containers }}
+{{- $tempDirs = concat $tempDirs (.tempDirs | default list) }}
+{{- end }}
+
+{{- range $tempDirs | mustUniq }}
+- name: {{ kebabcase (trimPrefix "_" (. | replace "/" "_")) }}
+  spec:
+    emptyDir: {}
+{{- end }}
+{{- end }}
+
+{{/*
 Container volumeMounts
 */}}
 {{- define "container.volumeMounts" -}}
@@ -181,18 +198,6 @@ Container manual volumes
 - name: {{ .name }}
   mountPath: {{ .mountPath }}
   readOnly: {{ .readOnly | default false }}
-{{- end }}
-{{- end }}
-
-{{/*
-Container temp volumes
-*/}}
-{{- define "container.tempVolumes" -}}
-{{- $tempDirs := concat (.local.tempDirs | default list) .root.Values.tempDirs }}
-{{- range $tempDirs }}
-- name: {{ kebabcase (trimPrefix "_" (. | replace "/" "_")) }}
-  mountPath: {{ . }}
-  readOnly: false
 {{- end }}
 {{- end }}
 
