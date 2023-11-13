@@ -20,6 +20,7 @@ deployments:
       - /tmp
       - /var/www/html/env-config
       - /var/cache/nginx
+      - /var/run
     secrets:
       - vault
     containers:
