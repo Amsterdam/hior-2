@@ -18,5 +18,5 @@ secrets:
     keyVaultName: shared-t-ddxsibl3lrdai  # Environment specific
 
 ingress:
-  app:
-    className: nginx-internal  # App specific
+  app-external:
+    enabled: false

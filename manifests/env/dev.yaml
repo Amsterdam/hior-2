@@ -18,5 +18,5 @@ secrets:
     keyVaultName: shared-o-yhqbd6yktpphi  # Environment specific
 
 ingress:
-  app:
-    className: nginx-internal  # App specific
+  app-external:
+    enabled: false

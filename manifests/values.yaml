@@ -27,24 +27,6 @@ deployments:
           - port: 8080
             name: http
 
-# TEMP BACKUP:
-# deployments:
-#   app:
-#     containers:
-#       - name: main
-#         volumes:
-#           - name: tmp
-#             mountPath: /tmp
-#         secrets:
-#           - vault
-#         ports:
-#           - port: 8080
-#             name: http
-#     volumes:
-#       - name: tmp
-#         spec:
-#           emptyDir: {}
-
 jobs:
   certificate-init:
     secrets:
@@ -58,6 +40,34 @@ jobs:
         args:
           - "1"
 
+cronJobs:
+  # Define daily cronjob for csv update into public storage account
+  csv-update:
+    schedule: "0 0 * * *"
+    concurrencyPolicy: Forbid
+    failedJobsHistoryLimit: 1
+    successfulJobsHistoryLimit: 1
+    tempDirs:
+      - /tmp
+    containers:
+      - name: main
+        image:
+          registry: saks01weuacrpgpgo5qvmwo.azurecr.io
+          repository: opdrachten/hior-csv-update
+        resources:
+          requests:
+            cpu: 200m
+            memory: "128Mi"
+          limits:
+            cpu: 500m
+            memory: "500Mi"
+        secrets:
+          - vault
+          - app
+        command:
+          - python3
+          - /app/import_hior.py
+
 services:
   app:
     ports:
@@ -68,21 +78,36 @@ services:
       app: hior
 
 ingress:
-  app:
+  app-internal:
     paths:
     - path: /
       service: app
       port: 80
-    className: nginx
+    className: nginx-internal
+    tls: certificate
+
+  app-external:
+    paths:
+    - path: /
+      service: app
+      port: 80
+    className: nginx-external
     tls: certificate
 
 secrets:
   certificate:
     type: keyvault
     tls: hior
+
   vault:
     type: keyvault
     annotations:
       helm.sh/hook-weight: "-5"
     secrets:
       REACT_APP_APPLICATIONINSIGHTS_CONNECTION_STRING: applicationinsights-connection-string
+
+  app:
+    type: opaque
+    secrets:
+      AZURE_STORAGE_CONTAINER_NAME: csv
+      XLSX_FILE: http://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/HIOR%20Amsterdam.xlsx

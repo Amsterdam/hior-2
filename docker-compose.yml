@@ -1,25 +1,36 @@
 version: '3.5'
 services:
-  web:
+  dev:
     build:
       context: .
       args:
         - BUILD_ARG=acc
-    image: ${REGISTRY:-localhost:5000}/${REPOSITORY:-opdrachten/hior}:${VERSION:-latest}
+    image: ${REGISTRY:-localhost:5001}/${REPOSITORY:-opdrachten/hior}:${VERSION:-latest}
     environment:
       - TZ=Europe/Amsterdam
       - REACT_APP_APPLICATIONINSIGHTS_CONNECTION_STRING=${REACT_APP_APPLICATIONINSIGHTS_CONNECTION_STRING}
     ipc: host
     ports:
-      - '3000:8080'
+      - "8080:8080"
 
-  unittest:
+  test:
     build:
       context: .
       target: builder
     environment:
-      - NODE_ENV=test
       - CI=true
       - TZ=Europe/Amsterdam
       - BUILD_ARG=acc
     command: npm run test
+
+  csv-update:
+    build:
+      dockerfile: Dockerfile-csv-update
+    image: ${REGISTRY:-localhost:5001}/${REPOSITORY:-opdrachten/hior-csv-update}:${VERSION:-latest}
+    environment:
+      - AZURE_STORAGE_CONTAINER_NAME=foo
+      - AZURE_STORAGE_CONNECTION_STRING=
+      - XLSX_FILE=http://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/HIOR%20Amsterdam.xlsx
+    volumes:
+      - ./import_hior.py:/app/import_hior.py
+    command: python3 /app/import_hior.py

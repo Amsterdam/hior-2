@@ -5,7 +5,9 @@ jobs:
     enabled: false
 
 ingress:
-  app:
+  app-external:
+    enabled: false
+  app-internal:
     className: nginx
     tls: null
 

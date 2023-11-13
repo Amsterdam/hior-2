@@ -7,5 +7,4 @@ updates:
       interval: weekly
     open-pull-requests-limit: 10
     assignees:
-      - "jasperswart"
-      - "janthijs"
+      - "RubenSibon"

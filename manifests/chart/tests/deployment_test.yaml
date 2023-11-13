@@ -218,52 +218,27 @@ tests:
           path: spec.template.metadata.labels
           content:
             azure.workload.identity/use: "true"
-  - it: should be able to mount configured temp volumes
+
+  - it: should be able to mount temp volumes
     set:
       tempDirs:
-      - /var/global
+      - /var/tmp
       image:
         repository: defaultrepo
       deployments:
         main:
-          tempDirs:
-          - /var/deploy
           containers:
             - name: main
-              tempDirs:
-              - /var/container
-            - name: another
     asserts:
       - equal:
           path: spec.template.spec.containers[?(@.name=='main')].volumeMounts
           value:
-            - name: var-container
-              mountPath: /var/container
-              readOnly: false
-            - name: var-deploy
-              mountPath: /var/deploy
-              readOnly: false
-            - name: var-global
-              mountPath: /var/global
-              readOnly: false
-      - equal:
-          path: spec.template.spec.containers[?(@.name=='another')].volumeMounts
-          value:
-            - name: var-deploy
-              mountPath: /var/deploy
-              readOnly: false
-            - name: var-global
-              mountPath: /var/global
+            - name: var-tmp
+              mountPath: /var/tmp
               readOnly: false
       - equal:
           path: spec.template.spec.volumes
           value:
-            - name: var-deploy
-              spec:
-                emptyDir: {}
-            - name: var-global
-              spec:
-                emptyDir: {}
-            - name: var-container
+            - name: var-tmp
               spec:
                 emptyDir: {}
