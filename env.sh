@@ -5,6 +5,7 @@
 # Recreate config file
 FOLDER=/var/www/html/env-config
 rm -rf $FOLDER/env-config.js
+mkdir -p $FOLDER
 touch $FOLDER/env-config.js
 echo $FOLDER/env-config.js
 
