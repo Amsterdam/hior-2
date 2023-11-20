@@ -46,6 +46,12 @@ extends:
       kubernetesServiceConnection: "SCN-K8S-ns-ccc-opdr-tst-01-hior"
       preSteps:
         - script: helm uninstall hior -n ns-ccc-opdr-tst-01-hior || true
+        - task: AzureCLI@2
+          inputs:
+            azureSubscription: ARM-CCC-OPDR-test-01
+            scriptType: pscore
+            scriptLocation: inlineScript
+            inlineScript: az role assignment delete --assignee 3e88d07a-0a50-466a-af59-52ce9bd4803b --role "Key Vault Secrets User" --scope /subscriptions/bef202ee-bb52-489e-afbb-9251f6e30475/resourceGroups/shared-t-rg/providers/Microsoft.KeyVault/vaults/shared-t-ddxsibl3lrdai
     acc:
       pool: Opdrachten
       namespace: ns-ccc-opdr-acc-01-hior
