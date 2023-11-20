@@ -1,15 +1,19 @@
-import React, {Component, Fragment} from 'react';
-import PropTypes from 'prop-types';
+import React, {Component} from 'react';
 import { withAITracking } from '@microsoft/applicationinsights-react-js';
 import {ai} from './TelemetryService';
 
-class TelemetryProvider extends Component {
-    static propTypes = {
-        children: PropTypes.any,
-        after: PropTypes.func,
-        connectionString: PropTypes.string
-    }
-    state = {
+interface Props {
+    children: React.ReactNode,
+    after: () => void,
+    connectionString: string
+}
+
+interface State {
+    initialized: boolean
+}
+
+class TelemetryProvider extends Component<Props, State> {
+    state: State = {
         initialized: false
     };
 
