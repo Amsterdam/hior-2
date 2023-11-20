@@ -31,7 +31,7 @@ root.render(
       <GlobalStyle />
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          <TelemetryProvider connectionString={window._env_.REACT_APP_APPLICATIONINSIGHTS_CONNECTION_STRING} after={() => { appInsights = getAppInsights}}>
+          <TelemetryProvider connectionString={(process.env.REACT_APP_DISABLE_APPLICATION_INSIGHTS == 'true') ? '' : window._env_.REACT_APP_APPLICATIONINSIGHTS_CONNECTION_STRING} after={() => { appInsights = getAppInsights}}>
             <App />
           </TelemetryProvider>
         </BrowserRouter>
