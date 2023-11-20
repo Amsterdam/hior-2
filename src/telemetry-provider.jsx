@@ -27,11 +27,7 @@ class TelemetryProvider extends Component {
 
     render() {
         const {children} = this.props;
-        return (
-            <Fragment>
-                {children}
-            </Fragment>
-        );
+        return <>{children}</>;
     }
 }
 

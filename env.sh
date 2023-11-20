@@ -7,7 +7,6 @@ FOLDER=/var/www/html/env-config
 rm -rf $FOLDER/env-config.js
 mkdir -p $FOLDER
 touch $FOLDER/env-config.js
-echo $FOLDER/env-config.js
 
 # Add assignment 
 echo "window._env_ = { REACT_APP_APPLICATIONINSIGHTS_CONNECTION_STRING: \"${REACT_APP_APPLICATIONINSIGHTS_CONNECTION_STRING}\" }" >> $FOLDER/env-config.js
