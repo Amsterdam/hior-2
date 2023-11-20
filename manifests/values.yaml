@@ -107,4 +107,4 @@ secrets:
     type: opaque
     secrets:
       AZURE_STORAGE_CONTAINER_NAME: csv
-      XLSX_FILE: http://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/HIOR%20Amsterdam.xlsx
+      XLSX_FILE: https://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/HIOR%20Amsterdam.xlsx
