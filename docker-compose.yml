@@ -3,8 +3,6 @@ services:
   dev:
     build:
       context: .
-      args:
-        - BUILD_ARG=acc
     image: ${REGISTRY:-localhost:5001}/${REPOSITORY:-opdrachten/hior}:${VERSION:-latest}
     environment:
       - TZ=Europe/Amsterdam
@@ -20,7 +18,6 @@ services:
     environment:
       - CI=true
       - TZ=Europe/Amsterdam
-      - BUILD_ARG=acc
     command: npm run test
 
   csv-update:
