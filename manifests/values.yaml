@@ -18,6 +18,11 @@ deployments:
   app:
     tempDirs:
       - /tmp
+      - /var/www/html/env-config
+      - /var/cache/nginx
+      - /var/run
+    secrets:
+      - vault
     containers:
       - name: main
         ports:
@@ -101,7 +106,7 @@ secrets:
     annotations:
       helm.sh/hook-weight: "-5"
     secrets:
-      - azure-storage-connection-string
+      REACT_APP_APPLICATIONINSIGHTS_CONNECTION_STRING: applicationinsights-connection-string
 
   app:
     type: opaque

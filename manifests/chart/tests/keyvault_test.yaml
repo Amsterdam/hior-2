@@ -36,14 +36,6 @@ tests:
           content:
             secretName: my-secrets-test
             type: Opaque
-      - equal:
-          path: spec.secretObjects[0].data
-          value:
-            - key: secret1
-              objectName: secret1
-            - key: secret2
-              objectName: secret2
-
       - isSubset:
           path: spec.parameters
           content:
@@ -55,6 +47,14 @@ tests:
                 - |
                   objectName: "secret2"
                   objectType: secret
+
+      - equal:
+          path: spec.secretObjects[0].data
+          value:
+            - key: secret1
+              objectName: secret1
+            - key: secret2
+              objectName: secret2
 
       - equal:
           path: spec.parameters.keyvaultName
@@ -156,3 +156,49 @@ tests:
       - equal:
           path: spec.parameters.useVMManagedIdentity
           value: "true"
+
+  - it: should be possible to rename keys
+    set:
+      keyVaultName: default-kv
+      secrets:
+        my-secrets:
+          type: keyvault
+          secrets:
+            renamed-secret1: secret1
+            renamed-secret2: secret2
+    asserts:
+      - hasDocuments:
+          count: 1
+      - lengthEqual:
+          path: spec.secretObjects
+          count: 1
+      - isSubset:
+          path: spec.secretObjects[0]
+          content:
+            secretName: my-secrets-test
+            type: Opaque
+      - isSubset:
+          path: spec.parameters
+          content:
+            objects: |
+              array:
+                - |
+                  objectName: "secret1"
+                  objectAlias: "renamed-secret1"
+                  objectType: secret
+                - |
+                  objectName: "secret2"
+                  objectAlias: "renamed-secret2"
+                  objectType: secret
+
+      - equal:
+          path: spec.secretObjects[0].data
+          value:
+            - key: renamed-secret1
+              objectName: renamed-secret1
+            - key: renamed-secret2
+              objectName: renamed-secret2
+
+      - equal:
+          path: spec.parameters.keyvaultName
+          value: default-kv

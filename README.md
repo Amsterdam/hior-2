@@ -56,6 +56,12 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However, we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Application Insights
+
+The React-app connects to Azure's Application Insights, if the connection string is available as an environment variable variable in the OTAP environments. To get the connection string available at the client side in the browser, the script `env.sh` is run while spinning up the nginx-container. The script reads the connection string from the env vars, and writes it to a `.js` file that is served by nginx. This `.js` file is loaded in a `<script>`-tag inside the `<head>`-section.
+
+For local development, the `.env.local`-file is loaded which contains the env var `REACT_APP_DISABLE_APPLICATION_INSIGHTS=true`, because the `.js`-file containing a connection string is not generated when using `npm start`.
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).

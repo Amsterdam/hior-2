@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.9.0](https://github.com/Amsterdam/helm-application/compare/1.8.1...1.9.0) (2023-10-31)
+
+
+### Features
+
+* Allow keyvault secrets to be renamed ([#56](https://github.com/Amsterdam/helm-application/issues/56)) ([8e20d57](https://github.com/Amsterdam/helm-application/commit/8e20d5764f2ddb3a55ef8e4abb1a12294896040c))
+
+## [1.8.1](https://github.com/Amsterdam/helm-application/compare/1.8.0...1.8.1) (2023-10-16)
+
+
+### Bug Fixes
+
+* **pods:** Allow tempDirs to be defined in the pod containers ([#54](https://github.com/Amsterdam/helm-application/issues/54)) ([ddcc482](https://github.com/Amsterdam/helm-application/commit/ddcc48209edce2f62cf2a32bbe5123fcbd2edf19))
+
 ## [1.8.0](https://github.com/Amsterdam/helm-application/compare/1.7.0...1.8.0) (2023-10-16)
 
 

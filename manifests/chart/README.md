@@ -21,6 +21,7 @@ A generic helm chart for deploying an application
 | `volumes`              | `list` of volumes to be mounted on the container                                                                                         |       |
 | `volumes[0].name`      | Name of the volume to be mounted                                                                                                         | `[]`  |
 | `volumes[0].mountPath` | Path within the container at which the volume should be mounted                                                                          | `[]`  |
+| `tempDirs`             | (Optional) Default list of temporary directories to mount on the container (e.g. /tmp)                                                   | `[]`  |
 
 ## Volume definition
 | Name                    | Description                                                                                                                               | Value |
@@ -102,7 +103,7 @@ A generic helm chart for deploying an application
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
 | `secrets`               | `map` of the [Secrets](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/secret-v1/) that should be deployed |       |
 | `secrets.<key>.type`    | opaque/keyvault                                                                                                                             | `nil` |
-| `secrets.<key>.secrets` | `list` of keyvault secrets (type==keyvault) or `hashmap` of plaintext secrets (type==opaque)                                                | `[]`  |
+| `secrets.<key>.secrets` | `hashmap` of secrets                                                                                                                        | `{}`  |
 
 ### Services parameters
 
