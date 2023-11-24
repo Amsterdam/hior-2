@@ -106,6 +106,7 @@ secrets:
     annotations:
       helm.sh/hook-weight: "-5"
     secrets:
+      AZURE_STORAGE_CONNECTION_STRING: azure-storage-connection-string
       REACT_APP_APPLICATIONINSIGHTS_CONNECTION_STRING: applicationinsights-connection-string
 
   app:
