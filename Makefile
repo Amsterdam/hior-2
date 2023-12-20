@@ -2,17 +2,10 @@
 # https://git.datapunt.amsterdam.nl/Datapunt/python-best-practices/blob/master/dependency_management/
 #
 # VERSION = 2020.01.29
-.PHONY: app manifests
+.PHONY: app
 
 dc = docker-compose
 run = $(dc) run --rm
-ENVIRONMENT ?= local
-VERSION ?= latest
-HELM_ARGS = manifests/chart \
-	-f manifests/values.yaml \
-	-f manifests/env/${ENVIRONMENT}.yaml \
-	--set image.tag=${VERSION} \
-	--set image.registry=${REGISTRY}
 
 help:                               ## Show this help.
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
@@ -35,29 +28,11 @@ test: build                         ## Execute tests
 clean:                              ## Clean docker stuff
 	$(dc) down -v --remove-orphans
 
-deploy_kubectl: build
-	$(dc) push dev  # Push dev image to kind registry
-	kubectl apply -f manifests
-
-undeploy_kubectl:
-	kubectl delete -f manifests
-
 trivy:                              ## Detect image vulnerabilities
 	trivy image --ignore-unfixed nginxinc/nginx-unprivileged:mainline-alpine-slim
 
 push:                               ## Push image to docker hub
 	$(dc) push
-
-update-chart:
-	rm -rf manifests/chart
-	git clone --branch 1.9.0 --depth 1 git@github.com:Amsterdam/helm-application.git manifests/chart
-	rm -rf manifests/chart/.git
-
-manifests:
-	@helm template hior $(HELM_ARGS) $(ARGS)
-
-deploy: manifests
-	helm upgrade --install hior $(HELM_ARGS) $(ARGS)
 
 csv-update:
 	$(run) csv-update $(ARGS)
