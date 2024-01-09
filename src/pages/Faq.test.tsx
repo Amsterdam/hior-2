@@ -26,7 +26,7 @@ describe("Faq", () => {
   };
 
   beforeEach(() => {
-    nock("http://localhost").get("/vsd/hior_faq/?page=1&page_size=100000&format=json").reply(200, mockData);
+    nock("http://localhost:3000").get("/static/data/faq.csv").reply(200, mockData);
   });
 
   it("renders correctly", async () => {

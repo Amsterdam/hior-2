@@ -12,12 +12,8 @@ const mockData = {
 };
 
 describe("UpdatedDate", () => {
-  beforeAll(() => {
-    nock.disableNetConnect();
-  });
-
   beforeEach(() => {
-    nock("http://localhost").get("/vsd/hior_metadata/?page=1&page_size=100000&format=json").reply(200, mockData);
+    nock("http://localhost:3000").get("/static/data/metadata.csv").reply(200, mockData);
   });
 
   it("renders correctly", async () => {

@@ -7,9 +7,7 @@ import Filter from "./Filter";
 
 describe("Filter", () => {
   beforeEach(() => {
-    nock("http://localhost")
-      .get("/vsd/hior_attributes/?page=1&page_size=100000&format=json")
-      .reply(200, mockAttributes);
+    nock("http://localhost:3000").get("/static/data/attributes.csv").reply(200, mockAttributes);
   });
 
   it("renders correctly", () => {

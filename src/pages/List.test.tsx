@@ -9,12 +9,12 @@ import FilterContextProvider from "../filter/FilterContext";
 
 describe("List", () => {
   beforeEach(() => {
-    nock("http://localhost")
-      .get("/vsd/hior_items/?page=1&page_size=100000&format=json")
+    nock("http://localhost:3000")
+      .get("/static/data/items.csv")
       .reply(200, mockItems)
-      .get("/vsd/hior_properties/?page=1&page_size=100000&format=json")
+      .get("/static/data/properties.csv")
       .reply(200, mockProperties)
-      .get("/vsd/hior_attributes/?page=1&page_size=100000&format=json")
+      .get("/static/data/attributes.csv")
       .reply(200, mockAttributes);
   });
 
