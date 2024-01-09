@@ -4,7 +4,7 @@
 # VERSION = 2020.01.29
 .PHONY: app
 
-dc = docker-compose
+dc = docker compose
 run = $(dc) run --rm
 
 help:                               ## Show this help.
@@ -17,13 +17,13 @@ push: build                         ## Push prod image to Amsterdam registry
 	$(dc) push
 
 app:                                ## Run app
-	$(run) --service-ports web
+	$(run) --service-ports dev
 
 dev:						        ## Run the development app
-	$(run) --service-ports web
+	$(run) --service-ports dev
 
 test:						        ## Execute tests
-	$(run) unittest $(ARGS)
+	$(run) test $(ARGS)
 
 clean:                              ## Clean docker stuff
 	$(dc) down -v --remove-orphans
@@ -38,5 +38,5 @@ undeploy_kubectl:
 trivy:                              ## Detect image vulnerabilities
 	trivy image --ignore-unfixed nginxinc/nginx-unprivileged:mainline-alpine-slim
 
-requirements: ## Upgrade requirements (in package.json and package-lock.json) to latest versions
-	npm upgrade 
+requirements:                       ## Upgrade dependencies
+	$(run) upgrade $(ARGS)

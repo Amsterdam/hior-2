@@ -18,7 +18,7 @@ jobs:
       slack_channel: 'opdrachten-dependabot'  # Slack channel to post release steps to
       timetell_code: 230720  # Timetell project id
       acceptance_pipeline: "https://ci.secure.amsterdam.nl/job/Opdrachten/job/HIOR/job/main/"
-      production_pipeline: "https://ci.secure.amsterdam.nl/job/Opdrachten/job/HIOR/view/tags/"
+      production_pipeline: "https://ci.secure.amsterdam.nl/job/Opdrachten/job/HIOR/view/tags/job/<tag>/"
       acceptance_urls: "acc.hior.amsterdam.nl"
       production_urls: "hior.amsterdam.nl"
 

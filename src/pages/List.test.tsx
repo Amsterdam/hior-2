@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import selectEvent from "react-select-event";
 import nock from "nock";
@@ -90,7 +90,9 @@ describe("List", () => {
 
     await screen.findByText("Resultaten (1)");
 
-    userEvent.click(screen.getByRole("button", { name: /wis filter/i }));
+    await act(async () => {
+      await userEvent.click(screen.getByRole("button", { name: /wis filter/i }));
+    });
 
     await screen.findByText("Resultaten (1)");
 
@@ -179,7 +181,4 @@ describe("List", () => {
     expect(screen.queryByTestId("item-2")).not.toBeInTheDocument();
     expect(screen.getByTestId("item-3")).toBeInTheDocument();
   });
-
-  //type
-  //text query
 });

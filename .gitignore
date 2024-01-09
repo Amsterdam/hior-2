@@ -5,6 +5,7 @@ __pycache__
 reports
 *.iml
 .env
+.env.development.local
 .jenkins/backups
 
 node_modules

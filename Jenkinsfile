@@ -1,5 +1,5 @@
 #!groovy
-def PROJECT_NAME = "bereikbaarheid-backend-secure"
+def PROJECT_NAME = "hior"
 def SLACK_CHANNEL = '#opdrachten-deployments'
 def PLAYBOOK = 'deploy.yml'
 def CMDB_ID = 'app_hior'

@@ -5,20 +5,30 @@ services:
       context: .
       args:
         - BUILD_ARG=acc
-    image: docker-registry.secure.amsterdam.nl/ruimte/hior:${VERSION:-latest}  
+    image: docker-registry.secure.amsterdam.nl/ruimte/hior:${VERSION:-latest}
     environment:
       - TZ=Europe/Amsterdam
     ipc: host
     ports:
-      - "8000:8000"
+      - "8080:8080"
 
-  unittest:
+  test:
     build:
       context: .
       target: builder
     environment:
-      - NODE_ENV=test
       - CI=true
       - TZ=Europe/Amsterdam
       - BUILD_ARG=acc
     command: npm run test
+
+  upgrade:
+    build:
+      context: .
+      target: upgrade
+    environment: 
+      - TZ=Europe/Amsterdam
+    volumes:
+      - ./package.json:/app/package.json
+      - ./package-lock.json:/app/package-lock.json
+    command: ncu -u --doctor --target minor
