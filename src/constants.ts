@@ -1,25 +1,23 @@
 import { Selector, State } from "./types";
 
-const acc = window?.location?.host?.includes(".acc");
+let azureStorageBaseURL = process.env.REACT_APP_AZURE_STORAGE_CONTAINER_ACC;
 
-const tst = process.env.NODE_ENV === "test";
-
-const host = (() =>
-  tst ? "http://localhost" : acc ? process.env.REACT_APP_HIOR_API_ACC : process.env.REACT_APP_HIOR_API)();
+if (["development", "test"].includes(process.env.NODE_ENV)) {
+  azureStorageBaseURL = "http://localhost:3000/static/data"; // Loal development or testing URL
+} else if (window?.location?.host?.includes("acc.")) {
+  azureStorageBaseURL = process.env.REACT_APP_AZURE_STORAGE_CONTAINER_ACC; // ACC Azure Storage Container URL
+} else if (window?.location?.host?.includes("//hior.amsterdam.nl")) {
+  azureStorageBaseURL = process.env.REACT_APP_AZURE_STORAGE_CONTAINER; // PROD Azure Storage Container URL
+}
 
 export const IMAGE_URL = "https://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/Afbeeldingen/";
-
 export const DOCUMENT_URL = "https://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/Documenten/";
 
-export const HIOR_ITEMS_URL = `${host}/vsd/hior_items/?page=1&page_size=100000&format=json`;
-
-export const HIOR_PROPERTIES_URL = `${host}/vsd/hior_properties/?page=1&page_size=100000&format=json`;
-
-export const HIOR_ATTRIBUTES_URL = `${host}/vsd/hior_attributes/?page=1&page_size=100000&format=json`;
-
-export const HIOR_METADATA_URL = `${host}/vsd/hior_metadata/?page=1&page_size=100000&format=json`;
-
-export const HIOR_FAQ_URL = `${host}/vsd/hior_faq/?page=1&page_size=100000&format=json`;
+export const HIOR_ITEMS_URL = `${azureStorageBaseURL}/items.csv`;
+export const HIOR_PROPERTIES_URL = `${azureStorageBaseURL}/properties.csv`;
+export const HIOR_ATTRIBUTES_URL = `${azureStorageBaseURL}/attributes.csv`;
+export const HIOR_METADATA_URL = `${azureStorageBaseURL}/metadata.csv`;
+export const HIOR_FAQ_URL = `${azureStorageBaseURL}/faq.csv`;
 
 export const ALL_GROUPS: Selector[] = [
   {
@@ -50,8 +48,8 @@ export const ALL_GROUPS: Selector[] = [
 ];
 
 export const requestHeaders = {
-  "Content-Type": "application/json",
-  Accept: "application/json",
+  "Content-Type": "text/csv",
+  Accept: "text/csv",
 };
 
 export const defaultArea = [{ label: "Heel Amsterdam", value: "Heel Amsterdam" }];

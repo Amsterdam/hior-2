@@ -1,0 +1,2751 @@
+item_id,name,value
+2,Theme,1. Openbare Ruimte Algemeen
+2,Theme,12. Groen
+2,Area,Heel Amsterdam
+2,Type,Ambitie
+2,Level,Strategisch Niveau
+2,Source,Omgevingsvisie 2050 (2021)
+3,Theme,1. Openbare Ruimte Algemeen
+3,Theme,3. Netwerken & Profielen
+3,Theme,2. Structuur & Stedenbouwkunde
+3,Area,Heel Amsterdam
+3,Type,Uitgangspunt
+3,Level,Strategisch Niveau
+3,Source,Omgevingsvisie 2050 (2021)
+4,Theme,1. Openbare Ruimte Algemeen
+4,Theme,12. Groen
+4,Theme,2. Structuur & Stedenbouwkunde
+4,Area,Heel Amsterdam
+4,Type,Uitgangspunt
+4,Level,Strategisch Niveau
+4,Source,Omgevingsvisie 2050 (2021)
+5,Theme,1. Openbare Ruimte Algemeen
+5,Area,Heel Amsterdam
+5,Type,Uitgangspunt
+5,Level,Proces
+5,Source,Omgevingsvisie 2050 (2021)
+6,Theme,1. Openbare Ruimte Algemeen
+6,Theme,2. Structuur & Stedenbouwkunde
+6,Area,Heel Amsterdam
+6,Type,Uitgangspunt
+6,Level,Strategisch Niveau
+6,Source,Omgevingsvisie 2050 (2021)
+7,Theme,1. Openbare Ruimte Algemeen
+7,Theme,2. Structuur & Stedenbouwkunde
+7,Area,Heel Amsterdam
+7,Type,Uitgangspunt
+7,Level,Strategisch Niveau
+7,Source,Omgevingsvisie 2050 (2021)
+8,Theme,3. Netwerken & Profielen
+8,Theme,2. Structuur & Stedenbouwkunde
+8,Area,Heel Amsterdam
+8,Type,Uitgangspunt
+8,Level,Strategisch Niveau
+8,Source,Omgevingsvisie 2050 (2021)
+9,Theme,1. Openbare Ruimte Algemeen
+9,Theme,2. Structuur & Stedenbouwkunde
+9,Area,Heel Amsterdam
+9,Type,Uitgangspunt
+9,Level,Strategisch Niveau
+9,Source,Omgevingsvisie 2050 (2021)
+10,Theme,1. Openbare Ruimte Algemeen
+10,Theme,12. Groen
+10,Area,Heel Amsterdam
+10,Type,Uitgangspunt
+10,Level,Strategisch Niveau
+10,Source,Omgevingsvisie 2050 (2021)
+11,Theme,1. Openbare Ruimte Algemeen
+11,Theme,12. Groen
+11,Area,Heel Amsterdam
+11,Type,Uitgangspunt
+11,Level,Strategisch Niveau
+11,Source,Omgevingsvisie 2050 (2021)
+12,Theme,12. Groen
+12,Area,Heel Amsterdam
+12,Type,Ambitie
+12,Level,Strategisch Niveau
+12,Source,Groenvisie 2020 - 2050 (2020)
+13,Theme,12. Groen
+13,Area,Heel Amsterdam
+13,Type,Ambitie
+13,Level,Strategisch Niveau
+13,Source,Groenvisie 2020 - 2050 (2020)
+14,Theme,12. Groen
+14,Area,Heel Amsterdam
+14,Type,Ambitie
+14,Level,Strategisch Niveau
+14,Source,Groenvisie 2020 - 2050 (2020)
+15,Theme,12. Groen
+15,Area,Heel Amsterdam
+15,Type,Ambitie
+15,Level,Strategisch Niveau
+15,Source,Groenvisie 2020 - 2050 (2020)
+16,Theme,12. Groen
+16,Theme,9. Verhardingen
+16,Area,Heel Amsterdam
+16,Type,Uitgangspunt
+16,Level,Tactisch Niveau
+16,Source,Groenvisie 2020 - 2050 (2020)
+18,Theme,12. Groen
+18,Theme,2. Structuur & Stedenbouwkunde
+18,Area,Heel Amsterdam
+18,Type,Ambitie
+18,Level,Tactisch Niveau
+18,Source,Groenvisie 2020 - 2050 (2020)
+19,Theme,12. Groen
+19,Theme,2. Structuur & Stedenbouwkunde
+19,Area,Heel Amsterdam
+19,Type,Ambitie
+19,Level,Tactisch Niveau
+19,Source,Groenvisie 2020 - 2050 (2020)
+20,Theme,12. Groen
+20,Theme,2. Structuur & Stedenbouwkunde
+20,Area,Heel Amsterdam
+20,Type,Ambitie
+20,Level,Tactisch Niveau
+20,Source,Groenvisie 2020 - 2050 (2020)
+21,Theme,12. Groen
+21,Area,Heel Amsterdam
+21,Type,Uitgangspunt
+21,Level,Strategisch Niveau
+21,Source,Beleidskader Puccinimethode (2018)
+22,Theme,14. Water & Oevers
+22,Area,Heel Amsterdam
+22,Type,Ambitie
+22,Level,Tactisch Niveau
+22,Source,Watervisie (2016)
+23,Theme,14. Water & Oevers
+23,Area,Heel Amsterdam
+23,Type,Ambitie
+23,Level,Tactisch Niveau
+23,Source,Watervisie (2016)
+24,Theme,14. Water & Oevers
+24,Area,Heel Amsterdam
+24,Type,Ambitie
+24,Level,Tactisch Niveau
+24,Source,Watervisie (2016)
+25,Theme,14. Water & Oevers
+25,Area,Heel Amsterdam
+25,Type,Ambitie
+25,Level,Tactisch Niveau
+25,Source,Watervisie (2016)
+26,Theme,14. Water & Oevers
+26,Area,Heel Amsterdam
+26,Type,Ambitie
+26,Level,Tactisch Niveau
+26,Source,Watervisie (2016)
+27,Theme,14. Water & Oevers
+27,Area,Heel Amsterdam
+27,Type,Ambitie
+27,Level,Tactisch Niveau
+27,Source,Watervisie (2016)
+28,Theme,8. Parkeren - Auto
+28,Area,Heel Amsterdam
+28,Type,Uitgangspunt
+28,Level,Tactisch Niveau
+28,Source,Voortgangsrapportage Parkeerplan (2017)
+29,Theme,2. Structuur & Stedenbouwkunde
+29,Area,Zuid
+29,Type,Ambitie
+29,Level,Strategisch Niveau
+29,Source,Visie Zuidas (2016)
+30,Theme,9. Verhardingen
+30,Area,Zuid
+30,Type,Uitgangspunt
+30,Level,Tactisch Niveau
+30,Source,Visie Zuidas (2016)
+31,Theme,1. Openbare Ruimte Algemeen
+31,Area,Zuid
+31,Type,Uitgangspunt
+31,Level,Tactisch Niveau
+31,Source,Visie Zuidas (2016)
+32,Theme,3. Netwerken & Profielen
+32,Area,Zuid
+32,Type,Uitgangspunt
+32,Level,Tactisch Niveau
+32,Source,Visie Zuidas (2016)
+33,Theme,2. Structuur & Stedenbouwkunde
+33,Area,Heel Amsterdam
+33,Type,Ambitie
+33,Level,Strategisch Niveau
+33,Source,Visie Openbare Ruimte (2017)
+34,Theme,1. Openbare Ruimte Algemeen
+34,Area,Heel Amsterdam
+34,Type,Randvoorwaarde
+34,Level,Strategisch Niveau
+34,Source,Visie Openbare Ruimte (2017)
+35,Theme,1. Openbare Ruimte Algemeen
+35,Theme,3. Netwerken & Profielen
+35,Area,Heel Amsterdam
+35,Type,Uitgangspunt
+35,Level,Strategisch Niveau
+35,Source,Visie Openbare Ruimte (2017)
+36,Theme,12. Groen
+36,Area,Heel Amsterdam
+36,Type,Ambitie
+36,Level,Strategisch Niveau
+36,Source,Visie Openbare Ruimte (2017)
+37,Theme,1. Openbare Ruimte Algemeen
+37,Area,Heel Amsterdam
+37,Type,Uitgangspunt
+37,Level,Strategisch Niveau
+37,Source,Visie Openbare Ruimte (2017)
+38,Theme,1. Openbare Ruimte Algemeen
+38,Area,Heel Amsterdam
+38,Type,Uitgangspunt
+38,Level,Tactisch Niveau
+38,Source,Visie Openbare Ruimte (2017)
+39,Theme,1. Openbare Ruimte Algemeen
+39,Area,Heel Amsterdam
+39,Type,Randvoorwaarde
+39,Level,Tactisch Niveau
+39,Source,Visie Openbare Ruimte (2017)
+40,Theme,1. Openbare Ruimte Algemeen
+40,Area,Heel Amsterdam
+40,Type,Uitgangspunt
+40,Level,Tactisch Niveau
+40,Source,Visie Openbare Ruimte (2017)
+41,Theme,1. Openbare Ruimte Algemeen
+41,Area,Heel Amsterdam
+41,Type,Uitgangspunt
+41,Level,Tactisch Niveau
+41,Source,Visie Openbare Ruimte (2017)
+42,Theme,1. Openbare Ruimte Algemeen
+42,Area,Heel Amsterdam
+42,Type,Uitgangspunt
+42,Level,Tactisch Niveau
+42,Source,Visie Openbare Ruimte (2017)
+43,Theme,1. Openbare Ruimte Algemeen
+43,Theme,13. Sport & Spel
+43,Area,Heel Amsterdam
+43,Type,Uitgangspunt
+43,Level,Tactisch Niveau
+43,Source,Visie Openbare Ruimte (2017)
+44,Theme,12. Groen
+44,Area,Heel Amsterdam
+44,Type,Randvoorwaarde
+44,Level,Tactisch Niveau
+44,Source,Visie Openbare Ruimte (2017)
+45,Theme,12. Groen
+45,Area,Heel Amsterdam
+45,Type,Uitgangspunt
+45,Level,Tactisch Niveau
+45,Source,Visie Openbare Ruimte (2017)
+46,Theme,1. Openbare Ruimte Algemeen
+46,Area,Heel Amsterdam
+46,Type,Uitgangspunt
+46,Level,Tactisch Niveau
+46,Source,Visie Openbare Ruimte (2017)
+47,Theme,1. Openbare Ruimte Algemeen
+47,Area,Heel Amsterdam
+47,Type,Uitgangspunt
+47,Level,Tactisch Niveau
+47,Source,Visie Openbare Ruimte (2017)
+48,Theme,16. Ondergrond
+48,Area,Heel Amsterdam
+48,Type,Randvoorwaarde
+48,Level,Tactisch Niveau
+48,Source,Visie Openbare Ruimte (2017)
+49,Theme,1. Openbare Ruimte Algemeen
+49,Area,Heel Amsterdam
+49,Type,Uitgangspunt
+49,Level,Proces
+49,Source,Visie Openbare Ruimte (2017)
+50,Theme,14. Water & Oevers
+50,Area,Centrum
+50,Type,Ambitie
+50,Level,Tactisch Niveau
+50,Source,Visie Op Het Water Van De Binnenstad (2005)
+51,Theme,14. Water & Oevers
+51,Area,Centrum
+51,Type,Uitgangspunt
+51,Level,Tactisch Niveau
+51,Source,Visie Op Het Water Van De Binnenstad (2005)
+52,Theme,14. Water & Oevers
+52,Area,Centrum
+52,Type,Uitgangspunt
+52,Level,Tactisch Niveau
+52,Source,Visie Op Het Water Van De Binnenstad (2005)
+53,Theme,14. Water & Oevers
+53,Area,Centrum
+53,Type,Uitgangspunt
+53,Level,Tactisch Niveau
+53,Source,Visie Op Het Water Van De Binnenstad (2005)
+54,Theme,14. Water & Oevers
+54,Area,Centrum
+54,Type,Uitgangspunt
+54,Level,Tactisch Niveau
+54,Source,Visie Op Het Water Van De Binnenstad (2005)
+55,Theme,2. Structuur & Stedenbouwkunde
+55,Theme,14. Water & Oevers
+55,Theme,12. Groen
+55,Area,Zuid
+55,Type,Ambitie
+55,Level,Strategisch Niveau
+55,Source,Visie Groen En Blauw Amsterdam Oud-Zuid 2020 (2006)
+56,Theme,14. Water & Oevers
+56,Area,Zuid
+56,Type,Ambitie
+56,Level,Tactisch Niveau
+56,Source,Visie Groen En Blauw Amsterdam Oud-Zuid 2020 (2006)
+57,Theme,12. Groen
+57,Area,Zuid
+57,Type,Ambitie
+57,Level,Tactisch Niveau
+57,Source,Visie Groen En Blauw Amsterdam Oud-Zuid 2020 (2006)
+58,Theme,2. Structuur & Stedenbouwkunde
+58,Theme,14. Water & Oevers
+58,Theme,12. Groen
+58,Area,Zuid
+58,Type,Ambitie
+58,Level,Tactisch Niveau
+58,Source,Visie Groen En Blauw Amsterdam Oud-Zuid 2020 (2006)
+59,Theme,2. Structuur & Stedenbouwkunde
+59,Theme,14. Water & Oevers
+59,Theme,12. Groen
+59,Area,Zuid
+59,Type,Ambitie
+59,Level,Tactisch Niveau
+59,Source,Visie Groen En Blauw Amsterdam Oud-Zuid 2020 (2006)
+60,Theme,1. Openbare Ruimte Algemeen
+60,Theme,16. Ondergrond
+60,Area,Heel Amsterdam
+60,Type,Randvoorwaarde
+60,Level,Operationeel Niveau
+60,Source,Verordening Wior (2021)
+61,Theme,12. Groen
+61,Area,Heel Amsterdam
+61,Type,Randvoorwaarde
+61,Level,Proces
+61,Source,Verordening Tac (2013)
+62,Theme,3. Netwerken & Profielen
+62,Area,Heel Amsterdam
+62,Type,Uitgangspunt
+62,Level,Strategisch Niveau
+62,Source,Uitvoeringsagenda Mobiliteit (2015)
+63,Theme,3. Netwerken & Profielen
+63,Area,Heel Amsterdam
+63,Type,Uitgangspunt
+63,Level,Tactisch Niveau
+63,Source,Uitvoeringsagenda Mobiliteit (2015)
+64,Theme,7. Auto
+64,Area,Heel Amsterdam
+64,Type,Uitgangspunt
+64,Level,Tactisch Niveau
+64,Source,Uitvoeringsagenda Mobiliteit (2015)
+65,Theme,8. Parkeren - Auto
+65,Area,Heel Amsterdam
+65,Type,Uitgangspunt
+65,Level,Tactisch Niveau
+65,Source,Uitvoeringsagenda Mobiliteit (2015)
+66,Theme,3. Netwerken & Profielen
+66,Area,Heel Amsterdam
+66,Type,Uitgangspunt
+66,Level,Tactisch Niveau
+66,Source,Uitvoeringsagenda Mobiliteit (2015)
+67,Theme,10. Straatmeubilair
+67,Area,Heel Amsterdam
+67,Type,Randvoorwaarde
+67,Level,Tactisch Niveau
+67,Source,Stedelijk Kader Locatiekeuze Inzamelvoorzieningen (2017)
+68,Theme,10. Straatmeubilair
+68,Area,Heel Amsterdam
+68,Type,Uitgangspunt
+68,Level,Operationeel Niveau
+68,Source,Stedelijk Kader Locatiekeuze Inzamelvoorzieningen (2017)
+69,Theme,10. Straatmeubilair
+69,Area,Heel Amsterdam
+69,Type,Randvoorwaarde
+69,Level,Operationeel Niveau
+69,Source,Stedelijk Kader Locatiekeuze Inzamelvoorzieningen (2017)
+70,Theme,10. Straatmeubilair
+70,Area,Heel Amsterdam
+70,Type,Uitgangspunt
+70,Level,Operationeel Niveau
+70,Source,Stedelijk Kader Locatiekeuze Inzamelvoorzieningen (2017)
+71,Theme,10. Straatmeubilair
+71,Area,Heel Amsterdam
+71,Type,Randvoorwaarde
+71,Level,Proces
+71,Source,Stedelijk Kader Locatiekeuze Inzamelvoorzieningen (2017)
+72,Theme,10. Straatmeubilair
+72,Theme,1. Openbare Ruimte Algemeen
+72,Area,Heel Amsterdam
+72,Type,Uitgangspunt
+72,Level,Strategisch Niveau
+72,Source,Beleidskader Buitenreclame (2020)
+73,Theme,10. Straatmeubilair
+73,Theme,1. Openbare Ruimte Algemeen
+73,Area,Heel Amsterdam
+73,Type,Randvoorwaarde
+73,Level,Tactisch Niveau
+73,Source,Beleidskader Buitenreclame (2020)
+74,Theme,10. Straatmeubilair
+74,Area,Heel Amsterdam
+74,Type,Randvoorwaarde
+74,Level,Operationeel Niveau
+74,Source,Beleidskader Buitenreclame (2020)
+75,Theme,10. Straatmeubilair
+75,Area,Heel Amsterdam
+75,Type,Randvoorwaarde
+75,Level,Operationeel Niveau
+75,Source,Beleidskader Buitenreclame (2020)
+76,Theme,10. Straatmeubilair
+76,Area,Heel Amsterdam
+76,Type,Randvoorwaarde
+76,Level,Operationeel Niveau
+76,Source,Beleidskader Buitenreclame (2020)
+77,Theme,10. Straatmeubilair
+77,Area,Heel Amsterdam
+77,Type,Randvoorwaarde
+77,Level,Operationeel Niveau
+77,Source,Beleidskader Buitenreclame (2020)
+78,Theme,10. Straatmeubilair
+78,Area,Heel Amsterdam
+78,Type,Randvoorwaarde
+78,Level,Operationeel Niveau
+78,Source,Beleidskader Buitenreclame (2020)
+79,Theme,10. Straatmeubilair
+79,Area,Heel Amsterdam
+79,Type,Randvoorwaarde
+79,Level,Operationeel Niveau
+79,Source,Beleidskader Buitenreclame (2020)
+80,Theme,9. Verhardingen
+80,Area,Heel Amsterdam
+80,Type,Uitgangspunt
+80,Level,Operationeel Niveau
+80,Source,Beleidskader Buitenreclame (2020)
+81,Theme,10. Straatmeubilair
+81,Area,Heel Amsterdam
+81,Type,Uitgangspunt
+81,Level,Tactisch Niveau
+81,Source,Beleidskader Buitenreclame (2020)
+82,Theme,10. Straatmeubilair
+82,Area,Heel Amsterdam
+82,Type,Uitgangspunt
+82,Level,Tactisch Niveau
+82,Source,Beleidskader Buitenreclame (2020)
+83,Theme,10. Straatmeubilair
+83,Area,Heel Amsterdam
+83,Type,Uitgangspunt
+83,Level,Tactisch Niveau
+83,Source,Beleidskader Buitenreclame (2020)
+84,Theme,10. Straatmeubilair
+84,Area,Heel Amsterdam
+84,Type,Uitgangspunt
+84,Level,Tactisch Niveau
+84,Source,Beleidskader Buitenreclame (2020)
+85,Theme,10. Straatmeubilair
+85,Area,Heel Amsterdam
+85,Type,Randvoorwaarde
+85,Level,Operationeel Niveau
+85,Source,Beleidskader Buitenreclame (2020)
+86,Theme,10. Straatmeubilair
+86,Area,Heel Amsterdam
+86,Type,Randvoorwaarde
+86,Level,Operationeel Niveau
+86,Source,Beleidskader Buitenreclame (2020)
+87,Theme,10. Straatmeubilair
+87,Area,Heel Amsterdam
+87,Type,Randvoorwaarde
+87,Level,Operationeel Niveau
+87,Source,Beleidskader Buitenreclame (2020)
+88,Theme,10. Straatmeubilair
+88,Area,Heel Amsterdam
+88,Type,Randvoorwaarde
+88,Level,Operationeel Niveau
+88,Source,Beleidskader Buitenreclame (2020)
+89,Theme,10. Straatmeubilair
+89,Area,Heel Amsterdam
+89,Type,Randvoorwaarde
+89,Level,Operationeel Niveau
+89,Source,Beleidskader Buitenreclame (2020)
+90,Theme,10. Straatmeubilair
+90,Area,Heel Amsterdam
+90,Type,Randvoorwaarde
+90,Level,Operationeel Niveau
+90,Source,Beleidskader Buitenreclame (2020)
+91,Theme,10. Straatmeubilair
+91,Area,Heel Amsterdam
+91,Type,Randvoorwaarde
+91,Level,Operationeel Niveau
+91,Source,Beleidskader Buitenreclame (2020)
+92,Theme,13. Sport & Spel
+92,Area,Heel Amsterdam
+92,Type,Uitgangspunt
+92,Level,Tactisch Niveau
+92,Source,Sportvisie 2025 (2016)
+93,Theme,3. Netwerken & Profielen
+93,Area,Heel Amsterdam
+93,Type,Advies
+93,Level,Operationeel Niveau
+93,Source,Richtlijn Bewegwijzering Amsterdam (2021)
+94,Theme,3. Netwerken & Profielen
+94,Area,Heel Amsterdam
+94,Type,Advies
+94,Level,Proces
+94,Source,Richtlijn Bewegwijzering Amsterdam (2021)
+95,Theme,12. Groen
+95,Area,Zuidoost
+95,Type,Ambitie
+95,Level,Tactisch Niveau
+95,Source,Programma Groen & Blauw Zuidoost (2010)
+96,Theme,12. Groen
+96,Area,Zuidoost
+96,Type,Ambitie
+96,Level,Tactisch Niveau
+96,Source,Programma Groen & Blauw Zuidoost (2010)
+97,Theme,12. Groen
+97,Area,Zuidoost
+97,Type,Ambitie
+97,Level,Tactisch Niveau
+97,Source,Programma Groen & Blauw Zuidoost (2010)
+98,Theme,14. Water & Oevers
+98,Area,Zuidoost
+98,Type,Ambitie
+98,Level,Tactisch Niveau
+98,Source,Programma Groen & Blauw Zuidoost (2010)
+99,Theme,14. Water & Oevers
+99,Area,Zuidoost
+99,Type,Ambitie
+99,Level,Tactisch Niveau
+99,Source,Programma Groen & Blauw Zuidoost (2010)
+100,Theme,14. Water & Oevers
+100,Area,Zuidoost
+100,Type,Ambitie
+100,Level,Tactisch Niveau
+100,Source,Programma Groen & Blauw Zuidoost (2010)
+101,Theme,12. Groen
+101,Area,Zuidoost
+101,Type,Ambitie
+101,Level,Tactisch Niveau
+101,Source,Programma Groen & Blauw Zuidoost (2010)
+102,Theme,12. Groen
+102,Area,Zuidoost
+102,Type,Ambitie
+102,Level,Tactisch Niveau
+102,Source,Programma Groen & Blauw Zuidoost (2010)
+103,Theme,12. Groen
+103,Area,Zuidoost
+103,Type,Ambitie
+103,Level,Tactisch Niveau
+103,Source,Programma Groen & Blauw Zuidoost (2010)
+104,Theme,12. Groen
+104,Area,Zuidoost
+104,Type,Uitgangspunt
+104,Level,Tactisch Niveau
+104,Source,Programma Groen & Blauw Zuidoost (2010)
+105,Theme,12. Groen
+105,Area,Zuidoost
+105,Type,Uitgangspunt
+105,Level,Tactisch Niveau
+105,Source,Programma Groen & Blauw Zuidoost (2010)
+106,Theme,12. Groen
+106,Area,Zuidoost
+106,Type,Uitgangspunt
+106,Level,Tactisch Niveau
+106,Source,Programma Groen & Blauw Zuidoost (2010)
+107,Theme,12. Groen
+107,Area,Zuidoost
+107,Type,Uitgangspunt
+107,Level,Tactisch Niveau
+107,Source,Programma Groen & Blauw Zuidoost (2010)
+108,Theme,12. Groen
+108,Area,Zuidoost
+108,Type,Uitgangspunt
+108,Level,Tactisch Niveau
+108,Source,Programma Groen & Blauw Zuidoost (2010)
+109,Theme,12. Groen
+109,Area,Zuidoost
+109,Type,Uitgangspunt
+109,Level,Tactisch Niveau
+109,Source,Programma Groen & Blauw Zuidoost (2010)
+110,Theme,12. Groen
+110,Area,Zuidoost
+110,Type,Uitgangspunt
+110,Level,Tactisch Niveau
+110,Source,Programma Groen & Blauw Zuidoost (2010)
+111,Theme,12. Groen
+111,Area,Zuidoost
+111,Type,Uitgangspunt
+111,Level,Tactisch Niveau
+111,Source,Programma Groen & Blauw Zuidoost (2010)
+112,Theme,14. Water & Oevers
+112,Area,Zuidoost
+112,Type,Uitgangspunt
+112,Level,Tactisch Niveau
+112,Source,Programma Groen & Blauw Zuidoost (2010)
+113,Theme,14. Water & Oevers
+113,Area,Zuidoost
+113,Type,Uitgangspunt
+113,Level,Tactisch Niveau
+113,Source,Programma Groen & Blauw Zuidoost (2010)
+114,Theme,14. Water & Oevers
+114,Area,Zuidoost
+114,Type,Uitgangspunt
+114,Level,Tactisch Niveau
+114,Source,Programma Groen & Blauw Zuidoost (2010)
+115,Theme,14. Water & Oevers
+115,Area,Zuidoost
+115,Type,Uitgangspunt
+115,Level,Tactisch Niveau
+115,Source,Programma Groen & Blauw Zuidoost (2010)
+116,Theme,14. Water & Oevers
+116,Area,Zuidoost
+116,Type,Uitgangspunt
+116,Level,Tactisch Niveau
+116,Source,Programma Groen & Blauw Zuidoost (2010)
+117,Theme,14. Water & Oevers
+117,Area,Zuidoost
+117,Type,Uitgangspunt
+117,Level,Tactisch Niveau
+117,Source,Programma Groen & Blauw Zuidoost (2010)
+118,Theme,1. Openbare Ruimte Algemeen
+118,Area,Heel Amsterdam
+118,Type,Randvoorwaarde
+118,Level,Proces
+118,Source,Plaberum 2017 (2016)
+119,Theme,1. Openbare Ruimte Algemeen
+119,Area,Heel Amsterdam
+119,Type,Randvoorwaarde
+119,Level,Proces
+119,Source,Plaberum 2017 (2016)
+120,Theme,1. Openbare Ruimte Algemeen
+120,Area,Heel Amsterdam
+120,Type,Randvoorwaarde
+120,Level,Proces
+120,Source,Plaberum 2017 (2016)
+121,Theme,5. Fiets
+121,Area,Heel Amsterdam
+121,Type,Uitgangspunt
+121,Level,Strategisch Niveau
+121,Source,Nota Parkeernormen Fiets En Scooter (2018)
+122,Theme,5. Fiets
+122,Area,Heel Amsterdam
+122,Type,Randvoorwaarde
+122,Level,Tactisch Niveau
+122,Source,Nota Parkeernormen Fiets En Scooter (2018)
+123,Theme,5. Fiets
+123,Area,Heel Amsterdam
+123,Type,Randvoorwaarde
+123,Level,Tactisch Niveau
+123,Source,Nota Parkeernormen Fiets En Scooter (2018)
+124,Theme,5. Fiets
+124,Area,Heel Amsterdam
+124,Type,Randvoorwaarde
+124,Level,Tactisch Niveau
+124,Source,Nota Parkeernormen Fiets En Scooter (2018)
+125,Theme,5. Fiets
+125,Area,Heel Amsterdam
+125,Type,Randvoorwaarde
+125,Level,Tactisch Niveau
+125,Source,Nota Parkeernormen Fiets En Scooter (2018)
+126,Theme,5. Fiets
+126,Area,Heel Amsterdam
+126,Type,Randvoorwaarde
+126,Level,Tactisch Niveau
+126,Source,Nota Parkeernormen Fiets En Scooter (2018)
+127,Theme,5. Fiets
+127,Area,Heel Amsterdam
+127,Type,Uitgangspunt
+127,Level,Tactisch Niveau
+127,Source,Nota Parkeernormen Fiets En Scooter (2018)
+128,Theme,5. Fiets
+128,Area,Heel Amsterdam
+128,Type,Randvoorwaarde
+128,Level,Operationeel Niveau
+128,Source,Nota Parkeernormen Fiets En Scooter (2018)
+129,Theme,5. Fiets
+129,Area,Heel Amsterdam
+129,Type,Randvoorwaarde
+129,Level,Operationeel Niveau
+129,Source,Nota Parkeernormen Fiets En Scooter (2018)
+130,Theme,5. Fiets
+130,Area,Heel Amsterdam
+130,Type,Advies
+130,Level,Operationeel Niveau
+130,Source,Leidraad Cvc (2020)
+131,Theme,5. Fiets
+131,Area,Heel Amsterdam
+131,Type,Advies
+131,Level,Operationeel Niveau
+131,Source,Leidraad Cvc (2020)
+132,Theme,5. Fiets
+132,Area,Heel Amsterdam
+132,Type,Advies
+132,Level,Operationeel Niveau
+132,Source,Leidraad Cvc (2020)
+133,Theme,5. Fiets
+133,Area,Heel Amsterdam
+133,Type,Randvoorwaarde
+133,Level,Proces
+133,Source,Nota Parkeernormen Fiets En Scooter (2018)
+134,Theme,5. Fiets
+134,Area,Heel Amsterdam
+134,Type,Randvoorwaarde
+134,Level,Proces
+134,Source,Nota Parkeernormen Fiets En Scooter (2018)
+135,Theme,8. Parkeren - Auto
+135,Area,Heel Amsterdam
+135,Type,Uitgangspunt
+135,Level,Strategisch Niveau
+135,Source,Nota Parkeernormen Auto (2017)
+136,Theme,8. Parkeren - Auto
+136,Area,Heel Amsterdam
+136,Type,Randvoorwaarde
+136,Level,Tactisch Niveau
+136,Source,Nota Parkeernormen Auto (2017)
+137,Theme,8. Parkeren - Auto
+137,Area,Heel Amsterdam
+137,Type,Randvoorwaarde
+137,Level,Tactisch Niveau
+137,Source,Nota Parkeernormen Auto (2017)
+138,Theme,8. Parkeren - Auto
+138,Area,Heel Amsterdam
+138,Type,Uitgangspunt
+138,Level,Tactisch Niveau
+138,Source,Nota Parkeernormen Auto (2017)
+139,Theme,8. Parkeren - Auto
+139,Area,Heel Amsterdam
+139,Type,Randvoorwaarde
+139,Level,Operationeel Niveau
+139,Source,Nota Parkeernormen Auto (2017)
+140,Theme,8. Parkeren - Auto
+140,Area,Heel Amsterdam
+140,Type,Uitgangspunt
+140,Level,Proces
+140,Source,Nota Parkeernormen Auto (2017)
+141,Theme,1. Openbare Ruimte Algemeen
+141,Area,Centrum
+141,Type,Ambitie
+141,Level,Strategisch Niveau
+141,Source,Nota Bereikbare Binnenstad (2013)
+142,Theme,4. Voetganger
+142,Area,Centrum
+142,Type,Uitgangspunt
+142,Level,Tactisch Niveau
+142,Source,Nota Bereikbare Binnenstad (2013)
+143,Theme,7. Auto
+143,Area,Centrum
+143,Type,Uitgangspunt
+143,Level,Tactisch Niveau
+143,Source,Nota Bereikbare Binnenstad (2013)
+144,Theme,3. Netwerken & Profielen
+144,Area,Centrum
+144,Type,Uitgangspunt
+144,Level,Tactisch Niveau
+144,Source,Nota Bereikbare Binnenstad (2013)
+145,Theme,6. Openbaar Vervoer
+145,Area,Centrum
+145,Type,Uitgangspunt
+145,Level,Tactisch Niveau
+145,Source,Nota Bereikbare Binnenstad (2013)
+146,Theme,8. Parkeren - Auto
+146,Area,Centrum
+146,Type,Uitgangspunt
+146,Level,Tactisch Niveau
+146,Source,Nota Bereikbare Binnenstad (2013)
+147,Theme,1. Openbare Ruimte Algemeen
+147,Area,Centrum
+147,Type,Uitgangspunt
+147,Level,Tactisch Niveau
+147,Source,Nota Bereikbare Binnenstad (2013)
+148,Theme,12. Groen
+148,Area,Zuidoost
+148,Type,Ambitie
+148,Level,Strategisch Niveau
+148,Source,Natuurplan Amsterdam Zuidoost (2012)
+149,Theme,12. Groen
+149,Area,Zuidoost
+149,Type,Ambitie
+149,Level,Tactisch Niveau
+149,Source,Natuurplan Amsterdam Zuidoost (2012)
+150,Theme,12. Groen
+150,Area,Zuidoost
+150,Type,Uitgangspunt
+150,Level,Operationeel Niveau
+150,Source,Natuurplan Amsterdam Zuidoost (2012)
+151,Theme,1. Openbare Ruimte Algemeen
+151,Area,Heel Amsterdam
+151,Type,Ambitie
+151,Level,Strategisch Niveau
+151,Source,Mobiliteitsaanpak Amsterdam (2013)
+152,Theme,1. Openbare Ruimte Algemeen
+152,Area,Heel Amsterdam
+152,Type,Ambitie
+152,Level,Tactisch Niveau
+152,Source,Mobiliteitsaanpak Amsterdam (2013)
+153,Theme,1. Openbare Ruimte Algemeen
+153,Area,Heel Amsterdam
+153,Type,Uitgangspunt
+153,Level,Tactisch Niveau
+153,Source,Mobiliteitsaanpak Amsterdam (2013)
+154,Theme,1. Openbare Ruimte Algemeen
+154,Area,Heel Amsterdam
+154,Type,Uitgangspunt
+154,Level,Tactisch Niveau
+154,Source,Mobiliteitsaanpak Amsterdam (2013)
+155,Theme,8. Parkeren - Auto
+155,Area,Heel Amsterdam
+155,Type,Uitgangspunt
+155,Level,Tactisch Niveau
+155,Source,Mobiliteitsaanpak Amsterdam (2013)
+156,Theme,1. Openbare Ruimte Algemeen
+156,Area,Heel Amsterdam
+156,Type,Advies
+156,Level,Strategisch Niveau
+156,Source,Leidraad Cvc (2020)
+157,Theme,3. Netwerken & Profielen
+157,Area,Heel Amsterdam
+157,Type,Advies
+157,Level,Tactisch Niveau
+157,Source,Leidraad Cvc (2020)
+158,Theme,3. Netwerken & Profielen
+158,Area,Heel Amsterdam
+158,Type,Advies
+158,Level,Tactisch Niveau
+158,Source,Leidraad Cvc (2020)
+159,Theme,6. Openbaar Vervoer
+159,Area,Heel Amsterdam
+159,Type,Advies
+159,Level,Tactisch Niveau
+159,Source,Leidraad Cvc (2020)
+160,Theme,8. Parkeren - Auto
+160,Theme,7. Auto
+160,Area,Heel Amsterdam
+160,Type,Advies
+160,Level,Operationeel Niveau
+160,Source,Leidraad Cvc (2020)
+161,Theme,6. Openbaar Vervoer
+161,Area,Heel Amsterdam
+161,Type,Advies
+161,Level,Operationeel Niveau
+161,Source,Leidraad Cvc (2020)
+162,Theme,11. Openbare Verlichting
+162,Theme,4. Voetganger
+162,Area,Heel Amsterdam
+162,Type,Advies
+162,Level,Operationeel Niveau
+162,Source,Leidraad Cvc (2020)
+163,Theme,5. Fiets
+163,Area,Heel Amsterdam
+163,Type,Advies
+163,Level,Operationeel Niveau
+163,Source,Leidraad Cvc (2020)
+164,Theme,3. Netwerken & Profielen
+164,Area,Heel Amsterdam
+164,Type,Advies
+164,Level,Operationeel Niveau
+164,Source,Leidraad Cvc (2020)
+165,Theme,3. Netwerken & Profielen
+165,Area,Heel Amsterdam
+165,Type,Advies
+165,Level,Operationeel Niveau
+165,Source,Leidraad Cvc (2020)
+166,Theme,4. Voetganger
+166,Area,Heel Amsterdam
+166,Type,Advies
+166,Level,Operationeel Niveau
+166,Source,Leidraad Cvc (2020)
+167,Theme,4. Voetganger
+167,Area,Heel Amsterdam
+167,Type,Advies
+167,Level,Operationeel Niveau
+167,Source,Leidraad Cvc (2020)
+168,Theme,3. Netwerken & Profielen
+168,Area,Heel Amsterdam
+168,Type,Advies
+168,Level,Tactisch Niveau
+168,Source,Leidraad Cvc (2020)
+169,Theme,5. Fiets
+169,Area,Heel Amsterdam
+169,Type,Advies
+169,Level,Operationeel Niveau
+169,Source,Leidraad Cvc (2020)
+170,Theme,3. Netwerken & Profielen
+170,Area,Heel Amsterdam
+170,Type,Advies
+170,Level,Operationeel Niveau
+170,Source,Leidraad Cvc (2020)
+171,Theme,15. Civiele Constructies & Tunnels
+171,Area,Heel Amsterdam
+171,Type,Advies
+171,Level,Operationeel Niveau
+171,Source,Leidraad Cvc (2020)
+172,Theme,16. Ondergrond
+172,Area,Heel Amsterdam
+172,Type,Advies
+172,Level,Operationeel Niveau
+172,Source,Leidraad Cvc (2020)
+173,Theme,9. Verhardingen
+173,Theme,8. Parkeren - Auto
+173,Area,Heel Amsterdam
+173,Type,Advies
+173,Level,Operationeel Niveau
+173,Source,Leidraad Cvc (2020)
+174,Theme,7. Auto
+174,Theme,3. Netwerken & Profielen
+174,Area,Heel Amsterdam
+174,Type,Advies
+174,Level,Operationeel Niveau
+174,Source,Leidraad Cvc (2020)
+175,Theme,12. Groen
+175,Theme,3. Netwerken & Profielen
+175,Area,Heel Amsterdam
+175,Type,Advies
+175,Level,Operationeel Niveau
+175,Source,Leidraad Cvc (2020)
+176,Theme,5. Fiets
+176,Area,Heel Amsterdam
+176,Type,Advies
+176,Level,Operationeel Niveau
+176,Source,Leidraad Cvc (2020)
+177,Theme,5. Fiets
+177,Area,Heel Amsterdam
+177,Type,Advies
+177,Level,Operationeel Niveau
+177,Source,Leidraad Cvc (2020)
+178,Theme,15. Civiele Constructies & Tunnels
+178,Area,Heel Amsterdam
+178,Type,Advies
+178,Level,Operationeel Niveau
+178,Source,Leidraad Cvc (2020)
+179,Theme,4. Voetganger
+179,Area,Heel Amsterdam
+179,Type,Advies
+179,Level,Operationeel Niveau
+179,Source,Leidraad Cvc (2020)
+180,Theme,4. Voetganger
+180,Area,Heel Amsterdam
+180,Type,Advies
+180,Level,Operationeel Niveau
+180,Source,Leidraad Cvc (2020)
+181,Theme,10. Straatmeubilair
+181,Area,Heel Amsterdam
+181,Type,Advies
+181,Level,Proces
+181,Source,Leidraad Cvc (2020)
+182,Theme,10. Straatmeubilair
+182,Area,Heel Amsterdam
+182,Type,Advies
+182,Level,Operationeel Niveau
+182,Source,Leidraad Cvc (2020)
+183,Theme,3. Netwerken & Profielen
+183,Area,Heel Amsterdam
+183,Type,Advies
+183,Level,Proces
+183,Source,Leidraad Cvc (2020)
+184,Theme,5. Fiets
+184,Area,Heel Amsterdam
+184,Type,Uitgangspunt
+184,Level,Tactisch Niveau
+184,Source,Kader Fietsparkeren (2015)
+185,Theme,5. Fiets
+185,Area,Heel Amsterdam
+185,Type,Uitgangspunt
+185,Level,Tactisch Niveau
+185,Source,Kader Fietsparkeren (2015)
+186,Theme,5. Fiets
+186,Area,Heel Amsterdam
+186,Type,Randvoorwaarde
+186,Level,Proces
+186,Source,Kader Fietsparkeren (2015)
+187,Theme,2. Structuur & Stedenbouwkunde
+187,Area,Centrum
+187,Type,Advies
+187,Level,Strategisch Niveau
+187,Source,"(Voormalig) Hior Centrum (2009, Vervallen 2016)"
+188,Theme,1. Openbare Ruimte Algemeen
+188,Theme,10. Straatmeubilair
+188,Theme,3. Netwerken & Profielen
+188,Area,Centrum
+188,Type,Advies
+188,Level,Operationeel Niveau
+188,Source,"(Voormalig) Hior Centrum (2009, Vervallen 2016)"
+189,Theme,1. Openbare Ruimte Algemeen
+189,Theme,10. Straatmeubilair
+189,Theme,9. Verhardingen
+189,Area,Centrum
+189,Type,Advies
+189,Level,Operationeel Niveau
+189,Source,"(Voormalig) Hior Centrum (2009, Vervallen 2016)"
+190,Theme,1. Openbare Ruimte Algemeen
+190,Theme,10. Straatmeubilair
+190,Theme,9. Verhardingen
+190,Area,Centrum
+190,Type,Advies
+190,Level,Operationeel Niveau
+190,Source,"(Voormalig) Hior Centrum (2009, Vervallen 2016)"
+191,Theme,1. Openbare Ruimte Algemeen
+191,Theme,10. Straatmeubilair
+191,Area,Centrum
+191,Type,Advies
+191,Level,Operationeel Niveau
+191,Source,"(Voormalig) Hior Centrum (2009, Vervallen 2016)"
+192,Theme,1. Openbare Ruimte Algemeen
+192,Area,Centrum
+192,Type,Advies
+192,Level,Operationeel Niveau
+192,Source,"(Voormalig) Hior Centrum (2009, Vervallen 2016)"
+193,Theme,12. Groen
+193,Area,Centrum
+193,Type,Advies
+193,Level,Operationeel Niveau
+193,Source,"(Voormalig) Hior Centrum (2009, Vervallen 2016)"
+194,Theme,12. Groen
+194,Area,Centrum
+194,Type,Advies
+194,Level,Operationeel Niveau
+194,Source,"(Voormalig) Hior Centrum (2009, Vervallen 2016)"
+195,Theme,12. Groen
+195,Area,Centrum
+195,Type,Advies
+195,Level,Operationeel Niveau
+195,Source,"(Voormalig) Hior Centrum (2009, Vervallen 2016)"
+196,Theme,14. Water & Oevers
+196,Area,Centrum
+196,Type,Advies
+196,Level,Operationeel Niveau
+196,Source,"(Voormalig) Hior Centrum (2009, Vervallen 2016)"
+197,Theme,14. Water & Oevers
+197,Area,Centrum
+197,Type,Advies
+197,Level,Operationeel Niveau
+197,Source,"(Voormalig) Hior Centrum (2009, Vervallen 2016)"
+198,Theme,14. Water & Oevers
+198,Area,Centrum
+198,Type,Advies
+198,Level,Operationeel Niveau
+198,Source,"(Voormalig) Hior Centrum (2009, Vervallen 2016)"
+199,Theme,14. Water & Oevers
+199,Area,Centrum
+199,Type,Advies
+199,Level,Operationeel Niveau
+199,Source,"(Voormalig) Hior Centrum (2009, Vervallen 2016)"
+200,Theme,14. Water & Oevers
+200,Area,Centrum
+200,Type,Advies
+200,Level,Operationeel Niveau
+200,Source,"(Voormalig) Hior Centrum (2009, Vervallen 2016)"
+201,Theme,10. Straatmeubilair
+201,Area,Centrum
+201,Type,Advies
+201,Level,Operationeel Niveau
+201,Source,"(Voormalig) Hior Centrum (2009, Vervallen 2016)"
+202,Theme,10. Straatmeubilair
+202,Area,Centrum
+202,Type,Advies
+202,Level,Operationeel Niveau
+202,Source,"(Voormalig) Hior Centrum (2009, Vervallen 2016)"
+203,Theme,10. Straatmeubilair
+203,Area,Centrum
+203,Type,Advies
+203,Level,Operationeel Niveau
+203,Source,"(Voormalig) Hior Centrum (2009, Vervallen 2016)"
+204,Theme,10. Straatmeubilair
+204,Area,Centrum
+204,Type,Advies
+204,Level,Operationeel Niveau
+204,Source,"(Voormalig) Hior Centrum (2009, Vervallen 2016)"
+205,Theme,10. Straatmeubilair
+205,Area,Centrum
+205,Type,Advies
+205,Level,Operationeel Niveau
+205,Source,"(Voormalig) Hior Centrum (2009, Vervallen 2016)"
+206,Theme,10. Straatmeubilair
+206,Area,Centrum
+206,Type,Advies
+206,Level,Operationeel Niveau
+206,Source,"(Voormalig) Hior Centrum (2009, Vervallen 2016)"
+207,Theme,10. Straatmeubilair
+207,Area,Centrum
+207,Type,Advies
+207,Level,Operationeel Niveau
+207,Source,"(Voormalig) Hior Centrum (2009, Vervallen 2016)"
+208,Theme,10. Straatmeubilair
+208,Area,Centrum
+208,Type,Advies
+208,Level,Operationeel Niveau
+208,Source,"(Voormalig) Hior Centrum (2009, Vervallen 2016)"
+209,Theme,13. Sport & Spel
+209,Theme,9. Verhardingen
+209,Area,Heel Amsterdam
+209,Type,Uitgangspunt
+209,Level,Operationeel Niveau
+209,Source,Handboek Hardlooproutes (2016)
+210,Theme,12. Groen
+210,Area,Nieuw-West
+210,Type,Ambitie
+210,Level,Strategisch Niveau
+210,Source,Groenvisie Nieuw-West (2012)
+211,Theme,12. Groen
+211,Area,Nieuw-West
+211,Type,Uitgangspunt
+211,Level,Tactisch Niveau
+211,Source,Groenvisie Nieuw-West (2012)
+212,Theme,12. Groen
+212,Area,Nieuw-West
+212,Type,Uitgangspunt
+212,Level,Tactisch Niveau
+212,Source,Groenvisie Nieuw-West (2012)
+213,Theme,12. Groen
+213,Area,Nieuw-West
+213,Type,Uitgangspunt
+213,Level,Tactisch Niveau
+213,Source,Groenvisie Nieuw-West (2012)
+214,Theme,12. Groen
+214,Area,Nieuw-West
+214,Type,Uitgangspunt
+214,Level,Tactisch Niveau
+214,Source,Groenvisie Nieuw-West (2012)
+215,Theme,12. Groen
+215,Area,Heel Amsterdam
+215,Type,Randvoorwaarde
+215,Level,Strategisch Niveau
+215,Source,Ecologische Visie (2012)
+216,Theme,12. Groen
+216,Area,Nieuw-West
+216,Type,Uitgangspunt
+216,Level,Tactisch Niveau
+216,Source,De Bomentaal Van Slotervaart (2009)
+217,Theme,12. Groen
+217,Area,Nieuw-West
+217,Type,Uitgangspunt
+217,Level,Operationeel Niveau
+217,Source,De Bomentaal Van Slotervaart (2009)
+218,Theme,12. Groen
+218,Area,Nieuw-West
+218,Type,Uitgangspunt
+218,Level,Operationeel Niveau
+218,Source,De Bomentaal Van Slotervaart (2009)
+219,Theme,12. Groen
+219,Area,Nieuw-West
+219,Type,Uitgangspunt
+219,Level,Operationeel Niveau
+219,Source,De Bomentaal Van Slotervaart (2009)
+220,Theme,12. Groen
+220,Area,Nieuw-West
+220,Type,Uitgangspunt
+220,Level,Operationeel Niveau
+220,Source,De Bomentaal Van Slotervaart (2009)
+221,Theme,12. Groen
+221,Area,Nieuw-West
+221,Type,Uitgangspunt
+221,Level,Operationeel Niveau
+221,Source,De Bomentaal Van Slotervaart (2009)
+222,Theme,12. Groen
+222,Area,Nieuw-West
+222,Type,Uitgangspunt
+222,Level,Operationeel Niveau
+222,Source,De Bomentaal Van Slotervaart (2009)
+223,Theme,12. Groen
+223,Area,Nieuw-West
+223,Type,Uitgangspunt
+223,Level,Operationeel Niveau
+223,Source,De Bomentaal Van Slotervaart (2009)
+224,Theme,12. Groen
+224,Area,Nieuw-West
+224,Type,Uitgangspunt
+224,Level,Operationeel Niveau
+224,Source,De Bomentaal Van Slotervaart (2009)
+225,Theme,12. Groen
+225,Area,Nieuw-West
+225,Type,Uitgangspunt
+225,Level,Operationeel Niveau
+225,Source,De Bomentaal Van Slotervaart (2009)
+226,Theme,12. Groen
+226,Area,Nieuw-West
+226,Type,Uitgangspunt
+226,Level,Operationeel Niveau
+226,Source,De Bomentaal Van Slotervaart (2009)
+227,Theme,12. Groen
+227,Area,Nieuw-West
+227,Type,Uitgangspunt
+227,Level,Operationeel Niveau
+227,Source,De Bomentaal Van Slotervaart (2009)
+228,Theme,12. Groen
+228,Area,Nieuw-West
+228,Type,Uitgangspunt
+228,Level,Operationeel Niveau
+228,Source,De Bomentaal Van Slotervaart (2009)
+229,Theme,12. Groen
+229,Area,Nieuw-West
+229,Type,Uitgangspunt
+229,Level,Operationeel Niveau
+229,Source,De Bomentaal Van Slotervaart (2009)
+230,Theme,12. Groen
+230,Area,Nieuw-West
+230,Type,Uitgangspunt
+230,Level,Operationeel Niveau
+230,Source,De Bomentaal Van Slotervaart (2009)
+231,Theme,12. Groen
+231,Area,Nieuw-West
+231,Type,Uitgangspunt
+231,Level,Operationeel Niveau
+231,Source,De Bomentaal Van Slotervaart (2009)
+232,Theme,12. Groen
+232,Area,Nieuw-West
+232,Type,Uitgangspunt
+232,Level,Strategisch Niveau
+232,Source,De Bomentaal Van Slotervaart (2009)
+233,Theme,13. Sport & Spel
+233,Theme,3. Netwerken & Profielen
+233,Area,Heel Amsterdam
+233,Type,Ambitie
+233,Level,Strategisch Niveau
+233,Source,"De Bewegende Stad, De Amsterdamse Beweeglogica (2016)"
+234,Theme,4. Voetganger
+234,Area,Heel Amsterdam
+234,Type,Ambitie
+234,Level,Tactisch Niveau
+234,Source,"De Bewegende Stad, De Amsterdamse Beweeglogica (2016)"
+235,Theme,13. Sport & Spel
+235,Area,Heel Amsterdam
+235,Type,Uitgangspunt
+235,Level,Tactisch Niveau
+235,Source,"De Bewegende Stad, De Amsterdamse Beweeglogica (2016)"
+236,Theme,13. Sport & Spel
+236,Theme,10. Straatmeubilair
+236,Theme,12. Groen
+236,Area,Heel Amsterdam
+236,Type,Ambitie
+236,Level,Tactisch Niveau
+236,Source,"De Bewegende Stad, De Amsterdamse Beweeglogica (2016)"
+237,Theme,14. Water & Oevers
+237,Theme,13. Sport & Spel
+237,Area,Heel Amsterdam
+237,Type,Ambitie
+237,Level,Tactisch Niveau
+237,Source,"De Bewegende Stad, De Amsterdamse Beweeglogica (2016)"
+238,Theme,12. Groen
+238,Area,Heel Amsterdam
+238,Type,Ambitie
+238,Level,Tactisch Niveau
+238,Source,"De Bewegende Stad, De Amsterdamse Beweeglogica (2016)"
+239,Theme,6. Openbaar Vervoer
+239,Area,Heel Amsterdam
+239,Type,Ambitie
+239,Level,Tactisch Niveau
+239,Source,"De Bewegende Stad, De Amsterdamse Beweeglogica (2016)"
+240,Theme,2. Structuur & Stedenbouwkunde
+240,Area,Heel Amsterdam
+240,Type,Uitgangspunt
+240,Level,Tactisch Niveau
+240,Source,"De Bewegende Stad, De Amsterdamse Beweeglogica (2016)"
+241,Theme,2. Structuur & Stedenbouwkunde
+241,Area,Heel Amsterdam
+241,Type,Uitgangspunt
+241,Level,Tactisch Niveau
+241,Source,"De Bewegende Stad, De Amsterdamse Beweeglogica (2016)"
+242,Theme,2. Structuur & Stedenbouwkunde
+242,Area,Heel Amsterdam
+242,Type,Uitgangspunt
+242,Level,Tactisch Niveau
+242,Source,"De Bewegende Stad, De Amsterdamse Beweeglogica (2016)"
+243,Theme,3. Netwerken & Profielen
+243,Theme,5. Fiets
+243,Theme,4. Voetganger
+243,Area,Heel Amsterdam
+243,Type,Uitgangspunt
+243,Level,Tactisch Niveau
+243,Source,"De Bewegende Stad, De Amsterdamse Beweeglogica (2016)"
+244,Theme,7. Auto
+244,Theme,3. Netwerken & Profielen
+244,Area,Heel Amsterdam
+244,Type,Uitgangspunt
+244,Level,Tactisch Niveau
+244,Source,"De Bewegende Stad, De Amsterdamse Beweeglogica (2016)"
+245,Theme,13. Sport & Spel
+245,Area,Heel Amsterdam
+245,Type,Uitgangspunt
+245,Level,Tactisch Niveau
+245,Source,"De Bewegende Stad, De Amsterdamse Beweeglogica (2016)"
+246,Theme,13. Sport & Spel
+246,Theme,2. Structuur & Stedenbouwkunde
+246,Area,Heel Amsterdam
+246,Type,Uitgangspunt
+246,Level,Tactisch Niveau
+246,Source,"De Bewegende Stad, De Amsterdamse Beweeglogica (2016)"
+247,Theme,13. Sport & Spel
+247,Area,Heel Amsterdam
+247,Type,Uitgangspunt
+247,Level,Tactisch Niveau
+247,Source,"De Bewegende Stad, De Amsterdamse Beweeglogica (2016)"
+248,Theme,3. Netwerken & Profielen
+248,Theme,9. Verhardingen
+248,Theme,12. Groen
+248,Area,Heel Amsterdam
+248,Type,Uitgangspunt
+248,Level,Tactisch Niveau
+248,Source,"De Bewegende Stad, De Amsterdamse Beweeglogica (2016)"
+249,Theme,4. Voetganger
+249,Area,Heel Amsterdam
+249,Type,Uitgangspunt
+249,Level,Tactisch Niveau
+249,Source,"De Bewegende Stad, De Amsterdamse Beweeglogica (2016)"
+250,Theme,3. Netwerken & Profielen
+250,Area,Heel Amsterdam
+250,Type,Uitgangspunt
+250,Level,Tactisch Niveau
+250,Source,"De Bewegende Stad, De Amsterdamse Beweeglogica (2016)"
+251,Theme,3. Netwerken & Profielen
+251,Area,Heel Amsterdam
+251,Type,Uitgangspunt
+251,Level,Tactisch Niveau
+251,Source,"De Bewegende Stad, De Amsterdamse Beweeglogica (2016)"
+252,Theme,12. Groen
+252,Theme,16. Ondergrond
+252,Area,Heel Amsterdam
+252,Type,Uitgangspunt
+252,Level,Operationeel Niveau
+252,Source,"De Bewegende Stad, De Amsterdamse Beweeglogica (2016)"
+253,Theme,13. Sport & Spel
+253,Theme,13. Sport & Spel
+253,Area,Heel Amsterdam
+253,Type,Uitgangspunt
+253,Level,Proces
+253,Source,"De Bewegende Stad, De Amsterdamse Beweeglogica (2016)"
+254,Theme,1. Openbare Ruimte Algemeen
+254,Area,Heel Amsterdam
+254,Type,Advies
+254,Level,Strategisch Niveau
+254,Source,De Amsterdamse Gezondheidslogica (2021)
+255,Theme,12. Groen
+255,Area,Heel Amsterdam
+255,Type,Advies
+255,Level,Tactisch Niveau
+255,Source,De Amsterdamse Gezondheidslogica (2021)
+256,Theme,1. Openbare Ruimte Algemeen
+256,Area,Heel Amsterdam
+256,Type,Advies
+256,Level,Tactisch Niveau
+256,Source,De Amsterdamse Gezondheidslogica (2021)
+257,Theme,1. Openbare Ruimte Algemeen
+257,Area,Heel Amsterdam
+257,Type,Advies
+257,Level,Tactisch Niveau
+257,Source,De Amsterdamse Gezondheidslogica (2021)
+258,Theme,1. Openbare Ruimte Algemeen
+258,Area,Heel Amsterdam
+258,Type,Advies
+258,Level,Tactisch Niveau
+258,Source,De Amsterdamse Gezondheidslogica (2021)
+259,Theme,1. Openbare Ruimte Algemeen
+259,Area,Heel Amsterdam
+259,Type,Advies
+259,Level,Tactisch Niveau
+259,Source,De Amsterdamse Gezondheidslogica (2021)
+260,Theme,1. Openbare Ruimte Algemeen
+260,Area,Heel Amsterdam
+260,Type,Advies
+260,Level,Tactisch Niveau
+260,Source,De Amsterdamse Gezondheidslogica (2021)
+261,Theme,1. Openbare Ruimte Algemeen
+261,Theme,3. Netwerken & Profielen
+261,Area,Heel Amsterdam
+261,Type,Advies
+261,Level,Tactisch Niveau
+261,Source,De Amsterdamse Gezondheidslogica (2021)
+262,Theme,1. Openbare Ruimte Algemeen
+262,Area,Heel Amsterdam
+262,Type,Advies
+262,Level,Tactisch Niveau
+262,Source,De Amsterdamse Gezondheidslogica (2021)
+263,Theme,1. Openbare Ruimte Algemeen
+263,Area,Heel Amsterdam
+263,Type,Advies
+263,Level,Tactisch Niveau
+263,Source,De Amsterdamse Gezondheidslogica (2021)
+264,Theme,12. Groen
+264,Area,Heel Amsterdam
+264,Type,Randvoorwaarde
+264,Level,Operationeel Niveau
+264,Source,Bomenverordening (2014)
+265,Theme,12. Groen
+265,Area,Heel Amsterdam
+265,Type,Randvoorwaarde
+265,Level,Operationeel Niveau
+265,Source,Bomenverordening (2014)
+266,Theme,12. Groen
+266,Area,Heel Amsterdam
+266,Type,Uitgangspunt
+266,Level,Operationeel Niveau
+266,Source,Bomenverordening (2014)
+267,Theme,12. Groen
+267,Area,Nieuw-West
+267,Type,Uitgangspunt
+267,Level,Operationeel Niveau
+267,Source,Bomenstructuurplan Nieuw-West (2002)
+268,Theme,12. Groen
+268,Area,Nieuw-West
+268,Type,Uitgangspunt
+268,Level,Operationeel Niveau
+268,Source,Bomenstructuurplan Nieuw-West (2002)
+269,Theme,12. Groen
+269,Area,Nieuw-West
+269,Type,Uitgangspunt
+269,Level,Operationeel Niveau
+269,Source,Bomenstructuurplan Nieuw-West (2002)
+270,Theme,12. Groen
+270,Area,Nieuw-West
+270,Type,Uitgangspunt
+270,Level,Operationeel Niveau
+270,Source,Bomenstructuurplan Nieuw-West (2002)
+271,Theme,12. Groen
+271,Area,Nieuw-West
+271,Type,Uitgangspunt
+271,Level,Operationeel Niveau
+271,Source,Bomenstructuurplan Nieuw-West (2002)
+272,Theme,12. Groen
+272,Area,Nieuw-West
+272,Type,Uitgangspunt
+272,Level,Operationeel Niveau
+272,Source,Bomenstructuurplan Nieuw-West (2002)
+273,Theme,12. Groen
+273,Area,Noord
+273,Type,Ambitie
+273,Level,Strategisch Niveau
+273,Source,Beleidsvisie Noordhollandsch-Kanaalzone (2003)
+274,Theme,3. Netwerken & Profielen
+274,Area,Noord
+274,Type,Ambitie
+274,Level,Tactisch Niveau
+274,Source,Beleidsvisie Noordhollandsch-Kanaalzone (2003)
+275,Theme,3. Netwerken & Profielen
+275,Area,Noord
+275,Type,Ambitie
+275,Level,Tactisch Niveau
+275,Source,Beleidsvisie Noordhollandsch-Kanaalzone (2003)
+276,Theme,2. Structuur & Stedenbouwkunde
+276,Area,Noord
+276,Type,Uitgangspunt
+276,Level,Tactisch Niveau
+276,Source,Beleidsvisie Noordhollandsch-Kanaalzone (2003)
+277,Theme,12. Groen
+277,Area,Noord
+277,Type,Uitgangspunt
+277,Level,Tactisch Niveau
+277,Source,Beleidsvisie Noordhollandsch-Kanaalzone (2003)
+278,Theme,14. Water & Oevers
+278,Area,Noord
+278,Type,Uitgangspunt
+278,Level,Tactisch Niveau
+278,Source,Beleidsvisie Noordhollandsch-Kanaalzone (2003)
+279,Theme,1. Openbare Ruimte Algemeen
+279,Area,Noord
+279,Type,Uitgangspunt
+279,Level,Tactisch Niveau
+279,Source,Beleidsvisie Noordhollandsch-Kanaalzone (2003)
+280,Theme,16. Ondergrond
+280,Area,Noord
+280,Type,Uitgangspunt
+280,Level,Tactisch Niveau
+280,Source,Beleidsvisie Noordhollandsch-Kanaalzone (2003)
+281,Theme,1. Openbare Ruimte Algemeen
+281,Area,Centrum
+281,Type,Ambitie
+281,Level,Tactisch Niveau
+281,Source,Beleidsplan Binnenstad (1993)
+282,Theme,1. Openbare Ruimte Algemeen
+282,Area,Centrum
+282,Type,Ambitie
+282,Level,Tactisch Niveau
+282,Source,Beleidsplan Binnenstad (1993)
+283,Theme,1. Openbare Ruimte Algemeen
+283,Area,Centrum
+283,Type,Ambitie
+283,Level,Tactisch Niveau
+283,Source,Beleidsplan Binnenstad (1993)
+284,Theme,11. Openbare Verlichting
+284,Area,Heel Amsterdam
+284,Type,Uitgangspunt
+284,Level,Tactisch Niveau
+284,Source,Beleidskader Verlichting (2017)
+285,Theme,11. Openbare Verlichting
+285,Area,Heel Amsterdam
+285,Type,Uitgangspunt
+285,Level,Tactisch Niveau
+285,Source,Beleidskader Verlichting (2017)
+286,Theme,11. Openbare Verlichting
+286,Area,Heel Amsterdam
+286,Type,Uitgangspunt
+286,Level,Tactisch Niveau
+286,Source,Beleidskader Verlichting (2017)
+287,Theme,11. Openbare Verlichting
+287,Area,Heel Amsterdam
+287,Type,Uitgangspunt
+287,Level,Tactisch Niveau
+287,Source,Beleidskader Verlichting (2017)
+288,Theme,11. Openbare Verlichting
+288,Area,Heel Amsterdam
+288,Type,Randvoorwaarde
+288,Level,Operationeel Niveau
+288,Source,Beleidskader Verlichting (2017)
+289,Theme,11. Openbare Verlichting
+289,Area,Heel Amsterdam
+289,Type,Randvoorwaarde
+289,Level,Operationeel Niveau
+289,Source,Beleidskader Verlichting (2017)
+290,Theme,11. Openbare Verlichting
+290,Area,Heel Amsterdam
+290,Type,Randvoorwaarde
+290,Level,Operationeel Niveau
+290,Source,Beleidskader Verlichting (2017)
+291,Theme,11. Openbare Verlichting
+291,Area,Heel Amsterdam
+291,Type,Randvoorwaarde
+291,Level,Operationeel Niveau
+291,Source,Beleidskader Verlichting (2017)
+292,Theme,11. Openbare Verlichting
+292,Theme,10. Straatmeubilair
+292,Area,Heel Amsterdam
+292,Type,Uitgangspunt
+292,Level,Operationeel Niveau
+292,Source,Beleidskader Verlichting (2017)
+293,Theme,11. Openbare Verlichting
+293,Theme,12. Groen
+293,Area,Heel Amsterdam
+293,Type,Uitgangspunt
+293,Level,Operationeel Niveau
+293,Source,Beleidskader Verlichting (2017)
+294,Theme,11. Openbare Verlichting
+294,Theme,12. Groen
+294,Area,Heel Amsterdam
+294,Type,Uitgangspunt
+294,Level,Operationeel Niveau
+294,Source,Beleidskader Verlichting (2017)
+295,Theme,11. Openbare Verlichting
+295,Area,Heel Amsterdam
+295,Type,Randvoorwaarde
+295,Level,Proces
+295,Source,Beleidskader Verlichting (2017)
+296,Theme,11. Openbare Verlichting
+296,Area,Heel Amsterdam
+296,Type,Randvoorwaarde
+296,Level,Proces
+296,Source,Beleidskader Verlichting (2017)
+297,Theme,11. Openbare Verlichting
+297,Area,Heel Amsterdam
+297,Type,Randvoorwaarde
+297,Level,Proces
+297,Source,Beleidskader Verlichting (2017)
+298,Theme,3. Netwerken & Profielen
+298,Area,Heel Amsterdam
+298,Type,Randvoorwaarde
+298,Level,Strategisch Niveau
+298,Source,Beleidskader Verkeersnetten (2018)
+299,Theme,6. Openbaar Vervoer
+299,Area,Heel Amsterdam
+299,Type,Uitgangspunt
+299,Level,Strategisch Niveau
+299,Source,Beleidskader Verkeersnetten (2018)
+300,Theme,6. Openbaar Vervoer
+300,Area,Heel Amsterdam
+300,Type,Uitgangspunt
+300,Level,Strategisch Niveau
+300,Source,Beleidskader Verkeersnetten (2018)
+301,Theme,7. Auto
+301,Area,Heel Amsterdam
+301,Type,Uitgangspunt
+301,Level,Strategisch Niveau
+301,Source,Beleidskader Verkeersnetten (2018)
+302,Theme,7. Auto
+302,Area,Heel Amsterdam
+302,Type,Uitgangspunt
+302,Level,Strategisch Niveau
+302,Source,Beleidskader Verkeersnetten (2018)
+303,Theme,4. Voetganger
+303,Area,Heel Amsterdam
+303,Type,Uitgangspunt
+303,Level,Strategisch Niveau
+303,Source,Beleidskader Verkeersnetten (2018)
+304,Theme,4. Voetganger
+304,Area,Heel Amsterdam
+304,Type,Uitgangspunt
+304,Level,Strategisch Niveau
+304,Source,Beleidskader Verkeersnetten (2018)
+305,Theme,5. Fiets
+305,Area,Heel Amsterdam
+305,Type,Uitgangspunt
+305,Level,Strategisch Niveau
+305,Source,Beleidskader Verkeersnetten (2018)
+306,Theme,5. Fiets
+306,Area,Heel Amsterdam
+306,Type,Uitgangspunt
+306,Level,Strategisch Niveau
+306,Source,Beleidskader Verkeersnetten (2018)
+307,Theme,3. Netwerken & Profielen
+307,Area,Heel Amsterdam
+307,Type,Uitgangspunt
+307,Level,Tactisch Niveau
+307,Source,Beleidskader Verkeersnetten (2018)
+308,Theme,3. Netwerken & Profielen
+308,Area,Heel Amsterdam
+308,Type,Uitgangspunt
+308,Level,Tactisch Niveau
+308,Source,Beleidskader Verkeersnetten (2018)
+309,Theme,3. Netwerken & Profielen
+309,Area,Heel Amsterdam
+309,Type,Uitgangspunt
+309,Level,Tactisch Niveau
+309,Source,Beleidskader Verkeersnetten (2018)
+310,Theme,3. Netwerken & Profielen
+310,Area,Heel Amsterdam
+310,Type,Uitgangspunt
+310,Level,Tactisch Niveau
+310,Source,Beleidskader Verkeersnetten (2018)
+311,Theme,3. Netwerken & Profielen
+311,Area,Heel Amsterdam
+311,Type,Uitgangspunt
+311,Level,Tactisch Niveau
+311,Source,Beleidskader Verkeersnetten (2018)
+312,Theme,3. Netwerken & Profielen
+312,Area,Heel Amsterdam
+312,Type,Uitgangspunt
+312,Level,Tactisch Niveau
+312,Source,Beleidskader Verkeersnetten (2018)
+313,Theme,2. Structuur & Stedenbouwkunde
+313,Area,Heel Amsterdam
+313,Type,Randvoorwaarde
+313,Level,Strategisch Niveau
+313,Source,"Amsterdamse Referentienorm Voor Maatschappelijke Voorzieningen, Groen En Spelen (2018)"
+314,Theme,12. Groen
+314,Area,Heel Amsterdam
+314,Type,Randvoorwaarde
+314,Level,Tactisch Niveau
+314,Source,"Amsterdamse Referentienorm Voor Maatschappelijke Voorzieningen, Groen En Spelen (2018)"
+315,Theme,13. Sport & Spel
+315,Area,Heel Amsterdam
+315,Type,Randvoorwaarde
+315,Level,Tactisch Niveau
+315,Source,"Amsterdamse Referentienorm Voor Maatschappelijke Voorzieningen, Groen En Spelen (2018)"
+316,Theme,13. Sport & Spel
+316,Area,Heel Amsterdam
+316,Type,Randvoorwaarde
+316,Level,Tactisch Niveau
+316,Source,"Amsterdamse Referentienorm Voor Maatschappelijke Voorzieningen, Groen En Spelen (2018)"
+317,Theme,10. Straatmeubilair
+317,Area,Heel Amsterdam
+317,Type,Uitgangspunt
+317,Level,Tactisch Niveau
+317,Source,"Amsterdamse Referentienorm Voor Maatschappelijke Voorzieningen, Groen En Spelen (2018)"
+318,Theme,12. Groen
+318,Theme,2. Structuur & Stedenbouwkunde
+318,Area,Heel Amsterdam
+318,Type,Ambitie
+318,Level,Strategisch Niveau
+318,Source,Agenda Groen (2015)
+319,Theme,12. Groen
+319,Theme,2. Structuur & Stedenbouwkunde
+319,Area,Heel Amsterdam
+319,Type,Ambitie
+319,Level,Strategisch Niveau
+319,Source,Agenda Groen (2015)
+320,Theme,12. Groen
+320,Theme,2. Structuur & Stedenbouwkunde
+320,Area,Heel Amsterdam
+320,Type,Ambitie
+320,Level,Strategisch Niveau
+320,Source,Agenda Groen (2015)
+321,Theme,12. Groen
+321,Theme,2. Structuur & Stedenbouwkunde
+321,Area,Heel Amsterdam
+321,Type,Ambitie
+321,Level,Strategisch Niveau
+321,Source,Agenda Groen (2015)
+322,Theme,12. Groen
+322,Area,Heel Amsterdam
+322,Type,Ambitie
+322,Level,Tactisch Niveau
+322,Source,Agenda Groen (2015)
+323,Theme,12. Groen
+323,Area,Heel Amsterdam
+323,Type,Uitgangspunt
+323,Level,Tactisch Niveau
+323,Source,Agenda Groen (2015)
+324,Theme,12. Groen
+324,Theme,2. Structuur & Stedenbouwkunde
+324,Area,Heel Amsterdam
+324,Type,Uitgangspunt
+324,Level,Tactisch Niveau
+324,Source,Agenda Groen (2015)
+325,Theme,12. Groen
+325,Area,Heel Amsterdam
+325,Type,Uitgangspunt
+325,Level,Tactisch Niveau
+325,Source,Agenda Groen (2015)
+326,Theme,1. Openbare Ruimte Algemeen
+326,Area,Heel Amsterdam
+326,Type,Ambitie
+326,Level,Strategisch Niveau
+326,Source,Agenda Dieren (2015)
+327,Theme,12. Groen
+327,Area,Heel Amsterdam
+327,Type,Ambitie
+327,Level,Tactisch Niveau
+327,Source,Agenda Dieren (2015)
+328,Theme,13. Sport & Spel
+328,Area,Heel Amsterdam
+328,Type,Uitgangspunt
+328,Level,Operationeel Niveau
+328,Source,Agenda Dieren (2015)
+329,Theme,12. Groen
+329,Area,Heel Amsterdam
+329,Type,Uitgangspunt
+329,Level,Operationeel Niveau
+329,Source,Agenda Dieren (2015)
+330,Theme,9. Verhardingen
+330,Theme,12. Groen
+330,Area,Heel Amsterdam
+330,Type,Uitgangspunt
+330,Level,Operationeel Niveau
+330,Source,Agenda Dieren (2015)
+331,Theme,1. Openbare Ruimte Algemeen
+331,Area,Heel Amsterdam
+331,Type,Ambitie
+331,Level,Strategisch Niveau
+331,Source,Actieplan Age Friendly City (2017)
+332,Theme,1. Openbare Ruimte Algemeen
+332,Area,Heel Amsterdam
+332,Type,Uitgangspunt
+332,Level,Tactisch Niveau
+332,Source,1 Amsterdam Heel & Schoon (2017)
+333,Theme,9. Verhardingen
+333,Area,Heel Amsterdam
+333,Type,Uitgangspunt
+333,Level,Tactisch Niveau
+333,Source,1 Amsterdam Heel & Schoon (2017)
+334,Theme,14. Water & Oevers
+334,Area,West
+334,Type,Advies
+334,Level,Operationeel Niveau
+334,Source,"(Voormalig) Hior Westerpark (2006, Vervallen 2016)"
+335,Theme,14. Water & Oevers
+335,Area,West
+335,Type,Advies
+335,Level,Operationeel Niveau
+335,Source,"(Voormalig) Hior Westerpark (2006, Vervallen 2016)"
+336,Theme,10. Straatmeubilair
+336,Area,West
+336,Type,Advies
+336,Level,Operationeel Niveau
+336,Source,"(Voormalig) Hior Westerpark (2006, Vervallen 2016)"
+337,Theme,2. Structuur & Stedenbouwkunde
+337,Theme,1. Openbare Ruimte Algemeen
+337,Area,Oost
+337,Type,Advies
+337,Level,Strategisch Niveau
+337,Source,"(Voormalig) Hior Oost (2012, Vervallen 2016)"
+338,Theme,2. Structuur & Stedenbouwkunde
+338,Theme,1. Openbare Ruimte Algemeen
+338,Area,Oost
+338,Type,Advies
+338,Level,Strategisch Niveau
+338,Source,"(Voormalig) Hior Oost (2012, Vervallen 2016)"
+339,Theme,2. Structuur & Stedenbouwkunde
+339,Theme,1. Openbare Ruimte Algemeen
+339,Area,Oost
+339,Type,Advies
+339,Level,Tactisch Niveau
+339,Source,"(Voormalig) Hior Oost (2012, Vervallen 2016)"
+340,Theme,2. Structuur & Stedenbouwkunde
+340,Theme,1. Openbare Ruimte Algemeen
+340,Area,Oost
+340,Type,Advies
+340,Level,Tactisch Niveau
+340,Source,"(Voormalig) Hior Oost (2012, Vervallen 2016)"
+341,Theme,2. Structuur & Stedenbouwkunde
+341,Theme,1. Openbare Ruimte Algemeen
+341,Area,Oost
+341,Type,Advies
+341,Level,Tactisch Niveau
+341,Source,"(Voormalig) Hior Oost (2012, Vervallen 2016)"
+342,Theme,1. Openbare Ruimte Algemeen
+342,Area,Oost
+342,Type,Advies
+342,Level,Tactisch Niveau
+342,Source,"(Voormalig) Hior Oost (2012, Vervallen 2016)"
+343,Theme,14. Water & Oevers
+343,Area,Oost
+343,Type,Advies
+343,Level,Tactisch Niveau
+343,Source,"(Voormalig) Hior Oost (2012, Vervallen 2016)"
+344,Theme,1. Openbare Ruimte Algemeen
+344,Area,Oost
+344,Type,Advies
+344,Level,Tactisch Niveau
+344,Source,"(Voormalig) Hior Oost (2012, Vervallen 2016)"
+345,Theme,12. Groen
+345,Area,Oost
+345,Type,Advies
+345,Level,Operationeel Niveau
+345,Source,"(Voormalig) Hior Oost (2012, Vervallen 2016)"
+346,Theme,14. Water & Oevers
+346,Area,Oost
+346,Type,Advies
+346,Level,Operationeel Niveau
+346,Source,"(Voormalig) Hior Oost (2012, Vervallen 2016)"
+347,Theme,14. Water & Oevers
+347,Area,Oost
+347,Type,Advies
+347,Level,Operationeel Niveau
+347,Source,"(Voormalig) Hior Oost (2012, Vervallen 2016)"
+348,Theme,14. Water & Oevers
+348,Area,Oost
+348,Type,Advies
+348,Level,Operationeel Niveau
+348,Source,"(Voormalig) Hior Oost (2012, Vervallen 2016)"
+349,Theme,10. Straatmeubilair
+349,Area,Oost
+349,Type,Advies
+349,Level,Operationeel Niveau
+349,Source,"(Voormalig) Hior Oost (2012, Vervallen 2016)"
+350,Theme,10. Straatmeubilair
+350,Area,Oost
+350,Type,Advies
+350,Level,Operationeel Niveau
+350,Source,"(Voormalig) Hior Oost (2012, Vervallen 2016)"
+351,Theme,10. Straatmeubilair
+351,Area,Oost
+351,Type,Advies
+351,Level,Operationeel Niveau
+351,Source,"(Voormalig) Hior Oost (2012, Vervallen 2016)"
+352,Theme,10. Straatmeubilair
+352,Area,Oost
+352,Type,Advies
+352,Level,Operationeel Niveau
+352,Source,"(Voormalig) Hior Oost (2012, Vervallen 2016)"
+353,Theme,10. Straatmeubilair
+353,Area,Oost
+353,Type,Advies
+353,Level,Operationeel Niveau
+353,Source,"(Voormalig) Hior Oost (2012, Vervallen 2016)"
+354,Theme,2. Structuur & Stedenbouwkunde
+354,Area,Nieuw-West
+354,Type,Advies
+354,Level,Strategisch Niveau
+354,Source,"(Voormalig) Hior Nieuw-West, Deel I (2011, Vervallen 2016)"
+355,Theme,2. Structuur & Stedenbouwkunde
+355,Area,Nieuw-West
+355,Type,Advies
+355,Level,Operationeel Niveau
+355,Source,"(Voormalig) Hior Nieuw-West, Deel I (2011, Vervallen 2016)"
+356,Theme,10. Straatmeubilair
+356,Area,Nieuw-West
+356,Type,Advies
+356,Level,Operationeel Niveau
+356,Source,"(Voormalig) Hior Nieuw-West, Deel I (2011, Vervallen 2016)"
+357,Theme,13. Sport & Spel
+357,Area,Nieuw-West
+357,Type,Advies
+357,Level,Operationeel Niveau
+357,Source,"(Voormalig) Hior Nieuw-West, Deel I (2011, Vervallen 2016)"
+358,Theme,9. Verhardingen
+358,Area,Noord
+358,Type,Advies
+358,Level,Operationeel Niveau
+358,Source,"(Voormalig) Hbor Noord (2015, Vervallen 2016)"
+359,Theme,9. Verhardingen
+359,Area,Noord
+359,Type,Advies
+359,Level,Operationeel Niveau
+359,Source,"(Voormalig) Hbor Noord (2015, Vervallen 2016)"
+360,Theme,8. Parkeren - Auto
+360,Area,Noord
+360,Type,Advies
+360,Level,Operationeel Niveau
+360,Source,"(Voormalig) Hbor Noord (2015, Vervallen 2016)"
+361,Theme,14. Water & Oevers
+361,Area,Noord
+361,Type,Advies
+361,Level,Operationeel Niveau
+361,Source,"(Voormalig) Hbor Noord (2015, Vervallen 2016)"
+362,Theme,14. Water & Oevers
+362,Area,Noord
+362,Type,Advies
+362,Level,Operationeel Niveau
+362,Source,"(Voormalig) Hbor Noord (2015, Vervallen 2016)"
+363,Theme,14. Water & Oevers
+363,Area,Noord
+363,Type,Advies
+363,Level,Operationeel Niveau
+363,Source,"(Voormalig) Hbor Noord (2015, Vervallen 2016)"
+364,Theme,14. Water & Oevers
+364,Area,Noord
+364,Type,Advies
+364,Level,Operationeel Niveau
+364,Source,"(Voormalig) Hbor Noord (2015, Vervallen 2016)"
+365,Theme,14. Water & Oevers
+365,Area,Noord
+365,Type,Advies
+365,Level,Operationeel Niveau
+365,Source,"(Voormalig) Hbor Noord (2015, Vervallen 2016)"
+366,Theme,10. Straatmeubilair
+366,Area,Noord
+366,Type,Advies
+366,Level,Operationeel Niveau
+366,Source,"(Voormalig) Hbor Noord (2015, Vervallen 2016)"
+367,Theme,10. Straatmeubilair
+367,Area,Noord
+367,Type,Advies
+367,Level,Operationeel Niveau
+367,Source,"(Voormalig) Hbor Noord (2015, Vervallen 2016)"
+368,Theme,10. Straatmeubilair
+368,Area,Noord
+368,Type,Advies
+368,Level,Operationeel Niveau
+368,Source,"(Voormalig) Hbor Noord (2015, Vervallen 2016)"
+369,Theme,10. Straatmeubilair
+369,Area,Noord
+369,Type,Advies
+369,Level,Operationeel Niveau
+369,Source,"(Voormalig) Hbor Noord (2015, Vervallen 2016)"
+370,Theme,10. Straatmeubilair
+370,Area,Noord
+370,Type,Advies
+370,Level,Operationeel Niveau
+370,Source,"(Voormalig) Hbor Noord (2015, Vervallen 2016)"
+371,Theme,10. Straatmeubilair
+371,Area,Noord
+371,Type,Advies
+371,Level,Operationeel Niveau
+371,Source,"(Voormalig) Hbor Noord (2015, Vervallen 2016)"
+372,Theme,13. Sport & Spel
+372,Area,Noord
+372,Type,Advies
+372,Level,Operationeel Niveau
+372,Source,"(Voormalig) Hbor Noord (2015, Vervallen 2016)"
+373,Theme,13. Sport & Spel
+373,Area,Noord
+373,Type,Advies
+373,Level,Operationeel Niveau
+373,Source,"(Voormalig) Hbor Noord (2015, Vervallen 2016)"
+374,Theme,13. Sport & Spel
+374,Area,Noord
+374,Type,Advies
+374,Level,Operationeel Niveau
+374,Source,"(Voormalig) Hbor Noord (2015, Vervallen 2016)"
+375,Theme,13. Sport & Spel
+375,Area,Noord
+375,Type,Advies
+375,Level,Operationeel Niveau
+375,Source,"(Voormalig) Hbor Noord (2015, Vervallen 2016)"
+376,Theme,13. Sport & Spel
+376,Area,Noord
+376,Type,Advies
+376,Level,Operationeel Niveau
+376,Source,"(Voormalig) Hbor Noord (2015, Vervallen 2016)"
+377,Theme,10. Straatmeubilair
+377,Area,Noord
+377,Type,Advies
+377,Level,Operationeel Niveau
+377,Source,"(Voormalig) Hbor Noord (2015, Vervallen 2016)"
+378,Theme,13. Sport & Spel
+378,Area,Noord
+378,Type,Advies
+378,Level,Proces
+378,Source,"(Voormalig) Hbor Noord (2015, Vervallen 2016)"
+379,Theme,1. Openbare Ruimte Algemeen
+379,Area,Zuidoost
+379,Type,Advies
+379,Level,Strategisch Niveau
+379,Source,"(Voormalig) Hbior Zuidoost (2011, Vervallen 2016)"
+380,Theme,10. Straatmeubilair
+380,Area,Zuidoost
+380,Type,Advies
+380,Level,Operationeel Niveau
+380,Source,"(Voormalig) Hbior Zuidoost (2011, Vervallen 2016)"
+381,Theme,1. Openbare Ruimte Algemeen
+381,Theme,2. Structuur & Stedenbouwkunde
+381,Area,Zuid
+381,Type,Advies
+381,Level,Strategisch Niveau
+381,Source,"(Voormalig) Buitengewoon Goed Zuid (2014, Vervallen 2016)"
+382,Theme,1. Openbare Ruimte Algemeen
+382,Theme,2. Structuur & Stedenbouwkunde
+382,Area,Zuid
+382,Type,Advies
+382,Level,Tactisch Niveau
+382,Source,"(Voormalig) Buitengewoon Goed Zuid (2014, Vervallen 2016)"
+384,Theme,12. Groen
+384,Area,West
+384,Type,Ambitie
+384,Level,Tactisch Niveau
+384,Source,Structuurplan Voor Groen In West (2012)
+385,Theme,12. Groen
+385,Area,West
+385,Type,Ambitie
+385,Level,Tactisch Niveau
+385,Source,Structuurplan Voor Groen In West (2012)
+386,Theme,12. Groen
+386,Area,West
+386,Type,Ambitie
+386,Level,Tactisch Niveau
+386,Source,Structuurplan Voor Groen In West (2012)
+387,Theme,12. Groen
+387,Area,West
+387,Type,Ambitie
+387,Level,Tactisch Niveau
+387,Source,Structuurplan Voor Groen In West (2012)
+388,Theme,12. Groen
+388,Area,West
+388,Type,Ambitie
+388,Level,Tactisch Niveau
+388,Source,Structuurplan Voor Groen In West (2012)
+389,Theme,12. Groen
+389,Area,West
+389,Type,Ambitie
+389,Level,Strategisch Niveau
+389,Source,Structuurplan Voor Groen In West (2012)
+390,Theme,7. Auto
+390,Area,Heel Amsterdam
+390,Type,Uitgangspunt
+390,Level,Strategisch Niveau
+390,Source,Notitie Touringcarbeleid Amsterdam 2012-2020 (2012)
+391,Theme,7. Auto
+391,Area,Heel Amsterdam
+391,Type,Uitgangspunt
+391,Level,Tactisch Niveau
+391,Source,Notitie Touringcarbeleid Amsterdam 2012-2020 (2012)
+392,Theme,7. Auto
+392,Area,Heel Amsterdam
+392,Type,Uitgangspunt
+392,Level,Tactisch Niveau
+392,Source,Notitie Touringcarbeleid Amsterdam 2012-2020 (2012)
+393,Theme,7. Auto
+393,Area,Heel Amsterdam
+393,Type,Uitgangspunt
+393,Level,Tactisch Niveau
+393,Source,Notitie Touringcarbeleid Amsterdam 2012-2020 (2012)
+394,Theme,7. Auto
+394,Area,Heel Amsterdam
+394,Type,Uitgangspunt
+394,Level,Tactisch Niveau
+394,Source,Notitie Touringcarbeleid Amsterdam 2012-2020 (2012)
+395,Theme,7. Auto
+395,Area,Heel Amsterdam
+395,Type,Uitgangspunt
+395,Level,Tactisch Niveau
+395,Source,Notitie Touringcarbeleid Amsterdam 2012-2020 (2012)
+396,Theme,1. Openbare Ruimte Algemeen
+396,Area,Heel Amsterdam
+396,Type,Randvoorwaarde
+396,Level,Operationeel Niveau
+396,Source,"Handboek Rood, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+397,Theme,1. Openbare Ruimte Algemeen
+397,Theme,9. Verhardingen
+397,Area,Heel Amsterdam
+397,Type,Randvoorwaarde
+397,Level,Operationeel Niveau
+397,Source,"Handboek Rood, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+398,Theme,9. Verhardingen
+398,Area,Heel Amsterdam
+398,Type,Uitgangspunt
+398,Level,Operationeel Niveau
+398,Source,"Handboek Rood, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+399,Theme,9. Verhardingen
+399,Theme,3. Netwerken & Profielen
+399,Area,Heel Amsterdam
+399,Type,Uitgangspunt
+399,Level,Operationeel Niveau
+399,Source,"Handboek Rood, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+400,Theme,9. Verhardingen
+400,Theme,3. Netwerken & Profielen
+400,Area,Heel Amsterdam
+400,Type,Uitgangspunt
+400,Level,Operationeel Niveau
+400,Source,"Handboek Rood, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+401,Theme,9. Verhardingen
+401,Area,Heel Amsterdam
+401,Type,Uitgangspunt
+401,Level,Operationeel Niveau
+401,Source,"Handboek Rood, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+402,Theme,9. Verhardingen
+402,Theme,3. Netwerken & Profielen
+402,Area,Heel Amsterdam
+402,Type,Uitgangspunt
+402,Level,Operationeel Niveau
+402,Source,"Handboek Rood, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+403,Theme,9. Verhardingen
+403,Theme,3. Netwerken & Profielen
+403,Area,Heel Amsterdam
+403,Type,Uitgangspunt
+403,Level,Operationeel Niveau
+403,Source,"Handboek Rood, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+404,Theme,9. Verhardingen
+404,Theme,3. Netwerken & Profielen
+404,Area,Heel Amsterdam
+404,Type,Uitgangspunt
+404,Level,Operationeel Niveau
+404,Source,"Handboek Rood, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+405,Theme,9. Verhardingen
+405,Theme,3. Netwerken & Profielen
+405,Area,Heel Amsterdam
+405,Type,Uitgangspunt
+405,Level,Operationeel Niveau
+405,Source,"Handboek Rood, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+406,Theme,9. Verhardingen
+406,Area,Heel Amsterdam
+406,Type,Uitgangspunt
+406,Level,Operationeel Niveau
+406,Source,"Handboek Rood, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+407,Theme,9. Verhardingen
+407,Area,Heel Amsterdam
+407,Type,Uitgangspunt
+407,Level,Operationeel Niveau
+407,Source,"Handboek Rood, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+408,Theme,11. Openbare Verlichting
+408,Area,Centrum
+408,Type,Uitgangspunt
+408,Level,Operationeel Niveau
+408,Source,"Handboek Rood, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+409,Theme,10. Straatmeubilair
+409,Area,Heel Amsterdam
+409,Type,Uitgangspunt
+409,Level,Operationeel Niveau
+409,Source,"Handboek Rood, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+410,Theme,10. Straatmeubilair
+410,Area,Heel Amsterdam
+410,Type,Uitgangspunt
+410,Level,Operationeel Niveau
+410,Source,"Handboek Rood, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+411,Theme,10. Straatmeubilair
+411,Theme,5. Fiets
+411,Area,Heel Amsterdam
+411,Type,Uitgangspunt
+411,Level,Operationeel Niveau
+411,Source,"Handboek Rood, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+412,Theme,10. Straatmeubilair
+412,Area,Heel Amsterdam
+412,Type,Uitgangspunt
+412,Level,Operationeel Niveau
+412,Source,"Handboek Rood, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+413,Theme,10. Straatmeubilair
+413,Area,Heel Amsterdam
+413,Type,Uitgangspunt
+413,Level,Operationeel Niveau
+413,Source,"Handboek Rood, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+414,Theme,10. Straatmeubilair
+414,Area,Heel Amsterdam
+414,Type,Uitgangspunt
+414,Level,Operationeel Niveau
+414,Source,"Handboek Rood, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+415,Theme,10. Straatmeubilair
+415,Area,Heel Amsterdam
+415,Type,Uitgangspunt
+415,Level,Operationeel Niveau
+415,Source,"Handboek Rood, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+416,Theme,10. Straatmeubilair
+416,Area,Heel Amsterdam
+416,Type,Uitgangspunt
+416,Level,Operationeel Niveau
+416,Source,"Handboek Rood, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+417,Theme,10. Straatmeubilair
+417,Area,Heel Amsterdam
+417,Type,Uitgangspunt
+417,Level,Operationeel Niveau
+417,Source,"Handboek Rood, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+418,Theme,11. Openbare Verlichting
+418,Area,Heel Amsterdam
+418,Type,Uitgangspunt
+418,Level,Operationeel Niveau
+418,Source,"Handboek Rood, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+419,Theme,10. Straatmeubilair
+419,Area,Heel Amsterdam
+419,Type,Uitgangspunt
+419,Level,Operationeel Niveau
+419,Source,"Handboek Rood, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+420,Theme,1. Openbare Ruimte Algemeen
+420,Theme,9. Verhardingen
+420,Theme,15. Civiele Constructies & Tunnels
+420,Area,Heel Amsterdam
+420,Type,Uitgangspunt
+420,Level,Proces
+420,Source,Pbi 2019 (2019)
+421,Theme,9. Verhardingen
+421,Theme,15. Civiele Constructies & Tunnels
+421,Area,Heel Amsterdam
+421,Type,Uitgangspunt
+421,Level,Proces
+421,Source,Pbi 2019 (2019)
+422,Theme,9. Verhardingen
+422,Theme,15. Civiele Constructies & Tunnels
+422,Area,Heel Amsterdam
+422,Type,Uitgangspunt
+422,Level,Proces
+422,Source,Pbi 2019 (2019)
+423,Theme,9. Verhardingen
+423,Theme,15. Civiele Constructies & Tunnels
+423,Area,Heel Amsterdam
+423,Type,Uitgangspunt
+423,Level,Proces
+423,Source,Pbi 2019 (2019)
+424,Theme,9. Verhardingen
+424,Theme,15. Civiele Constructies & Tunnels
+424,Area,Heel Amsterdam
+424,Type,Uitgangspunt
+424,Level,Proces
+424,Source,Pbi 2019 (2019)
+425,Theme,9. Verhardingen
+425,Theme,15. Civiele Constructies & Tunnels
+425,Area,Heel Amsterdam
+425,Type,Uitgangspunt
+425,Level,Proces
+425,Source,Pbi 2019 (2019)
+426,Theme,1. Openbare Ruimte Algemeen
+426,Area,Heel Amsterdam
+426,Type,Uitgangspunt
+426,Level,Strategisch Niveau
+426,Source,Beleidskader Puccinimethode (2018)
+427,Theme,9. Verhardingen
+427,Area,Heel Amsterdam
+427,Type,Uitgangspunt
+427,Level,Tactisch Niveau
+427,Source,Beleidskader Puccinimethode (2018)
+428,Theme,9. Verhardingen
+428,Area,Heel Amsterdam
+428,Type,Uitgangspunt
+428,Level,Tactisch Niveau
+428,Source,Beleidskader Puccinimethode (2018)
+429,Theme,10. Straatmeubilair
+429,Area,Heel Amsterdam
+429,Type,Uitgangspunt
+429,Level,Tactisch Niveau
+429,Source,Beleidskader Puccinimethode (2018)
+430,Theme,12. Groen
+430,Area,Heel Amsterdam
+430,Type,Randvoorwaarde
+430,Level,Tactisch Niveau
+430,Source,Beleidskader Puccinimethode (2018)
+431,Theme,12. Groen
+431,Area,Heel Amsterdam
+431,Type,Randvoorwaarde
+431,Level,Tactisch Niveau
+431,Source,Beleidskader Puccinimethode (2018)
+432,Theme,12. Groen
+432,Area,Heel Amsterdam
+432,Type,Uitgangspunt
+432,Level,Tactisch Niveau
+432,Source,Beleidskader Puccinimethode (2018)
+433,Theme,12. Groen
+433,Area,Heel Amsterdam
+433,Type,Randvoorwaarde
+433,Level,Tactisch Niveau
+433,Source,Beleidskader Puccinimethode (2018)
+434,Theme,12. Groen
+434,Area,Heel Amsterdam
+434,Type,Randvoorwaarde
+434,Level,Tactisch Niveau
+434,Source,Beleidskader Puccinimethode (2018)
+435,Theme,12. Groen
+435,Area,Heel Amsterdam
+435,Type,Randvoorwaarde
+435,Level,Tactisch Niveau
+435,Source,Beleidskader Puccinimethode (2018)
+436,Theme,12. Groen
+436,Area,Heel Amsterdam
+436,Type,Randvoorwaarde
+436,Level,Tactisch Niveau
+436,Source,Beleidskader Puccinimethode (2018)
+437,Theme,12. Groen
+437,Area,Heel Amsterdam
+437,Type,Randvoorwaarde
+437,Level,Tactisch Niveau
+437,Source,Beleidskader Puccinimethode (2018)
+438,Theme,12. Groen
+438,Area,Heel Amsterdam
+438,Type,Randvoorwaarde
+438,Level,Tactisch Niveau
+438,Source,Beleidskader Puccinimethode (2018)
+439,Theme,12. Groen
+439,Area,Heel Amsterdam
+439,Type,Randvoorwaarde
+439,Level,Operationeel Niveau
+439,Source,Beleidskader Puccinimethode (2018)
+440,Theme,12. Groen
+440,Area,Heel Amsterdam
+440,Type,Randvoorwaarde
+440,Level,Operationeel Niveau
+440,Source,Beleidskader Puccinimethode (2018)
+441,Theme,14. Water & Oevers
+441,Area,Heel Amsterdam
+441,Type,Randvoorwaarde
+441,Level,Operationeel Niveau
+441,Source,Beleidskader Puccinimethode (2018)
+442,Theme,1. Openbare Ruimte Algemeen
+442,Theme,10. Straatmeubilair
+442,Theme,9. Verhardingen
+442,Area,Heel Amsterdam
+442,Type,Uitgangspunt
+442,Level,Operationeel Niveau
+442,Source,Beleidskader Puccinimethode (2018)
+443,Theme,9. Verhardingen
+443,Area,Heel Amsterdam
+443,Type,Uitgangspunt
+443,Level,Operationeel Niveau
+443,Source,Beleidskader Puccinimethode (2018)
+444,Theme,9. Verhardingen
+444,Theme,4. Voetganger
+444,Area,Heel Amsterdam
+444,Type,Uitgangspunt
+444,Level,Operationeel Niveau
+444,Source,Beleidskader Puccinimethode (2018)
+445,Theme,9. Verhardingen
+445,Theme,5. Fiets
+445,Area,Heel Amsterdam
+445,Type,Uitgangspunt
+445,Level,Operationeel Niveau
+445,Source,Beleidskader Puccinimethode (2018)
+446,Theme,9. Verhardingen
+446,Theme,6. Openbaar Vervoer
+446,Area,Heel Amsterdam
+446,Type,Uitgangspunt
+446,Level,Operationeel Niveau
+446,Source,Beleidskader Puccinimethode (2018)
+447,Theme,9. Verhardingen
+447,Theme,7. Auto
+447,Area,Heel Amsterdam
+447,Type,Uitgangspunt
+447,Level,Operationeel Niveau
+447,Source,Beleidskader Puccinimethode (2018)
+448,Theme,9. Verhardingen
+448,Theme,5. Fiets
+448,Area,Heel Amsterdam
+448,Type,Uitgangspunt
+448,Level,Operationeel Niveau
+448,Source,Beleidskader Puccinimethode (2018)
+449,Theme,8. Parkeren - Auto
+449,Area,Heel Amsterdam
+449,Type,Uitgangspunt
+449,Level,Operationeel Niveau
+449,Source,Beleidskader Puccinimethode (2018)
+450,Theme,9. Verhardingen
+450,Area,Heel Amsterdam
+450,Type,Uitgangspunt
+450,Level,Operationeel Niveau
+450,Source,Beleidskader Puccinimethode (2018)
+451,Theme,10. Straatmeubilair
+451,Area,Heel Amsterdam
+451,Type,Uitgangspunt
+451,Level,Operationeel Niveau
+451,Source,Beleidskader Puccinimethode (2018)
+452,Theme,12. Groen
+452,Area,Heel Amsterdam
+452,Type,Uitgangspunt
+452,Level,Operationeel Niveau
+452,Source,Beleidskader Puccinimethode (2018)
+453,Theme,12. Groen
+453,Area,Heel Amsterdam
+453,Type,Uitgangspunt
+453,Level,Operationeel Niveau
+453,Source,Beleidskader Puccinimethode (2018)
+454,Theme,12. Groen
+454,Area,Heel Amsterdam
+454,Type,Uitgangspunt
+454,Level,Operationeel Niveau
+454,Source,Beleidskader Puccinimethode (2018)
+455,Theme,12. Groen
+455,Area,Heel Amsterdam
+455,Type,Uitgangspunt
+455,Level,Operationeel Niveau
+455,Source,Beleidskader Puccinimethode (2018)
+456,Theme,12. Groen
+456,Area,Heel Amsterdam
+456,Type,Uitgangspunt
+456,Level,Operationeel Niveau
+456,Source,Beleidskader Puccinimethode (2018)
+457,Theme,1. Openbare Ruimte Algemeen
+457,Area,Heel Amsterdam
+457,Type,Randvoorwaarde
+457,Level,Operationeel Niveau
+457,Source,Beleidskader Puccinimethode (2018)
+458,Theme,1. Openbare Ruimte Algemeen
+458,Area,Heel Amsterdam
+458,Type,Randvoorwaarde
+458,Level,Proces
+458,Source,Beleidskader Puccinimethode (2018)
+459,Theme,1. Openbare Ruimte Algemeen
+459,Area,Heel Amsterdam
+459,Type,Randvoorwaarde
+459,Level,Proces
+459,Source,Beleidskader Puccinimethode (2018)
+460,Theme,1. Openbare Ruimte Algemeen
+460,Area,Heel Amsterdam
+460,Type,Randvoorwaarde
+460,Level,Proces
+460,Source,Beleidskader Puccinimethode (2018)
+461,Theme,1. Openbare Ruimte Algemeen
+461,Area,Heel Amsterdam
+461,Type,Randvoorwaarde
+461,Level,Proces
+461,Source,Beleidskader Puccinimethode (2018)
+462,Theme,1. Openbare Ruimte Algemeen
+462,Area,Heel Amsterdam
+462,Type,Randvoorwaarde
+462,Level,Proces
+462,Source,Beleidskader Puccinimethode (2018)
+463,Theme,1. Openbare Ruimte Algemeen
+463,Area,Heel Amsterdam
+463,Type,Uitgangspunt
+463,Level,Proces
+463,Source,Beleidskader Puccinimethode (2018)
+464,Theme,11. Openbare Verlichting
+464,Area,Heel Amsterdam
+464,Type,Uitgangspunt
+464,Level,Proces
+464,Source,Beleidskader Puccinimethode (2018)
+465,Theme,12. Groen
+465,Area,Heel Amsterdam
+465,Type,Uitgangspunt
+465,Level,Operationeel Niveau
+465,Source,"Handboek Groen, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+466,Theme,12. Groen
+466,Area,Heel Amsterdam
+466,Type,Uitgangspunt
+466,Level,Operationeel Niveau
+466,Source,"Handboek Groen, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+467,Theme,12. Groen
+467,Area,Heel Amsterdam
+467,Type,Uitgangspunt
+467,Level,Operationeel Niveau
+467,Source,"Handboek Groen, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+468,Theme,12. Groen
+468,Area,Heel Amsterdam
+468,Type,Uitgangspunt
+468,Level,Operationeel Niveau
+468,Source,"Handboek Groen, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+469,Theme,12. Groen
+469,Area,Heel Amsterdam
+469,Type,Uitgangspunt
+469,Level,Operationeel Niveau
+469,Source,"Handboek Groen, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+470,Theme,12. Groen
+470,Area,Heel Amsterdam
+470,Type,Uitgangspunt
+470,Level,Operationeel Niveau
+470,Source,"Handboek Groen, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+471,Theme,12. Groen
+471,Area,Heel Amsterdam
+471,Type,Uitgangspunt
+471,Level,Operationeel Niveau
+471,Source,"Handboek Groen, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+472,Theme,12. Groen
+472,Area,Heel Amsterdam
+472,Type,Uitgangspunt
+472,Level,Operationeel Niveau
+472,Source,"Handboek Groen, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+473,Theme,12. Groen
+473,Area,Heel Amsterdam
+473,Type,Uitgangspunt
+473,Level,Operationeel Niveau
+473,Source,"Handboek Groen, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+474,Theme,12. Groen
+474,Theme,14. Water & Oevers
+474,Area,Heel Amsterdam
+474,Type,Uitgangspunt
+474,Level,Operationeel Niveau
+474,Source,"Handboek Groen, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+475,Theme,12. Groen
+475,Area,Heel Amsterdam
+475,Type,Ambitie
+475,Level,Operationeel Niveau
+475,Source,"Handboek Groen, Standaard Voor Het Amsterdamse Straatbeeld (Puccinimethode) (2021)"
+476,Theme,1. Openbare Ruimte Algemeen
+476,Theme,9. Verhardingen
+476,Area,Heel Amsterdam
+476,Type,Randvoorwaarde
+476,Level,Tactisch Niveau
+476,Source,Inrichtingsprincipes Rookvrije Zones (2020)
+477,Theme,1. Openbare Ruimte Algemeen
+477,Theme,3. Netwerken & Profielen
+477,Area,Heel Amsterdam
+477,Type,Ambitie
+477,Level,Strategisch Niveau
+477,Source,Agenda Amsterdam Autoluw (2020)
+478,Theme,1. Openbare Ruimte Algemeen
+478,Theme,3. Netwerken & Profielen
+478,Area,Heel Amsterdam
+478,Type,Ambitie
+478,Level,Strategisch Niveau
+478,Source,Agenda Amsterdam Autoluw (2020)
+479,Theme,1. Openbare Ruimte Algemeen
+479,Theme,3. Netwerken & Profielen
+479,Theme,4. Voetganger
+479,Area,Heel Amsterdam
+479,Type,Ambitie
+479,Level,Strategisch Niveau
+479,Source,Agenda Amsterdam Autoluw (2020)
+480,Theme,1. Openbare Ruimte Algemeen
+480,Theme,3. Netwerken & Profielen
+480,Area,Heel Amsterdam
+480,Type,Ambitie
+480,Level,Strategisch Niveau
+480,Source,Agenda Amsterdam Autoluw (2020)
+481,Theme,1. Openbare Ruimte Algemeen
+481,Theme,3. Netwerken & Profielen
+481,Area,Heel Amsterdam
+481,Type,Ambitie
+481,Level,Strategisch Niveau
+481,Source,Agenda Amsterdam Autoluw (2020)
+482,Theme,10. Straatmeubilair
+482,Theme,9. Verhardingen
+482,Area,Heel Amsterdam
+482,Type,Advies
+482,Level,Operationeel Niveau
+482,Source,Richtlijn Voor Het Aanbrengen Van Gedenktekens In De Openbare Ruimte (2021)
+483,Theme,10. Straatmeubilair
+483,Theme,9. Verhardingen
+483,Area,Heel Amsterdam
+483,Type,Advies
+483,Level,Operationeel Niveau
+483,Source,Richtlijn Voor Het Aanbrengen Van Gedenktekens In De Openbare Ruimte (2021)
+484,Theme,10. Straatmeubilair
+484,Theme,9. Verhardingen
+484,Area,Heel Amsterdam
+484,Type,Advies
+484,Level,Proces
+484,Source,Richtlijn Voor Het Aanbrengen Van Gedenktekens In De Openbare Ruimte (2021)
+485,Theme,3. Netwerken & Profielen
+485,Area,Heel Amsterdam
+485,Type,Advies
+485,Level,Tactisch Niveau
+485,Source,Afwegingskader Inrichting Van Autovrije Gebieden En Paaltjes (2021)
+486,Theme,3. Netwerken & Profielen
+486,Theme,10. Straatmeubilair
+486,Area,Heel Amsterdam
+486,Type,Advies
+486,Level,Operationeel Niveau
+486,Source,Afwegingskader Inrichting Van Autovrije Gebieden En Paaltjes (2021)
+487,Theme,3. Netwerken & Profielen
+487,Theme,10. Straatmeubilair
+487,Area,Heel Amsterdam
+487,Type,Advies
+487,Level,Operationeel Niveau
+487,Source,Afwegingskader Inrichting Van Autovrije Gebieden En Paaltjes (2021)
+488,Theme,3. Netwerken & Profielen
+488,Theme,10. Straatmeubilair
+488,Area,Heel Amsterdam
+488,Type,Advies
+488,Level,Operationeel Niveau
+488,Source,Afwegingskader Inrichting Van Autovrije Gebieden En Paaltjes (2021)
+489,Theme,5. Fiets
+489,Area,Heel Amsterdam
+489,Type,Randvoorwaarde
+489,Level,Tactisch Niveau
+489,Source,"Afwegingskader Fietsstraten, Fietspaden En Fietsstroken (2020)"
+490,Theme,5. Fiets
+490,Area,Heel Amsterdam
+490,Type,Uitgangspunt
+490,Level,Operationeel Niveau
+490,Source,"Afwegingskader Fietsstraten, Fietspaden En Fietsstroken (2020)"
+491,Theme,10. Straatmeubilair
+491,Area,Heel Amsterdam
+491,Type,Advies
+491,Level,Operationeel Niveau
+491,Source,Afwegingskader Geldautomaten (2019)
+492,Theme,12. Groen
+492,Area,Heel Amsterdam
+492,Type,Uitgangspunt
+492,Level,Tactisch Niveau
+492,Source,Kader Hondenlosloopgebieden (2021)
+493,Theme,12. Groen
+493,Area,Heel Amsterdam
+493,Type,Uitgangspunt
+493,Level,Operationeel Niveau
+493,Source,Kader Hondenlosloopgebieden (2021)
+494,Theme,12. Groen
+494,Area,Heel Amsterdam
+494,Type,Uitgangspunt
+494,Level,Operationeel Niveau
+494,Source,Kader Hondenlosloopgebieden (2021)
+495,Theme,12. Groen
+495,Area,Heel Amsterdam
+495,Type,Uitgangspunt
+495,Level,Operationeel Niveau
+495,Source,Kader Hondenlosloopgebieden (2021)
+496,Theme,12. Groen
+496,Area,Zuid
+496,Type,Ambitie
+496,Level,Strategisch Niveau
+496,Source,Bosplan 2020 - 2030 (2021)
+497,Theme,14. Water & Oevers
+497,Theme,13. Sport & Spel
+497,Area,Heel Amsterdam
+497,Type,Advies
+497,Level,Tactisch Niveau
+497,Source,Ambtelijk Handboek Zwemmen En Zomerrecreatie Aan Het Water (2022)
+498,Theme,14. Water & Oevers
+498,Theme,13. Sport & Spel
+498,Area,Heel Amsterdam
+498,Type,Advies
+498,Level,Operationeel Niveau
+498,Source,Ambtelijk Handboek Zwemmen En Zomerrecreatie Aan Het Water (2022)
+499,Theme,14. Water & Oevers
+499,Theme,13. Sport & Spel
+499,Area,Heel Amsterdam
+499,Type,Advies
+499,Level,Operationeel Niveau
+499,Source,Ambtelijk Handboek Zwemmen En Zomerrecreatie Aan Het Water (2022)
+500,Theme,3. Netwerken & Profielen
+500,Area,Heel Amsterdam
+500,Type,Uitgangspunt
+500,Level,Tactisch Niveau
+500,Source,Amsterdam Veilig En Leefbaar - 30 Km Per Uur In De Stad (2021)
+501,Theme,3. Netwerken & Profielen
+501,Area,Heel Amsterdam
+501,Type,Uitgangspunt
+501,Level,Tactisch Niveau
+501,Source,Amsterdam Veilig En Leefbaar - 30 Km Per Uur In De Stad (2021)
+502,Theme,3. Netwerken & Profielen
+502,Area,Heel Amsterdam
+502,Type,Uitgangspunt
+502,Level,Operationeel Niveau
+502,Source,Amsterdam Veilig En Leefbaar - 30 Km Per Uur In De Stad (2021)
+503,Theme,1. Openbare Ruimte Algemeen
+503,Theme,12. Groen
+503,Area,Heel Amsterdam
+503,Type,Advies
+503,Level,Operationeel Niveau
+503,Source,Protocol Japanse Duizendknoop (2022)
+504,Theme,10. Straatmeubilair
+504,Area,Heel Amsterdam
+504,Type,Advies
+504,Level,Operationeel Niveau
+504,Source,Bordengids (2022)
+505,Theme,12. Groen
+505,Area,Heel Amsterdam
+505,Type,Randvoorwaarde
+505,Level,Tactisch Niveau
+505,Source,Amsterdamse Gedragscode Flora En Fauna (2023)
+506,Theme,12. Groen
+506,Area,Heel Amsterdam
+506,Type,Randvoorwaarde
+506,Level,Tactisch Niveau
+506,Source,Amsterdamse Gedragscode Flora En Fauna (2023)
+507,Theme,12. Groen
+507,Area,Heel Amsterdam
+507,Type,Uitgangspunt
+507,Level,Tactisch Niveau
+507,Source,Amsterdamse Gedragscode Flora En Fauna (2023)
+508,Theme,12. Groen
+508,Theme,14. Water & Oevers
+508,Area,Heel Amsterdam
+508,Type,Randvoorwaarde
+508,Level,Operationeel Niveau
+508,Source,Amsterdamse Gedragscode Flora En Fauna (2023)
+509,Theme,17. Kunst
+509,Area,Heel Amsterdam
+509,Type,Ambitie
+509,Level,Strategisch Niveau
+509,Source,Uitvoeringskader Kunst In De Openbare Ruimte (2018)
+510,Theme,17. Kunst
+510,Area,Heel Amsterdam
+510,Type,Ambitie
+510,Level,Tactisch Niveau
+510,Source,Uitvoeringskader Kunst In De Openbare Ruimte (2018)
+512,Theme,17. Kunst
+512,Area,Heel Amsterdam
+512,Type,Randvoorwaarde
+512,Level,Operationeel Niveau
+512,Source,Uitvoeringskader Kunst In De Openbare Ruimte (2018)
+514,Theme,17. Kunst
+514,Area,Heel Amsterdam
+514,Type,Randvoorwaarde
+514,Level,Proces
+514,Source,Uitvoeringskader Kunst In De Openbare Ruimte (2018)
+515,Theme,17. Kunst
+515,Area,Heel Amsterdam
+515,Type,Randvoorwaarde
+515,Level,Proces
+515,Source,Uitvoeringskader Kunst In De Openbare Ruimte (2018)
+516,Theme,17. Kunst
+516,Area,Heel Amsterdam
+516,Type,Uitgangspunt
+516,Level,Proces
+516,Source,Uitvoeringskader Kunst In De Openbare Ruimte (2018)
+517,Theme,17. Kunst
+517,Area,Heel Amsterdam
+517,Type,Uitgangspunt
+517,Level,Proces
+517,Source,Uitvoeringskader Kunst In De Openbare Ruimte (2018)
+518,Theme,17. Kunst
+518,Area,Heel Amsterdam
+518,Type,Uitgangspunt
+518,Level,Proces
+518,Source,Uitvoeringskader Kunst In De Openbare Ruimte (2018)
+519,Theme,17. Kunst
+519,Area,Heel Amsterdam
+519,Type,Randvoorwaarde
+519,Level,Proces
+519,Source,Uitvoeringskader Kunst In De Openbare Ruimte (2018)
+520,Theme,17. Kunst
+520,Area,Heel Amsterdam
+520,Type,Randvoorwaarde
+520,Level,Proces
+520,Source,Percentageregeling Kunst In De Openbare Ruimte (2020)
+521,Theme,4. Voetganger
+521,Theme,3. Netwerken & Profielen
+521,Area,Heel Amsterdam
+521,Type,Ambitie
+521,Level,Tactisch Niveau
+521,Source,Beleidskader Ruimte Voor De Voetganger (2023)
+522,Theme,4. Voetganger
+522,Theme,3. Netwerken & Profielen
+522,Area,Heel Amsterdam
+522,Type,Randvoorwaarde
+522,Level,Operationeel Niveau
+522,Source,Beleidskader Ruimte Voor De Voetganger (2023)
+523,Theme,4. Voetganger
+523,Area,Heel Amsterdam
+523,Type,Randvoorwaarde
+523,Level,Operationeel Niveau
+523,Source,Beleidskader Ruimte Voor De Voetganger (2023)
+524,Theme,4. Voetganger
+524,Theme,10. Straatmeubilair
+524,Area,Heel Amsterdam
+524,Type,Randvoorwaarde
+524,Level,Operationeel Niveau
+524,Source,Beleidskader Ruimte Voor De Voetganger (2023)
+525,Theme,4. Voetganger
+525,Theme,3. Netwerken & Profielen
+525,Theme,10. Straatmeubilair
+525,Area,Heel Amsterdam
+525,Type,Uitgangspunt
+525,Level,Operationeel Niveau
+525,Source,Beleidskader Ruimte Voor De Voetganger (2023)
+526,Theme,4. Voetganger
+526,Theme,10. Straatmeubilair
+526,Area,Heel Amsterdam
+526,Type,Uitgangspunt
+526,Level,Operationeel Niveau
+526,Source,Beleidskader Ruimte Voor De Voetganger (2023)
+527,Theme,1. Openbare Ruimte Algemeen
+527,Theme,16. Ondergrond
+527,Area,Heel Amsterdam
+527,Type,Uitgangspunt
+527,Level,Tactisch Niveau
+527,Source,Omgevingsprogramma Riolering 2022 – 2027 (2022)
+528,Theme,1. Openbare Ruimte Algemeen
+528,Theme,16. Ondergrond
+528,Area,Heel Amsterdam
+528,Type,Randvoorwaarde
+528,Level,Tactisch Niveau
+528,Source,Omgevingsprogramma Riolering 2022 – 2027 (2022)
+529,Theme,1. Openbare Ruimte Algemeen
+529,Theme,16. Ondergrond
+529,Area,Heel Amsterdam
+529,Type,Uitgangspunt
+529,Level,Tactisch Niveau
+529,Source,Omgevingsprogramma Riolering 2022 – 2027 (2022)
+530,Theme,1. Openbare Ruimte Algemeen
+530,Theme,16. Ondergrond
+530,Area,Heel Amsterdam
+530,Type,Uitgangspunt
+530,Level,Tactisch Niveau
+530,Source,Omgevingsprogramma Riolering 2022 – 2027 (2022)
+531,Theme,1. Openbare Ruimte Algemeen
+531,Theme,16. Ondergrond
+531,Area,Heel Amsterdam
+531,Type,Uitgangspunt
+531,Level,Tactisch Niveau
+531,Source,Omgevingsprogramma Riolering 2022 – 2027 (2022)
