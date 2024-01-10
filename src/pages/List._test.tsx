@@ -9,7 +9,7 @@ import FilterContextProvider from "../filter/FilterContext";
 
 describe("List", () => {
   beforeEach(() => {
-    nock("http://localhost:3000")
+    nock("http://127.0.0.1:3000")
       .get("/static/data/items.csv")
       .reply(200, mockItems)
       .get("/static/data/properties.csv")
