@@ -1,23 +1,22 @@
 import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import selectEvent from "react-select-event";
-import nock from "nock";
 import { withTheme } from "../test/utils";
 import List from "./List";
 import { mockItems, mockProperties, mockAttributes } from "../test/mock-data/List.fixtures";
 import FilterContextProvider from "../filter/FilterContext";
 
-describe("List", () => {
-  beforeEach(() => {
-    nock("http://127.0.0.1:3000")
-      .get("/static/data/items.csv")
-      .reply(200, mockItems)
-      .get("/static/data/properties.csv")
-      .reply(200, mockProperties)
-      .get("/static/data/attributes.csv")
-      .reply(200, mockAttributes);
-  });
+jest.mock("../hooks/useFetchItems", () => ({
+  useFetchItems: () => ({ data: mockItems, isLoading: false }),
+}));
+jest.mock("../hooks/useFetchProperties", () => ({
+  useFetchProperties: () => ({ data: mockProperties, isLoading: false }),
+}));
+jest.mock("../hooks/useFetchAttributes", () => ({
+  useFetchAttributes: () => ({ data: mockAttributes, isLoading: false }),
+}));
 
+describe("List", () => {
   it("renders correctly", async () => {
     render(
       withTheme(

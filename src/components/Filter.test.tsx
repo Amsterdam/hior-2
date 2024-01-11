@@ -1,15 +1,14 @@
 import { render, screen } from "@testing-library/react";
-import nock from "nock";
 import FilterContextProvider from "../filter/FilterContext";
 import { mockAttributes } from "../test/mock-data/List.fixtures";
 import { withTheme } from "../test/utils";
 import Filter from "./Filter";
 
-describe("Filter", () => {
-  beforeEach(() => {
-    nock("http://localhost:3000").get("/static/data/attributes.csv").reply(200, mockAttributes);
-  });
+jest.mock("../hooks/useFetchAttributes", () => ({
+  useFetchAttributes: () => ({ data: mockAttributes, isLoading: false }),
+}));
 
+describe("Filter", () => {
   it("renders correctly", () => {
     const { container } = render(
       withTheme(

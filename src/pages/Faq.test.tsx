@@ -1,40 +1,20 @@
-import { render, screen, waitForElementToBeRemoved } from "@testing-library/react";
-import nock from "nock";
+import { render, screen } from "@testing-library/react";
 import { withTheme } from "../test/utils";
 import Faq from "./Faq";
+import { mockFaqs } from "../test/mock-data/Faq.fixtures";
+
+jest.mock("../hooks/useFetchFaq", () => ({
+  useFetchFaq: () => ({ data: mockFaqs, isLoading: false }),
+}));
 
 describe("Faq", () => {
-  const mockData = {
-    results: [
-      {
-        id: 1,
-        answer: "vraag 1",
-        question: "antwoord 1",
-      },
-      {
-        id: 2,
-        answer: "vraag 2",
-        question: "antwoord 2",
-      },
-      {
-        id: 3,
-        answer: "vraag 3",
-        question: "antwoord 3",
-      },
-    ],
-    count: 3,
-  };
-
-  beforeEach(() => {
-    nock("http://localhost:3000").get("/static/data/faq.csv").reply(200, mockData);
-  });
-
   it("renders correctly", async () => {
     const { container } = render(withTheme(<Faq />));
 
     await screen.findByText("Veelgestelde vragen");
 
-    await waitForElementToBeRemoved(() => screen.getByTestId("loader"));
+    // TODO: due to no more async data fetching there is no "loading" happening. Could mock that as well or delete this code.
+    // await waitForElementToBeRemoved(() => screen.getByTestId("loader"));
 
     expect(await container.querySelectorAll("button").length).toBe(3);
 

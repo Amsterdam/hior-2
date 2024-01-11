@@ -46,8 +46,8 @@ export const ALL_GROUPS: Selector[] = [
 ];
 
 export const requestHeaders = {
-  "Content-Type": "text/csv",
-  Accept: "text/csv",
+  "Content-type": "text/csv",
+  "Accept": "text/csv",
 };
 
 export const defaultArea = [{ label: "Heel Amsterdam", value: "Heel Amsterdam" }];

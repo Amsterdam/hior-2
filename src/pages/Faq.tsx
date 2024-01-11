@@ -30,6 +30,7 @@ const Faq = () => {
         <Column span={10}>
           <StyledDiv>
             <StyledHeading>Veelgestelde vragen</StyledHeading>
+
             {loading && <Loader />}
 
             {!loading &&

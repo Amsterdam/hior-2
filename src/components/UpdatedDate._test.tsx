@@ -1,21 +1,13 @@
 import { render, screen } from "@testing-library/react";
-import nock from "nock";
 import { withTheme } from "../test/utils";
 import UpdatedDate from "./UpdatedDate";
+import { mockMetaData } from "../test/mock-data/UpdatedDate.fixtures";
 
-const mockData = {
-  results: [
-    {
-      value: "2022-03-11 00:00:00",
-    },
-  ],
-};
+jest.mock("../hooks/useFetchMetaData", () => ({
+  useFetchMetaData: () => ({ data: mockMetaData, isFetched: true, isSuccess: true }),
+}));
 
 describe("UpdatedDate", () => {
-  beforeEach(() => {
-    nock("http://localhost:3000").get("/static/data/metadata.csv").reply(200, mockData);
-  });
-
   it("renders correctly", async () => {
     render(withTheme(<UpdatedDate />));
 
