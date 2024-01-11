@@ -22,8 +22,6 @@ RUN npm --production=false --unsafe-perm ci && \
 COPY public /app/public
 COPY src /app/src
 
-RUN chown -R node:node /app
-USER node
 
 # Upgrade dependencies
 FROM builder AS upgrade
