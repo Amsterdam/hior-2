@@ -22,21 +22,20 @@ app:                                ## Run app
 dev:						        ## Run the development app
 	$(run) --service-ports dev
 
-test:						        ## Execute tests
+test: build                         ## Execute tests
 	$(run) test $(ARGS)
 
 clean:                              ## Clean docker stuff
 	$(dc) down -v --remove-orphans
 
-deploy_kubectl: build
-	$(dc) push dev  # Push dev image to kind registry
-	kubectl apply -f manifests
-
-undeploy_kubectl:
-	kubectl delete -f manifests
-
 trivy:                              ## Detect image vulnerabilities
 	trivy image --ignore-unfixed nginxinc/nginx-unprivileged:mainline-alpine-slim
 
-requirements:                       ## Upgrade dependencies
-	$(run) upgrade $(ARGS)
+push:                               ## Push image to docker hub
+	$(dc) push
+
+csv-update:
+	$(run) csv-update $(ARGS)
+
+requirements: ## Upgrade requirements (in package.json and package-lock.json) to latest versions
+	npm upgrade
