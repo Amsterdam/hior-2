@@ -3,7 +3,7 @@ import { Selector, State } from "./types";
 let azureStorageBaseURL = `${process.env.REACT_APP_AZURE_STORAGE_CONTAINER}/csv`; // PROD Azure Storage Container URL
 
 if (["development", "test"].includes(process.env.NODE_ENV)) {
-  azureStorageBaseURL = "http://localhost:3000/static/data"; // Local development URL
+  azureStorageBaseURL = "http://localhost:3000/static/data"; // Local development and testing URL (download the files manually)
 } else if (window?.location?.host?.includes("acc.")) {
   azureStorageBaseURL = `${process.env.REACT_APP_AZURE_STORAGE_CONTAINER_ACC}/csv`; // ACC Azure Storage Container URL
 }
@@ -48,6 +48,7 @@ export const ALL_GROUPS: Selector[] = [
 export const requestHeaders = {
   "Content-type": "text/csv",
   "Accept": "text/csv",
+  "Access-Control-Allow-Origin": "*",
 };
 
 export const defaultArea = [{ label: "Heel Amsterdam", value: "Heel Amsterdam" }];
