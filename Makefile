@@ -37,5 +37,5 @@ push:                               ## Push image to docker hub
 csv-update:
 	$(run) csv-update $(ARGS)
 
-requirements:                       ## Upgrade dependencies
-	$(run) upgrade $(ARGS)
+requirements: ## Upgrade requirements (in package.json and package-lock.json) to latest versions
+	npm upgrade

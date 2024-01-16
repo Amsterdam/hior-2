@@ -1,25 +1,13 @@
 import { render, screen } from "@testing-library/react";
-import nock from "nock";
 import { withTheme } from "../test/utils";
 import UpdatedDate from "./UpdatedDate";
+import { mockMetaData } from "../test/mock-data/UpdatedDate.fixtures";
 
-const mockData = {
-  results: [
-    {
-      value: "2022-03-11 00:00:00",
-    },
-  ],
-};
+jest.mock("../hooks/useFetchMetaData", () => ({
+  useFetchMetaData: () => ({ data: mockMetaData, isFetched: true, isSuccess: true }),
+}));
 
 describe("UpdatedDate", () => {
-  beforeAll(() => {
-    nock.disableNetConnect();
-  });
-
-  beforeEach(() => {
-    nock("http://localhost").get("/vsd/hior_metadata/?page=1&page_size=100000&format=json").reply(200, mockData);
-  });
-
   it("renders correctly", async () => {
     render(withTheme(<UpdatedDate />));
 

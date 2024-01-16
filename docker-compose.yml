@@ -1,4 +1,4 @@
-version: '3.5'
+version: "3.5"
 services:
   dev:
     build:
@@ -19,17 +19,6 @@ services:
       - CI=true
       - TZ=Europe/Amsterdam
     command: npm run test
-
-  upgrade:
-    build:
-      context: .
-      target: upgrade
-    environment:
-      - TZ=Europe/Amsterdam
-    volumes:
-      - ./package.json:/app/package.json
-      - ./package-lock.json:/app/package-lock.json
-    command: ncu -u --doctor --target minor
 
   csv-update:
     build:

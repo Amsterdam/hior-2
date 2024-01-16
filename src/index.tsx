@@ -16,7 +16,9 @@ const root = createRoot(container!);
 let appInsights = null;
 
 declare global {
-  interface Window { _env_: any; }
+  interface Window {
+    _env_: any;
+  }
 }
 
 root.render(
@@ -31,7 +33,12 @@ root.render(
       <GlobalStyle />
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          <TelemetryProvider connectionString={window?._env_?.REACT_APP_APPLICATIONINSIGHTS_CONNECTION_STRING} after={() => { appInsights = getAppInsights }}>
+          <TelemetryProvider
+            connectionString={window?._env_?.REACT_APP_APPLICATIONINSIGHTS_CONNECTION_STRING}
+            after={() => {
+              appInsights = getAppInsights;
+            }}
+          >
             <App />
           </TelemetryProvider>
         </BrowserRouter>

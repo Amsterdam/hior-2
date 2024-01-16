@@ -28,7 +28,7 @@ const useEnrichedItems = (): Return => {
     }
 
     const enrichedItems: ItemEnriched[] = items.results.map((i: Item) => {
-      const foundProps = properties.results.filter((a: any) => i.id === a.item_id);
+      const foundProps = properties.results.filter((a: any) => a.item_id !== '' && i.id === a.item_id);
 
       const newProps: { [key in Group]: string[] } = {
         theme: [],

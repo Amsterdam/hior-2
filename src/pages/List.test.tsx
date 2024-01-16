@@ -1,23 +1,22 @@
 import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import selectEvent from "react-select-event";
-import nock from "nock";
 import { withTheme } from "../test/utils";
 import List from "./List";
 import { mockItems, mockProperties, mockAttributes } from "../test/mock-data/List.fixtures";
 import FilterContextProvider from "../filter/FilterContext";
 
-describe("List", () => {
-  beforeEach(() => {
-    nock("http://localhost")
-      .get("/vsd/hior_items/?page=1&page_size=100000&format=json")
-      .reply(200, mockItems)
-      .get("/vsd/hior_properties/?page=1&page_size=100000&format=json")
-      .reply(200, mockProperties)
-      .get("/vsd/hior_attributes/?page=1&page_size=100000&format=json")
-      .reply(200, mockAttributes);
-  });
+jest.mock("../hooks/useFetchItems", () => ({
+  useFetchItems: () => ({ data: mockItems, isLoading: false }),
+}));
+jest.mock("../hooks/useFetchProperties", () => ({
+  useFetchProperties: () => ({ data: mockProperties, isLoading: false }),
+}));
+jest.mock("../hooks/useFetchAttributes", () => ({
+  useFetchAttributes: () => ({ data: mockAttributes, isLoading: false }),
+}));
 
+describe("List", () => {
   it("renders correctly", async () => {
     render(
       withTheme(
@@ -92,7 +91,7 @@ describe("List", () => {
 
     await act(async () => {
       await userEvent.click(screen.getByRole("button", { name: /wis filter/i }));
-    })
+    });
 
     await screen.findByText("Resultaten (1)");
 

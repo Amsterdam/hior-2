@@ -22,13 +22,8 @@ RUN npm --production=false --unsafe-perm ci && \
 COPY public /app/public
 COPY src /app/src
 
-
-# Upgrade dependencies
-FROM builder AS upgrade
-# install dependencies
-RUN npm ci
-RUN npm install -g npm-check-updates
-CMD ["ncu", "-u", "--doctor", "--target minor"]
+RUN chown -R node:node /app
+USER node
 
 # Test
 FROM builder as test
