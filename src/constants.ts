@@ -1,5 +1,7 @@
 import { Selector, State } from "./types";
 
+console.log("-- ENV VARS --", process.env);
+
 let azureStorageBaseURL = `${process.env.REACT_APP_AZURE_STORAGE_CONTAINER}/csv`; // PROD Azure Storage Container URL
 
 if (["development", "test"].includes(process.env.NODE_ENV)) {
