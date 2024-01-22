@@ -4,7 +4,6 @@ services:
     build:
       context: .
     image: ${REGISTRY:-localhost:5001}/${REPOSITORY:-opdrachten/hior}:${VERSION:-latest}
-    env_file: .env
     environment:
       - TZ=Europe/Amsterdam
       - REACT_APP_APPLICATIONINSIGHTS_CONNECTION_STRING=${REACT_APP_APPLICATIONINSIGHTS_CONNECTION_STRING}
