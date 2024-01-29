@@ -1,11 +1,11 @@
 import { Selector, State } from "./types";
 
-let azureStorageBaseURL = `${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER ?? ''}/csv`; // PROD Azure Storage Container URL
+let azureStorageBaseURL = `${process.env.REACT_APP_AZURE_STORAGE_CONTAINER}/csv`; // PROD Azure Storage Container URL
 
 if (["development", "test"].includes(process.env.NODE_ENV)) {
   azureStorageBaseURL = "http://localhost:3000/static/data"; // Local development and testing URL (download the files manually)
 } else if (window?.location?.host?.includes("acc.")) {
-  azureStorageBaseURL = `${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER_ACC ?? ''}/csv`; // ACC Azure Storage Container URL
+  azureStorageBaseURL = `${process.env.REACT_APP_AZURE_STORAGE_CONTAINER_ACC}/csv`; // ACC Azure Storage Container URL
 }
 
 export const IMAGE_URL = "https://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/Afbeeldingen/";

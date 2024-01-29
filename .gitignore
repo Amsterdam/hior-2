@@ -4,7 +4,6 @@ __pycache__
 *.pyc
 reports
 *.iml
-.env
 .env.development.local
 .jenkins/backups
 
