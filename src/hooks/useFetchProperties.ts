@@ -5,6 +5,7 @@ import { Property } from "../types";
 import { niceFetch } from "../utils/niceFetch";
 
 export function useFetchProperties() {
+  console.log("HIOR_PROPERTIES_URL:", HIOR_PROPERTIES_URL)
   return useQuery(
     ["hior_properties"],
     () => {

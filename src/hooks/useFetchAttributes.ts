@@ -5,6 +5,7 @@ import { Attribute } from "../types";
 import { niceFetch } from "../utils/niceFetch";
 
 export function useFetchAttributes() {
+  console.log("HIOR_ATTRIBUTES_URL:", HIOR_ATTRIBUTES_URL)
   return useQuery(
     ["hior_attributes"],
     () => {

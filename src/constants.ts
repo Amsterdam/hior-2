@@ -1,9 +1,10 @@
 import { Selector, State } from "./types";
 
 console.log(" -- ENV -- ", process.env);
+console.log(" -- WINDOW ENV --", window._env_)
 
 let azureStorageBaseURL = `${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER}/csv`; // PROD Azure Storage Container URL
-
+console.log("azureStorageBaseURL", azureStorageBaseURL)
 if (["development", "test"].includes(process.env.NODE_ENV)) {
   azureStorageBaseURL = "http://localhost:3000/static/data"; // Local development and testing URL (download the files manually)
 }
