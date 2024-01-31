@@ -1,11 +1,8 @@
 import { Selector, State } from "./types";
 
-let azureStorageBaseURL = `${process.env.REACT_APP_AZURE_STORAGE_CONTAINER}/csv`; // PROD Azure Storage Container URL
-
+let azureStorageBaseURL = `${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER}/csv`; // PROD Azure Storage Container URL
 if (["development", "test"].includes(process.env.NODE_ENV)) {
   azureStorageBaseURL = "http://localhost:3000/static/data"; // Local development and testing URL (download the files manually)
-} else if (window?.location?.host?.includes("acc.")) {
-  azureStorageBaseURL = `${process.env.REACT_APP_AZURE_STORAGE_CONTAINER_ACC}/csv`; // ACC Azure Storage Container URL
 }
 
 export const IMAGE_URL = "https://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/Afbeeldingen/";
@@ -15,7 +12,7 @@ export const HIOR_ITEMS_URL = `${azureStorageBaseURL}/items.csv`;
 export const HIOR_PROPERTIES_URL = `${azureStorageBaseURL}/properties.csv`;
 export const HIOR_ATTRIBUTES_URL = `${azureStorageBaseURL}/attributes.csv`;
 export const HIOR_METADATA_URL = `${azureStorageBaseURL}/metadata.csv`;
-export const HIOR_FAQ_URL = `${azureStorageBaseURL}/faq.csv`;
+export const HIOR_FAQ_URL = `${azureStorageBaseURL}/faqs.csv`;
 
 export const ALL_GROUPS: Selector[] = [
   {

@@ -4,7 +4,6 @@ __pycache__
 *.pyc
 reports
 *.iml
-.env
 .env.development.local
 .jenkins/backups
 
@@ -14,3 +13,6 @@ build
 # Temporary env files, see https://www.freecodecamp.org/news/how-to-implement-runtime-environment-variables-with-create-react-app-docker-and-nginx-7f9d42a91d70/
 /public/env-config.js
 env-config.js
+
+# Local CSV files for testing
+/public/static/data/*.csv
