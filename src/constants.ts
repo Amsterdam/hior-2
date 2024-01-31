@@ -16,7 +16,7 @@ export const HIOR_ITEMS_URL = `${azureStorageBaseURL}/items.csv`;
 export const HIOR_PROPERTIES_URL = `${azureStorageBaseURL}/properties.csv`;
 export const HIOR_ATTRIBUTES_URL = `${azureStorageBaseURL}/attributes.csv`;
 export const HIOR_METADATA_URL = `${azureStorageBaseURL}/metadata.csv`;
-export const HIOR_FAQ_URL = `${azureStorageBaseURL}/faq.csv`;
+export const HIOR_FAQ_URL = `${azureStorageBaseURL}/faqs.csv`;
 
 export const ALL_GROUPS: Selector[] = [
   {
