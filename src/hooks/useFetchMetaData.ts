@@ -15,7 +15,6 @@ type MetaDataResult = {
 };
 
 export default function useFetchMetaData() {
-  console.log("HIOR_METADATA_URL:", HIOR_METADATA_URL)
   return useQuery(
     ["hior_metadata"],
     () => {

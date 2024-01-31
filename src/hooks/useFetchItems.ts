@@ -5,7 +5,6 @@ import { Item } from "../types";
 import { niceFetch } from "../utils/niceFetch";
 
 export function useFetchItems() {
-  console.log("HIOR_ITEMS_URL:", HIOR_ITEMS_URL)
   return useQuery(
     ["hior_items"],
     () => {

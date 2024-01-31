@@ -5,7 +5,6 @@ import { defaultQuerySettings } from "../queryClient";
 import { niceFetch } from "../utils/niceFetch";
 
 export function useFetchFaq() {
-  console.log("HIOR_FAQ_URL:", HIOR_FAQ_URL)
   return useQuery(
     ["hior_faq"],
     () => {
