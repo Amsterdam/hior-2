@@ -5,8 +5,8 @@ if (["development", "test"].includes(process.env.NODE_ENV)) {
   azureStorageCsvBaseURL = "http://localhost:3000/static/data"; // Local development and testing URL (download the files manually)
 }
 
-export const IMAGE_URL = `${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER}/${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER_NAME_IMAGES}`;
-export const DOCUMENT_URL = `${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER}/${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER_NAME_DOCUMENTS}`;
+export const IMAGE_URL = `${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER}/${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER_NAME_IMAGES}/`;
+export const DOCUMENT_URL = `${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER}/${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER_NAME_DOCUMENTS}/`;
 
 export const HIOR_ITEMS_URL = `${azureStorageCsvBaseURL}/items.csv`;
 export const HIOR_PROPERTIES_URL = `${azureStorageCsvBaseURL}/properties.csv`;
