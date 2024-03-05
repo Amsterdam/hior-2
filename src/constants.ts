@@ -1,18 +1,18 @@
 import { Selector, State } from "./types";
 
-let azureStorageBaseURL = `${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER}/csv`; // PROD Azure Storage Container URL
+let azureStorageCsvBaseURL = `${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER}/${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER_NAME_CSV}`;
 if (["development", "test"].includes(process.env.NODE_ENV)) {
-  azureStorageBaseURL = "http://localhost:3000/static/data"; // Local development and testing URL (download the files manually)
+  azureStorageCsvBaseURL = "http://localhost:3000/static/data"; // Local development and testing URL (download the files manually)
 }
 
-export const IMAGE_URL = "https://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/Afbeeldingen/";
-export const DOCUMENT_URL = "https://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/Documenten/";
+export const IMAGE_URL = `${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER}/${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER_NAME_IMAGES}`;
+export const DOCUMENT_URL = `${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER}/${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER_NAME_DOCUMENTS}`;
 
-export const HIOR_ITEMS_URL = `${azureStorageBaseURL}/items.csv`;
-export const HIOR_PROPERTIES_URL = `${azureStorageBaseURL}/properties.csv`;
-export const HIOR_ATTRIBUTES_URL = `${azureStorageBaseURL}/attributes.csv`;
-export const HIOR_METADATA_URL = `${azureStorageBaseURL}/metadata.csv`;
-export const HIOR_FAQ_URL = `${azureStorageBaseURL}/faqs.csv`;
+export const HIOR_ITEMS_URL = `${azureStorageCsvBaseURL}/items.csv`;
+export const HIOR_PROPERTIES_URL = `${azureStorageCsvBaseURL}/properties.csv`;
+export const HIOR_ATTRIBUTES_URL = `${azureStorageCsvBaseURL}/attributes.csv`;
+export const HIOR_METADATA_URL = `${azureStorageCsvBaseURL}/metadata.csv`;
+export const HIOR_FAQ_URL = `${azureStorageCsvBaseURL}/faqs.csv`;
 
 export const ALL_GROUPS: Selector[] = [
   {
