@@ -179,7 +179,7 @@ def save_to_csv(dataset: list[dict], filename: str):
 def upload_data_to_blob_storage(datasets):
     # Get connection string and container name from environment variables
     connection_string = os.environ.get('AZURE_STORAGE_CONNECTION_STRING')
-    container_name = os.environ.get('AZURE_STORAGE_CONTAINER_NAME')
+    container_name = os.environ.get('AZURE_STORAGE_CONTAINER_NAME_CSV')
     blob_service_client = BlobServiceClient.from_connection_string(connection_string)
     container_client = blob_service_client.get_container_client(container_name)
     for ds in datasets:
