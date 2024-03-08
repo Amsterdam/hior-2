@@ -37,7 +37,7 @@ services:
     image: ${REGISTRY:-localhost:5001}/${REPOSITORY:-opdrachten/hior-csv-update}:${VERSION:-latest}
     environment:
       - AZURE_STORAGE_CONTAINER_NAME_CSV=foo
-      - AZURE_STORAGE_CONNECTION_STRING=
+      - AZURE_STORAGE_CONTAINER=
       - XLSX_FILE=http://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/HIOR%20Amsterdam.xlsx
     volumes:
       - ./import_hior.py:/app/import_hior.py

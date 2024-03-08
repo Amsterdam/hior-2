@@ -5,6 +5,7 @@ import pandas as pd
 import re
 import logging
 
+from azure.identity import DefaultAzureCredential
 from azure.storage.blob import BlobServiceClient
 
 logging.basicConfig(level=logging.INFO)
@@ -177,10 +178,14 @@ def save_to_csv(dataset: list[dict], filename: str):
 
 
 def upload_data_to_blob_storage(datasets):
-    # Get connection string and container name from environment variables
-    connection_string = os.environ.get('AZURE_STORAGE_CONNECTION_STRING')
+    # Get storage-url and container name from environment variables
+    account_url = os.environ.get("AZURE_STORAGE_CONTAINER")
     container_name = os.environ.get('AZURE_STORAGE_CONTAINER_NAME_CSV')
-    blob_service_client = BlobServiceClient.from_connection_string(connection_string)
+
+    # Create the BlobServiceClient object
+    credential = DefaultAzureCredential()
+    blob_service_client = BlobServiceClient(account_url= f"{account_url}/", credential=credential)
+
     container_client = blob_service_client.get_container_client(container_name)
     for ds in datasets:
         blob_client = container_client.get_blob_client(f'{ds}.csv')
@@ -198,7 +203,7 @@ def main():
         save_to_csv(data[ds], f'{ds}.csv')
 
     # Upload data to Azure Blob Storage
-    if os.environ.get('AZURE_STORAGE_CONNECTION_STRING'):
+    if os.environ.get("AZURE_STORAGE_CONTAINER"):
         upload_data_to_blob_storage(datasets)
     else:
         logger.info('Skipping upload to Azure Blob Storage')
