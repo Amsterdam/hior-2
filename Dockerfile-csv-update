@@ -7,7 +7,7 @@ ENV PYTHONUNBUFFERED 1 \
 RUN  apt-get update \
  && apt-get dist-upgrade -y \
  && pip install --upgrade pip \
- && pip3 install pandas openpyxl azure-storage-blob \
+ && pip3 install pandas openpyxl azure-storage-blob azure-identity\
  && useradd --user-group --system datapunt
 
 COPY import_hior.py /app/import_hior.py
