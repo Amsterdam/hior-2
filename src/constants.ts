@@ -1,6 +1,6 @@
 import { Selector, State } from "./types";
 
-let azureStorageBaseURL = `${window?._env_?.REACT_APP_BASE_URL}`;
+let azureStorageBaseURL = '';
 if (["development", "test"].includes(process.env.NODE_ENV)) {
   azureStorageBaseURL = "http://localhost:3000/static/data"; // Local development and testing URL (download the files manually)
 }
