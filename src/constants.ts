@@ -1,18 +1,18 @@
 import { Selector, State } from "./types";
 
-let azureStorageCsvBaseURL = `${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER}/${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER_NAME_CSV}`;
+let azureStorageBaseURL = '';
 if (["development", "test"].includes(process.env.NODE_ENV)) {
-  azureStorageCsvBaseURL = "http://localhost:3000/static/data"; // Local development and testing URL (download the files manually)
+  azureStorageBaseURL = "http://localhost:3000/static/data"; // Local development and testing URL (download the files manually)
 }
 
-export const IMAGE_URL = `${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER}/${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER_NAME_IMAGES}/`;
-export const DOCUMENT_URL = `${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER}/${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER_NAME_DOCUMENTS}/`;
+export const IMAGE_URL = `${azureStorageBaseURL}/${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER_NAME_IMAGES}/`;
+export const DOCUMENT_URL = `${azureStorageBaseURL}/${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER_NAME_DOCUMENTS}/`;
 
-export const HIOR_ITEMS_URL = `${azureStorageCsvBaseURL}/items.csv`;
-export const HIOR_PROPERTIES_URL = `${azureStorageCsvBaseURL}/properties.csv`;
-export const HIOR_ATTRIBUTES_URL = `${azureStorageCsvBaseURL}/attributes.csv`;
-export const HIOR_METADATA_URL = `${azureStorageCsvBaseURL}/metadata.csv`;
-export const HIOR_FAQ_URL = `${azureStorageCsvBaseURL}/faqs.csv`;
+export const HIOR_ITEMS_URL = `${azureStorageBaseURL}/${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER_NAME_CSV}/items.csv`;
+export const HIOR_PROPERTIES_URL = `${azureStorageBaseURL}/${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER_NAME_CSV}/properties.csv`;
+export const HIOR_ATTRIBUTES_URL = `${azureStorageBaseURL}/${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER_NAME_CSV}/attributes.csv`;
+export const HIOR_METADATA_URL = `${azureStorageBaseURL}/${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER_NAME_CSV}/metadata.csv`;
+export const HIOR_FAQ_URL = `${azureStorageBaseURL}/${window?._env_?.REACT_APP_AZURE_STORAGE_CONTAINER_NAME_CSV}/faqs.csv`;
 
 export const ALL_GROUPS: Selector[] = [
   {
