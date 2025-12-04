@@ -32,7 +32,7 @@
     "@types/react-dom": "^18.3.7",
     "@types/node": "^20.19.25",
     "@types/styled-components": "^5.1.36",
-    "eslint-config-prettier": "^9.1.2",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^4.2.5",
     "eslint-plugin-promise": "^7.2.1",
     "jest-styled-components": "^7.2.0",
