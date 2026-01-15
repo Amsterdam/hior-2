@@ -4,6 +4,8 @@ on:
   pull_request:
     branches: main
 
+permissions: write-all
+
 jobs:
   linting-and-tests:
     name: Linting and tests
