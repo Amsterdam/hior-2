@@ -1,4 +1,4 @@
-FROM node:16-bullseye AS builder
+FROM node:22-bullseye AS builder
 LABEL maintainer="datapunt@amsterdam.nl"
 
 WORKDIR /app
