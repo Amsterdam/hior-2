@@ -1,9 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import { withTheme } from "../test/utils";
 import Header from "./Header";
+import { vi } from 'vitest'
 
-jest.mock("react-router-dom", () => ({
-  ...jest.requireActual("react-router-dom"),
+vi.mock("react-router-dom", async () => ({
+  ...(await vi.importActual("react-router-dom")),
   useLocation: () => ({
     pathname: "/home",
   }),

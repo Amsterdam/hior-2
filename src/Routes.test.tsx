@@ -5,8 +5,9 @@ import { ThemeProvider } from "@amsterdam/asc-ui";
 import App from "./App";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./queryClient";
+import { vi } from 'vitest'
 
-jest.mock("./components/UpdatedDate", () => () => "UpdatedDate");
+vi.mock("./components/UpdatedDate", () => ({ default: () => "UpdatedDate" }));
 const Wrapper = ({ children }: { children: React.ReactNode }) => {
   return (
     <QueryClientProvider client={queryClient}>
