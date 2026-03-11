@@ -80,6 +80,8 @@ describe("List", () => {
   });
 
   it("should show different results when filtering theme", async () => {
+    const user = userEvent.setup()
+
     render(
       withTheme(
         <FilterContextProvider>
@@ -90,9 +92,7 @@ describe("List", () => {
 
     await screen.findByText("Resultaten (1)");
 
-    await act(async () => {
-      await userEvent.click(screen.getByRole("button", { name: /wis filter/i }));
-    });
+    await user.click(screen.getByRole("button", { name: /wis filter/i }));
 
     await screen.findByText("Resultaten (1)");
 
