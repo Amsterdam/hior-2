@@ -2,8 +2,9 @@ import { render, screen } from "@testing-library/react";
 import { withTheme } from "../test/utils";
 import Faq from "./Faq";
 import { mockFaqs } from "../test/mock-data/Faq.fixtures";
+import { vi } from 'vitest'
 
-jest.mock("../hooks/useFetchFaq", () => ({
+vi.mock("../hooks/useFetchFaq", () => ({
   useFetchFaq: () => ({ data: mockFaqs, isLoading: false }),
 }));
 

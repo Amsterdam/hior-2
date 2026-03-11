@@ -5,14 +5,15 @@ import { withTheme } from "../test/utils";
 import List from "./List";
 import { mockItems, mockProperties, mockAttributes } from "../test/mock-data/List.fixtures";
 import FilterContextProvider from "../filter/FilterContext";
+import { vi } from 'vitest'
 
-jest.mock("../hooks/useFetchItems", () => ({
+vi.mock("../hooks/useFetchItems", () => ({
   useFetchItems: () => ({ data: mockItems, isLoading: false }),
 }));
-jest.mock("../hooks/useFetchProperties", () => ({
+vi.mock("../hooks/useFetchProperties", () => ({
   useFetchProperties: () => ({ data: mockProperties, isLoading: false }),
 }));
-jest.mock("../hooks/useFetchAttributes", () => ({
+vi.mock("../hooks/useFetchAttributes", () => ({
   useFetchAttributes: () => ({ data: mockAttributes, isLoading: false }),
 }));
 

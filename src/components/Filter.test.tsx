@@ -3,8 +3,9 @@ import FilterContextProvider from "../filter/FilterContext";
 import { mockAttributes } from "../test/mock-data/List.fixtures";
 import { withTheme } from "../test/utils";
 import Filter from "./Filter";
+import { vi } from 'vitest'
 
-jest.mock("../hooks/useFetchAttributes", () => ({
+vi.mock("../hooks/useFetchAttributes", () => ({
   useFetchAttributes: () => ({ data: mockAttributes, isLoading: false }),
 }));
 

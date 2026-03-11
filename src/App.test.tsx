@@ -1,9 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import { withTheme } from "./test/utils";
+import { vi } from 'vitest'
 
 import App from "./App";
 
-jest.mock("./components/UpdatedDate", () => () => "UpdatedDate");
+vi.mock("./components/UpdatedDate", () => ({ default: () => "UpdatedDate" }));
 
 describe("App", () => {
   it("renders correctly", () => {

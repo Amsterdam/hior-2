@@ -1,8 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import { withTheme } from "../test/utils";
 import Footer from "./Footer";
+import { vi } from 'vitest'
 
-jest.mock("./UpdatedDate", () => () => 'UpdatedDate');
+vi.mock("./UpdatedDate", () => ({ default: () => 'UpdatedDate' }));
 
 describe("Footer", () => {
   it("renders correctly", () => {
