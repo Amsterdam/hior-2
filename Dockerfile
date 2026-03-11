@@ -13,6 +13,8 @@ COPY package.json \
   .gitignore \
   .prettierrc \
   tsconfig.json \
+  vite.config.ts \
+  index.html \
   /app/
 
 # Install NPM dependencies.
@@ -45,7 +47,7 @@ RUN GENERATE_SOURCEMAP=false npm run build
 
 # Deploy
 FROM nginx:stable-alpine-slim
-COPY --from=build /app/build/. /var/www/html/
+COPY --from=build /app/dist/. /var/www/html/
 
 COPY default.conf /etc/nginx/conf.d/
 
