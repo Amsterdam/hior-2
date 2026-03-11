@@ -7,11 +7,15 @@ updates:
       time: "07:30"
       timezone: "Europe/Amsterdam"
 
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"
+
     groups:
       maintenance:
         applies-to: "version-updates"
         update-types:
-          - "major"
           - "minor"
           - "patch"
 
