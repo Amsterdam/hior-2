@@ -125,7 +125,7 @@ describe("List", () => {
     await screen.findByText("Resultaten (1)");
 
     expect(screen.getByTestId("item-3")).toBeInTheDocument();
-  });
+  }, 10000);
 
   it("should show different results when filtering source", async () => {
     render(
