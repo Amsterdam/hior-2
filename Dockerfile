@@ -1,5 +1,9 @@
-FROM node:22-bullseye AS builder
+FROM node:24.19.0-alpine AS builder
 LABEL maintainer="datapunt@amsterdam.nl"
+
+RUN npm install -g npm@12.0.2
+
+RUN apk add --no-cache git
 
 WORKDIR /app
 
@@ -18,7 +22,7 @@ COPY package.json \
   /app/
 
 # Install NPM dependencies.
-RUN npm --production=false --unsafe-perm ci && \
+RUN npm --production=false ci && \
   npm cache clean --force
 
 COPY public /app/public
