@@ -3,7 +3,7 @@ services:
   dev:
     build:
       context: .
-    image: ${REGISTRY:-localhost:5001}/${REPOSITORY:-opdrachten/hior}:${VERSION:-latest}
+    image: ${REGISTRY:-localhost:5001}/${REPOSITORY:-ams-opdr/hior}:${VERSION:-latest}
     environment:
       - TZ=Europe/Amsterdam
       - REACT_APP_APPLICATIONINSIGHTS_CONNECTION_STRING=${REACT_APP_APPLICATIONINSIGHTS_CONNECTION_STRING}
@@ -34,7 +34,7 @@ services:
   csv-update:
     build:
       dockerfile: Dockerfile-csv-update
-    image: ${REGISTRY:-localhost:5001}/${REPOSITORY:-opdrachten/hior-csv-update}:${VERSION:-latest}
+    image: ${REGISTRY:-localhost:5001}/${REPOSITORY:-ams-opdr/hior-csv-update}:${VERSION:-latest}
     environment:
       - AZURE_STORAGE_CONTAINER_NAME_CSV=foo
       - AZURE_STORAGE_CONTAINER=
