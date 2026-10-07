@@ -31,14 +31,14 @@ services:
       - ./package-lock.json:/app/package-lock.json
     command: ncu -u --doctor --target minor
 
-  csv-update:
-    build:
-      dockerfile: Dockerfile-csv-update
-    image: ${REGISTRY:-localhost:5001}/${REPOSITORY:-ams-opdr/hior-csv-update}:${VERSION:-latest}
-    environment:
-      - AZURE_STORAGE_CONTAINER_NAME_CSV=foo
-      - AZURE_STORAGE_CONTAINER=
-      - XLSX_FILE=http://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/HIOR%20Amsterdam.xlsx
-    volumes:
-      - ./import_hior.py:/app/import_hior.py
-    command: python3 /app/import_hior.py
+  # csv-update:
+  #   build:
+  #     dockerfile: Dockerfile-csv-update
+  #   image: ${REGISTRY:-localhost:5001}/${REPOSITORY:-ams-opdr/hior-csv-update}:${VERSION:-latest}
+  #   environment:
+  #     - AZURE_STORAGE_CONTAINER_NAME_CSV=foo
+  #     - AZURE_STORAGE_CONTAINER=
+  #     - XLSX_FILE=http://131f4363709c46b89a6ba5bc764b38b9.objectstore.eu/hior/HIOR%20Amsterdam.xlsx
+  #   volumes:
+  #     - ./import_hior.py:/app/import_hior.py
+  #   command: python3 /app/import_hior.py
